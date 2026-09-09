@@ -58,8 +58,16 @@ previews, the video at the top, the footer note. Keys are named plainly, so
 Every path is relative, so the folder works at the repo root or in a
 subdirectory.
 
-## A note on the chart
+## The chart
 
-`images/signal.svg` and `images/signal-narrow.svg` are stylised. They show
-the shape of a churn rather than a raw sensor log, and the page says so in
+`images/signal.svg` and `images/signal-narrow.svg` are plotted from
+`data/churn_20260816.csv`, the log written by the rig during the run in the
+photographs. To redraw them, run
+
+    python3 make_signal.py
+
+A cordless drill spikes hard whenever the churn catches, so single readings
+run from under a hundred milliamps to over seventeen thousand and a plot of
+every point is unreadable. The line is a moving median and the shaded band
+is the middle half of the readings in the same window. The page says so in
 its footer.

@@ -18,7 +18,7 @@ video_caption: The whole thing, start to finish V1
 next_text: A closer look at the machine
 next_href: beast.html
 next_blurb: What it is made of, where the sensing happens, and what the rig actually watches.
-footnote: The chart is drawn from a real run, but smoothed and redrawn so the shape is easy to see. It is not a plot of every reading.
+footnote: The chart is plotted from the sensor log of the run in these photographs. The line is a moving median and the shaded band is the middle half of the readings, because every raw sample drawn at once is a solid block of ink. The log and the script are in the repository.
 credit: Photographs are from a single run, August 2026.
 ---
 
@@ -100,11 +100,11 @@ Nobody times this. You listen for it. The sloshing goes from a smooth swirl to a
 
 So I gave it one sense. It watches how hard the motor is pulling.
 
-For the first quarter of an hour, nothing. Then the fat starts gathering and the drill has to push through something thicker. The current climbs, and it keeps climbing, right up until the butter lets go of the liquid. Then the load falls away.
+For twenty minutes, nothing. The load sits around 2700 mA and wanders about. Then the fat starts gathering and the drill has to push through something thicker. It climbs to 4700 and holds there for a moment, and then the butter lets go of the liquid and the load drops.
 
 No camera, no model, nothing clever. A number that goes up and then drops.
 
-![Motor current across one churn [*]](images/signal.svg "A chart of motor current across one churn. The line sits flat for roughly fifteen minutes, climbs as the fat gathers, peaks, then falls away sharply where the machine stops.")
+![Motor current across the churn, from the log [*]](images/signal.svg "A chart of motor current across one churn. The load sits near 2700 milliamps for twenty minutes, climbs as the fat gathers, peaks near 4700, then falls away.")
 
 ## It stopped on its own
 
