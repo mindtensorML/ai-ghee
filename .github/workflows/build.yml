@@ -1,0 +1,48 @@
+name: Build pages from markdown
+
+# Runs whenever the source of the site changes. The generated index.html and
+# beast.html are deliberately not in the trigger list, so the commit this
+# workflow makes cannot set the workflow off again.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.md"
+      - "build.py"
+      - "template.html"
+      - "style.css"
+      - "images/**"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build
+        run: python3 build.py
+
+      - name: Commit the rebuilt pages
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html beast.html
+          if git diff --staged --quiet; then
+            echo "Pages already match the markdown, nothing to commit."
+          else
+            git commit -m "Rebuild pages from markdown"
+            git push
+          fi

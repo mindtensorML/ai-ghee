@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Beast &middot; AI Ghee Making</title>
+<meta name="description" content="A cordless drill, a chopping board, a plastic food box and a Raspberry Pi. What each part of the ghee rig does.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Beast">
+<meta property="og:description" content="A cordless drill, a chopping board and a Raspberry Pi. What each part of the ghee rig does.">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/beast.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#127850;</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top">
+  <a href="index.html">&lsaquo; The story</a>
+  <span class="mark">The machine</span>
+</div>
+
+<header class="hero wrap">
+  <p class="kicker">The build</p>
+  <h1>The Beast</h1>
+  <p class="standfirst">Everything on this rig came from a hardware shop or a kitchen drawer. Here is what each part actually does.</p>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>What it is made of</h2>
+    <p class="lead">A cordless drill does the turning. It sits in a clamp bolted to a chopping board, and the board is what keeps everything lined up over the pot. The churn head is hardwood on a steel shaft, screwed together rather than glued, which is the reason I made it instead of buying one.</p>
+    <p>The electronics live in a clear plastic food box, mostly so I can see whether anything has caught fire. A Raspberry Pi runs the logging. The large yellow button cuts power to the motor and nothing in software gets to override it.</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="The rig on a kitchen counter, showing the drill in its clamp, the wooden board, the clear box of electronics and a Raspberry Pi at the base." loading="lazy" decoding="async">
+      <figcaption>Drill, board, box, button</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">Motor</span><span class="v">Cordless drill, clamped, running well below full speed</span></li>
+      <li><span class="k">Churn</span><span class="v">Hardwood and stainless steel, made not bought</span></li>
+      <li><span class="k">Frame</span><span class="v">A chopping board and a plastic food box</span></li>
+      <li><span class="k">Brain</span><span class="v">Raspberry Pi, logging to a CSV</span></li>
+      <li><span class="k">Sense</span><span class="v">Current and voltage on the motor line</span></li>
+      <li><span class="k">Stop</span><span class="v">One large button, hard wired</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>Where it sits</h2>
+    <p>Over the sink. The pot goes in the basin, a flat cover sits on top with a hole cut for the shaft, and anything that escapes lands somewhere that does not matter.</p>
+    <p>This is the part nobody puts in the render. Half of building something in a kitchen is deciding where the mess is allowed to go.</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="The rig clamped in position above the kitchen sink with a laptop below it showing live plots." loading="lazy" decoding="async">
+      <figcaption>In position, mid run</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>What it watches</h2>
+    <p>Current and voltage on the motor line, sampled about once a second, written straight to a file.</p>
+    <p>That is genuinely all of it. No microphone, no camera, no temperature probe. The bet was that if the load signal on its own is enough, everything else is decoration.</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="A laptop screen showing two live plots of the motor readings above a scrolling terminal log." loading="lazy" decoding="async">
+      <figcaption>The live trace during a run</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>What it decides</h2>
+    <p>One thing. Whether the load has climbed and then fallen far enough to call the break.</p>
+    <p>It does not know what yogurt is. It does not know what butter is. It knows that a number went up for a while and then dropped away, and that this shape means the job is finished.</p>
+    <p>Which is a smaller idea than it sounds, and also a much bigger one.</p>
+
+  <div class="next">
+    <a href="index.html">&lsaquo; Back to the story</a>
+    <p>Yogurt, the churn, the break, and an hour of watching colour.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Photographs are from a single run, August 2026.</p>
+</footer>
+
+</body>
+</html>
