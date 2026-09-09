@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Ghee Making</title>
+  <style>
+    :root {
+      --bg: #f4ead7;
+      --paper: #fff8ec;
+      --ink: #2a2118;
+      --muted: #6b5846;
+      --gold: #c08a2e;
+      --line: #e3d2b4;
+      --shadow: 0 18px 40px rgba(42, 33, 24, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, #fffaf1 0%, var(--bg) 55%);
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(1080px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2.4rem 0 4rem;
+    }
+
+    h1 {
+      margin: 0 0 1.6rem;
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      font-weight: 650;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+      gap: 1.25rem;
+      align-items: stretch;
+      margin-bottom: 2.2rem;
+    }
+
+    .video-card,
+    .portrait-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .video {
+      position: relative;
+      height: 100%;
+      min-height: 280px;
+      background: #1a140e;
+    }
+
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .portrait-card figure {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portrait-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex: 1;
+    }
+
+    figcaption {
+      padding: 0.7rem 0.9rem 0.85rem;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    .essay {
+      max-width: 42rem;
+    }
+
+    .essay p {
+      margin: 0 0 1.15rem;
+      font-size: clamp(1.02rem, 2.2vw, 1.16rem);
+    }
+
+    .essay p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 1.4rem, 1080px);
+        padding-top: 1.5rem;
+      }
+
+      .stage {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .video {
+        padding-bottom: 56.25%;
+        height: 0;
+        min-height: 0;
+      }
+
+      .portrait-card img {
+        max-height: 62vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>AI Ghee Making</h1>
+
+    <section class="stage" aria-label="Video and the rig">
+      <div class="video-card">
+        <div class="video">
+          <!-- Replace VIDEO_ID with the ID from your YouTube URL -->
+          <iframe
+            src="https://www.youtube.com/embed/y2R1US1QVys"
+            title="AI Ghee Making"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <aside class="portrait-card">
+        <figure>
+          <img src="the-beast.jpg" alt="Portrait of the homemade ghee-making rig">
+          <figcaption>The Beast</figcaption>
+        </figure>
+      </aside>
+    </section>
+
+    <article class="essay">
+      <p>I made ghee with a homemade rig.</p>
+      <p>The rig churns cream until it breaks into butter and liquid. I did not watch for that moment with my eyes. I let the rig notice it. When the cream splits, the work suddenly gets easier. That change is the signal. The rig stops at the right time, then I cook the butter down into ghee.</p>
+      <p>The food is only half the point. The other half is this: a dumb machine can be given a little brain. Not a voice. Not a personality. Just a way to feel when something in front of it has changed, and to act on that.</p>
+      <p>Most tools only move when we tell them to. This one pays attention. A simple rig. A simple signal. And all at once the machine is not only spinning. It is deciding.</p>
+      <p>That is the idea I wanted at the center of this video. Ghee is what came out of the jar. The real experiment was giving a plain machine a way to know.</p>
+      <p>Next I want the machine to try again. Change a step. Taste the result. Keep what works. Do that over and over until it finds a better ghee than I would have made on my own.</p>
+    </article>
+  </main>
+</body>
+</html>
