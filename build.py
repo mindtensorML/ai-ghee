@@ -301,6 +301,11 @@ def render_footer(meta):
         lines.append(f'  <p id="note">* {inline(note)}</p>')
     if meta.get("credit"):
         lines.append(f'  <p>{inline(meta["credit"])}</p>')
+    if meta.get("contact_email"):
+        label = meta.get("contact_text", "Questions, corrections, or you have made this yourself")
+        addr = meta["contact_email"]
+        lines.append(f'  <p class="contact">{inline(label)}. '
+                     f'<a href="mailto:{addr}">{addr}</a></p>')
     return "\n".join(lines)
 
 

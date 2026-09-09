@@ -18,8 +18,10 @@ video_caption: The whole thing, start to finish V1
 next_text: A closer look at the machine
 next_href: beast.html
 next_blurb: What it is made of, where the sensing happens, and what the rig actually watches.
-footnote: The chart is plotted from the sensor log of the run in these photographs. The line is a moving median and the shaded band is the middle half of the readings, because every raw sample drawn at once is a solid block of ink. The log and the script are in the repository.
+footnote: The solid line is plotted from the sensor log of the run in these photographs, as a moving median with the middle half of the readings shaded behind it, because every raw sample drawn at once is a solid block of ink. The dashed line is the idealised shape of a churn, drawn by hand to show what the signal is looking for. The log and the script are in the repository.
 credit: Photographs are from a single run, August 2026.
+contact_text: Questions, corrections, or you have built one of these yourself
+contact_email: postcaesar@gmail.com
 ---
 
 ## I had only ever eaten it

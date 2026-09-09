@@ -18,6 +18,7 @@ The run ends where the motor stopped, about twenty six and a half minutes in.
 """
 
 import csv
+import math
 import os
 import statistics
 import sys
@@ -32,13 +33,39 @@ END_S = 1600          # the motor stops for good just before this
 WINDOW_S = 50         # width of the moving window
 STEP_S = 15
 
-XMIN, XMAX = 0.0, 27.0        # minutes
+XMIN, XMAX = 0.0, 30.0        # minutes
 YMIN, YMAX = 1500.0, 6500.0   # milliamps
 
 
 def percentile(values, p):
     v = sorted(values)
     return v[min(len(v) - 1, int(len(v) * p / 100))]
+
+
+def ideal(m):
+    """The textbook shape of a churn, in milliamps at minute m.
+
+    Drawn as a dashed second line so the chart can show what the signal is
+    supposed to look like next to what this run actually recorded. It is
+    hand drawn, not measured, and the legend says so.
+    """
+    if m < 20.0:
+        return 2750.0
+    if m < 25.2:
+        return 2750.0 + ((m - 20.0) / 5.2) ** 1.45 * 1950.0
+    if m < 26.4:
+        f = (m - 25.2) / 1.2
+        return 4700.0 - (0.5 - 0.5 * math.cos(f * math.pi)) * 2200.0
+    return 2500.0 - (m - 26.4) * 14.0
+
+
+def ideal_path(X, Y):
+    pts = []
+    m = XMIN
+    while m <= XMAX + 1e-9:
+        pts.append(f"{X(m):.1f},{Y(ideal(m)):.1f}")
+        m += 0.15
+    return "M" + " L".join(pts)
 
 
 def series():
@@ -69,7 +96,7 @@ def series():
     return [(m, lo[i], med, hi[i]) for i, (m, _, med, _) in enumerate(out)]
 
 
-def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42):
+def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None):
     L, R, T, B = pad
     pw, ph = w - L - R, h - T - B
     X = lambda m: L + (m - XMIN) / (XMAX - XMIN) * pw
@@ -92,11 +119,19 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42):
     for mm in xsteps:
         g.append(f'<text x="{X(mm):.1f}" y="{h-B+22:.1f}" class="ax" text-anchor="middle">{mm}</text>')
 
+    kx, ky, gap = key
+    legend = (
+        f'<line x1="{kx}" y1="{ky}" x2="{kx+34}" y2="{ky}" class="trace"/>'
+        f'<text x="{kx+44}" y="{ky+5}" class="key">This run</text>'
+        f'<line x1="{kx}" y1="{ky+gap}" x2="{kx+34}" y2="{ky+gap}" class="ideal"/>'
+        f'<text x="{kx+44}" y="{ky+gap+5}" class="key">The shape it looks for</text>'
+    )
+
     tx = "".join(
         f'<text x="{X(m):.1f}" y="{Y(v)+dy:.1f}" class="{cls}" text-anchor="{a}">{s}</text>'
         for s, m, v, dy, a, cls in labels)
 
-    fa, fl, fs, fu = fonts
+    fa, fl, fs, fu, fk = fonts
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" role="img" aria-label="Motor current across one churn, from the sensor log. The load sits near 2700 milliamps for the first twenty minutes, climbs as the fat gathers, peaks near 4700, then falls away.">
 <style>
  .grid{{stroke:#e3d2b4;stroke-width:1}}
@@ -106,10 +141,14 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42):
  .unit{{font:600 {fu}px "Avenir Next","Segoe UI",sans-serif;fill:#9a836a;letter-spacing:.16em;text-transform:uppercase}}
  .band{{fill:#c08a2e;opacity:.17}}
  .trace{{fill:none;stroke:#c08a2e;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}}
+ .ideal{{fill:none;stroke:#9a836a;stroke-width:2;stroke-dasharray:7 6;opacity:.85}}
+ .key{{font:600 {fk}px "Avenir Next","Segoe UI",sans-serif;fill:#6b5846}}
 </style>
 <g>{''.join(g)}</g>
 <path d="{band}" class="band"/>
+<path d="{ideal_path(X, Y)}" class="ideal"/>
 <path d="{med}" class="trace"/>
+{legend}
 <circle cx="{X(peak[0]):.1f}" cy="{Y(peak[2]):.1f}" r="5.5" fill="#a8681a"/>
 {tx}
 <text x="{L-yoff}" y="{T+ph/2:.1f}" class="unit" text-anchor="middle" transform="rotate(-90 {L-yoff} {T+ph/2:.1f})">Motor current, mA</text>
@@ -122,20 +161,20 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42):
 
 peak = build(
     900, 470, (74, 26, 44, 62),
-    range(2000, 6001, 1000), range(0, 28, 5),
-    (13, 14, 13, 11),
+    range(2000, 6001, 1000), range(0, 31, 5),
+    (13, 14, 13, 11, 13),
     [("Nothing much for twenty minutes", 2.6, 2750, -46, "start", "lbl"),
      ("Fat gathering", 19.6, 2050, 0, "end", "lbl"),
-     ("THE BREAK", 25.1, 4704, -22, "middle", "lbl-s")],
-    OUT_WIDE)
+     ("THE BREAK", 24.6, 4704, -24, "end", "lbl-s")],
+    OUT_WIDE, key=(102, 66, 26))
 
 build(
     430, 460, (74, 14, 46, 50),
-    range(2000, 6001, 2000), range(0, 28, 10),
-    (14, 15, 14, 11),
-    [("THE BREAK", 24.6, 4704, -18, "end", "lbl-s"),
-     ("Nothing yet", 1.2, 2750, -52, "start", "lbl")],
-    OUT_NARROW, yoff=58)
+    range(2000, 6001, 2000), range(0, 31, 10),
+    (14, 15, 14, 11, 14),
+    [("THE BREAK", 23.0, 4704, -20, "end", "lbl-s"),
+     ("Nothing yet", 1.2, 2750, -58, "start", "lbl")],
+    OUT_NARROW, yoff=58, key=(100, 66, 28))
 
 print(f"peak median {peak[2]:.0f} mA at {peak[0]:.1f} min")
 print("wrote", os.path.relpath(OUT_WIDE, HERE), "and", os.path.relpath(OUT_NARROW, HERE))

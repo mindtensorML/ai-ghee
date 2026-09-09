@@ -17,6 +17,8 @@ next_text: Back to the story
 next_href: index.html
 next_blurb: Yogurt, the churn, the break, and an hour of watching colour.
 credit: Photographs are from a single run, August 2026.
+contact_text: Questions, corrections, or you have built one of these yourself
+contact_email: postcaesar@gmail.com
 ---
 
 ## What it is made of
