@@ -1,9 +1,9 @@
 ---
 output: index.html
 title: AI Ghee Making
-description: I had eaten village ghee all my life and never once made it. So I asked AI how, and then I asked it to do the whole thing for me.
+description: I had this ghee every day growing up and never once made it. So I asked AI how, and then I asked it to do the whole thing for me.
 og_title: The machine that knew when to stop
-og_description: I had eaten village ghee all my life and never once made it. So I built a machine that could feel the moment butter breaks.
+og_description: I had this ghee every day growing up and never once made it. So I built a machine that could feel the moment butter breaks.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/
 mark: AI Ghee Making
@@ -18,7 +18,7 @@ video_caption: The whole thing, start to finish V1
 next_text: A closer look at the machine
 next_href: beast.html
 next_blurb: What it is made of, where the sensing happens, and what the rig actually watches.
-footnote: * The chart on this page is based on real data but stylised for clarity. It was plotted from a raw sensor log.
+footnote: The chart is drawn from a real run, but smoothed and redrawn so the shape is easy to see. It is not a plot of every reading.
 credit: Photographs are from a single run, August 2026.
 ---
 
@@ -26,7 +26,7 @@ credit: Photographs are from a single run, August 2026.
 
 The ghee I know came from villages. Upcycled jars, from people who have made it the same way for so long that nobody there thinks of it as a technique.
 
-It does not taste like the tin from the shop. It is not close.
+It does not taste like the tin from the shop.
 
 And I had never made a single batch. I did not know how long to leave the milk, or how cold the yogurt should be, or what the pot is supposed to sound like when it is ready.
 
@@ -38,17 +38,17 @@ That souring is critical because you get clarified butter when you skip it. It i
 
 ![Yesterday's milk/cream, thickened overnight](images/yogurt.jpg "A wide steel bowl of thick set yogurt, held over a pot in a kitchen sink.")
 
-## Next Steps
+## Two days on the counter
 
 Warm milk, a spoonful of yesterday's yogurt stirred through, and then you leave it alone all night and let the bacteria get on with it. I let mine sit out for two days.
 
 That is fermentation, and it is the step the commercial version skips. Live cultures, mostly Lactobacillus, work their way through the lactose and turn it into lactic acid. The milk thickens. It sours. By morning it is something else.
 
-This is where everything good comes from. Lactose broken down so it sits easier. Fats and proteins made more bioavailable. Butyric acid, the short chain fatty acid your gut lining actually runs on, and more of it in ghee made this way than in ghee whipped up from sweet cream. 
+This is where everything good comes from. Lactose broken down so it sits easier. Fats and proteins made more bioavailable. Butyric acid, the short chain fatty acid your gut lining actually runs on, and more of it in ghee made this way than in ghee whipped up from sweet cream.
 
-Ayurveda has prescribed this exact version for a very long time,..
+Ayurveda has prescribed this exact version for a very long time.
 
-I can tell you is that the culture is what makes the smell, and the smell is not a small thing. It is most of what you are actually after.
+What I can tell you is that the culture is what makes the smell. That smell is most of the reason to bother with any of it.
 
 ![Set overnight, ready to churn](images/set-yogurt.jpg "A pot of thick set yogurt sitting in a kitchen sink, ready to be churned.")
 
@@ -66,9 +66,9 @@ It takes about half an hour and nothing interesting happens for most of it. Whic
 
 The people who actually know how to do this do not work from recipes, and none of them were in my kitchen. So the questions went into a chat window instead.
 
-How long to culture. How cold to keep the yogurt. How fast you can spin it before friction warms the pot and ruins the butter. Every answer opened three more, and underneath all of them sat one I kept not asking.
+How long to culture. How cold to keep the yogurt. How fast you can spin it before friction warms the pot and ruins the butter. Every answer opened three more.
 
-Then I asked it. Could you just do it?
+Then I asked the one I actually meant. Could you just do it?
 
 > The question stopped being how do I make ghee. It became could you make it for me.
 
@@ -83,16 +83,16 @@ It cost almost nothing and it looks like it. And that is sort of the point.
 | Motor | Cordless drill, held in a clamp |
 | Churn | Hardwood and stainless steel, made not bought |
 | Brain | Raspberry Pi, logging once a second |
-| Sense | Motor current and voltage, nothing else |
+| Sense | Motor current for the churn, a temperature probe for the cook |
 | Stop | One large button, wired to cut power |
 
 ## Spinning is the easy part
 
-Anyone can spin yogurt. The difficult part is knowing when to stop.
+Anyone can spin yogurt. The hard part is knowing when to stop.
 
-Stop early and you have thick froth. Go too long and you beat the butter back into the buttermilk and lose it. There is a window, and it moves with the fat content, the temperature, and the day.
+Stop early and you have thick froth. Go too long and you beat the butter back into the buttermilk and lose it. The window moves around depending on the fat, the temperature, and how the day is going.
 
-Nobody times this. You listen. The sloshing changes from a smooth swirl to an uneven slap, and that is your cue to reach in.
+Nobody times this. You listen for it. The sloshing goes from a smooth swirl to an uneven slap, and that is when you reach in.
 
 ![Twenty five minutes over the kitchen sink](images/churning.jpg "The drill running above a covered pot inside a stainless steel kitchen sink, with a red battery pack alongside.")
 
@@ -100,17 +100,17 @@ Nobody times this. You listen. The sloshing changes from a smooth swirl to an un
 
 So I gave it one sense. It watches how hard the motor is pulling.
 
-For the first quarter of an hour, nothing. Then the fat starts gathering and the drill has to push through something thicker. The current climbs, and it keeps climbing, right up until the butter lets go of the liquid. Then the load falls off a cliff.
+For the first quarter of an hour, nothing. Then the fat starts gathering and the drill has to push through something thicker. The current climbs, and it keeps climbing, right up until the butter lets go of the liquid. Then the load falls away.
 
-That fall is the whole idea. No camera. No model. A number that goes up, and then drops.
+No camera, no model, nothing clever. A number that goes up and then drops.
 
 ![Motor current across one churn [*]](images/signal.svg "A chart of motor current across one churn. The line sits flat for roughly fifteen minutes, climbs as the fat gathers, peaks, then falls away sharply where the machine stops.")
 
 ## It stopped on its own
 
-It ran. I went and did something else. When I came back it had switched itself off.
+It ran. I went and did something else, and when I came back it had switched itself off.
 
-Pale yellow curds sitting in cloudy buttermilk. Nobody told it the time. It worked out the moment from the only thing it could feel.
+Pale yellow curds sitting in cloudy buttermilk. Nobody told it the time. It worked that out from the only thing it could feel.
 
 ![The break](images/break.jpg "A pot of broken butter, pale yellow curds floating in cloudy buttermilk.")
 
@@ -118,16 +118,28 @@ Pale yellow curds sitting in cloudy buttermilk. Nobody told it the time. It work
 
 Gather the curds and press them into a ball. Rinse in cold water, over and over, until the water stops running cloudy.
 
-Every drop of buttermilk you leave behind will burn in the next step. This part cannot be automated, and honestly I did not want it to be.
+Every drop of buttermilk you leave behind will burn in the next step. This part I did not automate, and I did not want to.
 
 ![Pressing it together](images/press.jpg "Two hands pressing loose butter curds together into a ball over a colander.")
 ![What is left behind](images/buttermilk.jpg "A pot of thin white buttermilk left in the sink after the butter has been lifted out.")
 
+## The second sense
+
+Motor load told the rig when to stop. The cook is a different problem, because now you are not looking for a moment, you are trying to hold one.
+
+So the pot goes on a hotplate with a temperature probe in it, and an AC regulator that switches the plate on and off to keep the number where you put it. I set it to 250 F and it sat there for about an hour.
+
+A person watching a pot for an hour will drift. The regulator does not get bored.
+
+![Held at 250 for the whole cook](images/hotplate.jpg "The hotplate control panel with a red digital readout showing 250, and the rim of the ghee pot above it.")
+
 ## An hour of watching colour
 
-Butter into a pot, low heat, and then you wait.
+Butter into the pot, and then it mostly just goes.
 
 It melts. It foams white and loud. The water cooks off and the noise dies away. The milk solids sink and turn brown, and the smell shifts from butter to something toasted. When the pot goes quiet and the liquid runs clear, it is finished.
+
+I watched most of it anyway, because it is a nice thing to watch. But nothing I did changed how it came out.
 
 ![Butter in](images/clar-1.jpg "A mound of pale washed butter sitting in a steel pot before any heat.")
 ![Foaming](images/clar-2.jpg "The pot full of loud white foam as the water boils out of the butter.")
@@ -145,10 +157,12 @@ First batch I have ever made. I did not really make it.
 
 ## What I want next
 
-Right now the machine knows exactly one thing. Stop here.
+Right now the machine knows two things. When to stop churning, and what temperature to hold.
 
-Next I want it to run the whole loop on its own. Change the culture time. Change the speed. Taste what comes out, keep what worked, throw away what did not, and go again. Do that thirty times and it will land somewhere I would not have thought to look.
+Next I want to give it eyes and ears. A camera, so it can watch the foam break and the solids go brown and pick the heat itself instead of holding a number I handed it. And a microphone, because a lot of what tells you ghee is ready is the pot going quiet.
 
-Which is fine by me. I never knew where to look in the first place.
+The drill could probably take a second shift too. Once the butter is in the pot it wants stirring, and there is already a motor sitting right there doing nothing.
 
-That is the actual experiment. The ghee is just what came out of the pot.
+Then the loop. Change the culture time, change the speed, taste what comes out, keep what worked, go again. Thirty runs and it would land somewhere I would not have thought to look.
+
+I never really knew where to look anyway.

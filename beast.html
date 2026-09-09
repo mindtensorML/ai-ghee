@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Beast &middot; AI Ghee Making</title>
-<meta name="description" content="A cordless drill, a chopping board, a plastic food box and a Raspberry Pi. What each part of the ghee rig does.">
+<meta name="description" content="A cordless drill, a chopping board, a hotplate and a Raspberry Pi. What each part of the ghee rig does.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Beast">
 <meta property="og:description" content="A cordless drill, a chopping board and a Raspberry Pi. What each part of the ghee rig does.">
 <meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/beast.jpg">
 <meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast.html">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#127850;</text></svg>">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,9 +42,10 @@
     <ul class="spec">
       <li><span class="k">Motor</span><span class="v">Cordless drill, clamped, running well below full speed</span></li>
       <li><span class="k">Churn</span><span class="v">Hardwood and stainless steel, made not bought</span></li>
+      <li><span class="k">Heat</span><span class="v">Hotplate, switched on and off by an AC regulator</span></li>
       <li><span class="k">Frame</span><span class="v">A chopping board and a plastic food box</span></li>
       <li><span class="k">Brain</span><span class="v">Raspberry Pi, logging to a CSV</span></li>
-      <li><span class="k">Sense</span><span class="v">Current and voltage on the motor line</span></li>
+      <li><span class="k">Sense</span><span class="v">Current and voltage while churning, a probe in the pot while cooking</span></li>
       <li><span class="k">Stop</span><span class="v">One large button, hard wired</span></li>
     </ul>
 </section>
@@ -62,8 +64,8 @@
 <section class="wrap">
   <p class="num">03</p>
   <h2>What it watches</h2>
-    <p>Current and voltage on the motor line, sampled about once a second, written straight to a file.</p>
-    <p>That is genuinely all of it. No microphone, no camera, no temperature probe. The bet was that if the load signal on its own is enough, everything else is decoration.</p>
+    <p>While it is churning, current and voltage on the motor line, sampled about once a second and written straight to a file. While it is cooking, a probe in the pot instead, and the regulator cuts the hotplate in and out to hold the number.</p>
+    <p>No microphone and no camera, which is the next thing I want to fix. The bet up to now was that if the load on its own is enough to find the break, the rest can wait.</p>
     <figure>
       <img src="images/laptop.jpg" width="1400" height="980" alt="A laptop screen showing two live plots of the motor readings above a scrolling terminal log." loading="lazy" decoding="async">
       <figcaption>The live trace during a run</figcaption>
@@ -73,9 +75,8 @@
 <section class="wrap">
   <p class="num">04</p>
   <h2>What it decides</h2>
-    <p>One thing. Whether the load has climbed and then fallen far enough to call the break.</p>
+    <p>Two things. Whether the load has climbed and then fallen far enough to call the break, and whether the plate should be on or off to sit at 250 F.</p>
     <p>It does not know what yogurt is. It does not know what butter is. It knows that a number went up for a while and then dropped away, and that this shape means the job is finished.</p>
-    <p>Which is a smaller idea than it sounds, and also a much bigger one.</p>
 
   <div class="next">
     <a href="index.html">&lsaquo; Back to the story</a>

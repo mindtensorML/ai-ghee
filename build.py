@@ -296,7 +296,9 @@ def render_video(meta):
 def render_footer(meta):
     lines = []
     if meta.get("footnote"):
-        lines.append(f'  <p id="note">* {inline(meta["footnote"])}</p>')
+        # the marker is added here, so strip one if it was typed in the markdown
+        note = meta["footnote"].lstrip("*").strip()
+        lines.append(f'  <p id="note">* {inline(note)}</p>')
     if meta.get("credit"):
         lines.append(f'  <p>{inline(meta["credit"])}</p>')
     return "\n".join(lines)

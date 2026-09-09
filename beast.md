@@ -1,7 +1,7 @@
 ---
 output: beast.html
 title: The Beast &middot; AI Ghee Making
-description: A cordless drill, a chopping board, a plastic food box and a Raspberry Pi. What each part of the ghee rig does.
+description: A cordless drill, a chopping board, a hotplate and a Raspberry Pi. What each part of the ghee rig does.
 og_title: The Beast
 og_description: A cordless drill, a chopping board and a Raspberry Pi. What each part of the ghee rig does.
 og_image: images/beast.jpg
@@ -29,9 +29,10 @@ The electronics live in a clear plastic food box, mostly so I can see whether an
 
 | Motor | Cordless drill, clamped, running well below full speed |
 | Churn | Hardwood and stainless steel, made not bought |
+| Heat | Hotplate, switched on and off by an AC regulator |
 | Frame | A chopping board and a plastic food box |
 | Brain | Raspberry Pi, logging to a CSV |
-| Sense | Current and voltage on the motor line |
+| Sense | Current and voltage while churning, a probe in the pot while cooking |
 | Stop | One large button, hard wired |
 
 ## Where it sits
@@ -44,16 +45,14 @@ This is the part nobody puts in the render. Half of building something in a kitc
 
 ## What it watches
 
-Current and voltage on the motor line, sampled about once a second, written straight to a file.
+While it is churning, current and voltage on the motor line, sampled about once a second and written straight to a file. While it is cooking, a probe in the pot instead, and the regulator cuts the hotplate in and out to hold the number.
 
-That is genuinely all of it. No microphone, no camera, no temperature probe. The bet was that if the load signal on its own is enough, everything else is decoration.
+No microphone and no camera, which is the next thing I want to fix. The bet up to now was that if the load on its own is enough to find the break, the rest can wait.
 
 ![The live trace during a run](images/laptop.jpg "A laptop screen showing two live plots of the motor readings above a scrolling terminal log.")
 
 ## What it decides
 
-One thing. Whether the load has climbed and then fallen far enough to call the break.
+Two things. Whether the load has climbed and then fallen far enough to call the break, and whether the plate should be on or off to sit at 250 F.
 
 It does not know what yogurt is. It does not know what butter is. It knows that a number went up for a while and then dropped away, and that this shape means the job is finished.
-
-Which is a smaller idea than it sounds, and also a much bigger one.
