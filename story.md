@@ -10,43 +10,45 @@ mark: AI Ghee Making
 nav_text: The machine
 nav_href: beast.html
 nav_side: right
-kicker: A kitchen experiment
+kicker: Jay's AI GHEE
 headline: The machine that knew when to stop
-standfirst: I had eaten this ghee all my life and never once made it. So I asked AI how. Then I asked it to do the whole thing for me.
+standfirst: I had this ghee everyday growing up and never once made it. So I asked AI how. Then I asked it to do the whole thing for me.
 video: dEwIoD-T4lI
-video_caption: The whole thing, start to finish
+video_caption: The whole thing, start to finish V1
 next_text: A closer look at the machine
 next_href: beast.html
 next_blurb: What it is made of, where the sensing happens, and what the rig actually watches.
-footnote: The chart on this page is stylised. It shows the shape of what happens during a churn, drawn for clarity rather than plotted from a raw sensor log.
+footnote: * The chart on this page is based on real data but stylised for clarity. It was plotted from a raw sensor log.
 credit: Photographs are from a single run, August 2026.
 ---
 
 ## I had only ever eaten it
 
-The ghee I know came from villages. Unlabelled jars, from people who have made it the same way for so long that nobody there thinks of it as a technique.
+The ghee I know came from villages. Upcycled jars, from people who have made it the same way for so long that nobody there thinks of it as a technique.
 
 It does not taste like the tin from the shop. It is not close.
 
-And I had never made a single batch. I did not know how long to leave the milk, or how cold the yogurt should be, or what the pot is supposed to sound like when it is ready. That is the honest starting position, and it is the entire reason any of this happened.
+And I had never made a single batch. I did not know how long to leave the milk, or how cold the yogurt should be, or what the pot is supposed to sound like when it is ready.
 
-## It starts with yogurt, not cream
+## It starts with yogurt, not straight cream
 
-Most ghee begins with cream. The traditional way begins a day earlier, with whole milk cultured into yogurt and left to sour overnight.
+Most industrial ghee begins with cream. The traditional way begins a day (or two) earlier, with cream (really boiled down whole milk) cultured into yogurt and left to sour overnight.
 
-That souring is the entire point. Skip it and you get clarified butter, which is lovely, but it is not ghee.
+That souring is critical because you get clarified butter when you skip it. It is lovely, but it is not ghee.
 
-![Yesterday's milk, thickened overnight](images/yogurt.jpg "A wide steel bowl of thick set yogurt, held over a pot in a kitchen sink.")
+![Yesterday's milk/cream, thickened overnight](images/yogurt.jpg "A wide steel bowl of thick set yogurt, held over a pot in a kitchen sink.")
 
-## The part you cannot rush
+## Next Steps
 
-Warm milk, a spoonful of yesterday's yogurt stirred through, and then you leave it alone all night and let the bacteria get on with it.
+Warm milk, a spoonful of yesterday's yogurt stirred through, and then you leave it alone all night and let the bacteria get on with it. I let mine sit out for two days.
 
-That is fermentation, and it is the step the shelf version skips. Live cultures, mostly Lactobacillus, work their way through the lactose and turn it into lactic acid. The milk thickens. It sours. By morning it is not milk any more.
+That is fermentation, and it is the step the commercial version skips. Live cultures, mostly Lactobacillus, work their way through the lactose and turn it into lactic acid. The milk thickens. It sours. By morning it is something else.
 
-The people who sell cultured dairy will tell you this is where everything good comes from. Lactose broken down so it sits easier. Fats and proteins made more bioavailable. Butyric acid, the short chain fatty acid your gut lining actually runs on, and more of it in ghee made this way than in ghee whipped up from sweet cream. Ayurveda has been saying something close to this about bilona ghee for a very long time, well before anyone had the vocabulary for it.
+This is where everything good comes from. Lactose broken down so it sits easier. Fats and proteins made more bioavailable. Butyric acid, the short chain fatty acid your gut lining actually runs on, and more of it in ghee made this way than in ghee whipped up from sweet cream. 
 
-I cannot test a word of that at a kitchen sink. What I can tell you is that the culture is what makes the smell, and the smell is not a small thing. It is most of what you are actually after.
+Ayurveda has prescribed this exact version for a very long time,..
+
+I can tell you is that the culture is what makes the smell, and the smell is not a small thing. It is most of what you are actually after.
 
 ![Set overnight, ready to churn](images/set-yogurt.jpg "A pot of thick set yogurt sitting in a kitchen sink, ready to be churned.")
 
@@ -74,7 +76,7 @@ Then I asked it. Could you just do it?
 
 A cordless drill. The churn from a drawer and a hardware shop. A plastic food box for the electronics, a chopping board for a spine, and a large yellow stop button, because anything with a motor should have one.
 
-It cost almost nothing and it looks like it. That is sort of the point.
+It cost almost nothing and it looks like it. And that is sort of the point.
 
 ![The Beast](images/beast.jpg "The rig standing on a kitchen counter. A drill clamped to a wooden board, a clear plastic box of electronics, and a yellow emergency stop button.")
 
