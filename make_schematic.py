@@ -16,7 +16,9 @@ where fifteen amps is a normal afternoon. The Pi only ever touches the thin
 lines.
 """
 
+import base64
 import os
+import struct
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_WIDE = os.path.join(HERE, "images", "schematic.svg")
@@ -28,6 +30,43 @@ FAINT, RED = "#9a836a", "#b0402c"
 SANS = '"Avenir Next","Segoe UI",sans-serif'
 
 SIG, PWR = 1.9, 6.2          # the two line weights
+
+
+
+PARTS = os.path.join(HERE, "images", "parts")
+
+
+def jpeg_size(path):
+    """Width and height from the JPEG start of frame, no dependencies."""
+    with open(path, "rb") as fh:
+        fh.read(2)
+        while True:
+            b = fh.read(1)
+            while b == b"\xff":
+                b = fh.read(1)
+            if not b:
+                raise ValueError(f"no frame header in {path}")
+            marker, = struct.unpack("B", b)
+            length, = struct.unpack(">H", fh.read(2))
+            if marker in set(range(0xC0, 0xD0)) - {0xC4, 0xC8, 0xCC}:
+                h, w = struct.unpack(">HH", fh.read(5)[1:])
+                return w, h
+            fh.seek(length - 2, 1)
+
+
+def photo(name, x, y, w):
+    """Place a part photograph, sized from the file so it never distorts.
+
+    The bytes travel inside the drawing. An SVG loaded in an img tag is not
+    allowed to fetch anything, so a linked file would simply not appear.
+    """
+    path = os.path.join(PARTS, name)
+    pw, ph = jpeg_size(path)
+    with open(path, "rb") as fh:
+        b64 = base64.b64encode(fh.read()).decode()
+    return (f'<image x="{x}" y="{y}" width="{w}" height="{w*ph/pw:.1f}" '
+            f'preserveAspectRatio="xMidYMid meet" '
+            f'href="data:image/jpeg;base64,{b64}"/>')
 
 
 def css(s=1.0):
@@ -158,6 +197,7 @@ def wide():
     PI = (60, 100, 190, 150)
     HB = (560, 100, 230, 150)
     o.append(block(*PI, "RASPBERRY PI 3"))
+    o.append(photo("pi.jpg", 92, 138, 126))
     o.append(block(*HB, "BTS7960 H-BRIDGE"))
 
     px, hx = PI[0] + PI[2], HB[0]
@@ -246,10 +286,12 @@ def narrow():
     o.append('<line class="pwr" x1="182" y1="30" x2="214" y2="30"/>')
     o.append('<text class="sub" x="222" y="34">MOTOR LOOP</text>')
 
-    PI = (26, 64, 408, 78)
+    PI = (26, 64, 408, 118)
     HB = (62, 292, 298, 78)
     PB = PI[1] + PI[3]
-    o.append(block(*PI, "RASPBERRY PI 3"))
+    o.append(f'<rect class="box" x="{PI[0]}" y="{PI[1]}" width="{PI[2]}" height="{PI[3]}" rx="6"/>')
+    o.append(photo("pi.jpg", 42, 82, 104))
+    o.append(f'<text class="nm" x="166" y="{PI[1]+66}">RASPBERRY PI 3</text>')
     o.append(block(*HB, "BTS7960 H-BRIDGE"))
 
     for i, (gpio, fn) in enumerate((("GPIO 18", "RPWM &#183; 1 kHz"), ("GPIO 19", "LPWM &#183; 1 kHz"),
