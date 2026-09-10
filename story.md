@@ -10,7 +10,7 @@ mark: AI Ghee Making
 nav_text: The machine
 nav_href: beast.html
 nav_side: right
-kicker: Jay's AI GHEE
+kicker: JD's AI GHEE
 headline: The machine that knew when to stop
 standfirst: I had this ghee everyday growing up and never once made it. So I asked AI how. Then I asked it to do the whole thing for me.
 video: dEwIoD-T4lI
@@ -21,7 +21,7 @@ next_blurb: What it is made of, where the sensing happens, and what the rig actu
 footnote: The solid line is plotted from the sensor log of the run in these photographs, as a moving median with the middle half of the readings shaded behind it, because every raw sample drawn at once is a solid block of ink. The dashed line is the idealised shape of a churn, drawn by hand to show what the signal is looking for. The log and the script are in the repository.
 credit: Photographs are from a single run, August 2026.
 contact_text: Questions, corrections, or you have built one of these yourself
-contact_email: postcaesar@gmail.com
+contact_email: aighee@proton.me
 ---
 
 ## I had only ever eaten it
