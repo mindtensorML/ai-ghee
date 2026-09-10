@@ -43,7 +43,7 @@ The button is the part worth looking at. It is not wired to the Pi at all. It si
 
 The sensor is on the same loop but its logic side runs off the Pi, which is why it still answers when the supply is off. That is the whole trick behind the button check.
 
-![Read off the rig, not from memory](images/schematic.svg "A schematic of the ghee rig. A Raspberry Pi drives a BTS7960 H bridge over four signal wires and reads an INA260 current sensor over I2C. A twelve volt supply, a fifteen amp fuse, the emergency stop button and the sensor sit in series in the motor loop, which the Pi never touches.")
+![Circuit diagram](images/schematic.svg "A schematic of the ghee rig. A Raspberry Pi drives a BTS7960 H bridge over four signal wires and reads an INA260 current sensor over I2C. A twelve volt supply, a fifteen amp fuse, the emergency stop button and the sensor sit in series in the motor loop, which the Pi never touches.")
 
 ## Where it sits
 

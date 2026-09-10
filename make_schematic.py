@@ -38,11 +38,11 @@ def css(s=1.0):
  .sig{{fill:none;stroke:{INK};stroke-width:{SIG*s:.2f};stroke-linecap:round;stroke-linejoin:round}}
  .pwr{{fill:none;stroke:{GOLD};stroke-width:{PWR*s:.2f};stroke-linecap:round;stroke-linejoin:round}}
  .pwrk{{fill:none;stroke:{DEEP};stroke-width:{PWR*s:.2f};stroke-linecap:round;stroke-linejoin:round}}
- .ttl{{font:700 {13*s:.1f}px {SANS};fill:{INK};letter-spacing:{0.16*s:.2f}em}}
- .nm{{font:700 {12*s:.1f}px {SANS};fill:{INK};letter-spacing:{0.10*s:.2f}em}}
- .sub{{font:400 {10*s:.1f}px {SANS};fill:{FAINT};letter-spacing:{0.05*s:.2f}em}}
- .pin{{font:600 {10.5*s:.1f}px {SANS};fill:{DEEP};letter-spacing:{0.04*s:.2f}em}}
- .val{{font:600 {10.5*s:.1f}px {SANS};fill:{INK}}}
+ .ttl{{font:700 {14*s:.1f}px {SANS};fill:{INK};letter-spacing:{0.16*s:.2f}em}}
+ .nm{{font:700 {15*s:.1f}px {SANS};fill:{INK};letter-spacing:{0.10*s:.2f}em}}
+ .sub{{font:500 {11*s:.1f}px {SANS};fill:{FAINT};letter-spacing:{0.05*s:.2f}em}}
+ .pin{{font:600 {12*s:.1f}px {SANS};fill:{DEEP};letter-spacing:{0.04*s:.2f}em}}
+ .val{{font:700 {12.5*s:.1f}px {SANS};fill:{INK}}}
  .note{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{FAINT}}}
  .notek{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{DEEP}}}
  .lead{{fill:none;stroke:{FAINT};stroke-width:{0.9*s:.2f};stroke-dasharray:{2.5*s:.1f} {2.5*s:.1f}}}
@@ -133,121 +133,98 @@ def note(x, y, lines, cls="note", anchor="start", lh=15):
 def supply(x, y, w, h, s=1.0, mains_left=True):
     """The 12 V open frame switch mode supply, and its lead to the wall."""
     o = [f'<rect class="box" x="{x}" y="{y}" width="{w}" height="{h}" rx="5"/>',
-         f'<text class="nm" x="{x+12}" y="{y+24}">12 V SUPPLY</text>',
-         f'<text class="sub" x="{x+12}" y="{y+41}">switch mode, off the wall</text>']
-    for i in range(4):
-        vx = x + w - 16 - i * 9
-        o.append(f'<line x1="{vx}" y1="{y+10}" x2="{vx}" y2="{y+h-10}" stroke="{LINE}" '
+         f'<text class="nm" x="{x+12}" y="{y+27}">12 V SUPPLY</text>']
+    for i in range(7):
+        vx = x + 14 + i * 9
+        o.append(f'<line x1="{vx}" y1="{y+h-30}" x2="{vx}" y2="{y+h-9}" stroke="{LINE}" '
                  f'stroke-width="{1.4*s:.2f}"/>')
     if mains_left:
-        o.append(f'<line class="sig" x1="{x-36*s}" y1="{y+h/2}" x2="{x}" y2="{y+h/2}"/>')
-        o.append(f'<text class="sub" x="{x-18*s}" y="{y+h/2-8}" text-anchor="middle">MAINS</text>')
+        o.append(f'<line class="sig" x1="{x-54*s}" y1="{y+h/2}" x2="{x}" y2="{y+h/2}"/>')
+        o.append(f'<text class="sub" x="{x-27*s}" y="{y+h/2-9}" text-anchor="middle">MAINS</text>')
     return "".join(o)
 
 
 def wide():
-    W, H = 1060, 812
+    """Symbols, names and values. No sentences, they belong in the prose."""
+    W, H = 1000, 644
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" '
-         f'aria-label="Wiring of the ghee rig. A Raspberry Pi drives a BTS7960 H-bridge over four '
-         f'signal wires and reads an INA260 current sensor over I2C. A 12 volt supply, a 15 amp fuse, '
-         f'the emergency stop button and the sensor sit in series in the motor loop, which the Pi '
-         f'never touches.">',
+         f'aria-label="Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 H-bridge '
+         f'over four signal wires and reads an INA260 current sensor over I2C. A 12 volt supply, a '
+         f'15 amp fuse, the emergency stop button and the sensor sit in series in the motor loop, '
+         f'which the Pi never touches.">',
          f'<rect width="{W}" height="{H}" fill="{CREAM}"/>',
-         f'<style>{css()}</style>', f'<g>{grid(W, H)}</g>']
+         f'<style>{css()}</style>', f'<g>{grid(W, H, 24)}</g>']
 
-    PI = (62, 92, 208, 206)
-    HB = (596, 92, 226, 206)
-    o.append(block(*PI, "RASPBERRY PI 3", "gpiozero, 50 Hz control loop"))
-    o.append(block(*HB, "BTS7960 H-BRIDGE", "two half bridges, 12 V motor side"))
+    PI = (60, 100, 190, 150)
+    HB = (560, 100, 230, 150)
+    o.append(block(*PI, "RASPBERRY PI 3"))
+    o.append(block(*HB, "BTS7960 H-BRIDGE"))
 
     px, hx = PI[0] + PI[2], HB[0]
-    for i, (gpio, fn, extra) in enumerate((
-            ("GPIO 18", "RPWM", "1 kHz"), ("GPIO 19", "LPWM", "1 kHz"),
-            ("GPIO 23", "R_EN", "held high"), ("GPIO 24", "L_EN", "held high"))):
-        y = 132 + i * 40
+    for i, (gpio, fn, val) in enumerate((("GPIO 18", "RPWM", "1 kHz"), ("GPIO 19", "LPWM", "1 kHz"),
+                                         ("GPIO 23", "R_EN", ""), ("GPIO 24", "L_EN", ""))):
+        y = 132 + i * 35
         o.append(f'<line class="sig" x1="{px}" y1="{y}" x2="{hx}" y2="{y}"/>')
         o.append(dot(px, y) + dot(hx, y))
-        o.append(f'<text class="pin" x="{px+12}" y="{y-8}">{gpio}</text>')
-        o.append(f'<text class="pin" x="{hx-12}" y="{y-8}" text-anchor="end">{fn}</text>')
-        o.append(f'<text class="sub" x="{(px+hx)/2}" y="{y+16}" text-anchor="middle">{extra}</text>')
+        o.append(f'<text class="pin" x="{px+12}" y="{y-9}">{gpio}</text>')
+        o.append(f'<text class="pin" x="{hx-12}" y="{y-9}" text-anchor="end">{fn}</text>')
+        if val:
+            o.append(f'<text class="sub" x="{(px+hx)/2}" y="{y-9}" text-anchor="middle">{val}</text>')
 
-    o.append(motor(930, 195, 52))
-    for y in (175, 215):
-        o.append(f'<line class="pwr" x1="{HB[0]+HB[2]}" y1="{y}" x2="882" y2="{y}"/>')
-    o.append(f'<text class="pin" x="{HB[0]+HB[2]+10}" y="168">M+</text>')
-    o.append(f'<text class="pin" x="{HB[0]+HB[2]+10}" y="236">M&#8722;</text>')
-    o.append('<text class="sub" x="930" y="272" text-anchor="middle">CORDLESS DRILL</text>')
+    o.append(motor(890, 175, 46))
+    for y in (155, 195):
+        o.append(f'<line class="pwr" x1="{HB[0]+HB[2]}" y1="{y}" x2="847" y2="{y}"/>')
+    o.append(f'<text class="pin" x="{HB[0]+HB[2]+10}" y="148">M+</text>')
+    o.append(f'<text class="pin" x="{HB[0]+HB[2]+10}" y="214">M&#8722;</text>')
+    o.append('<text class="sub" x="890" y="248" text-anchor="middle">DRILL</text>')
 
-    RAIL, RET = 520, 706
-    INA = (476, 482, 200, 78)
-    PSU = (62, 560, 152, 74)
-    BPX, BMX = 716, 800
-    ES, FU = 400, 310
-    SDA_X, SCL_X = 520, 556
+    RAIL, RET = 435, 556
+    INA = (404, 400, 200, 70)
+    PSU = (76, 400, 132, 70)
+    BPX, BMX = 664, 734
+    ES, FU = 336, 252
+    SDA_X, SCL_X = 452, 486
 
-    o.append(f'<path class="sig" d="M200,{PI[1]+PI[3]} L200,392 L{SDA_X},392 L{SDA_X},{INA[1]}"/>')
-    o.append(f'<path class="sig" d="M232,{PI[1]+PI[3]} L232,368 L{SCL_X},368 L{SCL_X},{INA[1]}"/>')
-    o.append(dot(200, PI[1] + PI[3]) + dot(232, PI[1] + PI[3]))
-    o.append('<text class="pin" x="192" y="322" text-anchor="end">GPIO 2 &#183; 3</text>')
-    o.append('<text class="sub" x="192" y="340" text-anchor="end">I2C BUS 1</text>')
-    o.append(f'<text class="pin" x="{SDA_X+8}" y="440">SDA</text>')
-    o.append(f'<text class="pin" x="{SCL_X+8}" y="418">SCL</text>')
+    o.append(f'<path class="sig" d="M186,{PI[1]+PI[3]} L186,330 L{SDA_X},330 L{SDA_X},{INA[1]}"/>')
+    o.append(f'<path class="sig" d="M214,{PI[1]+PI[3]} L214,310 L{SCL_X},310 L{SCL_X},{INA[1]}"/>')
+    o.append(dot(186, PI[1] + PI[3]) + dot(214, PI[1] + PI[3]))
+    o.append(f'<text class="pin" x="178" y="{PI[1]+PI[3]+24}" text-anchor="end">I2C</text>')
+    o.append(f'<text class="pin" x="{SDA_X+9}" y="374">SDA</text>')
+    o.append(f'<text class="pin" x="{SCL_X+9}" y="352">SCL</text>')
 
-    o.append(block(*INA, "INA260", "0x40 &#183; 1.25 mA a bit", cls="chip"))
-    o.append(f'<text class="pin" x="{INA[0]-10}" y="{RAIL-11}" text-anchor="end">IN+</text>')
-    o.append(f'<text class="pin" x="{INA[0]+INA[2]+10}" y="{RAIL-11}">IN&#8722;</text>')
+    o.append(block(*INA, "INA260", "0x40", cls="chip"))
+    o.append(f'<text class="pin" x="{INA[0]-10}" y="{RAIL-12}" text-anchor="end">IN+</text>')
+    o.append(f'<text class="pin" x="{INA[0]+INA[2]+10}" y="{RAIL-12}">IN&#8722;</text>')
 
     o.append(supply(*PSU))
     PR = PSU[0] + PSU[2]
-    o.append(f'<text class="val" x="{PR+10}" y="{PSU[1]+12}">+</text>')
-    o.append(f'<text class="val" x="{PR+10}" y="{PSU[1]+74}">&#8722;</text>')
-    o.append(f'<path class="pwr" d="M{PR},{PSU[1]+20} L246,{PSU[1]+20} L246,{RAIL} L{ES-24},{RAIL}"/>')
+    o.append(f'<text class="val" x="{PR+11}" y="{PSU[1]+14}">+</text>')
+    o.append(f'<text class="val" x="{PR+11}" y="{PSU[1]+68}">&#8722;</text>')
+    o.append(f'<path class="pwr" d="M{PR},{PSU[1]+18} L228,{PSU[1]+18} L228,{RAIL} L{ES-24},{RAIL}"/>')
     o.append(f'<path class="pwr" d="M{ES+24},{RAIL} L{INA[0]},{RAIL}"/>')
     o.append(f'<path class="pwr" d="M{INA[0]+INA[2]},{RAIL} L{BPX},{RAIL} L{BPX},{HB[1]+HB[3]}"/>')
-    o.append(f'<path class="pwr" d="M{BMX},{HB[1]+HB[3]} L{BMX},{RET} L246,{RET} '
-             f'L246,{PSU[1]+56} L{PR},{PSU[1]+56}"/>')
-    o.append(f'<text class="pin" x="{BPX-10}" y="{HB[1]+HB[3]+22}" text-anchor="end">B+</text>')
-    o.append(f'<text class="pin" x="{BMX+10}" y="{HB[1]+HB[3]+22}">B&#8722;</text>')
+    o.append(f'<path class="pwr" d="M{BMX},{HB[1]+HB[3]} L{BMX},{RET} L228,{RET} '
+             f'L228,{PSU[1]+52} L{PR},{PSU[1]+52}"/>')
+    o.append(f'<text class="pin" x="{BPX-10}" y="{HB[1]+HB[3]+24}" text-anchor="end">B+</text>')
+    o.append(f'<text class="pin" x="{BMX+10}" y="{HB[1]+HB[3]+24}">B&#8722;</text>')
 
     o.append(fuse(FU, RAIL))
-    o.append(f'<text class="val" x="{FU}" y="{RAIL-20}" text-anchor="middle">15 A</text>')
+    o.append(f'<text class="val" x="{FU}" y="{RAIL-21}" text-anchor="middle">15 A</text>')
     o.append(estop(ES, RAIL))
-    o.append(f'<text class="pin" x="{ES}" y="{RAIL-58}" text-anchor="middle">EMERGENCY STOP</text>')
+    o.append(f'<text class="pin" x="{ES}" y="{RAIL-60}" text-anchor="middle">EMERGENCY STOP</text>')
 
-    o.append(note(272, 326, [
-        "Four wires, and not one of them carries the motor.",
-        "The Pi says how hard and which way. It never",
-        "touches the current it is asking for."]))
-    o.append(note(834, 336, [
-        "Only one PWM is ever above",
-        "zero, and every reversal passes",
-        "through zero on the way, so the",
-        "two halves can never both be on."]))
-    o.append(note(834, 500, [
-        "Read once a second. Its logic",
-        "side runs off the Pi, so it still",
-        "answers with the supply off."]))
-    o.append(note(452, 574, [
-        "Nothing runs from this button to the Pi. It breaks the loop",
-        "itself. The rig works out that it is open by asking for 30 per",
-        "cent and getting less than 200 mA back."], cls="notek", anchor="middle"))
-    o.append(f'<path class="lead" d="M{ES},{RAIL+16} L{ES},554 L452,554"/>')
-    o.append(note(596, 58, ["8 A held for three seconds and the software lets go.",
-                            "The fuse is for everything software cannot catch."]))
+    o.append('<line class="sig" x1="62" y1="52" x2="98" y2="52"/>')
+    o.append('<text class="sub" x="106" y="56">SIGNAL</text>')
+    o.append('<line class="pwr" x1="200" y1="52" x2="236" y2="52"/>')
+    o.append('<text class="sub" x="244" y="56">MOTOR LOOP</text>')
 
-    o.append('<line class="sig" x1="66" y1="52" x2="106" y2="52"/>')
-    o.append('<text class="sub" x="114" y="56">SIGNAL, MILLIAMPS</text>')
-    o.append('<line class="pwr" x1="66" y1="74" x2="106" y2="74"/>')
-    o.append('<text class="sub" x="114" y="78">MOTOR LOOP, AMPS</text>')
-
-    tb = (798, 724, 200, 62)
+    tb = (790, 556, 190, 58)
     o.append(f'<rect x="{tb[0]}" y="{tb[1]}" width="{tb[2]}" height="{tb[3]}" rx="4" '
              f'fill="none" stroke="{FAINT}" stroke-width="1"/>')
     o.append(f'<line x1="{tb[0]}" y1="{tb[1]+26}" x2="{tb[0]+tb[2]}" y2="{tb[1]+26}" '
              f'stroke="{FAINT}" stroke-width="1"/>')
     o.append(f'<text class="ttl" x="{tb[0]+11}" y="{tb[1]+18}">THE BEAST</text>')
-    o.append(f'<text class="sub" x="{tb[0]+11}" y="{tb[1]+42}">POWER AND SENSE</text>')
-    o.append(f'<text class="sub" x="{tb[0]+11}" y="{tb[1]+56}">READ FROM THE RIG</text>')
+    o.append(f'<text class="sub" x="{tb[0]+11}" y="{tb[1]+44}">POWER AND SENSE</text>')
 
     o.append("</svg>")
     return "".join(o)
@@ -255,7 +232,7 @@ def wide():
 
 def narrow():
     """The same circuit as one vertical chain, which is how a phone reads it."""
-    W, H = 460, 906
+    W, H = 460, 830
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" '
          f'aria-label="Wiring of the ghee rig. A Raspberry Pi drives a BTS7960 H-bridge over four '
          f'signal wires and reads an INA260 current sensor over I2C. A 12 volt supply, a 15 amp fuse, '
@@ -272,8 +249,8 @@ def narrow():
     PI = (26, 64, 408, 78)
     HB = (62, 292, 298, 78)
     PB = PI[1] + PI[3]
-    o.append(block(*PI, "RASPBERRY PI 3", "gpiozero, 50 Hz loop"))
-    o.append(block(*HB, "BTS7960 H-BRIDGE", "two half bridges"))
+    o.append(block(*PI, "RASPBERRY PI 3"))
+    o.append(block(*HB, "BTS7960 H-BRIDGE"))
 
     for i, (gpio, fn) in enumerate((("GPIO 18", "RPWM &#183; 1 kHz"), ("GPIO 19", "LPWM &#183; 1 kHz"),
                                     ("GPIO 23", "R_EN"), ("GPIO 24", "L_EN"))):
@@ -291,7 +268,7 @@ def narrow():
         o.append(f'<line class="pwr" x1="{HB[0]+HB[2]}" y1="{y}" x2="381" y2="{y}"/>')
     o.append('<text class="sub" x="412" y="382" text-anchor="middle">DRILL</text>')
 
-    CH, RTX, RET = 112, 332, 800
+    CH, RTX, RET = 112, 332, 796
     INA = (62, 410, 232, 74)
 
     # I2C runs down the far left, outside everything, so it crosses nothing
@@ -303,7 +280,7 @@ def narrow():
 
     o.append(f'<line class="pwr" x1="{CH}" y1="{HB[1]+HB[3]}" x2="{CH}" y2="{INA[1]}"/>')
     o.append(f'<text class="pin" x="{CH+11}" y="{HB[1]+HB[3]+24}">B+</text>')
-    o.append(block(*INA, "INA260", "0x40 &#183; read once a second", cls="chip"))
+    o.append(block(*INA, "INA260", "0x40", cls="chip"))
     o.append(f'<text class="pin" x="{CH+11}" y="{INA[1]+INA[3]+22}">IN+</text>')
 
     o.append(f'<line class="pwr" x1="{CH}" y1="{INA[1]+INA[3]}" x2="{CH}" y2="528"/>')
@@ -313,9 +290,9 @@ def narrow():
     o.append(f'<line class="pwr" x1="{CH}" y1="592" x2="{CH}" y2="638"/>')
     o.append(f'<g transform="rotate(90 {CH} 656)">{fuse(CH, 656, 1.18)}</g>')
     o.append(f'<text class="val" x="{CH+32}" y="660">15 A</text>')
-    o.append(f'<line class="pwr" x1="{CH}" y1="674" x2="{CH}" y2="700"/>')
+    o.append(f'<line class="pwr" x1="{CH}" y1="674" x2="{CH}" y2="688"/>')
 
-    PSU = (58, 700, 176, 70)
+    PSU = (58, 688, 176, 70)
     o.append(supply(*PSU, s=1.18, mains_left=False))
     o.append(f'<line class="sig" x1="{PSU[0]+PSU[2]}" y1="{PSU[1]+42}" x2="{PSU[0]+PSU[2]+34}" y2="{PSU[1]+42}"/>')
     o.append(f'<text class="sub" x="{PSU[0]+PSU[2]+38}" y="{PSU[1]+46}">MAINS</text>')
@@ -324,11 +301,6 @@ def narrow():
     o.append(f'<path class="pwr" d="M{CH},{PSU[1]+PSU[3]} L{CH},{RET} L{RTX},{RET} L{RTX},{HB[1]+HB[3]}"/>')
     o.append(f'<text class="pin" x="{RTX+11}" y="{HB[1]+HB[3]+24}">B&#8722;</text>')
 
-    o.append(note(230, 842, [
-        "Nothing runs from that button to the Pi. It breaks the",
-        "loop itself. The rig works out it is open by asking for",
-        "30 per cent and getting less than 200 mA back."],
-        cls="notek", anchor="middle", lh=18))
     o.append("</svg>")
     return "".join(o)
 
