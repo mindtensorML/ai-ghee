@@ -39,6 +39,20 @@ or where it will be reproduced too small or too roughly for the swell to
 survive.
 
 
+## The YouTube watermark
+
+`watermark-cream.png`, `watermark-gold.png` and `watermark-ink.png`. Square,
+300 pixels, transparent, about 8 KB each. YouTube asks for square, at least
+150 across and under 1 MB.
+
+Use the **cream** one. It is the only one that survives all three kinds of
+shot on this channel. Gold disappears against the ghee, which is the same
+colour, and ink disappears in the dark sink footage.
+
+It is the glyph alone rather than the full mark, because the watermark
+renders small and the rule would be a hairline.
+
+
 ## The colours
 
     ink     #1b1712

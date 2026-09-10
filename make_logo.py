@@ -187,7 +187,15 @@ FILES = {
     "logo/print/glyph-white-clear.svg":   (page(glyph(WHITE), None, **SQ), None),
 }
 
-EXTRA_PNG = {"apple-touch-icon.png": (page(glyph(LIT, fs=72), INK, 180, pad=0.14), 180)}
+# The YouTube branding watermark. It sits over the footage, so it has to be a
+# transparent PNG, and it renders small, so it is the glyph alone rather than
+# the full mark. YouTube wants square, at least 150 across and under 1 MB.
+EXTRA_PNG = {
+    "apple-touch-icon.png": (page(glyph(LIT, fs=72), INK, 180, pad=0.14), 180),
+    "logo/watermark-gold.png": (page(glyph(GOLD, fs=76), None, 300, pad=0.06), 300),
+    "logo/watermark-cream.png": (page(glyph(PAPER, fs=76), None, 300, pad=0.06), 300),
+    "logo/watermark-ink.png": (page(glyph(INK, fs=76), None, 300, pad=0.06), 300),
+}
 
 
 def main():
