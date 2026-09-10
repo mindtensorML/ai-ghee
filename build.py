@@ -263,7 +263,9 @@ def render_sections(body):
 # --------------------------------------------------------------------- render
 
 def render_nav(meta):
-    mark = f'  <span class="mark">{meta.get("mark", "")}</span>'
+    # the mark is decorative here, the name is right beside it, so alt is empty
+    mark = (f'  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">'
+            f'{meta.get("mark", "")}</span>')
     text = meta.get("nav_text")
     if not text:
         return mark

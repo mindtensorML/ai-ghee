@@ -49,8 +49,20 @@ a { color: var(--deep); }
   padding: 1.6rem 0 0;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 1rem;
+}
+
+.top .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top .mark img {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 .top .mark,
