@@ -44,10 +44,24 @@ Everything above the first heading is the page settings. Titles, link
 previews, the video at the top, the footer note. Keys are named plainly, so
 `headline` is the headline and `video` is the YouTube id.
 
+## Shared settings
+
+`site.md` holds the things both pages use, the photo credit and the contact
+line. It has no `output` key so it is never built into a page. A page's own
+front matter still wins, so either page can override any of it.
+
+The contact address lives there for one reason. It is published on a public
+site whose markdown is also public, so it will be harvested eventually and no
+amount of hiding changes that. What matters is that replacing it is one line
+in one file rather than a hunt. Use a forwarding alias, and when it starts
+attracting rubbish, delete the alias and put a new one on that line.
+
+
 ## Files
 
     story.md            the main page, edit this
     beast.md            the machine page, edit this
+    site.md             settings shared by both pages, including the address
     build.py            markdown to html, no dependencies
     template.html       the page shell
     style.css           the design, both pages share it

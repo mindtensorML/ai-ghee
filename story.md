@@ -19,9 +19,6 @@ next_text: A closer look at the machine
 next_href: beast.html
 next_blurb: What it is made of, where the sensing happens, and what the rig actually watches.
 footnote: The solid line is plotted from the sensor log of the run in these photographs, as a moving median with the middle half of the readings shaded behind it, because every raw sample drawn at once is a solid block of ink. The dashed line is the idealised shape of a churn, drawn by hand to show what the signal is looking for. The log and the script are in the repository.
-credit: Photographs are from a single run, August 2026.
-contact_text: Questions, corrections, or you have built one of these yourself
-contact_email: aighee@proton.me
 ---
 
 ## I had only ever eaten it

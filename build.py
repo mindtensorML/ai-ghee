@@ -335,10 +335,27 @@ def absolute(meta):
     return root.rstrip("/") + "/" + img.lstrip("/")
 
 
-def build(md_path, template):
+def load_site():
+    """Settings shared by every page, from site.md.
+
+    That file has no `output` key so it is never built as a page of its own.
+    A page's own front matter wins over anything set there, which is what
+    lets one line in site.md change the contact address everywhere.
+    """
+    path = os.path.join(HERE, "site.md")
+    if not os.path.exists(path):
+        return {}
+    meta, _ = split_front_matter(open(path, encoding="utf-8").read())
+    meta = dict(meta or {})
+    meta.pop("output", None)
+    return meta
+
+
+def build(md_path, template, site=None):
     meta, body = split_front_matter(open(md_path, encoding="utf-8").read())
     if meta is None or "output" not in meta:
         return None
+    meta = {**(site or {}), **meta}
 
     sections = render_sections(body)
     # The onward link belongs inside the final section, not adrift after it.
@@ -364,10 +381,11 @@ def build(md_path, template):
 
 def main():
     template = open(TEMPLATE, encoding="utf-8").read()
+    site = load_site()
     written = []
     for name in sorted(os.listdir(HERE)):
         if name.endswith(".md"):
-            result = build(os.path.join(HERE, name), template)
+            result = build(os.path.join(HERE, name), template, site)
             if result:
                 written.append(f"  {name} -> {result}")
     if not written:
