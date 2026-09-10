@@ -78,14 +78,20 @@ its footer.
 
 ## The mark
 
-The logo is the churn signal used as the surface of the ghee. It sits flat
-while nothing is happening, swells as the fat gathers, peaks, then drops away
-when the butter lets go. To redraw it, run
+The logo is घ्यू, the Nepali word for ghee, with its shirorekha carried on past
+the word. Somewhere in that run the line takes one reading, flat then a swell
+then the break, which is the shape the rig watches for while it churns. To
+redraw it, run
 
     python3 make_logo.py
 
-That writes `favicon.svg`, `logo.svg` for the page header, and square files
-in `logo/` on cream and on dark for a channel avatar. The favicon is drawn
-with a heavier ring than the rest, because at sixteen pixels the normal
-weight breaks up. The PNGs need `rsvg-convert` on the path and are skipped
-quietly without it.
+That writes `favicon.svg`, `logo.svg` for the page header, `logo-mark.svg`,
+the apple touch icon, and the whole brand family in `logo/`, which has its own
+README saying which file to use when. The letterform is stored in the script
+as outline paths rather than as text, so nothing depends on a font being
+installed anywhere and no renderer can re-shape the conjunct wrongly.
+
+One number governs the lot. `MASTER` in that script holds the type size, the
+rule length and where the reading sits, and every file is built from it, so
+the family cannot drift apart. The icons are the exception and are set larger
+on purpose, because at sixteen pixels every unit of the box matters.
