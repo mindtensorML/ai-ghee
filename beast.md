@@ -30,9 +30,20 @@ The electronics live in a clear plastic food box, mostly so I can see whether an
 | Churn | Hardwood and stainless steel, made not bought |
 | Heat | Hotplate, switched on and off by an AC regulator |
 | Frame | A chopping board and a plastic food box |
+| Power | 12 V switch mode supply, off the wall |
 | Brain | Raspberry Pi, logging to a CSV |
 | Sense | Current and voltage while churning, a probe in the pot while cooking |
 | Stop | One large button, hard wired |
+
+## How it is wired
+
+Four signal wires and one fat loop. The Pi works out how hard and which way, the H bridge is what actually pushes the current, and the two never meet. Nothing the Pi touches carries more than a few milliamps.
+
+The button is the part worth looking at. It is not wired to the Pi at all. It sits in the motor loop and breaks it, so no software fault can talk it out of stopping. What the Pi can do is notice. If it is asking for thirty per cent and the sensor comes back with less than two hundred milliamps, it works out that the loop is open and stops asking.
+
+The sensor is on the same loop but its logic side runs off the Pi, which is why it still answers when the supply is off. That is the whole trick behind the button check.
+
+![Read off the rig, not from memory](images/schematic.svg "A schematic of the ghee rig. A Raspberry Pi drives a BTS7960 H bridge over four signal wires and reads an INA260 current sensor over I2C. A twelve volt supply, a fifteen amp fuse, the emergency stop button and the sensor sit in series in the motor loop, which the Pi never touches.")
 
 ## Where it sits
 

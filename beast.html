@@ -44,6 +44,7 @@
       <li><span class="k">Churn</span><span class="v">Hardwood and stainless steel, made not bought</span></li>
       <li><span class="k">Heat</span><span class="v">Hotplate, switched on and off by an AC regulator</span></li>
       <li><span class="k">Frame</span><span class="v">A chopping board and a plastic food box</span></li>
+      <li><span class="k">Power</span><span class="v">12 V switch mode supply, off the wall</span></li>
       <li><span class="k">Brain</span><span class="v">Raspberry Pi, logging to a CSV</span></li>
       <li><span class="k">Sense</span><span class="v">Current and voltage while churning, a probe in the pot while cooking</span></li>
       <li><span class="k">Stop</span><span class="v">One large button, hard wired</span></li>
@@ -52,6 +53,23 @@
 
 <section class="wrap">
   <p class="num">02</p>
+  <h2>How it is wired</h2>
+    <p>Four signal wires and one fat loop. The Pi works out how hard and which way, the H bridge is what actually pushes the current, and the two never meet. Nothing the Pi touches carries more than a few milliamps.</p>
+    <p>The button is the part worth looking at. It is not wired to the Pi at all. It sits in the motor loop and breaks it, so no software fault can talk it out of stopping. What the Pi can do is notice. If it is asking for thirty per cent and the sensor comes back with less than two hundred milliamps, it works out that the loop is open and stops asking.</p>
+    <p>The sensor is on the same loop but its logic side runs off the Pi, which is why it still answers when the supply is off. That is the whole trick behind the button check.</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-narrow.svg">
+          <img src="images/schematic.svg" width="1060" height="812" alt="A schematic of the ghee rig. A Raspberry Pi drives a BTS7960 H bridge over four signal wires and reads an INA260 current sensor over I2C. A twelve volt supply, a fifteen amp fuse, the emergency stop button and the sensor sit in series in the motor loop, which the Pi never touches.">
+        </picture>
+      </div>
+      <figcaption>Read off the rig, not from memory</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
   <h2>Where it sits</h2>
     <p>Over the sink. The pot goes in the basin, a flat cover sits on top with a hole cut for the shaft, and anything that escapes lands somewhere that does not matter.</p>
     <p>This is the part nobody puts in the render. Half of building something in a kitchen is deciding where the mess is allowed to go.</p>
@@ -62,7 +80,7 @@
 </section>
 
 <section class="wrap">
-  <p class="num">03</p>
+  <p class="num">04</p>
   <h2>What it watches</h2>
     <p>While it is churning, current and voltage on the motor line, sampled about once a second and written straight to a file. While it is cooking, a probe in the pot instead, and the regulator cuts the hotplate in and out to hold the number.</p>
     <p>No microphone and no camera, which is the next thing I want to fix. The bet up to now was that if the load on its own is enough to find the break, the rest can wait.</p>
@@ -73,7 +91,7 @@
 </section>
 
 <section class="wrap">
-  <p class="num">04</p>
+  <p class="num">05</p>
   <h2>What it decides</h2>
     <p>Two things. Whether the load has climbed and then fallen far enough to call the break, and whether the plate should be on or off to sit at 250 F.</p>
     <p>It does not know what yogurt is. It does not know what butter is. It knows that a number went up for a while and then dropped away, and that this shape means the job is finished.</p>

@@ -49,9 +49,11 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "template.html")
 
-# The chart is drawn at two sizes so it stays readable on a phone. When this
-# image is used, the narrow version is offered to small screens.
-RESPONSIVE = {"images/signal.svg": "images/signal-narrow.svg"}
+# The chart and the schematic are each drawn at two sizes so they stay readable
+# on a phone. When one of these is used, the narrow version is offered to
+# small screens.
+RESPONSIVE = {"images/signal.svg": "images/signal-narrow.svg",
+              "images/schematic.svg": "images/schematic-narrow.svg"}
 
 
 # ---------------------------------------------------------------- image size

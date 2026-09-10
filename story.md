@@ -93,7 +93,7 @@ Stop early and you have thick froth. Go too long and you beat the butter back in
 
 Nobody times this. You listen for it. The sloshing goes from a smooth swirl to an uneven slap, and that is when you reach in.
 
-![Twenty five minutes over the kitchen sink](images/churning.jpg "The drill running above a covered pot inside a stainless steel kitchen sink, with a red battery pack alongside.")
+![Twenty five minutes over the kitchen sink](images/churning.jpg "The drill running above a covered pot inside a stainless steel kitchen sink, with the electronics box alongside.")
 
 ## One sense, and only one
 

@@ -90,6 +90,22 @@ is the middle half of the readings in the same window. The page says so in
 its footer.
 
 
+## The schematic
+
+`images/schematic.svg` and `images/schematic-narrow.svg` are drawn by
+
+    python3 make_schematic.py
+
+Everything in them was read off the rig rather than remembered. The pin
+numbers, the PWM frequency, the sample rate and the trip currents come from
+`bilona_ramped.py` on the Pi. The sensor address and its scaling come from
+`current_test.py`. The supply is what is in the photographs.
+
+Two line weights, and they mean something. Thin is signal, where nothing
+carries more than a few milliamps. Thick is the motor loop. The Pi only ever
+touches the thin lines, and the emergency stop is not among them.
+
+
 ## The mark
 
 The logo is घ्यू, the Nepali word for ghee, with its shirorekha carried on past
