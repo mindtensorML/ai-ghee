@@ -59,6 +59,33 @@ a { color: var(--deep); }
   gap: 0.5rem;
 }
 
+.top .links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* the rule is what stops the language switch reading as another section */
+.top .lang {
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--line);
+}
+
+.top .links a:first-child.lang {
+  padding-left: 0;
+  border-left: 0;
+}
+
+/* नेपाली sits in the English masthead, and it is one word joined along the
+   top, so it cannot take the tracking the rest of the line does. It is set
+   larger as well, because Devanagari fills less of its em than a Latin
+   capital and at a matched size it reads as an afterthought. */
+.top .lang[hreflang="ne"] {
+  font-size: 0.87rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 .top .mark img {
   display: block;
   width: 24px;
@@ -66,7 +93,7 @@ a { color: var(--deep); }
 }
 
 .top .mark,
-.top a {
+.top .links a {
   font-family: var(--sans);
   font-size: 0.72rem;
   letter-spacing: 0.17em;
@@ -75,7 +102,7 @@ a { color: var(--deep); }
   text-decoration: none;
 }
 
-.top a:hover { color: var(--deep); }
+.top .links a:hover { color: var(--deep); }
 
 /* ---------- hero ---------- */
 
@@ -353,3 +380,77 @@ footer a { color: var(--faint); }
 
 .contact a { color: var(--deep); text-decoration: none; border-bottom: 1px solid var(--line); }
 .contact a:hover { border-bottom-color: var(--deep); }
+
+/* ---------- the Nepali pages ---------- */
+
+/* Devanagari letters hang from one continuous bar along the top of the word,
+   so the loose tracking that makes the Latin micro-type work snaps that bar
+   into pieces. Every tracked rule is reset below, and the negative tracking
+   on the headings with it.
+
+   No font is loaded. The Latin faces stay at the front of the stack, so a
+   Devanagari face is only reached for the characters the faces before it do
+   not carry. Between them the four cover macOS, iOS, Windows, Android and
+   the desktop Linux distributions. */
+
+html[lang="ne"] {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
+           "Kohinoor Devanagari", "Devanagari Sangam MN", "Nirmala UI",
+           "Noto Serif Devanagari", "Noto Sans Devanagari", Mangal, serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "Kohinoor Devanagari",
+          "Devanagari Sangam MN", "Nirmala UI", "Noto Sans Devanagari",
+          Mangal, sans-serif;
+}
+
+/* matras sit above and below the line, so the leading has to open up */
+html[lang="ne"] body { line-height: 1.8; }
+
+html[lang="ne"] h1 {
+  letter-spacing: 0;
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+html[lang="ne"] h2 {
+  letter-spacing: 0;
+  line-height: 1.38;
+  font-weight: 600;
+}
+
+html[lang="ne"] h3 { letter-spacing: 0; }
+
+html[lang="ne"] .standfirst { line-height: 1.62; }
+
+html[lang="ne"] .pull {
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+html[lang="ne"] .kicker,
+html[lang="ne"] figcaption,
+html[lang="ne"] .spec .k,
+html[lang="ne"] .top .mark,
+html[lang="ne"] .top .links a { letter-spacing: 0.02em; }
+
+/* the same lift, applied to every line of micro-type on the page */
+html[lang="ne"] .kicker,
+html[lang="ne"] figcaption,
+html[lang="ne"] .spec .k,
+html[lang="ne"] .top .mark,
+html[lang="ne"] .top .links a { font-size: 0.84rem; }
+
+html[lang="ne"] .ladder figcaption { font-size: 0.72rem; }
+
+html[lang="ne"] footer p { font-size: 0.86rem; }
+
+/* English is the one Latin word on the page, and it does not need the lift */
+html[lang="ne"] .top .lang[hreflang="en"] { font-size: 0.72rem; }
+
+/* the section numbers stay tracked, because Devanagari digits stand apart
+   from each other the way the Latin ones do */
+html[lang="ne"] .num { letter-spacing: 0.2em; }
+
+/* a key like मोटर is a word, not a line of small caps, so it needs the room */
+html[lang="ne"] .spec .k { flex-basis: 7rem; }
+
+html[lang="ne"] .ladder figcaption { letter-spacing: 0.02em; }

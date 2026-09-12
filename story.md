@@ -6,6 +6,13 @@ og_title: The machine that knew when to stop
 og_description: I had this ghee every day growing up and never once made it. So I built a machine that could feel the moment butter breaks.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/
+lang: en
+locale: en_GB
+alt_locale: ne_NP
+alt_href: index-ne.html
+alt_lang: ne
+alt_label: नेपाली
+alt_url: https://mindtensorml.github.io/ai-ghee/index-ne.html
 mark: AI Ghee Making
 nav_text: The machine
 nav_href: beast.html

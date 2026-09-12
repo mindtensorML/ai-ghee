@@ -10,6 +10,7 @@
  .sub{font:500 11.0px "Avenir Next","Segoe UI",sans-serif;fill:#9a836a;letter-spacing:0.05em}
  .pin{font:600 12.0px "Avenir Next","Segoe UI",sans-serif;fill:#a8681a;letter-spacing:0.04em}
  .val{font:700 12.5px "Avenir Next","Segoe UI",sans-serif;fill:#2a2118}
+ .dv{letter-spacing:0;font-size:1.18em}
  .note{font:italic 400 11.0px Georgia,serif;fill:#9a836a}
  .notek{font:italic 400 11.0px Georgia,serif;fill:#a8681a}
  .lead{fill:none;stroke:#9a836a;stroke-width:0.90;stroke-dasharray:2.5 2.5}

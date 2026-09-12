@@ -53,7 +53,14 @@ TEMPLATE = os.path.join(HERE, "template.html")
 # on a phone. When one of these is used, the narrow version is offered to
 # small screens.
 RESPONSIVE = {"images/signal.svg": "images/signal-narrow.svg",
-              "images/schematic.svg": "images/schematic-narrow.svg"}
+              "images/schematic.svg": "images/schematic-narrow.svg",
+              "images/signal-ne.svg": "images/signal-ne-narrow.svg",
+              "images/schematic-ne.svg": "images/schematic-ne-narrow.svg"}
+
+# A page can ask for its section numbers in Devanagari. Nothing else on the
+# page is renumbered, because a milliamp reading is written the same way in
+# both languages.
+DEVANAGARI = str.maketrans("0123456789", "०१२३४५६७८९")
 
 
 # ---------------------------------------------------------------- image size
@@ -243,18 +250,21 @@ def parse_section(body):
     return blocks
 
 
-def render_sections(body):
+def render_sections(body, numerals="latin"):
     parts = re.split(r"^## +", body, flags=re.M)
     out = []
     for n, chunk in enumerate([p for p in parts if p.strip()], 1):
         heading, _, rest = chunk.partition("\n")
+        num = f"{n:02d}"
+        if numerals == "devanagari":
+            num = num.translate(DEVANAGARI)
         blocks = "\n".join(parse_section(rest))
         if n == 1:
             # the very first paragraph on a page carries the standfirst weight
             blocks = blocks.replace("    <p>", '    <p class="lead">', 1)
         out.append(
             '<section class="wrap">\n'
-            f'  <p class="num">{n:02d}</p>\n'
+            f'  <p class="num">{num}</p>\n'
             f"  <h2>{inline(heading.strip())}</h2>\n"
             f"{blocks}\n"
             "</section>"
@@ -268,13 +278,49 @@ def render_nav(meta):
     # the mark is decorative here, the name is right beside it, so alt is empty
     mark = (f'  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">'
             f'{meta.get("mark", "")}</span>')
-    text = meta.get("nav_text")
-    if not text:
+
+    links = []
+    if meta.get("nav_text"):
+        arrow = "&lsaquo; " if meta.get("nav_side") == "left" else ""
+        tail = "" if arrow else " &rsaquo;"
+        links.append(f'<a href="{meta["nav_href"]}">'
+                     f'{arrow}{meta["nav_text"]}{tail}</a>')
+    if meta.get("alt_href"):
+        # the switcher is labelled in the language it leads to, and carries
+        # that language so a screen reader says the word properly
+        code = meta.get("alt_lang", "en")
+        links.append(f'<a class="lang" href="{meta["alt_href"]}" lang="{code}" '
+                     f'hreflang="{code}">{meta.get("alt_label", code)}</a>')
+    if not links:
         return mark
-    arrow = "&lsaquo; " if meta.get("nav_side") == "left" else ""
-    tail = "" if arrow else " &rsaquo;"
-    link = f'  <a href="{meta["nav_href"]}">{arrow}{text}{tail}</a>'
-    return f"{link}\n{mark}" if meta.get("nav_side") == "left" else f"{mark}\n{link}"
+
+    group = '  <nav class="links">' + "".join(links) + "</nav>"
+    return f"{group}\n{mark}" if meta.get("nav_side") == "left" else f"{mark}\n{group}"
+
+
+def render_head_links(meta):
+    """Canonical, og:locale and the hreflang pair, when a page has a twin.
+
+    Each language version points at itself and at the other one, which is
+    what tells a search engine they are the same page rather than two.
+    """
+    out = []
+    if meta.get("locale"):
+        out.append(f'<meta property="og:locale" content="{meta["locale"]}">')
+    if meta.get("alt_locale"):
+        out.append('<meta property="og:locale:alternate" '
+                   f'content="{meta["alt_locale"]}">')
+    here, other = meta.get("og_url"), meta.get("alt_url")
+    if here:
+        out.append(f'<link rel="canonical" href="{here}">')
+    if here and other:
+        out.append(f'<link rel="alternate" hreflang="{meta.get("lang", "en")}" '
+                   f'href="{here}">')
+        out.append(f'<link rel="alternate" hreflang="{meta.get("alt_lang", "")}" '
+                   f'href="{other}">')
+        english = here if meta.get("lang", "en") == "en" else other
+        out.append(f'<link rel="alternate" hreflang="x-default" href="{english}">')
+    return "\n".join(out)
 
 
 def render_video(meta):
@@ -308,7 +354,7 @@ def render_footer(meta):
     if meta.get("contact_email"):
         label = meta.get("contact_text", "Questions, corrections, or you have made this yourself")
         addr = meta["contact_email"]
-        lines.append(f'  <p class="contact">{inline(label)}. '
+        lines.append(f'  <p class="contact">{inline(label)} '
                      f'<a href="mailto:{addr}">{addr}</a></p>')
     return "\n".join(lines)
 
@@ -358,8 +404,9 @@ def build(md_path, template, site=None):
     if meta is None or "output" not in meta:
         return None
     meta = {**(site or {}), **meta}
+    meta.setdefault("lang", "en")
 
-    sections = render_sections(body)
+    sections = render_sections(body, meta.get("numerals", "latin"))
     # The onward link belongs inside the final section, not adrift after it.
     tail = render_next(meta)
     if tail:
@@ -368,9 +415,10 @@ def build(md_path, template, site=None):
 
     page = template
     for key in ("title", "description", "og_title", "og_description",
-                "og_url", "kicker", "headline", "standfirst"):
+                "og_url", "kicker", "headline", "standfirst", "lang"):
         page = page.replace("{{" + key + "}}", meta.get(key, ""))
     page = page.replace("{{og_image_absolute}}", absolute(meta))
+    page = page.replace("{{head_links}}", render_head_links(meta))
     page = page.replace("{{nav}}", render_nav(meta))
     page = page.replace("{{video}}", render_video(meta))
     page = page.replace("{{sections}}", sections)

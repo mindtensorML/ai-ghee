@@ -21,15 +21,68 @@ import os
 import struct
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT_WIDE = os.path.join(HERE, "images", "schematic.svg")
-OUT_NARROW = os.path.join(HERE, "images", "schematic-narrow.svg")
 
 INK, GOLD, DEEP = "#2a2118", "#c08a2e", "#a8681a"
 CREAM, PAPER, LINE = "#f4ead7", "#fff8ec", "#e3d2b4"
 FAINT, RED = "#9a836a", "#b0402c"
 SANS = '"Avenir Next","Segoe UI",sans-serif'
+SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
+           '"Devanagari Sangam MN","Nirmala UI","Noto Sans Devanagari",sans-serif')
 
 SIG, PWR = 1.9, 6.2          # the two line weights
+
+# The drawing is bilingual. Part numbers, pin names and the rig's own name do
+# not translate, so only the words that describe something are listed here.
+# Anything missing from the table is drawn as it is written in the code.
+WORDS = {
+    "12 V SUPPLY": "12 V सप्लाई",
+    "MAINS": "मेन्स",
+    "DRILL": "ड्रिल",
+    "EMERGENCY STOP": "आपत्कालीन स्टप",
+    "EMERGENCY": "आपत्कालीन",
+    "STOP": "स्टप",
+    "SIGNAL": "सिग्नल",
+    "MOTOR LOOP": "मोटर लुप",
+    "POWER AND SENSE": "पावर र सेन्सिङ",
+}
+
+ARIA = {
+    "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
+          "H-bridge over four signal wires and reads an INA260 current sensor "
+          "over I2C. A 12 volt supply, a 15 amp fuse, the emergency stop "
+          "button and the sensor sit in series in the motor loop, which the "
+          "Pi never touches.",
+    "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
+          "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
+          "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
+          "मोटरकै लुपमा एकपछि अर्को जोडिएका छन्, जुन लुप पाईले कहिल्यै छुँदैन।",
+}
+
+LANG = "en"
+
+
+def stack():
+    return SANS if LANG == "en" else SANS_NE
+
+
+def T(word):
+    """A drawn label, in the language being written.
+
+    A translated word comes back inside a span that carries no tracking and
+    a little more size. Devanagari joins along a bar across the top of the
+    word, which letter spacing cuts into pieces, and it fills less of its em
+    than a Latin capital, so at a matched size it reads as the smaller of the
+    two. The part numbers around it keep the size and tracking they were
+    drawn with.
+    """
+    if LANG == "en" or word not in WORDS:
+        return word
+    return f'<tspan class="dv">{WORDS[word]}</tspan>'
+
+
+def out_path(name):
+    stem = name if LANG == "en" else name.replace("schematic", "schematic-ne")
+    return os.path.join(HERE, "images", stem)
 
 
 
@@ -77,11 +130,12 @@ def css(s=1.0):
  .sig{{fill:none;stroke:{INK};stroke-width:{SIG*s:.2f};stroke-linecap:round;stroke-linejoin:round}}
  .pwr{{fill:none;stroke:{GOLD};stroke-width:{PWR*s:.2f};stroke-linecap:round;stroke-linejoin:round}}
  .pwrk{{fill:none;stroke:{DEEP};stroke-width:{PWR*s:.2f};stroke-linecap:round;stroke-linejoin:round}}
- .ttl{{font:700 {14*s:.1f}px {SANS};fill:{INK};letter-spacing:{0.16*s:.2f}em}}
- .nm{{font:700 {15*s:.1f}px {SANS};fill:{INK};letter-spacing:{0.10*s:.2f}em}}
- .sub{{font:500 {11*s:.1f}px {SANS};fill:{FAINT};letter-spacing:{0.05*s:.2f}em}}
- .pin{{font:600 {12*s:.1f}px {SANS};fill:{DEEP};letter-spacing:{0.04*s:.2f}em}}
- .val{{font:700 {12.5*s:.1f}px {SANS};fill:{INK}}}
+ .ttl{{font:700 {14*s:.1f}px {stack()};fill:{INK};letter-spacing:{0.16*s:.2f}em}}
+ .nm{{font:700 {15*s:.1f}px {stack()};fill:{INK};letter-spacing:{0.10*s:.2f}em}}
+ .sub{{font:500 {11*s:.1f}px {stack()};fill:{FAINT};letter-spacing:{0.05*s:.2f}em}}
+ .pin{{font:600 {12*s:.1f}px {stack()};fill:{DEEP};letter-spacing:{0.04*s:.2f}em}}
+ .val{{font:700 {12.5*s:.1f}px {stack()};fill:{INK}}}
+ .dv{{letter-spacing:0;font-size:1.18em}}
  .note{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{FAINT}}}
  .notek{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{DEEP}}}
  .lead{{fill:none;stroke:{FAINT};stroke-width:{0.9*s:.2f};stroke-dasharray:{2.5*s:.1f} {2.5*s:.1f}}}
@@ -172,14 +226,14 @@ def note(x, y, lines, cls="note", anchor="start", lh=15):
 def supply(x, y, w, h, s=1.0, mains_left=True):
     """The 12 V open frame switch mode supply, and its lead to the wall."""
     o = [f'<rect class="box" x="{x}" y="{y}" width="{w}" height="{h}" rx="5"/>',
-         f'<text class="nm" x="{x+12}" y="{y+27}">12 V SUPPLY</text>']
+         f'<text class="nm" x="{x+12}" y="{y+27}">{T("12 V SUPPLY")}</text>']
     for i in range(7):
         vx = x + 14 + i * 9
         o.append(f'<line x1="{vx}" y1="{y+h-30}" x2="{vx}" y2="{y+h-9}" stroke="{LINE}" '
                  f'stroke-width="{1.4*s:.2f}"/>')
     if mains_left:
         o.append(f'<line class="sig" x1="{x-54*s}" y1="{y+h/2}" x2="{x}" y2="{y+h/2}"/>')
-        o.append(f'<text class="sub" x="{x-27*s}" y="{y+h/2-9}" text-anchor="middle">MAINS</text>')
+        o.append(f'<text class="sub" x="{x-27*s}" y="{y+h/2-9}" text-anchor="middle">{T("MAINS")}</text>')
     return "".join(o)
 
 
@@ -187,10 +241,7 @@ def wide():
     """Symbols, names and values, and a photograph of each board."""
     W, H = 1120, 740
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" '
-         f'aria-label="Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 H-bridge '
-         f'over four signal wires and reads an INA260 current sensor over I2C. A 12 volt supply, a '
-         f'15 amp fuse, the emergency stop button and the sensor sit in series in the motor loop, '
-         f'which the Pi never touches.">',
+         f'aria-label="{ARIA[LANG]}">',
          f'<rect width="{W}" height="{H}" fill="{CREAM}"/>',
          f'<style>{css()}</style>', f'<g>{grid(W, H, 24)}</g>']
 
@@ -217,7 +268,7 @@ def wide():
         o.append(f'<line class="pwr" x1="{HB[0]+HB[2]}" y1="{y}" x2="911" y2="{y}"/>')
     o.append(f'<text class="pin" x="{HB[0]+HB[2]+10}" y="164">M+</text>')
     o.append(f'<text class="pin" x="{HB[0]+HB[2]+10}" y="228">M&#8722;</text>')
-    o.append('<text class="sub" x="960" y="266" text-anchor="middle">DRILL</text>')
+    o.append(f'<text class="sub" x="960" y="266" text-anchor="middle">{T("DRILL")}</text>')
 
     RAIL, RET = 480, 620
     INA = (430, 406, 250, 148)
@@ -257,12 +308,12 @@ def wide():
     o.append(fuse(FU, RAIL))
     o.append(f'<text class="val" x="{FU}" y="{RAIL-21}" text-anchor="middle">15 A</text>')
     o.append(estop(ES, RAIL))
-    o.append(f'<text class="pin" x="{ES}" y="{RAIL-60}" text-anchor="middle">EMERGENCY STOP</text>')
+    o.append(f'<text class="pin" x="{ES}" y="{RAIL-60}" text-anchor="middle">{T("EMERGENCY STOP")}</text>')
 
     o.append('<line class="sig" x1="62" y1="48" x2="98" y2="48"/>')
-    o.append('<text class="sub" x="106" y="52">SIGNAL</text>')
+    o.append(f'<text class="sub" x="106" y="52">{T("SIGNAL")}</text>')
     o.append('<line class="pwr" x1="200" y1="48" x2="236" y2="48"/>')
-    o.append('<text class="sub" x="244" y="52">MOTOR LOOP</text>')
+    o.append(f'<text class="sub" x="244" y="52">{T("MOTOR LOOP")}</text>')
 
     tb = (900, 640, 190, 58)
     o.append(f'<rect x="{tb[0]}" y="{tb[1]}" width="{tb[2]}" height="{tb[3]}" rx="4" '
@@ -270,7 +321,7 @@ def wide():
     o.append(f'<line x1="{tb[0]}" y1="{tb[1]+26}" x2="{tb[0]+tb[2]}" y2="{tb[1]+26}" '
              f'stroke="{FAINT}" stroke-width="1"/>')
     o.append(f'<text class="ttl" x="{tb[0]+11}" y="{tb[1]+18}">THE BEAST</text>')
-    o.append(f'<text class="sub" x="{tb[0]+11}" y="{tb[1]+44}">POWER AND SENSE</text>')
+    o.append(f'<text class="sub" x="{tb[0]+11}" y="{tb[1]+44}">{T("POWER AND SENSE")}</text>')
     o.append("</svg>")
     return "".join(o)
 
@@ -279,17 +330,14 @@ def narrow():
     """The same circuit as one vertical chain, which is how a phone reads it."""
     W, H = 460, 900
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" '
-         f'aria-label="Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 H-bridge '
-         f'over four signal wires and reads an INA260 current sensor over I2C. A 12 volt supply, a '
-         f'15 amp fuse, the emergency stop button and the sensor sit in series in the motor loop, '
-         f'which the Pi never touches.">',
+         f'aria-label="{ARIA[LANG]}">',
          f'<rect width="{W}" height="{H}" fill="{CREAM}"/>',
          f'<style>{css(1.18)}</style>', f'<g>{grid(W, H, 22)}</g>']
 
     o.append('<line class="sig" x1="26" y1="28" x2="58" y2="28"/>')
-    o.append('<text class="sub" x="66" y="32">SIGNAL</text>')
+    o.append(f'<text class="sub" x="66" y="32">{T("SIGNAL")}</text>')
     o.append('<line class="pwr" x1="182" y1="28" x2="214" y2="28"/>')
-    o.append('<text class="sub" x="222" y="32">MOTOR LOOP</text>')
+    o.append(f'<text class="sub" x="222" y="32">{T("MOTOR LOOP")}</text>')
 
     PI = (26, 56, 408, 118)
     HB = (62, 300, 298, 122)
@@ -317,7 +365,7 @@ def narrow():
     o.append(motor(412, 345, 31, 1.18))
     for y in (332, 358):
         o.append(f'<line class="pwr" x1="{HB[0]+HB[2]}" y1="{y}" x2="382" y2="{y}"/>')
-    o.append('<text class="sub" x="412" y="396" text-anchor="middle">DRILL</text>')
+    o.append(f'<text class="sub" x="412" y="396" text-anchor="middle">{T("DRILL")}</text>')
 
     CH, RTX, RET = 112, 332, 866
     INA = (62, 470, 232, 124)
@@ -339,8 +387,8 @@ def narrow():
 
     o.append(f'<line class="pwr" x1="{CH}" y1="{INA[1]+INA[3]}" x2="{CH}" y2="616"/>')
     o.append(estop_v(CH, 640, 1.18))
-    o.append(f'<text class="pin" x="{CH+46}" y="636">EMERGENCY</text>')
-    o.append(f'<text class="pin" x="{CH+46}" y="654">STOP</text>')
+    o.append(f'<text class="pin" x="{CH+46}" y="636">{T("EMERGENCY")}</text>')
+    o.append(f'<text class="pin" x="{CH+46}" y="654">{T("STOP")}</text>')
     o.append(f'<line class="pwr" x1="{CH}" y1="672" x2="{CH}" y2="704"/>')
     o.append(f'<g transform="rotate(90 {CH} 722)">{fuse(CH, 722, 1.18)}</g>')
     o.append(f'<text class="val" x="{CH+32}" y="726">15 A</text>')
@@ -350,7 +398,7 @@ def narrow():
     o.append(supply(*PSU, s=1.18, mains_left=False))
     o.append(f'<line class="sig" x1="{PSU[0]+PSU[2]}" y1="{PSU[1]+42}" '
              f'x2="{PSU[0]+PSU[2]+34}" y2="{PSU[1]+42}"/>')
-    o.append(f'<text class="sub" x="{PSU[0]+PSU[2]+38}" y="{PSU[1]+46}">MAINS</text>')
+    o.append(f'<text class="sub" x="{PSU[0]+PSU[2]+38}" y="{PSU[1]+46}">{T("MAINS")}</text>')
     o.append(f'<text class="val" x="{CH+13}" y="{PSU[1]-8}">+</text>')
     o.append(f'<text class="val" x="{CH+13}" y="{PSU[1]+PSU[3]+22}">&#8722;</text>')
     o.append(f'<path class="pwr" d="M{CH},{PSU[1]+PSU[3]} L{CH},{RET} L{RTX},{RET} '
@@ -362,7 +410,11 @@ def narrow():
 
 if __name__ == "__main__":
     os.makedirs(os.path.join(HERE, "images"), exist_ok=True)
-    for path, svg in ((OUT_WIDE, wide()), (OUT_NARROW, narrow())):
-        with open(path, "w") as fh:
-            fh.write(svg)
-        print("wrote", os.path.relpath(path, HERE))
+    for LANG in ("en", "ne"):
+        globals()["LANG"] = LANG
+        for name, draw in (("schematic.svg", wide),
+                           ("schematic-narrow.svg", narrow)):
+            path = out_path(name)
+            with open(path, "w") as fh:
+                fh.write(draw())
+            print("wrote", os.path.relpath(path, HERE))

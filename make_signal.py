@@ -25,8 +25,47 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOG = os.path.join(HERE, "data", "churn_20260816.csv")
-OUT_WIDE = os.path.join(HERE, "images", "signal.svg")
-OUT_NARROW = os.path.join(HERE, "images", "signal-narrow.svg")
+
+# Every word on the chart, once per language. The data is read once and both
+# versions are drawn from it, so the two can never disagree about the run.
+#
+# Devanagari hangs from one bar along the top of a word, so the tracking that
+# opens up the Latin labels would break that bar, and it is set to nothing on
+# the Nepali chart. The font stack keeps the Latin faces in front, so a
+# Devanagari face is only reached for the characters they do not carry.
+SANS = '"Avenir Next","Segoe UI",sans-serif'
+SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
+           '"Devanagari Sangam MN","Nirmala UI","Noto Sans Devanagari",sans-serif')
+
+EN = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    out=("signal.svg", "signal-narrow.svg"),
+    aria="Motor current across one churn, from the sensor log. The load sits "
+         "near 2700 milliamps for the first twenty minutes, climbs as the fat "
+         "gathers, peaks near 4700, then falls away.",
+    y="Motor current, mA", x="Minutes into the churn",
+    run="This run", ideal="The shape it looks for",
+    wide=[("Nothing much for twenty minutes", 2.6, 2750, -46, "start", "lbl"),
+          ("Fat gathering", 19.6, 2050, 0, "end", "lbl"),
+          ("THE BREAK", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("THE BREAK", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Nothing yet", 1.2, 2750, -58, "start", "lbl")],
+)
+
+NE = dict(
+    stack=SANS_NE, track=("0", "0", ".02em"), caps="none", lift=1.16,
+    out=("signal-ne.svg", "signal-ne-narrow.svg"),
+    aria="एउटै मोही पार्दाको मोटर करेन्टको चार्ट, सेन्सर लगबाट। लोड सुरुको बीस "
+         "मिनेट करिब 2700 मिलिएम्पियरमा बस्छ, बोसो जम्मा हुँदै जाँदा चढ्छ, करिब "
+         "4700 मा पुग्छ, अनि झर्छ।",
+    y="मोटर करेन्ट, mA", x="मोही पार्न थालेको, मिनेट",
+    run="यो रन", ideal="खोजिएको आकार",
+    wide=[("बीस मिनेट केही हुँदैन", 2.6, 2750, -46, "start", "lbl"),
+          ("बोसो जम्मा हुँदै", 19.6, 2050, 0, "end", "lbl"),
+          ("नौनी छुट्टियो", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("नौनी छुट्टियो", 23.0, 4704, -20, "end", "lbl-s"),
+            ("अझै केही छैन", 1.2, 2750, -58, "start", "lbl")],
+)
 
 MOTOR_ON_MA = 800     # below this the drill is not turning
 END_S = 1600          # the motor stops for good just before this
@@ -96,7 +135,14 @@ def series():
     return [(m, lo[i], med, hi[i]) for i, (m, _, med, _) in enumerate(out)]
 
 
-def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None):
+def scaled(size, lift):
+    """A type size after the language's lift, kept whole where it lands whole."""
+    v = round(size * lift, 1)
+    return int(v) if v == int(v) else v
+
+
+def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None,
+          S=EN):
     L, R, T, B = pad
     pw, ph = w - L - R, h - T - B
     X = lambda m: L + (m - XMIN) / (XMAX - XMIN) * pw
@@ -122,27 +168,29 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None):
     kx, ky, gap = key
     legend = (
         f'<line x1="{kx}" y1="{ky}" x2="{kx+34}" y2="{ky}" class="trace"/>'
-        f'<text x="{kx+44}" y="{ky+5}" class="key">This run</text>'
+        f'<text x="{kx+44}" y="{ky+5}" class="key">{S["run"]}</text>'
         f'<line x1="{kx}" y1="{ky+gap}" x2="{kx+34}" y2="{ky+gap}" class="ideal"/>'
-        f'<text x="{kx+44}" y="{ky+gap+5}" class="key">The shape it looks for</text>'
+        f'<text x="{kx+44}" y="{ky+gap+5}" class="key">{S["ideal"]}</text>'
     )
 
     tx = "".join(
         f'<text x="{X(m):.1f}" y="{Y(v)+dy:.1f}" class="{cls}" text-anchor="{a}">{s}</text>'
         for s, m, v, dy, a, cls in labels)
 
-    fa, fl, fs, fu, fk = fonts
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" role="img" aria-label="Motor current across one churn, from the sensor log. The load sits near 2700 milliamps for the first twenty minutes, climbs as the fat gathers, peaks near 4700, then falls away.">
+    fa, fl, fs, fu, fk = (scaled(f, S["lift"]) for f in fonts)
+    ta, ts, tu = S["track"]
+    st = S["stack"]
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" role="img" aria-label="{S["aria"]}">
 <style>
  .grid{{stroke:#e3d2b4;stroke-width:1}}
- .ax{{font:{fa}px "Avenir Next","Segoe UI",sans-serif;fill:#9a836a;letter-spacing:.04em}}
- .lbl{{font:600 {fl}px "Avenir Next","Segoe UI",sans-serif;fill:#6b5846}}
- .lbl-s{{font:600 {fs}px "Avenir Next","Segoe UI",sans-serif;fill:#a8681a;letter-spacing:.09em}}
- .unit{{font:600 {fu}px "Avenir Next","Segoe UI",sans-serif;fill:#9a836a;letter-spacing:.16em;text-transform:uppercase}}
+ .ax{{font:{fa}px {st};fill:#9a836a;letter-spacing:{ta}}}
+ .lbl{{font:600 {fl}px {st};fill:#6b5846}}
+ .lbl-s{{font:600 {fs}px {st};fill:#a8681a;letter-spacing:{ts}}}
+ .unit{{font:600 {fu}px {st};fill:#9a836a;letter-spacing:{tu};text-transform:{S["caps"]}}}
  .band{{fill:#c08a2e;opacity:.17}}
  .trace{{fill:none;stroke:#c08a2e;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}}
  .ideal{{fill:none;stroke:#9a836a;stroke-width:2;stroke-dasharray:7 6;opacity:.85}}
- .key{{font:600 {fk}px "Avenir Next","Segoe UI",sans-serif;fill:#6b5846}}
+ .key{{font:600 {fk}px {st};fill:#6b5846}}
 </style>
 <g>{''.join(g)}</g>
 <path d="{band}" class="band"/>
@@ -151,30 +199,30 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None):
 {legend}
 <circle cx="{X(peak[0]):.1f}" cy="{Y(peak[2]):.1f}" r="5.5" fill="#a8681a"/>
 {tx}
-<text x="{L-yoff}" y="{T+ph/2:.1f}" class="unit" text-anchor="middle" transform="rotate(-90 {L-yoff} {T+ph/2:.1f})">Motor current, mA</text>
-<text x="{L+pw/2:.1f}" y="{h-9}" class="unit" text-anchor="middle">Minutes into the churn</text>
+<text x="{L-yoff}" y="{T+ph/2:.1f}" class="unit" text-anchor="middle" transform="rotate(-90 {L-yoff} {T+ph/2:.1f})">{S["y"]}</text>
+<text x="{L+pw/2:.1f}" y="{h-9}" class="unit" text-anchor="middle">{S["x"]}</text>
 </svg>'''
     with open(path, "w") as fh:
         fh.write(svg)
     return peak
 
 
-peak = build(
-    900, 470, (74, 26, 44, 62),
-    range(2000, 6001, 1000), range(0, 31, 5),
-    (13, 14, 13, 11, 13),
-    [("Nothing much for twenty minutes", 2.6, 2750, -46, "start", "lbl"),
-     ("Fat gathering", 19.6, 2050, 0, "end", "lbl"),
-     ("THE BREAK", 24.6, 4704, -24, "end", "lbl-s")],
-    OUT_WIDE, key=(102, 66, 26))
+written = []
+for S in (EN, NE):
+    wide, narrow = (os.path.join(HERE, "images", n) for n in S["out"])
 
-build(
-    430, 460, (74, 14, 46, 50),
-    range(2000, 6001, 2000), range(0, 31, 10),
-    (14, 15, 14, 11, 14),
-    [("THE BREAK", 23.0, 4704, -20, "end", "lbl-s"),
-     ("Nothing yet", 1.2, 2750, -58, "start", "lbl")],
-    OUT_NARROW, yoff=58, key=(100, 66, 28))
+    peak = build(
+        900, 470, (74, 26, 44, 62),
+        range(2000, 6001, 1000), range(0, 31, 5),
+        (13, 14, 13, 11, 13), S["wide"], wide, key=(102, 66, 26), S=S)
+
+    build(
+        430, 460, (74, 14, 46, 50),
+        range(2000, 6001, 2000), range(0, 31, 10),
+        (14, 15, 14, 11, 14), S["narrow"], narrow, yoff=58, key=(100, 66, 28),
+        S=S)
+
+    written += [os.path.relpath(wide, HERE), os.path.relpath(narrow, HERE)]
 
 print(f"peak median {peak[2]:.0f} mA at {peak[0]:.1f} min")
-print("wrote", os.path.relpath(OUT_WIDE, HERE), "and", os.path.relpath(OUT_NARROW, HERE))
+print("wrote " + ", ".join(written))
