@@ -13,8 +13,8 @@ nav_side: right
 kicker: JD's AI GHEE
 headline: The machine that knew when to stop
 standfirst: I had this ghee everyday growing up and never once made it. So I asked AI how. Then I asked it to do the whole thing for me.
-video: dEwIoD-T4lI
-video_caption: The whole thing, start to finish V1
+video: UG-S1qJc5ig
+video_caption: The whole thing, in 60s
 next_text: A closer look at the machine
 next_href: beast.html
 next_blurb: What it is made of, where the sensing happens, and what the rig actually watches.
@@ -56,6 +56,11 @@ What I can tell you is that the culture is what makes the smell. That smell is m
 Bilona. Yogurt into a pot, a wooden churn dropped in, then you work it back and forth until the butter gives up and rises.
 
 I made the churn myself. The ones I could find online were glued, and none of them would tell me what the glue was. That thing sits in your food for half an hour, so I was not going to guess. Hardwood, stainless steel screws, bolted onto a stirrer shaft I already had in a drawer.
+
+Four arms and a steel band to hold them square. It is all screws, so it comes apart again.
+
+![Screwed together, not glued](images/churn-front.jpg "The wooden churn head standing on a rail outdoors, four hardwood arms screwed to a steel shaft and held by a metal band.")
+![Four arms, held square](images/churn-top.jpg "The churn head seen straight down its shaft, the four arms forming a cross with a stainless band clamped round the middle.")
 
 It takes about half an hour and nothing interesting happens for most of it. Which makes it exactly the sort of job you daydream about handing to something else.
 
@@ -150,9 +155,15 @@ I watched most of it anyway, because it is a nice thing to watch. But nothing I 
 
 Clear, amber, and it smells like the jars I grew up eating from. That was the only test I had, and it passed.
 
-First batch I have ever made. I did not really make it.
-
 ![Strained and still warm](images/ghee.jpg "A pot of finished ghee, deep clear amber with a little foam at one edge.")
+
+It went into jars warm and clear. By the next day it had set pale and grainy.
+
+I put a label on them. The word on it is Nepali for ghee, and the code beside it brings you back to this page.
+
+![Two jars, set and labelled](images/jars.jpg "Two jars of pale set ghee on a wooden rail outdoors, each with a paper label carrying the Nepali word for ghee, the name JD's AI Ghee and a QR code.")
+
+First batch I have ever made. I did not really make it.
 
 ## What I want next
 
