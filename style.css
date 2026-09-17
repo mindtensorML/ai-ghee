@@ -381,6 +381,11 @@ footer a { color: var(--faint); }
 .contact a { color: var(--deep); text-decoration: none; border-bottom: 1px solid var(--line); }
 .contact a:hover { border-bottom-color: var(--deep); }
 
+/* the privacy and terms line, last thing in the footer */
+.legal { letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.68rem; }
+.legal a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+.legal a:hover { color: var(--deep); border-bottom-color: var(--deep); }
+
 /* ---------- the Nepali pages ---------- */
 
 /* Devanagari letters hang from one continuous bar along the top of the word,

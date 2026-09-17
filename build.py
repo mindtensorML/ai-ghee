@@ -356,6 +356,10 @@ def render_footer(meta):
         addr = meta["contact_email"]
         lines.append(f'  <p class="contact">{inline(label)} '
                      f'<a href="mailto:{addr}">{addr}</a></p>')
+    if meta.get("footer_links"):
+        # the privacy and terms links, set once in site.md so every page carries
+        # them. Google's OAuth review wants both reachable from the home page.
+        lines.append(f'  <p class="legal">{inline(meta["footer_links"])}</p>')
     return "\n".join(lines)
 
 
