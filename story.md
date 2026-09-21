@@ -172,6 +172,21 @@ I put a label on them. The word on it is Nepali for ghee, and the code beside it
 
 First batch I have ever made. I did not really make it.
 
+## Nine jars the second time
+
+The first run made two jars and that was all of it. This one filled the rail.
+
+Nine jars. Two tall screw tops nearest the camera, six clip tops through the middle, and a small one right down at the far post.
+
+![The second batch, same rail](images/batch.jpg "Nine jars of pale set ghee along a wooden deck rail outdoors, two tall screw top jars nearest the camera and clip top jars running away behind them.")
+
+The label is different now. The first two jars wore a pink paper one with OUR STORY printed across the top. These are clear film, so the ghee shows through from behind the type, and the code beside it still lands you back on this page.
+
+![The label, second version](images/batch-jar.jpg "A clip top jar of pale set ghee standing on the deck rail, with a clear label carrying a QR code, the Nepali word for ghee and the name JD's AI Ghee.")
+![Set, and slightly grainy](images/batch-set.jpg "A close view of two clip top jars side by side, the set ghee inside pale yellow and finely grainy through the glass.")
+
+It set the same pale yellow the first lot did, which I was not sure it would.
+
 ## What I want next
 
 Right now the machine knows two things. When to stop churning, and what temperature to hold.
