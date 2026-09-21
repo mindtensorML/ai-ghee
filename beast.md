@@ -73,3 +73,5 @@ No microphone and no camera, which is the next thing I want to fix. The bet up t
 Two things. Whether the load has climbed and then fallen far enough to call the break, and whether the plate should be on or off to sit at 250 F.
 
 It does not know what yogurt is. It does not know what butter is. It knows that a number went up for a while and then dropped away, and that this shape means the job is finished.
+
+![What the shape is for](images/batch-big.jpg "Two tall jars of pale set ghee with screw lids and clear labels standing on a deck rail, smaller clip top jars blurred behind them.")
