@@ -207,8 +207,28 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None,
     return peak
 
 
+
+# French is Latin script, so it keeps the stack and the tracking the English
+# chart was drawn with. Both wide annotations run longer than their English
+# originals, which is why they were checked at render rather than assumed.
+FR = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    out=("signal-fr.svg", "signal-fr-narrow.svg"),
+    aria="Graphique du courant du moteur sur un barattage, d'apr\u00e8s le log du "
+         "capteur. La charge reste pr\u00e8s de 2700 milliamp\u00e8res pendant les vingt "
+         "premi\u00e8res minutes, monte \u00e0 mesure que la mati\u00e8re grasse se rassemble, "
+         "culmine pr\u00e8s de 4700, puis retombe.",
+    y="Courant moteur, mA", x="Minutes de barattage",
+    run="Cette fourn\u00e9e", ideal="La forme recherch\u00e9e",
+    wide=[("Presque rien pendant vingt minutes", 2.6, 2750, -46, "start", "lbl"),
+          ("Le gras se rassemble", 19.6, 2050, 0, "end", "lbl"),
+          ("LA CASSURE", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("LA CASSURE", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Toujours rien", 1.2, 2750, -58, "start", "lbl")],
+)
+
 # Every language the chart is drawn in, in the order the site lists them.
-CHARTS = [EN, NE]
+CHARTS = [EN, NE, FR]
 
 written = []
 for S in CHARTS:

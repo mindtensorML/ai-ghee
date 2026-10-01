@@ -48,12 +48,34 @@ WORDS_NE = {
     "POWER AND SENSE": "पावर र सेन्सिङ",
 }
 
+# French translates all of these except SIGNAL, which is the same word. ALIM is
+# the normal abbreviation on a French schematic and fits the box the way the
+# English did. The emergency stop is drawn stacked on the narrow version, one
+# word above the other, so the pair has to split the way French reads it, with
+# ARRET above D'URGENCE rather than the English order. The accents stay on the
+# capitals, which is correct modern French.
+WORDS_FR = {
+    "12 V SUPPLY": "ALIM 12 V",
+    "MAINS": "SECTEUR",
+    "DRILL": "PERCEUSE",
+    "EMERGENCY STOP": "ARR\u00caT D'URGENCE",
+    "EMERGENCY": "ARR\u00caT",
+    "STOP": "D'URGENCE",
+    "MOTOR LOOP": "BOUCLE MOTEUR",
+    "POWER AND SENSE": "PUISSANCE ET MESURE",
+}
+
 ARIA = {
     "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
           "H-bridge over four signal wires and reads an INA260 current sensor "
           "over I2C. A 12 volt supply, a 15 amp fuse, the emergency stop "
           "button and the sensor sit in series in the motor loop, which the "
           "Pi never touches.",
+    "fr": "Sch\u00e9ma \u00e9lectrique de la machine \u00e0 ghee. Un Raspberry Pi "
+          "pilote un pont en H BTS7960 par quatre fils de signal et lit un "
+          "capteur de courant INA260 en I2C. Une alimentation de 12 volts, un "
+          "fusible de 15 amp\u00e8res, le bouton d'arr\u00eat d'urgence et le capteur "
+          "sont en s\u00e9rie dans la boucle du moteur, que le Pi ne touche jamais.",
     "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
           "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
           "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
@@ -67,6 +89,7 @@ ARIA = {
 LANGS = {
     "en": dict(suffix="",    stack=SANS,    dv=False, words={}),
     "ne": dict(suffix="-ne", stack=SANS_NE, dv=True,  words=WORDS_NE),
+    "fr": dict(suffix="-fr", stack=SANS,    dv=False, words=WORDS_FR),
 }
 
 LANG = "en"

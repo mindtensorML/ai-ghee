@@ -50,17 +50,21 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "template.html")
 
 # The chart and the schematic are each drawn at two sizes so they stay readable
-# on a phone. When one of these is used, the narrow version is offered to
-# small screens.
-RESPONSIVE = {"images/signal.svg": "images/signal-narrow.svg",
-              "images/schematic.svg": "images/schematic-narrow.svg",
-              "images/signal-ne.svg": "images/signal-ne-narrow.svg",
-              "images/schematic-ne.svg": "images/schematic-ne-narrow.svg"}
+# on a phone, once per language. This used to be a hand written map of every
+# pair, which is a line that gets forgotten the next time a language is added,
+# and forgetting it does more than drop the phone image. A drawing that is not
+# recognised here loses the card around it as well, so it would quietly render
+# a shade different from the same drawing on every other page. The narrow twin
+# is looked up on disk instead, so a language appears the moment it is drawn.
 
 # A page can ask for its section numbers in Devanagari. Nothing else on the
 # page is renumbered, because a milliamp reading is written the same way in
 # both languages.
 DEVANAGARI = str.maketrans("0123456789", "०१२३४५६७८९")
+
+# What a screen reader says for the [*] that points at the footnote. It is set
+# per page from the front matter, because it was English on the Nepali page.
+NOTE_LABEL = "See note about this chart"
 
 
 # ---------------------------------------------------------------- image size
@@ -117,7 +121,7 @@ def inline(text):
     # [*] in a caption points at the note in the footer
     out = out.replace(
         "[*]",
-        '<a href="#note" aria-label="See note about this chart">*</a>')
+        f'<a href="#note" aria-label="{html.escape(NOTE_LABEL, quote=True)}">*</a>')
     return out
 
 
@@ -127,20 +131,32 @@ ROW_RE = re.compile(r"^\|(?P<cells>.+)\|\s*$")
 
 # -------------------------------------------------------------------- blocks
 
+def responsive_variant(src):
+    """The phone sized twin of a drawing, if one has been generated."""
+    if not src.endswith(".svg"):
+        return None
+    stem, _, ext = src.rpartition(".")
+    if stem.endswith("-narrow"):
+        return None
+    narrow = f"{stem}-narrow.{ext}"
+    return narrow if os.path.exists(os.path.join(HERE, narrow)) else None
+
+
 def figure(src, caption, alt, in_group):
     size = image_size(src)
     dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
     alt_attr = html.escape(alt or caption, quote=True)
     cap = f"\n      <figcaption>{inline(caption)}</figcaption>" if caption else ""
 
-    if src in RESPONSIVE:
+    narrow = responsive_variant(src)
+    if narrow:
         # The chart carries no shadow of its own, the card around it does.
         img = (f'<img src="{src}"{dims} alt="{alt_attr}">')
         return (
             "    <figure>\n"
             '      <div class="chart">\n'
             "        <picture>\n"
-            f'          <source media="(max-width: 620px)" srcset="{RESPONSIVE[src]}">\n'
+            f'          <source media="(max-width: 620px)" srcset="{narrow}">\n'
             f"          {img}\n"
             "        </picture>\n"
             "      </div>"
@@ -467,6 +483,7 @@ def build(md_path, template, site=None):
         return None
     meta = {**(site or {}), **meta}
     meta.setdefault("lang", "en")
+    globals()["NOTE_LABEL"] = meta.get("note_label", "See note about this chart")
 
     sections = render_sections(body, meta.get("numerals", "latin"))
     # The onward link belongs inside the final section, not adrift after it.

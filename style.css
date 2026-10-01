@@ -313,6 +313,47 @@ footer a { color: var(--faint); }
 
 /* ---------- mobile ---------- */
 
+/* ---------- the masthead once there are several languages ---------- */
+
+/* With five languages the switcher is longer than a phone is wide. On a
+   narrow screen the whole top bar is allowed to wrap, and the language names
+   give up the uppercase and the tracking the rest of the line carries. That
+   is worth about a third of their width, and a language name reads better as
+   a name than as another nav label anyway. Nepali already opted out of both
+   for its own reasons, so it is unchanged here. */
+@media (max-width: 620px) {
+  .top {
+    flex-wrap: wrap;
+    row-gap: 0.7rem;
+    align-items: flex-start;
+  }
+
+  .top .links {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.42rem 0.95rem;
+  }
+
+  .top .links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* `.top .links a` further down sets the uppercase and the tracking, and it
+     outweighs a plain `.top .lang`, so the switch has to be named with the
+     anchor to win. Nepali already beats it with its attribute selector. */
+  /* The dividing rules go. They are drawn per label, so once the row wraps
+     one of them hangs at the start of the next line with nothing to its
+     left. The gap does the separating instead. */
+  .top .links a.lang {
+    padding-left: 0;
+    border-left: 0;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    font-size: 0.79rem;
+  }
+}
+
 @media (max-width: 620px) {
   body { font-size: 17px; }
 

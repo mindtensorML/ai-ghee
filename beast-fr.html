@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Bête &middot; Du ghee fait par une IA</title>
+<meta name="description" content="Une perceuse sans fil, une planche à découper, une plaque chauffante et un Raspberry Pi. Ce que fait chaque pièce de la machine à ghee.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="La Bête">
+<meta property="og:description" content="Une perceuse sans fil, une planche à découper et un Raspberry Pi. Ce que fait chaque pièce de la machine à ghee.">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/beast.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/beast-ne.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top">
+  <nav class="links"><a href="index-fr.html">&lsaquo; L'histoire</a><a class="lang" href="beast.html" lang="en" hreflang="en">English</a><a class="lang" href="beast-ne.html" lang="ne" hreflang="ne">नेपाली</a></nav>
+  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">La machine</span>
+</div>
+
+<header class="hero wrap">
+  <p class="kicker">La construction</p>
+  <h1>La Bête</h1>
+  <p class="standfirst">Tout ce qui est sur cet engin vient d'un magasin de bricolage ou d'un tiroir de cuisine. Voici ce que fait vraiment chaque pièce.</p>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>De quoi c'est fait</h2>
+    <p class="lead">C'est une perceuse sans fil qui fait tourner. Elle est tenue par un serre-joint boulonné sur une planche à découper, et c'est la planche qui garde tout bien aligné au-dessus de la casserole. La tête de baratte, c'est du bois dur sur un axe en acier, vissé plutôt que collé, et c'est justement pour ça que je l'ai faite au lieu de l'acheter.</p>
+    <p>L'électronique habite dans une boîte alimentaire en plastique transparent, surtout pour que je puisse voir si quelque chose a pris feu. Un Raspberry Pi s'occupe des relevés. Le gros bouton jaune coupe l'alimentation du moteur, et aucun logiciel n'a le droit de passer outre.</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="Le montage sur un plan de travail de cuisine, avec la perceuse dans son serre-joint, la planche en bois, la boîte transparente d&#x27;électronique et un Raspberry Pi à la base." loading="lazy" decoding="async">
+      <figcaption>Perceuse, planche, boîte, bouton</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">Moteur</span><span class="v">Perceuse sans fil, serrée dans un serre-joint, tournant bien en dessous de sa vitesse maximale</span></li>
+      <li><span class="k">Baratte</span><span class="v">Bois dur et inox, faite et non achetée</span></li>
+      <li><span class="k">Chaleur</span><span class="v">Plaque chauffante, allumée et coupée par un régulateur secteur</span></li>
+      <li><span class="k">Châssis</span><span class="v">Une planche à découper et une boîte alimentaire en plastique</span></li>
+      <li><span class="k">Alimentation</span><span class="v">Bloc à découpage 12 V, branché sur le secteur</span></li>
+      <li><span class="k">Cerveau</span><span class="v">Raspberry Pi, qui écrit dans un CSV</span></li>
+      <li><span class="k">Sens</span><span class="v">Courant et tension pendant le barattage, une sonde dans la casserole pendant la cuisson</span></li>
+      <li><span class="k">Arrêt</span><span class="v">Un gros bouton, câblé en dur</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>Comment c'est câblé</h2>
+    <p>Quatre fils de signal et une grosse boucle. Le Pi calcule la force et le sens, le pont en H est ce qui pousse vraiment le courant, et les deux ne se rencontrent jamais. Rien de ce que touche le Pi ne transporte plus de quelques milliampères.</p>
+    <p>Le bouton est la partie qui vaut le coup d'œil. Il n'est pas relié au Pi du tout. Il est dans la boucle du moteur et il la coupe, donc aucun bug logiciel ne peut le convaincre de ne pas s'arrêter. Ce que le Pi peut faire, c'est s'en apercevoir. S'il demande trente pour cent et que le capteur lui renvoie moins de deux cents milliampères, il en déduit que la boucle est ouverte et il arrête de demander.</p>
+    <p>Le capteur est sur la même boucle, mais sa partie logique est alimentée par le Pi, et c'est pour ça qu'il répond encore quand l'alimentation est coupée. Toute l'astuce du test du bouton tient là.</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-fr-narrow.svg">
+          <img src="images/schematic-fr.svg" width="1120" height="740" alt="Un schéma électrique de la machine à ghee. Un Raspberry Pi pilote un pont en H BTS7960 par quatre fils de signal et lit un capteur de courant INA260 en I2C. Une alimentation douze volts, un fusible de quinze ampères, le bouton d&#x27;arrêt d&#x27;urgence et le capteur sont en série dans la boucle du moteur, que le Pi ne touche jamais.">
+        </picture>
+      </div>
+      <figcaption>Schéma électrique</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>Où ça s'installe</h2>
+    <p>Au-dessus de l'évier. La casserole va dans la cuve, un couvercle plat se pose dessus avec un trou découpé pour l'axe, et tout ce qui s'échappe tombe à un endroit où ça n'a pas d'importance.</p>
+    <p>C'est la partie que personne ne met dans le rendu 3D. Construire quelque chose dans une cuisine, c'est pour moitié décider où les saletés ont le droit d'aller.</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="Le montage serré en place au-dessus de l&#x27;évier de cuisine, avec un ordinateur portable en dessous affichant des courbes en direct." loading="lazy" decoding="async">
+      <figcaption>En place, en pleine fournée</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>Ce qu'elle surveille</h2>
+    <p>Pendant le barattage, le courant et la tension sur la ligne du moteur, relevés environ une fois par seconde et écrits directement dans un fichier. Pendant la cuisson, une sonde dans la casserole à la place, et le régulateur allume et coupe la plaque pour tenir le nombre.</p>
+    <p>Pas de micro et pas de caméra, et c'est la prochaine chose que je veux corriger. Le pari jusqu'ici, c'était que si la charge toute seule suffit à trouver la cassure, le reste peut attendre.</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="L&#x27;écran d&#x27;un ordinateur portable affichant deux courbes en direct des relevés du moteur, au-dessus d&#x27;un terminal où défilent les logs." loading="lazy" decoding="async">
+      <figcaption>La trace en direct pendant une fournée</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>Ce qu'elle décide</h2>
+    <p>Deux choses. Si la charge est montée puis redescendue assez pour annoncer la cassure, et si la plaque doit être allumée ou coupée pour rester à 250 F.</p>
+    <p>Elle ne sait pas ce qu'est le yaourt. Elle ne sait pas ce qu'est le beurre. Elle sait qu'un nombre est monté un moment puis est retombé, et que cette forme veut dire que le travail est fini.</p>
+    <figure>
+      <img src="images/batch-big.jpg" width="1400" height="1000" alt="Deux grands bocaux de ghee figé et pâle, couvercles vissés et étiquettes transparentes, posés sur une rambarde, avec des bocaux à clip plus petits et flous derrière." loading="lazy" decoding="async">
+      <figcaption>À quoi sert cette forme</figcaption>
+    </figure>
+
+  <div class="next">
+    <a href="index-fr.html">&lsaquo; Retour à l'histoire</a>
+    <p>Le yaourt, la baratte, la cassure, et une heure à regarder la couleur.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Les photos viennent toutes d'une même session, en août 2026. La baratte, les pots finis et la deuxième fournée ont été photographiés plus tard.</p>
+  <p class="contact">Des questions, des corrections, ou vous en avez construit un vous aussi. <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>
