@@ -18,6 +18,9 @@ headline: The machine that knew when to stop
 standfirst: I had this ghee everyday growing up and never once made it. So I asked AI how. Then I asked it to do the whole thing for me.
 video: UG-S1qJc5ig
 video_caption: The whole thing, in 60s
+short: 7vZ-fDZcCTQ
+short_caption: Short version
+short_href: https://youtube.com/shorts/7vZ-fDZcCTQ
 next_text: A closer look at the machine
 next_href: beast.html
 next_blurb: What it is made of, where the sensing happens, and what the rig actually watches.
