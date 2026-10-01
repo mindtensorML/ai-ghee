@@ -227,8 +227,46 @@ FR = dict(
             ("Toujours rien", 1.2, 2750, -58, "start", "lbl")],
 )
 
+
+# Kinyarwanda is Latin script, so it takes the English stack and tracking.
+RW = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    out=("signal-rw.svg", "signal-rw-narrow.svg"),
+    aria="Igishushanyo cya courant ya moteur mu gucunda rimwe, kivuye mu log ya "
+         "capteur. Charge iguma hafi ya 2700 milliamp\u00e8res mu minota "
+         "makumyabiri ya mbere, izamuka uko ibinure biteranira, igera ku ntera "
+         "ya hejuru hafi ya 4700, hanyuma iragwa.",
+    y="Courant ya moteur, mA", x="Iminota mu gucunda",
+    run="Iki gikorwa", ideal="Ishusho ishakwa",
+    wide=[("Nta kintu mu minota makumyabiri", 2.6, 2750, -46, "start", "lbl"),
+          ("Ibinure biteranira", 19.6, 2050, 0, "end", "lbl"),
+          ("AMAVUTA YACITSE", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("AMAVUTA YACITSE", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Nta kintu kirabaho", 1.2, 2750, -58, "start", "lbl")],
+)
+
+
+# Luganda is Latin script and takes the English stack and tracking. The eng,
+# U+014B, appears in gakuŋŋaana and is carried by the faces already in front
+# of the stack, which was checked in the rendered drawing rather than assumed.
+LG = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    out=("signal-lg.svg", "signal-lg-narrow.svg"),
+    aria="Chart ya current ya motor mu kusunda omulundi gumu, nga eva mu log ya "
+         "sensor. Omugugu gubeera okumpi ne 2700 mA mu ddakiika 20 ezisooka, "
+         "gulinnya ng'amasavu gaku\u014b\u014baana, gutuuka okumpi ne 4700, "
+         "oluvannyuma gugwa.",
+    y="Current ya motor, mA", x="Eddakiika z'okusunda",
+    run="Okusunda kuno", ideal="Enkula gye kinoonya",
+    wide=[("Eddakiika 20 tewali kibaawo", 2.6, 2750, -46, "start", "lbl"),
+          ("Amasavu gaku\u014b\u014baana", 19.6, 2050, 0, "end", "lbl"),
+          ("OMUZIGO GWAVAAYO", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("GWAVAAYO", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Tewali kintu", 1.2, 2750, -58, "start", "lbl")],
+)
+
 # Every language the chart is drawn in, in the order the site lists them.
-CHARTS = [EN, NE, FR]
+CHARTS = [EN, NE, FR, RW, LG]
 
 written = []
 for S in CHARTS:

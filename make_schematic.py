@@ -65,6 +65,37 @@ WORDS_FR = {
     "POWER AND SENSE": "PUISSANCE ET MESURE",
 }
 
+# Kinyarwanda keeps the part numbers, the supply and the mains in English the
+# way an engineer in Kigali writes them, and translates only what is actually
+# described. The emergency stop is safety text and has real Kinyarwanda, and
+# the verb leads, so the stacked pair on the narrow drawing puts GUHAGARIKA on
+# top where the English has EMERGENCY. The two words are the same length,
+# which stacks more evenly than the English pair does.
+WORDS_RW = {
+    "DRILL": "PERCEUSE",
+    "EMERGENCY STOP": "GUHAGARIKA|BYIHUTIRWA",
+    "EMERGENCY": "GUHAGARIKA",
+    "STOP": "BYIHUTIRWA",
+    "MOTOR LOOP": "URUZIGA RWA MOTEUR",
+    "POWER AND SENSE": "INGUFU NO KUMVA",
+}
+
+# Luganda keeps most of this drawing in English, which is what an educated
+# Luganda speaker writing about electronics actually does. The two headings
+# take English nouns joined by Luganda grammar rather than coined equivalents,
+# because that is how the phrase is really said.
+#
+# The emergency stop stays English deliberately. Luganda for it exists, but it
+# reverses, YIMIRIZA MU KABENJE, stop in an emergency, so the stacked pair on
+# the narrow drawing would have to invert as well. It is nineteen characters
+# against a budget of about fifteen, EMERGENCY STOP is moulded into the actual
+# button in the photographs, and it is the phrase a Ugandan technician says out
+# loud. A safety marking is the wrong place to make a reader decode a word.
+WORDS_LG = {
+    "MOTOR LOOP": "LOOP YA MOTOR",
+    "POWER AND SENSE": "POWER NE SENSE",
+}
+
 ARIA = {
     "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
           "H-bridge over four signal wires and reads an INA260 current sensor "
@@ -76,6 +107,16 @@ ARIA = {
           "capteur de courant INA260 en I2C. Une alimentation de 12 volts, un "
           "fusible de 15 amp\u00e8res, le bouton d'arr\u00eat d'urgence et le capteur "
           "sont en s\u00e9rie dans la boucle du moteur, que le Pi ne touche jamais.",
+    "rw": "Igishushanyo cy'umuyoboro wa rig ya ghee. Raspberry Pi itwara pont H "
+          "ya BTS7960 inyuze mu nsinga enye za signal kandi isoma capteur ya "
+          "courant INA260 inyuze kuri I2C. Alimentation ya 12 V, fusible ya 15 A, "
+          "buto yo guhagarika byihutirwa na capteur biri ku murongo umwe mu "
+          "ruziga rwa moteur, uruziga Pi itakoraho na rimwe.",
+    "lg": "Diagram y'ekyuma ky'omuzigo. Raspberry Pi akoleeza H bridge ya "
+          "BTS7960 ng'ayita mu waya nnya za signal, era asoma sensor ya current "
+          "ya INA260 ng'ayita mu I2C. Supply ya 12 V, fyuuzi ya 15 A, ebbatani "
+          "ery'okuyimiriza mu kabenje ne sensor byonna biyungibwa olukalala lumu "
+          "mu loop ya motor, loop Pi atakwatako n'akatono.",
     "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
           "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
           "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
@@ -90,6 +131,8 @@ LANGS = {
     "en": dict(suffix="",    stack=SANS,    dv=False, words={}),
     "ne": dict(suffix="-ne", stack=SANS_NE, dv=True,  words=WORDS_NE),
     "fr": dict(suffix="-fr", stack=SANS,    dv=False, words=WORDS_FR),
+    "rw": dict(suffix="-rw", stack=SANS,    dv=False, words=WORDS_RW),
+    "lg": dict(suffix="-lg", stack=SANS,    dv=False, words=WORDS_LG),
 }
 
 LANG = "en"
@@ -119,6 +162,24 @@ def T(word):
     if not L()["dv"]:
         return translated
     return f'<tspan class="dv">{translated}</tspan>'
+
+
+def T_stacked(word, x):
+    """A label that may need two lines, stacked around where one line sat.
+
+    A translation can be written with a bar between its halves to ask for a
+    stack. Kinyarwanda needs it, because the emergency stop is twenty one
+    characters against fourteen in English and the one line form runs into
+    the sensor card. The label is centred, so trimming characters only moves
+    its right hand edge by half as much and there is no honest short form, so
+    it goes on two lines the way the narrow drawing already does.
+    """
+    translated = L()["words"].get(word)
+    if translated is None or "|" not in translated:
+        return T(word)
+    first, second = translated.split("|", 1)
+    return (f'<tspan x="{x}" dy="-1.5em">{first}</tspan>'
+            f'<tspan x="{x}" dy="1.5em">{second}</tspan>')
 
 
 def out_path(name):
@@ -349,7 +410,7 @@ def wide():
     o.append(fuse(FU, RAIL))
     o.append(f'<text class="val" x="{FU}" y="{RAIL-21}" text-anchor="middle">15 A</text>')
     o.append(estop(ES, RAIL))
-    o.append(f'<text class="pin" x="{ES}" y="{RAIL-60}" text-anchor="middle">{T("EMERGENCY STOP")}</text>')
+    o.append(f'<text class="pin" x="{ES}" y="{RAIL-60}" text-anchor="middle">{T_stacked("EMERGENCY STOP", ES)}</text>')
 
     o.append('<line class="sig" x1="62" y1="48" x2="98" y2="48"/>')
     o.append(f'<text class="sub" x="106" y="52">{T("SIGNAL")}</text>')

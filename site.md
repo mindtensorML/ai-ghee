@@ -1,6 +1,6 @@
 ---
 site_url: https://mindtensorml.github.io/ai-ghee/
-languages: en|English|en_GB ; ne|नेपाली|ne_NP ; fr|Français|fr_FR
+languages: en|English|en_GB ; ne|नेपाली|ne_NP ; fr|Français|fr_FR ; rw|Ikinyarwanda|rw_RW ; lg|Oluganda|lg_UG
 credit: Photographs are from a single run in August 2026. The churn, the finished jars and the second batch were photographed later.
 contact_text: Questions, corrections, or you have built one of these yourself.
 contact_email: aighee@proton.me
