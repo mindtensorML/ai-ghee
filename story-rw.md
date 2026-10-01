@@ -16,7 +16,7 @@ nav_side: right
 kicker: AI GHEE YA JD
 headline: Imashini yamenye igihe cyo guhagarara
 standfirst: Iyi ghee nayiriye buri munsi nkiri muto, ariko nta na rimwe nayikoze. Nuko mbaza AI uko bikorwa. Hanyuma ndayisaba ko ikora byose ku bwanjye.
-video: UG-S1qJc5ig
+video: TG5p3M-Eg6Q
 video_caption: Byose, mu masegonda 60
 next_text: Reba imashini hafi
 next_href: beast-rw.html

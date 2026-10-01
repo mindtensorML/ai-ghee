@@ -16,7 +16,7 @@ nav_side: right
 kicker: OMUZIGO GWA JD OGWA AI
 headline: Ekyuma ekyamanya akadde k'okuyimirira
 standfirst: Nnakula nga ndya omuzigo buli lunaku, naye saagukola wadde omulundi gumu. Kyenva mbuuza AI engeri y'okugukola. Oluvannyuma nnagigamba gikole omulimu gwonna.
-video: UG-S1qJc5ig
+video: brmi3FwAa9c
 video_caption: Byonna, mu ssekonda 60
 next_text: Okwekebejja ekyuma
 next_href: beast-lg.html
