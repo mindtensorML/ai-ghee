@@ -274,6 +274,61 @@ def render_sections(body, numerals="latin"):
 
 # --------------------------------------------------------------------- render
 
+# ------------------------------------------------------------------ languages
+
+def languages(meta):
+    """The site's languages, in the order they are declared in site.md.
+
+    One entry per language, `code|label|locale`, separated by semicolons. The
+    label is written in the language itself, because that is what a reader
+    scanning the masthead for their own language is looking for.
+
+        languages: en|English|en_GB ; ne|\u0928\u0947\u092a\u093e\u0932\u0940|ne_NP
+
+    The file suffix is derived from the code, so `story.md` with `stem: index`
+    becomes index.html in English and index-ne.html in Nepali. English carries
+    no suffix because it was the first version of the site and its filenames
+    are the ones already linked to from elsewhere.
+    """
+    out = []
+    for part in meta.get("languages", "").split(";"):
+        bits = [b.strip() for b in part.split("|")]
+        if len(bits) == 3 and bits[0]:
+            code, label, locale = bits
+            out.append({"code": code, "label": label, "locale": locale,
+                        "suffix": "" if code == "en" else "-" + code})
+    return out
+
+
+def page_file(stem, suffix):
+    return f"{stem}{suffix}.html"
+
+
+def page_url(base, stem, suffix):
+    """The absolute URL of one page.
+
+    The English story page is served as the bare directory rather than
+    index.html, because that is the address the site is linked by, so the
+    canonical URL has to collapse to it or two URLs serve one page.
+    """
+    name = page_file(stem, suffix)
+    if name == "index.html":
+        return base
+    return base + name
+
+
+def alternates(meta):
+    """Every language version of this page except the one being written."""
+    stem, base = meta.get("stem"), meta.get("site_url", "")
+    if not stem:
+        return []
+    here = meta.get("lang", "en")
+    return [{**lang,
+             "href": page_file(stem, lang["suffix"]),
+             "url": page_url(base, stem, lang["suffix"])}
+            for lang in languages(meta) if lang["code"] != here]
+
+
 def render_nav(meta):
     # the mark is decorative here, the name is right beside it, so alt is empty
     mark = (f'  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">'
@@ -285,12 +340,11 @@ def render_nav(meta):
         tail = "" if arrow else " &rsaquo;"
         links.append(f'<a href="{meta["nav_href"]}">'
                      f'{arrow}{meta["nav_text"]}{tail}</a>')
-    if meta.get("alt_href"):
-        # the switcher is labelled in the language it leads to, and carries
-        # that language so a screen reader says the word properly
-        code = meta.get("alt_lang", "en")
-        links.append(f'<a class="lang" href="{meta["alt_href"]}" lang="{code}" '
-                     f'hreflang="{code}">{meta.get("alt_label", code)}</a>')
+    # one switcher link per other language, labelled in the language it leads
+    # to and carrying that language so a screen reader says the word properly
+    for alt in alternates(meta):
+        links.append(f'<a class="lang" href="{alt["href"]}" lang="{alt["code"]}" '
+                     f'hreflang="{alt["code"]}">{alt["label"]}</a>')
     if not links:
         return mark
 
@@ -299,26 +353,30 @@ def render_nav(meta):
 
 
 def render_head_links(meta):
-    """Canonical, og:locale and the hreflang pair, when a page has a twin.
+    """Canonical, og:locale and an hreflang line per language.
 
-    Each language version points at itself and at the other one, which is
-    what tells a search engine they are the same page rather than two.
+    Every version points at itself and at all the others, which is what tells
+    a search engine they are one page in several languages rather than several
+    pages. x-default goes to English, as the version to fall back to.
     """
     out = []
     if meta.get("locale"):
         out.append(f'<meta property="og:locale" content="{meta["locale"]}">')
-    if meta.get("alt_locale"):
+    alts = alternates(meta)
+    for alt in alts:
         out.append('<meta property="og:locale:alternate" '
-                   f'content="{meta["alt_locale"]}">')
-    here, other = meta.get("og_url"), meta.get("alt_url")
+                   f'content="{alt["locale"]}">')
+    here = meta.get("og_url")
     if here:
         out.append(f'<link rel="canonical" href="{here}">')
-    if here and other:
+    if here and alts:
         out.append(f'<link rel="alternate" hreflang="{meta.get("lang", "en")}" '
                    f'href="{here}">')
-        out.append(f'<link rel="alternate" hreflang="{meta.get("alt_lang", "")}" '
-                   f'href="{other}">')
-        english = here if meta.get("lang", "en") == "en" else other
+        for alt in alts:
+            out.append(f'<link rel="alternate" hreflang="{alt["code"]}" '
+                       f'href="{alt["url"]}">')
+        english = here if meta.get("lang", "en") == "en" else next(
+            (a["url"] for a in alts if a["code"] == "en"), here)
         out.append(f'<link rel="alternate" hreflang="x-default" href="{english}">')
     return "\n".join(out)
 

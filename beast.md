@@ -7,12 +7,8 @@ og_description: A cordless drill, a chopping board and a Raspberry Pi. What each
 og_image: images/beast.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast.html
 lang: en
+stem: beast
 locale: en_GB
-alt_locale: ne_NP
-alt_href: beast-ne.html
-alt_lang: ne
-alt_label: नेपाली
-alt_url: https://mindtensorml.github.io/ai-ghee/beast-ne.html
 mark: The machine
 nav_text: The story
 nav_href: index.html

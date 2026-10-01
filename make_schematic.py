@@ -31,10 +31,12 @@ SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
 
 SIG, PWR = 1.9, 6.2          # the two line weights
 
-# The drawing is bilingual. Part numbers, pin names and the rig's own name do
-# not translate, so only the words that describe something are listed here.
-# Anything missing from the table is drawn as it is written in the code.
-WORDS = {
+# The drawing is written in every language the site has. Part numbers, pin
+# names and the rig's own name do not translate, so only the words that
+# describe something are listed. Anything missing from a table is drawn as it
+# is written in the code, which is the right answer for a term an engineer
+# would say in English whatever language the sentence around it is in.
+WORDS_NE = {
     "12 V SUPPLY": "12 V सप्लाई",
     "MAINS": "मेन्स",
     "DRILL": "ड्रिल",
@@ -58,11 +60,24 @@ ARIA = {
           "मोटरकै लुपमा एकपछि अर्को जोडिएका छन्, जुन लुप पाईले कहिल्यै छुँदैन।",
 }
 
+# One entry per language. `dv` marks a script that hangs from a headline bar,
+# where the letter spacing that opens up the Latin labels has to be switched
+# off or it cuts the bar into pieces. Latin script languages reuse the Latin
+# stack and keep the tracking they were drawn with.
+LANGS = {
+    "en": dict(suffix="",    stack=SANS,    dv=False, words={}),
+    "ne": dict(suffix="-ne", stack=SANS_NE, dv=True,  words=WORDS_NE),
+}
+
 LANG = "en"
 
 
+def L():
+    return LANGS[LANG]
+
+
 def stack():
-    return SANS if LANG == "en" else SANS_NE
+    return L()["stack"]
 
 
 def T(word):
@@ -75,13 +90,16 @@ def T(word):
     two. The part numbers around it keep the size and tracking they were
     drawn with.
     """
-    if LANG == "en" or word not in WORDS:
+    translated = L()["words"].get(word)
+    if translated is None:
         return word
-    return f'<tspan class="dv">{WORDS[word]}</tspan>'
+    if not L()["dv"]:
+        return translated
+    return f'<tspan class="dv">{translated}</tspan>'
 
 
 def out_path(name):
-    stem = name if LANG == "en" else name.replace("schematic", "schematic-ne")
+    stem = name.replace("schematic", "schematic" + L()["suffix"])
     return os.path.join(HERE, "images", stem)
 
 
@@ -410,7 +428,7 @@ def narrow():
 
 if __name__ == "__main__":
     os.makedirs(os.path.join(HERE, "images"), exist_ok=True)
-    for LANG in ("en", "ne"):
+    for LANG in LANGS:
         globals()["LANG"] = LANG
         for name, draw in (("schematic.svg", wide),
                            ("schematic-narrow.svg", narrow)):

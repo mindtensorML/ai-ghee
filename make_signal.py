@@ -207,8 +207,11 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None,
     return peak
 
 
+# Every language the chart is drawn in, in the order the site lists them.
+CHARTS = [EN, NE]
+
 written = []
-for S in (EN, NE):
+for S in CHARTS:
     wide, narrow = (os.path.join(HERE, "images", n) for n in S["out"])
 
     peak = build(

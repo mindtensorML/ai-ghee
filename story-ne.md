@@ -1,8 +1,8 @@
 ---
 output: index-ne.html
 lang: ne
+stem: index
 locale: ne_NP
-alt_locale: en_GB
 numerals: devanagari
 title: एआई घ्यू
 description: सानैदेखि यही घ्यू खाएर हुर्केँ, तर एक पटक पनि आफैँ बनाएको थिइनँ। त्यसैले एआईलाई सोधेँ, कसरी बनाउने। अनि पूरै काम उसैलाई गर्न लगाएँ।
@@ -10,10 +10,6 @@ og_title: मेसिनलाई थाहा थियो, कहिले �
 og_description: सानैदेखि यही घ्यू खाएर हुर्केँ, तर एक पटक पनि आफैँ बनाएको थिइनँ। त्यसैले नौनी छुट्टिने क्षण आफैँ थाहा पाउने मेसिन बनाएँ।
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-ne.html
-alt_href: index.html
-alt_lang: en
-alt_label: English
-alt_url: https://mindtensorml.github.io/ai-ghee/
 mark: एआई घ्यू
 nav_text: मेसिन
 nav_href: beast-ne.html
