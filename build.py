@@ -495,9 +495,15 @@ def render_next(meta):
     )
 
 
-def absolute(meta):
-    """og:image has to be a full URL for link previews to work."""
-    img, base = meta.get("og_image", ""), meta.get("og_url", "")
+def absolute(meta, img=None):
+    """A full URL for an image, which link previews and schema both need.
+
+    Defaults to og:image. The structured data passes its own, because the
+    social card carries the title in big type and a search result wants a
+    photograph of the thing instead.
+    """
+    img = img or meta.get("og_image", "")
+    base = meta.get("og_url", "")
     if not img or img.startswith("http"):
         return img
     root = base.rsplit("/", 1)[0] + "/" if base.endswith(".html") else base
@@ -537,7 +543,7 @@ def render_schema(meta):
         "@type": "Article",
         "headline": meta.get("og_title") or meta.get("headline", ""),
         "description": meta.get("og_description") or meta.get("description", ""),
-        "image": absolute(meta),
+        "image": absolute(meta, meta.get("schema_image")),
         "inLanguage": meta.get("lang", "en"),
         "mainEntityOfPage": {"@type": "WebPage", "@id": meta.get("og_url", base)},
         "isAccessibleForFree": True,

@@ -4,7 +4,9 @@ title: Зверь &middot; Гхи, сделанное ИИ
 description: Аккумуляторная дрель, разделочная доска, плитка и Raspberry Pi. Что делает каждая часть установки для гхи.
 og_title: Зверь
 og_description: Аккумуляторная дрель, разделочная доска и Raspberry Pi. Что делает каждая часть установки для гхи.
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: Машина для гхи, с надписью ИИ делает Гхи
+og_image: images/card-ru.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-ru.html
 skip_text: Перейти к содержанию
 lang: ru

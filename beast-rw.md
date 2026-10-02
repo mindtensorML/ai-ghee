@@ -4,7 +4,9 @@ title: The Beast &middot; AI Ghee
 description: Perceuse ya batiri, urubaho rw'igikoni, réchaud na Raspberry Pi. Icyo igice cyose cya rig ya ghee gikora.
 og_title: The Beast
 og_description: Perceuse ya batiri, urubaho rw'igikoni na Raspberry Pi. Icyo igice cyose cya rig ya ghee gikora.
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: Imashini ya ghee, yanditseho AI irakora Ghee
+og_image: images/card-rw.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-rw.html
 skip_text: Simbukira ku bikubiyemo
 lang: rw

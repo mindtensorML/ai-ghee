@@ -4,7 +4,9 @@ title: La Bestia &middot; Ghee hecho por una IA
 description: Un taladro a batería, una tabla de cortar, una placa y una Raspberry Pi. Qué hace cada pieza del montaje del ghee.
 og_title: La Bestia
 og_description: Un taladro a batería, una tabla de cortar y una Raspberry Pi. Qué hace cada pieza del montaje del ghee.
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: La máquina del ghee, con las palabras La IA hace Ghee
+og_image: images/card-es.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-es.html
 skip_text: Ir al contenido
 lang: es

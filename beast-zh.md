@@ -4,7 +4,9 @@ title: 野兽 &middot; AI 做的酥油
 description: 一把充电电钻，一块砧板，一个电热板和一台树莓派。这套酥油装置每个部件各管什么。
 og_title: 野兽
 og_description: 一把充电电钻，一块砧板和一台树莓派。这套酥油装置每个部件各管什么。
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: 做酥油的机器，配文 AI 做的酥油
+og_image: images/card-zh.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-zh.html
 skip_text: 跳到正文
 lang: zh

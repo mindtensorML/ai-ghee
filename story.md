@@ -4,7 +4,9 @@ title: AI Ghee Making
 description: I had this ghee every day growing up and never once made it. So I asked AI how, and then I asked it to do the whole thing for me.
 og_title: The machine that knew when to stop
 og_description: I had this ghee every day growing up and never once made it. So I built a machine that could feel the moment butter breaks.
-og_image: images/ghee.jpg
+schema_image: images/ghee.jpg
+og_image_alt: The ghee machine, captioned AI makes Ghee
+og_image: images/card-en.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/
 skip_text: Skip to the story
 lang: en

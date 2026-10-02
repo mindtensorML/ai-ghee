@@ -8,7 +8,9 @@ title: Ensolo &middot; Omuzigo gwa AI
 description: Cordless drill, olubaawo olusalirako, hotplate ne Raspberry Pi. Buli kitundu ky'ekyuma ky'omuzigo kikola ki.
 og_title: Ensolo
 og_description: Cordless drill, olubaawo olusalirako ne Raspberry Pi. Buli kitundu ky'ekyuma ky'omuzigo kikola ki.
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: Ekyuma ky'omuzigo, nga kiriko ebigambo AI yakola Ghee
+og_image: images/card-lg.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-lg.html
 mark: Ekyuma
 nav_text: Olugero

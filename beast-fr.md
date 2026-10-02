@@ -4,7 +4,9 @@ title: La Bête &middot; Du ghee fait par une IA
 description: Une perceuse sans fil, une planche à découper, une plaque chauffante et un Raspberry Pi. Ce que fait chaque pièce de la machine à ghee.
 og_title: La Bête
 og_description: Une perceuse sans fil, une planche à découper et un Raspberry Pi. Ce que fait chaque pièce de la machine à ghee.
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: La machine à ghee, avec les mots Fait par l'IA Ghee
+og_image: images/card-fr.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-fr.html
 skip_text: Aller au contenu
 lang: fr

@@ -4,7 +4,9 @@ title: Гхи, сделанное ИИ
 description: Это гхи я ел каждый день, пока рос, и ни разу его не сделал. Поэтому я спросил у ИИ, как это делается, а потом попросил его сделать всё за меня.
 og_title: Машина, которая знала, когда остановиться
 og_description: Это гхи я ел каждый день, пока рос, и ни разу его не сделал. Поэтому я собрал машину, которая чувствует момент, когда масло отпускает жидкость.
-og_image: images/ghee.jpg
+schema_image: images/ghee.jpg
+og_image_alt: Машина для гхи, с надписью ИИ делает Гхи
+og_image: images/card-ru.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-ru.html
 skip_text: Перейти к содержанию
 lang: ru

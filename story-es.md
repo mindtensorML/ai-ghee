@@ -4,7 +4,9 @@ title: Ghee hecho por una IA
 description: Comí este ghee todos los días de mi infancia y nunca hice un solo bote. Así que le pregunté a una IA cómo se hace, y después le pedí que lo hiciera todo por mí.
 og_title: La máquina que sabía cuándo parar
 og_description: Comí este ghee todos los días de mi infancia y nunca hice un solo bote. Así que construí una máquina capaz de notar el momento en que la mantequilla se corta.
-og_image: images/ghee.jpg
+schema_image: images/ghee.jpg
+og_image_alt: La máquina del ghee, con las palabras La IA hace Ghee
+og_image: images/card-es.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-es.html
 skip_text: Ir al contenido
 lang: es

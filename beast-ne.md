@@ -9,7 +9,9 @@ title: द बिस्ट &middot; एआई घ्यू
 description: एउटा कर्डलेस ड्रिल, एउटा चपिङ बोर्ड, एउटा हटप्लेट र एउटा रास्पबेरी पाई। घ्यू बनाउने रिगको कुन भागले के गर्छ।
 og_title: द बिस्ट
 og_description: एउटा कर्डलेस ड्रिल, एउटा चपिङ बोर्ड र एउटा रास्पबेरी पाई। घ्यू बनाउने रिगको कुन भागले के गर्छ।
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: घ्यू बनाउने मेसिन, जसमा AI ले बनाएको घिउ लेखिएको छ
+og_image: images/card-ne.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-ne.html
 mark: मेसिन
 nav_text: कथा

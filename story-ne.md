@@ -9,7 +9,9 @@ title: एआई घ्यू
 description: सानैदेखि यही घ्यू खाएर हुर्केँ, तर एक पटक पनि आफैँ बनाएको थिइनँ। त्यसैले एआईलाई सोधेँ, कसरी बनाउने। अनि पूरै काम उसैलाई गर्न लगाएँ।
 og_title: मेसिनलाई थाहा थियो, कहिले रोकिने
 og_description: सानैदेखि यही घ्यू खाएर हुर्केँ, तर एक पटक पनि आफैँ बनाएको थिइनँ। त्यसैले नौनी छुट्टिने क्षण आफैँ थाहा पाउने मेसिन बनाएँ।
-og_image: images/ghee.jpg
+schema_image: images/ghee.jpg
+og_image_alt: घ्यू बनाउने मेसिन, जसमा AI ले बनाएको घिउ लेखिएको छ
+og_image: images/card-ne.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-ne.html
 mark: एआई घ्यू
 nav_text: मेसिन

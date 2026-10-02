@@ -4,7 +4,9 @@ title: Ghee, von einer KI gemacht
 description: Dieses Ghee habe ich als Kind jeden Tag gegessen und nie selbst gemacht. Also habe ich eine KI gefragt, wie das geht, und sie dann gebeten, die ganze Sache für mich zu übernehmen.
 og_title: Die Maschine, die wusste, wann Schluss ist
 og_description: Dieses Ghee habe ich als Kind jeden Tag gegessen und nie selbst gemacht. Also habe ich eine Maschine gebaut, die den Moment spürt, in dem die Butter bricht.
-og_image: images/ghee.jpg
+schema_image: images/ghee.jpg
+og_image_alt: Die Ghee-Maschine, beschriftet mit KI macht Ghee
+og_image: images/card-de.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-de.html
 skip_text: Zum Inhalt springen
 lang: de

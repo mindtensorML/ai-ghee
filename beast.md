@@ -4,7 +4,9 @@ title: The Beast &middot; AI Ghee Making
 description: A cordless drill, a chopping board, a hotplate and a Raspberry Pi. What each part of the ghee rig does.
 og_title: The Beast
 og_description: A cordless drill, a chopping board and a Raspberry Pi. What each part of the ghee rig does.
-og_image: images/beast.jpg
+schema_image: images/beast.jpg
+og_image_alt: The ghee machine, captioned AI makes Ghee
+og_image: images/card-en.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast.html
 skip_text: Skip to the content
 lang: en

@@ -4,7 +4,9 @@ title: Gukora AI Ghee
 description: Iyi ghee nayiriye buri munsi nkiri muto, ariko nta na rimwe nayikoze. Nuko mbaza AI uko bikorwa, hanyuma ndayisaba ko ikora byose ku bwanjye.
 og_title: Imashini yamenye igihe cyo guhagarara
 og_description: Iyi ghee nayiriye buri munsi nkiri muto, ariko nta na rimwe nayikoze. Nuko nubaka imashini ishobora kumva akanya amavuta acikamo.
-og_image: images/ghee.jpg
+schema_image: images/ghee.jpg
+og_image_alt: Imashini ya ghee, yanditseho AI irakora Ghee
+og_image: images/card-rw.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-rw.html
 skip_text: Simbukira ku bikubiyemo
 lang: rw

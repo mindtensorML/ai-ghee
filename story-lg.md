@@ -8,7 +8,9 @@ title: Omuzigo gwa AI
 description: Nnakula nga ndya omuzigo buli lunaku, naye saagukola wadde omulundi gumu. Kyenva mbuuza AI engeri y'okugukola. Oluvannyuma nnagigamba gikole omulimu gwonna.
 og_title: Ekyuma ekyamanya akadde k'okuyimirira
 og_description: Nnakula nga ndya omuzigo buli lunaku, naye saagukola wadde omulundi gumu. Kyenva nzimba ekyuma ekiyinza okuwulira omuzigo lwe guvaayo.
-og_image: images/ghee.jpg
+schema_image: images/ghee.jpg
+og_image_alt: Ekyuma ky'omuzigo, nga kiriko ebigambo AI yakola Ghee
+og_image: images/card-lg.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-lg.html
 mark: Omuzigo gwa AI
 nav_text: Ekyuma
