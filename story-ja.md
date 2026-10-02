@@ -1,6 +1,7 @@
 ---
 output: index-ja.html
 skip_text: 本文へ飛ぶ
+lang_label: 言語
 lang: ja
 stem: index
 locale: ja_JP

@@ -9,6 +9,7 @@ og_image_alt: Die Ghee-Maschine, beschriftet mit KI macht Ghee
 og_image: images/card-de.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-de.html
 skip_text: Zum Inhalt springen
+lang_label: Sprache
 lang: de
 stem: index
 locale: de_DE

@@ -1,6 +1,7 @@
 ---
 output: beast-hi.html
 skip_text: सामग्री पर जाएँ
+lang_label: भाषा
 lang: hi
 stem: beast
 locale: hi_IN

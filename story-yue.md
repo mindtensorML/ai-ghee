@@ -1,6 +1,7 @@
 ---
 output: index-yue.html
 skip_text: 跳去正文
+lang_label: 語言
 lang: yue
 stem: index
 locale: yue_HK

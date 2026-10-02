@@ -8,7 +8,7 @@ one's `output:` key.
     python3 build.py
 
 You should only ever need to edit the .md files. This script and
-template.html hold the layout, style.css holds the design.
+template.tpl hold the layout, style.css holds the design.
 
 
 WHAT THE MARKDOWN SUPPORTS
@@ -48,7 +48,12 @@ import struct
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TEMPLATE = os.path.join(HERE, "template.html")
+# Not template.html. Everything in this folder is published, so a file ending
+# in .html is served as a page, and this one was live at /template.html with
+# its {{placeholders}} showing. The extension is what makes that happen, so the
+# extension is what changed. Anything reading this file by name wants .tpl now,
+# including the paths list in .github/workflows/build.yml.
+TEMPLATE = os.path.join(HERE, "template.tpl")
 
 # The chart and the schematic are each drawn at two sizes so they stay readable
 # on a phone, once per language. This used to be a hand written map of every
@@ -187,10 +192,17 @@ def figure(src, caption, alt, in_group):
     alt_attr = html.escape(alt or caption, quote=True)
     cap = f"\n      <figcaption>{inline(caption)}</figcaption>" if caption else ""
 
+    lazy = ' loading="lazy" decoding="async"'
+
     narrow = responsive_variant(src)
     if narrow:
         # The chart carries no shadow of its own, the card around it does.
-        img = (f'<img src="{src}"{dims} alt="{alt_attr}">')
+        #
+        # These two get the same lazy attributes as every other figure. They
+        # used not to, because `lazy` was worked out after this branch had
+        # already returned, and the wiring diagram is a 101 kB drawing sitting
+        # well below the fold on the machine page.
+        img = (f'<img src="{src}"{dims} alt="{alt_attr}"{lazy}>')
         return (
             "    <figure>\n"
             '      <div class="chart">\n'
@@ -202,7 +214,6 @@ def figure(src, caption, alt, in_group):
             f"{cap}\n    </figure>"
         )
 
-    lazy = ' loading="lazy" decoding="async"'
     indent = "      " if in_group else "    "
     return (
         f"{indent}<figure>\n"
@@ -454,8 +465,14 @@ def render_nav(meta):
             f'hreflang="{a["code"]}" dir="{direction(a["code"])}">'
             f'{a["label"]}</a></li>' for a in others)
         label = here_label(meta)
+        # The word in front of the language name was hard coded English on
+        # every page, so a screen reader on the Arabic or the Japanese page
+        # read out one English word from nowhere. It comes from the front
+        # matter now, the same way the chart note label does, and falls back
+        # to English only where English is the page.
+        word = meta.get("lang_label", "Language")
         links.append(
-            f'<details class="langs"><summary aria-label="Language, '
+            f'<details class="langs"><summary aria-label="{word}, '
             f'{label}"><span class="here">{label}</span></summary>'
             f'<ul lang="">{items}</ul></details>')
 

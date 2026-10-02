@@ -1,6 +1,7 @@
 ---
 output: beast-new.html
 skip_text: खँय् वनादिसँ
+lang_label: भाषा
 lang: new
 stem: beast
 locale: new_NP

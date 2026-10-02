@@ -1,6 +1,7 @@
 ---
 output: beast-ja.html
 skip_text: 本文へ飛ぶ
+lang_label: 言語
 lang: ja
 stem: beast
 locale: ja_JP

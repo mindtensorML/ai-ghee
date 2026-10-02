@@ -1,6 +1,7 @@
 ---
 output: index-ne.html
 skip_text: सामग्रीमा जानुहोस्
+lang_label: भाषा
 lang: ne
 stem: index
 locale: ne_NP

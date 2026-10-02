@@ -9,6 +9,7 @@ og_image_alt: La machine à ghee, avec les mots Fait par l'IA Ghee
 og_image: images/card-fr.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-fr.html
 skip_text: Aller au contenu
+lang_label: Langue
 lang: fr
 stem: beast
 locale: fr_FR

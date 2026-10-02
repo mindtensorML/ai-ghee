@@ -9,6 +9,7 @@ og_image_alt: Машина для гхі з підписом ШІ робить �
 og_image: images/card-uk.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-uk.html
 skip_text: Перейти до змісту
+lang_label: Мова
 lang: uk
 stem: index
 locale: uk_UA

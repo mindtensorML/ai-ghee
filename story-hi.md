@@ -1,6 +1,7 @@
 ---
 output: index-hi.html
 skip_text: कहानी पर जाएँ
+lang_label: भाषा
 lang: hi
 stem: index
 locale: hi_IN

@@ -250,13 +250,31 @@ a { color: var(--deep); }
   margin: 0;
   padding: 0.5rem;
   list-style: none;
-  min-width: max-content;
+  /* width, not min-width. `min-width: max-content` beats a max-width, which is
+     the CSS rule for the two together, so the panel could never be clamped and
+     at 200% text size the twenty names ran off a phone by up to 250px. As a
+     width it still takes exactly the room the names want and now gives way
+     when there is not that much. */
+  width: max-content;
+  max-width: calc(100vw - 2.2rem);
   columns: 1;
   column-gap: 0.4rem;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 10px;
   box-shadow: var(--shadow);
+}
+
+/* The machine page reverses the masthead, so its nav sits on the leading side
+   and the switcher with it. Pinned by its trailing edge the panel then walks
+   straight off the leading edge of the screen, and on a phone the whole first
+   column of names was sliced down the middle. Pinning the other edge on that
+   masthead makes the panel open away from the edge it is near, on both pages
+   and in both directions, because these are logical properties. The selector
+   is the nav coming first, which is exactly what `nav_side: left` builds. */
+.top > .links:first-child .langs ul {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
 }
 
 /* past a dozen it goes to two columns rather than down past the fold */
@@ -268,6 +286,12 @@ a { color: var(--deep); }
 
 .top .langs ul a {
   display: block;
+  /* Ikinyarwanda is the longest of the twenty and has no break opportunity in
+     it, so once the panel is clamped to a phone at 200% text size the word is
+     the one thing that can still overflow. `anywhere` also lets the column
+     shrink to it, which `break-word` does not, and at ordinary text size the
+     name fits and nothing breaks. */
+  overflow-wrap: anywhere;
   padding: 0.3rem 0.7rem;
   border-radius: 6px;
   text-transform: none;
@@ -575,11 +599,22 @@ footer .legal {
     letter-spacing: 0.1em;
   }
 
-  /* the panel is anchored to the outer edge of a narrow screen, and it is
-     allowed to run the width of the column rather than sit under the button */
+  /* On a phone the panel hangs off the masthead rather than off the button.
+     Pinned to the button it is only ever as safe as wherever the button
+     happens to sit, which is a different place on the two page types and
+     moves again when the type is enlarged. Pinned to the masthead it lines up
+     with the column the page is set in and cannot leave it. */
+  .top { position: relative; }
+  .langs { position: static; }
+
   .langs ul {
-    inset-inline-end: -0.4rem;
-    max-width: calc(100vw - 2.2rem);
+    inset-inline-end: 0;
+    max-width: 100%;
+  }
+
+  .top > .links:first-child .langs ul {
+    inset-inline-start: 0;
+    inset-inline-end: auto;
   }
 }
 

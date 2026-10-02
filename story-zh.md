@@ -9,6 +9,7 @@ og_image_alt: 做酥油的机器，配文 AI 做的酥油
 og_image: images/card-zh.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-zh.html
 skip_text: 跳到正文
+lang_label: 语言
 lang: zh
 stem: index
 locale: zh_CN

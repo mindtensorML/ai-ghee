@@ -1,6 +1,7 @@
 ---
 output: index-bn.html
 skip_text: গল্পে যান
+lang_label: ভাষা
 lang: bn
 stem: index
 locale: bn_BD

@@ -9,6 +9,7 @@ og_image_alt: Ghee makinesi, üzerinde Yapay zekâdan Ghee yazısıyla
 og_image: images/card-tr.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-tr.html
 skip_text: İçeriğe geç
+lang_label: Dil
 lang: tr
 stem: index
 locale: tr_TR

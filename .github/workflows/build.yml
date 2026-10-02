@@ -9,7 +9,7 @@ on:
     paths:
       - "**.md"
       - "build.py"
-      - "template.html"
+      - "template.tpl"
       - "style.css"
       - "images/**"
       - ".github/workflows/build.yml"

@@ -851,7 +851,13 @@ def wide():
     o.append(f'<text class="sub" x="{INA[0]+14}" y="{INA[1]+45}">0x40</text>')
     o.append(photo("ina.jpg", 566, 432, 96))
     o.append(f'<text class="pin" x="{INA[0]-10}" y="{RAIL-12}" text-anchor="end">IN+</text>')
-    o.append(f'<text class="pin" x="{INA[0]+INA[2]+10}" y="{RAIL-12}">IN&#8722;</text>')
+    # Under the conductor rather than over it. IN+ is anchored at its end so it
+    # grows away from the box into clear canvas. IN&#8722; was given the mirrored
+    # offset but not the mirrored anchor, so it grew the other way, and the loop
+    # turns upward only 26 px past the box. The minus sign was drawn through the
+    # wire on all twenty wide sheets, English included. Nothing sits below the
+    # rail here, because the vertical runs up from it.
+    o.append(f'<text class="pin" x="{INA[0]+INA[2]+10}" y="{RAIL+22}">IN&#8722;</text>')
 
     o.append(supply(*PSU))
     PR = PSU[0] + PSU[2]

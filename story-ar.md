@@ -1,6 +1,7 @@
 ---
 output: index-ar.html
 skip_text: انتقل إلى الحكاية
+lang_label: اللغة
 lang: ar
 stem: index
 locale: ar_AR

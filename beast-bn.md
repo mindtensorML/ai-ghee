@@ -1,6 +1,7 @@
 ---
 output: beast-bn.html
 skip_text: মূল লেখায় যান
+lang_label: ভাষা
 lang: bn
 stem: beast
 locale: bn_BD

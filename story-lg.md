@@ -1,6 +1,7 @@
 ---
 output: index-lg.html
 skip_text: Genda ku bikwatibwako
+lang_label: Olulimi
 lang: lg
 stem: index
 locale: lg_UG

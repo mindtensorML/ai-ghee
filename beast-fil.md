@@ -1,6 +1,7 @@
 ---
 output: beast-fil.html
 skip_text: Dumiretso sa nilalaman
+lang_label: Wika
 lang: fil
 stem: beast
 locale: fil_PH

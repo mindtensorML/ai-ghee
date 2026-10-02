@@ -1,6 +1,7 @@
 ---
 output: index-fil.html
 skip_text: Dumiretso sa kuwento
+lang_label: Wika
 lang: fil
 stem: index
 locale: fil_PH

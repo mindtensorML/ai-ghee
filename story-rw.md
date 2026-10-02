@@ -9,6 +9,7 @@ og_image_alt: Imashini ya ghee, yanditseho AI irakora Ghee
 og_image: images/card-rw.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-rw.html
 skip_text: Simbukira ku bikubiyemo
+lang_label: Ururimi
 lang: rw
 stem: index
 locale: rw_RW

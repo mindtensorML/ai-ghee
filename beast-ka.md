@@ -9,6 +9,7 @@ og_image_alt: ერბოს მანქანა, წარწერით AI
 og_image: images/card-ka.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-ka.html
 skip_text: ტექსტზე გადასვლა
+lang_label: ენა
 lang: ka
 stem: beast
 locale: ka_GE

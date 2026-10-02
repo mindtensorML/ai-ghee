@@ -1,6 +1,7 @@
 ---
 output: beast-ar.html
 skip_text: انتقل إلى المحتوى
+lang_label: اللغة
 lang: ar
 stem: beast
 locale: ar_AR

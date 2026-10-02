@@ -1,6 +1,7 @@
 ---
 output: beast-yue.html
 skip_text: 跳去正文
+lang_label: 語言
 lang: yue
 stem: beast
 locale: yue_HK

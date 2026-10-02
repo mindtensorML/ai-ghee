@@ -9,6 +9,7 @@ og_image_alt: Ghee egiteko makina, AAk egina Ghee hitzekin
 og_image: images/card-eu.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-eu.html
 skip_text: Edukira joan
+lang_label: Hizkuntza
 lang: eu
 stem: beast
 locale: eu_ES

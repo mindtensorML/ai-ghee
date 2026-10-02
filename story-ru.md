@@ -9,6 +9,7 @@ og_image_alt: Машина для гхи, с надписью ИИ делает 
 og_image: images/card-ru.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-ru.html
 skip_text: Перейти к содержанию
+lang_label: Язык
 lang: ru
 stem: index
 locale: ru_RU

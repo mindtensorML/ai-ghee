@@ -1,6 +1,7 @@
 ---
 output: index-new.html
 skip_text: खँय् वनादिसँ
+lang_label: भाषा
 lang: new
 stem: index
 locale: new_NP

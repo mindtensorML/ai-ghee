@@ -9,6 +9,7 @@ og_image_alt: La máquina del ghee, con las palabras La IA hace Ghee
 og_image: images/card-es.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-es.html
 skip_text: Ir al contenido
+lang_label: Idioma
 lang: es
 stem: beast
 locale: es_ES
