@@ -96,6 +96,43 @@ WORDS_LG = {
     "POWER AND SENSE": "POWER NE SENSE",
 }
 
+# German has a real word for every label here, and the standards body has
+# already settled most of them. NETZ is what a German drawing calls the mains,
+# NETZTEIL the supply block, MOTORKREIS the loop. SIGNAL is the same word and is
+# left out.
+#
+# NETZTEIL drops the voltage the English label carries. 12 V SUPPLY measures
+# 104 px against the 120 px of box it has to sit in, so there was never much
+# room, and NETZTEIL 12 V comes to 121 px and runs through the border into the
+# positive terminal. There is no second line to fall to either, because the
+# supply symbol starts 13 px under the baseline. The rail voltage is still on
+# the fuse side of the drawing in the label text a screen reader reads, and on
+# the build page in the table of parts, so only the drawing goes without it.
+#
+# BOHRER rather than BOHRMASCHINE, which is the better word and does not fit.
+# The motor label is centred under the motor on a canvas 460 wide with its
+# centre at 412, so it has 48 px either side before it runs off the edge.
+# BOHRMASCHINE needs 55 and AKKUSCHRAUBER 59, and both came back clipped.
+# BOHRER is what someone hands you across a workshop anyway, the prose on the
+# page says Akkuschrauber where there is room to say it properly, and the motor
+# symbol next to the label already says the rest.
+#
+# NOT-AUS is the marking for cutting power in an emergency, where NOT-HALT means
+# bringing a machine to a controlled stop. This button sits in the motor loop and
+# breaks it, so NOT-AUS is the correct one of the two. It is also a single word
+# and shorter than the English, so the narrow drawing has nothing to put on its
+# second line and STOP is deliberately left empty.
+WORDS_DE = {
+    "12 V SUPPLY": "NETZTEIL",
+    "MAINS": "NETZ",
+    "DRILL": "BOHRER",
+    "EMERGENCY STOP": "NOT-AUS",
+    "EMERGENCY": "NOT-AUS",
+    "STOP": "",
+    "MOTOR LOOP": "MOTORKREIS",
+    "POWER AND SENSE": "LEISTUNG UND MESSUNG",
+}
+
 ARIA = {
     "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
           "H-bridge over four signal wires and reads an INA260 current sensor "
@@ -117,6 +154,11 @@ ARIA = {
           "ya INA260 ng'ayita mu I2C. Supply ya 12 V, fyuuzi ya 15 A, ebbatani "
           "ery'okuyimiriza mu kabenje ne sensor byonna biyungibwa olukalala lumu "
           "mu loop ya motor, loop Pi atakwatako n'akatono.",
+    "de": "Schaltplan des Ghee-Aufbaus. Ein Raspberry Pi steuert eine "
+          "H-Brücke BTS7960 über vier Signalleitungen und liest einen "
+          "Stromsensor INA260 über I2C. Ein Netzteil mit 12 Volt, eine "
+          "Sicherung mit 15 Ampere, der Not-Aus-Taster und der Sensor liegen in "
+          "Reihe im Motorkreis, den der Pi nie berührt.",
     "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
           "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
           "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
@@ -133,6 +175,7 @@ LANGS = {
     "fr": dict(suffix="-fr", stack=SANS,    dv=False, words=WORDS_FR),
     "rw": dict(suffix="-rw", stack=SANS,    dv=False, words=WORDS_RW),
     "lg": dict(suffix="-lg", stack=SANS,    dv=False, words=WORDS_LG),
+    "de": dict(suffix="-de", stack=SANS,    dv=False, words=WORDS_DE),
 }
 
 LANG = "en"
@@ -490,7 +533,9 @@ def narrow():
     o.append(f'<line class="pwr" x1="{CH}" y1="{INA[1]+INA[3]}" x2="{CH}" y2="616"/>')
     o.append(estop_v(CH, 640, 1.18))
     o.append(f'<text class="pin" x="{CH+46}" y="636">{T("EMERGENCY")}</text>')
-    o.append(f'<text class="pin" x="{CH+46}" y="654">{T("STOP")}</text>')
+    # A language whose marking is one word leaves the second line empty.
+    if T("STOP"):
+        o.append(f'<text class="pin" x="{CH+46}" y="654">{T("STOP")}</text>')
     o.append(f'<line class="pwr" x1="{CH}" y1="672" x2="{CH}" y2="704"/>')
     o.append(f'<g transform="rotate(90 {CH} 722)">{fuse(CH, 722, 1.18)}</g>')
     o.append(f'<text class="val" x="{CH+32}" y="726">15 A</text>')

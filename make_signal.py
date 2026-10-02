@@ -265,8 +265,30 @@ LG = dict(
             ("Tewali kintu", 1.2, 2750, -58, "start", "lbl")],
 )
 
+
+# German is Latin script and keeps the English stack and tracking. DER BRUCH is
+# the real dairy word for the moment the emulsion inverts, not a translation of
+# the English, and it happens to be exactly as long as THE BREAK, so the orange
+# mark sits where it was drawn. NOCH NICHTS matches NOTHING YET to the
+# character as well, which is luck rather than design.
+DE = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    out=("signal-de.svg", "signal-de-narrow.svg"),
+    aria="Diagramm des Motorstroms \u00fcber eine Butterung, aus dem Sensorlog. "
+         "Die Last liegt in den ersten zwanzig Minuten nahe 2700 Milliampere, "
+         "steigt, w\u00e4hrend sich das Fett sammelt, erreicht ihren H\u00f6chstwert "
+         "nahe 4700 und f\u00e4llt dann ab.",
+    y="Motorstrom, mA", x="Minuten der Butterung",
+    run="Dieser Durchlauf", ideal="Die gesuchte Form",
+    wide=[("Zwanzig Minuten lang fast nichts", 2.6, 2750, -46, "start", "lbl"),
+          ("Das Fett sammelt sich", 19.6, 2050, 0, "end", "lbl"),
+          ("DER BRUCH", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("DER BRUCH", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Noch nichts", 1.2, 2750, -58, "start", "lbl")],
+)
+
 # Every language the chart is drawn in, in the order the site lists them.
-CHARTS = [EN, NE, FR, RW, LG]
+CHARTS = [EN, NE, FR, RW, LG, DE]
 
 written = []
 for S in CHARTS:

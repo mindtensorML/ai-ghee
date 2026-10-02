@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Das Biest &middot; Ghee, von einer KI gemacht</title>
+<meta name="description" content="Ein Akkuschrauber, ein Schneidebrett, eine Kochplatte und ein Raspberry Pi. Was jedes Teil des Ghee-Aufbaus tut.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Das Biest">
+<meta property="og:description" content="Ein Akkuschrauber, ein Schneidebrett und ein Raspberry Pi. Was jedes Teil des Ghee-Aufbaus tut.">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/beast.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="rw_RW">
+<meta property="og:locale:alternate" content="lg_UG">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<link rel="alternate" hreflang="de" href="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/beast-ne.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="rw" href="https://mindtensorml.github.io/ai-ghee/beast-rw.html">
+<link rel="alternate" hreflang="lg" href="https://mindtensorml.github.io/ai-ghee/beast-lg.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top">
+  <nav class="links"><a href="index-de.html">&lsaquo; Die Geschichte</a><a class="lang" href="beast.html" lang="en" hreflang="en">English</a><a class="lang" href="beast-ne.html" lang="ne" hreflang="ne">नेपाली</a><a class="lang" href="beast-fr.html" lang="fr" hreflang="fr">Français</a><a class="lang" href="beast-rw.html" lang="rw" hreflang="rw">Ikinyarwanda</a><a class="lang" href="beast-lg.html" lang="lg" hreflang="lg">Oluganda</a></nav>
+  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">Die Maschine</span>
+</div>
+
+<header class="hero wrap">
+  <p class="kicker">Der Aufbau</p>
+  <h1>Das Biest</h1>
+  <p class="standfirst">Alles an diesem Aufbau kam aus dem Baumarkt oder aus einer Küchenschublade. Hier steht, was jedes Teil tatsächlich tut.</p>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>Woraus sie besteht</h2>
+    <p class="lead">Ein Akkuschrauber übernimmt das Drehen. Er sitzt in einer Klemme, die auf ein Schneidebrett geschraubt ist, und das Brett hält alles über dem Topf in einer Flucht. Der Quirlkopf ist Hartholz auf einer Stahlwelle, geschraubt statt geklebt, und genau deshalb habe ich ihn gebaut statt gekauft.</p>
+    <p>Die Elektronik wohnt in einer durchsichtigen Frischhaltedose, vor allem damit ich sehen kann, ob etwas Feuer gefangen hat. Ein Raspberry Pi übernimmt die Aufzeichnung. Der große gelbe Knopf trennt den Strom zum Motor, und keine Software darf ihn überstimmen.</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="Der Aufbau auf einer Küchenarbeitsfläche, mit dem Akkuschrauber in seiner Klemme, dem Holzbrett, der durchsichtigen Elektronikdose und einem Raspberry Pi am Fuß." loading="lazy" decoding="async">
+      <figcaption>Akkuschrauber, Brett, Dose, Knopf</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">Motor</span><span class="v">Akkuschrauber, geklemmt, läuft weit unter voller Drehzahl</span></li>
+      <li><span class="k">Quirl</span><span class="v">Hartholz und Edelstahl, gebaut statt gekauft</span></li>
+      <li><span class="k">Hitze</span><span class="v">Kochplatte, von einem Leistungsregler ein- und ausgeschaltet</span></li>
+      <li><span class="k">Rahmen</span><span class="v">Ein Schneidebrett und eine Frischhaltedose</span></li>
+      <li><span class="k">Strom</span><span class="v">Schaltnetzteil mit 12 V, aus der Steckdose</span></li>
+      <li><span class="k">Hirn</span><span class="v">Raspberry Pi, schreibt in eine CSV</span></li>
+      <li><span class="k">Sinn</span><span class="v">Strom und Spannung beim Buttern, ein Fühler im Topf beim Kochen</span></li>
+      <li><span class="k">Stopp</span><span class="v">Ein großer Knopf, fest verdrahtet</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>Wie sie verdrahtet ist</h2>
+    <p>Vier Signalleitungen und ein dicker Kreis. Der Pi rechnet aus, wie stark und in welche Richtung, die H-Brücke schiebt den Strom tatsächlich, und die beiden treffen sich nie. Nichts, was der Pi berührt, führt mehr als ein paar Milliampere.</p>
+    <p>Der Knopf ist das Teil, das man sich ansehen sollte. Er ist überhaupt nicht mit dem Pi verbunden. Er sitzt im Motorkreis und trennt ihn, also kann kein Softwarefehler ihm das Anhalten ausreden. Was der Pi kann, ist es zu merken. Wenn er dreißig Prozent anfordert und der Sensor mit weniger als zweihundert Milliampere zurückkommt, schließt er daraus, dass der Kreis offen ist, und hört auf zu fordern.</p>
+    <p>Der Sensor sitzt im selben Kreis, aber seine Logikseite hängt am Pi, und deshalb antwortet er auch dann noch, wenn die Versorgung aus ist. Das ist der ganze Trick hinter der Knopfprüfung.</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-de-narrow.svg">
+          <img src="images/schematic-de.svg" width="1120" height="740" alt="Schaltplan des Ghee-Aufbaus. Ein Raspberry Pi steuert eine H-Brücke BTS7960 über vier Signalleitungen und liest einen Stromsensor INA260 über I2C. Ein Netzteil mit 12 V, eine Sicherung mit 15 A, der Not-Aus-Knopf und der Sensor liegen in Reihe im Motorkreis, den der Pi nie berührt.">
+        </picture>
+      </div>
+      <figcaption>Schaltplan</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>Wo sie steht</h2>
+    <p>Über der Spüle. Der Topf kommt ins Becken, darauf liegt ein flacher Deckel mit einem Loch für die Welle, und was entwischt, landet irgendwo, wo es nicht stört.</p>
+    <p>Das ist der Teil, den niemand in die Visualisierung packt. Die halbe Arbeit, etwas in einer Küche zu bauen, besteht darin zu entscheiden, wohin die Sauerei darf.</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="Der Aufbau sitzt festgeklemmt über der Küchenspüle, darunter ein Laptop mit laufenden Diagrammen." loading="lazy" decoding="async">
+      <figcaption>In Position, mitten im Durchlauf</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>Was sie beobachtet</h2>
+    <p>Beim Buttern Strom und Spannung auf der Motorleitung, etwa einmal pro Sekunde abgetastet und direkt in eine Datei geschrieben. Beim Kochen stattdessen ein Fühler im Topf, und der Regler schaltet die Kochplatte zu und weg, um die Zahl zu halten.</p>
+    <p>Kein Mikrofon und keine Kamera, und das ist das Nächste, was ich ändern will. Die Wette war bisher, dass der Rest warten kann, wenn die Last allein reicht, um den Bruch zu finden.</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="Ein Laptop-Bildschirm zeigt zwei laufende Diagramme der Motorwerte über einem scrollenden Terminal-Log." loading="lazy" decoding="async">
+      <figcaption>Die Live-Kurve während eines Durchlaufs</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>Was sie entscheidet</h2>
+    <p>Zwei Dinge. Ob die Last weit genug gestiegen und dann gefallen ist, um den Bruch auszurufen, und ob die Platte an oder aus sein soll, um auf 250 F zu bleiben.</p>
+    <p>Sie weiß nicht, was Joghurt ist. Sie weiß nicht, was Butter ist. Sie weiß, dass eine Zahl eine Weile lang stieg und dann abfiel, und dass diese Form bedeutet, dass die Arbeit erledigt ist.</p>
+    <figure>
+      <img src="images/batch-big.jpg" width="1400" height="1000" alt="Zwei hohe Gläser mit blassem festem Ghee, mit Schraubdeckeln und klaren Etiketten, stehen auf einem Terrassengeländer, dahinter unscharf kleinere Bügelgläser." loading="lazy" decoding="async">
+      <figcaption>Wofür die Form gut ist</figcaption>
+    </figure>
+
+  <div class="next">
+    <a href="index-de.html">&lsaquo; Zurück zur Geschichte</a>
+    <p>Joghurt, der Quirl, der Bruch, und eine Stunde lang der Farbe zusehen.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Die Fotos stammen alle aus einem einzigen Durchlauf im August 2026. Der Quirl, die fertigen Gläser und die zweite Charge wurden später fotografiert.</p>
+  <p class="contact">Fragen, Korrekturen, oder Sie haben selbst so etwas gebaut. <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>
