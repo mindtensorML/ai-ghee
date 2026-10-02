@@ -58,10 +58,15 @@ body:lang(zh) { line-height: 1.78; }
   border-radius: 3px;
 }
 
-/* Out of the way until a keyboard reaches it, then a real control. */
+/* Out of the way until a keyboard reaches it, then a real control.
+
+   Everything about where this sits is written as a logical property rather
+   than a left or a right, so it parks itself off the correct edge in a
+   language that reads the other way. There are only a handful of these in the
+   whole stylesheet and this is the first of them. */
 .skip {
   position: absolute;
-  left: -9999px;
+  inset-inline-start: -9999px;
   top: 0;
   z-index: 50;
   padding: 0.7rem 1.1rem;
@@ -71,12 +76,12 @@ body:lang(zh) { line-height: 1.78; }
   background: var(--paper);
   color: var(--ink);
   border: 1px solid var(--line);
-  border-radius: 0 0 10px 0;
+  border-end-end-radius: 10px;
   box-shadow: var(--shadow);
   text-decoration: none;
 }
 
-.skip:focus { left: 0; }
+.skip:focus { inset-inline-start: 0; }
 
 ::selection {
   background: #e7cf9a;
@@ -152,20 +157,24 @@ a { color: var(--deep); }
 .langs summary {
   list-style: none;
   cursor: pointer;
-  padding: 0.15rem 0.5rem 0.15rem 0.85rem;
-  border-left: 1px solid var(--line);
+  padding-block: 0.15rem;
+  padding-inline: 0.85rem 0.5rem;
+  border-inline-start: 1px solid var(--line);
   color: var(--faint);
 }
 
 .langs summary::-webkit-details-marker { display: none; }
 
-/* the chevron, drawn rather than fetched, and it turns when the panel opens */
+/* The chevron, drawn rather than fetched, and it turns when the panel opens.
+   The two borders below are physical rather than logical on purpose. They
+   make a corner that is rotated to point straight down, which is the same
+   mark whichever way the page reads, so flipping it would do nothing. */
 .langs summary::after {
   content: "";
   display: inline-block;
   width: 0.34em;
   height: 0.34em;
-  margin-left: 0.5em;
+  margin-inline-start: 0.5em;
   vertical-align: 0.15em;
   border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor;
@@ -187,7 +196,7 @@ a { color: var(--deep); }
 .langs ul {
   position: absolute;
   top: calc(100% + 0.55rem);
-  right: 0;
+  inset-inline-end: 0;
   z-index: 20;
   margin: 0;
   padding: 0.5rem;
@@ -506,10 +515,10 @@ footer .legal {
     letter-spacing: 0.1em;
   }
 
-  /* the panel is anchored to the right edge of a narrow screen, and it is
+  /* the panel is anchored to the outer edge of a narrow screen, and it is
      allowed to run the width of the column rather than sit under the button */
   .langs ul {
-    right: -0.4rem;
+    inset-inline-end: -0.4rem;
     max-width: calc(100vw - 2.2rem);
   }
 }

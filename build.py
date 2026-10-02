@@ -317,6 +317,20 @@ def languages(meta):
     return out
 
 
+# The languages that read right to left. Nothing else in the build cares which
+# way a language runs, because the stylesheet is written in logical properties
+# rather than lefts and rights, so a `dir` on the html element is the whole of
+# it. Keeping the set here rather than in the `languages:` line means a page
+# cannot be given the wrong one by a typo in site.md, and a page that genuinely
+# needs to disagree can still set `dir` in its own front matter.
+RTL = {"ar", "he", "fa", "ur", "yi", "ps", "sd", "ckb", "dv"}
+
+
+def direction(code):
+    """`rtl` or `ltr` for a language code, ignoring any region after it."""
+    return "rtl" if code.split("-")[0].lower() in RTL else "ltr"
+
+
 def page_file(stem, suffix):
     return f"{stem}{suffix}.html"
 
@@ -392,9 +406,15 @@ def render_nav(meta):
     # to and carrying that language so a screen reader says the word properly.
     others = alternates(meta)
     if others:
+        # Each link carries its own direction as well as its own language. The
+        # names are bare words so most of them would come out right anyway, but
+        # a right to left name sitting in a left to right list is exactly the
+        # case the bidi algorithm needs telling about, and the panel is the one
+        # place on the site where all of the languages are on screen at once.
         items = "".join(
             f'<li><a class="lang" href="{a["href"]}" lang="{a["code"]}" '
-            f'hreflang="{a["code"]}">{a["label"]}</a></li>' for a in others)
+            f'hreflang="{a["code"]}" dir="{direction(a["code"])}">'
+            f'{a["label"]}</a></li>' for a in others)
         label = here_label(meta)
         links.append(
             f'<details class="langs"><summary aria-label="Language, '
@@ -561,6 +581,7 @@ def build(md_path, template, site=None):
         return None
     meta = {**(site or {}), **meta}
     meta.setdefault("lang", "en")
+    meta.setdefault("dir", direction(meta["lang"]))
     globals()["NOTE_LABEL"] = meta.get("note_label", "See note about this chart")
 
     sections = render_sections(body, meta.get("numerals", "latin"))
@@ -572,7 +593,7 @@ def build(md_path, template, site=None):
 
     page = template
     for key in ("title", "description", "og_title", "og_description",
-                "og_url", "kicker", "headline", "standfirst", "lang",
+                "og_url", "kicker", "headline", "standfirst", "lang", "dir",
                 "skip_text", "og_site_name", "og_image_alt"):
         page = page.replace("{{" + key + "}}", meta.get(key, ""))
     page = page.replace("{{schema}}", render_schema(meta))
