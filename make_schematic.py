@@ -220,6 +220,23 @@ WORDS_RU = {
     "POWER AND SENSE": "ПИТАНИЕ И ИЗМЕРЕНИЕ",
 }
 
+# Ukrainian abbreviates the supply the way Russian does. ЖИВЛЕННЯ 12 V measures
+# 142 px against 108 of room, and БЖ is what a Ukrainian electronics drawing
+# writes for блок живлення anyway. POWER AND SENSE names the sensor rather than
+# the act of sensing, because ЖИВЛЕННЯ І ВИМІРЮВАННЯ measures 170 px and would
+# sit 24 px wider than the widest one shipping, hard against the title box.
+WORDS_UK = {
+    "12 V SUPPLY": "БЖ 12 V",
+    "MAINS": "МЕРЕЖА",
+    "DRILL": "ДРИЛЬ",
+    "EMERGENCY STOP": "АВАРІЙНИЙ СТОП",
+    "EMERGENCY": "АВАРІЙНИЙ",
+    "STOP": "СТОП",
+    "SIGNAL": "СИГНАЛ",
+    "MOTOR LOOP": "КОНТУР ДВИГУНА",
+    "POWER AND SENSE": "ЖИВЛЕННЯ І ДАТЧИК",
+}
+
 # Spanish translates all of these. The stop cannot drop its preposition without
 # breaking the grammar, so it splits after it, PARADA DE above EMERGENCIA.
 WORDS_ES = {
@@ -459,6 +476,11 @@ ARIA = {
           "по I2C. Блок питания 12 V, предохранитель 15 A, кнопка аварийного "
           "останова и датчик включены последовательно в контур двигателя, "
           "которого Pi никогда не касается.",
+    "uk": "Схема установки для гхі. Raspberry Pi керує H-мостом BTS7960 "
+          "по чотирьох сигнальних лініях і читає датчик струму INA260 по I2C. "
+          "Блок живлення 12 V, запобіжник 15 A, кнопка аварійного стопу і "
+          "датчик увімкнені послідовно в контур двигуна, якого Pi ніколи не "
+          "торкається.",
     "es": "Esquema eléctrico de la máquina de ghee. Una Raspberry Pi controla "
           "un puente en H BTS7960 por cuatro cables de señal y lee un sensor "
           "de corriente INA260 por I2C. Una fuente de 12 V, un fusible de "
@@ -553,6 +575,7 @@ LANGS = {
     "yue": dict(suffix="-yue", stack=SANS_YUE, span="han", words=WORDS_YUE),
     "ar": dict(suffix="-ar", stack=SANS_AR, span="ar", words=WORDS_AR, iso=True),
     "new": dict(suffix="-new", stack=SANS_NE, span="dv", words=WORDS_NEW),
+    "uk": dict(suffix="-uk", stack=SANS,    span=None,  words=WORDS_UK),
 }
 
 LANG = "en"
@@ -937,7 +960,14 @@ def narrow():
     o.append(supply(*PSU, s=1.18, mains_left=False))
     o.append(f'<line class="sig" x1="{PSU[0]+PSU[2]}" y1="{PSU[1]+42}" '
              f'x2="{PSU[0]+PSU[2]+34}" y2="{PSU[1]+42}"/>')
-    o.append(f'<text class="sub" x="{PSU[0]+PSU[2]+38}" y="{PSU[1]+46}">{T("MAINS")}</text>')
+    # Above the lead and anchored to the box, the way the wide drawing does it.
+    # Sitting on the lead, the word ran towards the motor return wire at x 332
+    # and how near it came depended on its length. The Filipino KURYENTE is
+    # 69 px here against the English MAINS at 44, and it was drawn straight
+    # through the wire. The French SECTEUR touched it. Both were published.
+    # There is 79 px of room now and the longest of the twenty asks for 69.
+    o.append(f'<text class="sub" x="{PSU[0]+PSU[2]+10}" y="{PSU[1]+31}">'
+             f'{T("MAINS")}</text>')
     o.append(f'<text class="val" x="{CH+13}" y="{PSU[1]-8}">+</text>')
     o.append(f'<text class="val" x="{CH+13}" y="{PSU[1]+PSU[3]+22}">&#8722;</text>')
     o.append(f'<path class="pwr" d="M{CH},{PSU[1]+PSU[3]} L{CH},{RET} L{RTX},{RET} '

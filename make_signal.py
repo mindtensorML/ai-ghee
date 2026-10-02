@@ -401,6 +401,28 @@ RU = dict(
             ("Пока ничего", 1.2, 2750, -58, "start", "lbl")],
 )
 
+# Ukrainian sets like Russian here, same stack and same tracking, because both
+# sans faces in front of the stack carry the whole Cyrillic range and nothing
+# about the four letters Ukrainian has and Russian does not needs different
+# type. ЗЛАМ rather than ПЕРЕЛОМ for the break. Both are understood, and злам
+# is the native word for a turning point, which is also what the line does at
+# that minute.
+UK = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
+    out=("signal-uk.svg", "signal-uk-narrow.svg"),
+    aria="Графік струму двигуна за одне збивання, за даними датчика. "
+         "Перші двадцять хвилин навантаження тримається близько 2700 "
+         "міліампер, росте в міру того як збирається жир, доходить до піку "
+         "близько 4700, потім падає.",
+    y="СТРУМ ДВИГУНА, mA", x="ХВИЛИНИ ЗБИВАННЯ",
+    run="Цей прогін", ideal="Форма, яку вона шукає",
+    wide=[("Двадцять хвилин майже нічого", 2.6, 2750, -46, "start", "lbl"),
+          ("Жир збирається", 19.6, 2050, 0, "end", "lbl"),
+          ("ЗЛАМ", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("ЗЛАМ", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Поки нічого", 1.2, 2750, -58, "start", "lbl")],
+)
+
 
 # Spanish is Latin script and keeps the stack and tracking of the English
 # chart. EL CORTE is what happens to the emulsion, se corta, and it is the
@@ -648,7 +670,7 @@ NEW = dict(
 )
 
 CHARTS = [EN, NE, FR, RW, LG, DE, ZH, RU, ES, HI, TR, EU, KA,
-          BN, FIL, JA, YUE, AR, NEW]
+          BN, FIL, JA, YUE, AR, NEW, UK]
 
 written = []
 for S in CHARTS:

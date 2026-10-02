@@ -65,8 +65,15 @@ body:is(:lang(ja), :lang(yue)) { line-height: 1.78; }
    in Iowan Old Style and its Cyrillic in Times, and the pages are full of
    Latin sitting inside Cyrillic sentences, Raspberry Pi and BTS7960 and
    2700 mA. Georgia goes in front because it is on both Macs and PCs and has
-   a proper Cyrillic, so the whole page is one face rather than two. */
-:root:lang(ru) {
+   a proper Cyrillic, so the whole page is one face rather than two.
+
+   Ukrainian shares the rule. The question was the four letters it has and
+   Russian does not, і and ї and є and ґ, because a face that carried the
+   Russian alphabet and stopped there would break a Ukrainian word in the
+   middle. All four of these carry them. Georgia, Palatino Linotype and Times
+   New Roman are WGL4 faces, which includes the Ukrainian block, and PT Serif
+   was drawn for Cyrillic in the first place. Checked on PT Serif here. */
+:root:is(:lang(ru), :lang(uk)) {
   --serif: Georgia, "Palatino Linotype", "Times New Roman", "PT Serif", serif;
   --sans: "Avenir Next", "Segoe UI", system-ui, "PT Sans", sans-serif;
 }
