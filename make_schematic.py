@@ -242,11 +242,11 @@ WORDS_EU = {
 
 # Georgian fits everywhere with room to spare, and only the supply block had
 # to be shortened. კვების ბლოკი 12 V measures 150 px against 108 of box, so it
-# drops to კვება 12 V, which is the same word the build page's table of parts
+# drops to 12 V კვება, which is the same word the build page's table of parts
 # uses for that row and keeps the voltage the German and Turkish drawings both
 # had to give up.
 WORDS_KA = {
-    "12 V SUPPLY": "კვება 12 V",
+    "12 V SUPPLY": "12 V კვება",
     "MAINS": "ქსელი",
     "DRILL": "ბურღი",
     "EMERGENCY STOP": "ავარიული|გაჩერება",
