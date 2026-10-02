@@ -36,6 +36,8 @@ LOG = os.path.join(HERE, "data", "churn_20260816.csv")
 SANS = '"Avenir Next","Segoe UI",sans-serif'
 SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
            '"Devanagari Sangam MN","Nirmala UI","Noto Sans Devanagari",sans-serif')
+SANS_ZH = ('"Avenir Next","Segoe UI","PingFang SC","Hiragino Sans GB",'
+           '"Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif')
 
 EN = dict(
     stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
@@ -287,8 +289,36 @@ DE = dict(
             ("Noch nichts", 1.2, 2750, -58, "start", "lbl")],
 )
 
+
+# Chinese is the second script on the site after Devanagari, and it wants the
+# opposite corrections. A Han character fills its em where a Latin capital
+# fills about seven tenths of it, so at a matched size it reads as the larger
+# of the two and the lift comes down rather than up. The tracking that opens
+# up Latin capitals is left on the axis numbers, which are still Latin digits,
+# and taken off everything set in Han.
+#
+# caps is none, and that matters here rather than being tidy. The axis titles
+# are drawn with text-transform, and the current axis ends in mA, which
+# uppercase would turn into MA.
+ZH = dict(
+    stack=SANS_ZH, track=(".04em", ".06em", ".08em"), caps="none", lift=0.94,
+    out=("signal-zh.svg", "signal-zh-narrow.svg"),
+    aria="\u4e00\u6b21\u6405\u62cc\u8fc7\u7a0b\u4e2d\u7684\u7535\u673a\u7535\u6d41\u66f2\u7ebf\uff0c"
+         "\u6570\u636e\u6765\u81ea\u4f20\u611f\u5668\u65e5\u5fd7\u3002"
+         "\u524d\u4e8c\u5341\u5206\u949f\u8d1f\u8f7d\u4fdd\u6301\u5728 2700 \u6beb\u5b89\u5de6\u53f3\uff0c"
+         "\u968f\u7740\u8102\u80aa\u805a\u96c6\u800c\u4e0a\u5347\uff0c"
+         "\u5728 4700 \u6beb\u5b89\u9644\u8fd1\u8fbe\u5230\u5cf0\u503c\uff0c\u7136\u540e\u56de\u843d\u3002",
+    y="\u7535\u673a\u7535\u6d41\uff0cmA", x="\u6405\u62cc\u5206\u949f\u6570",
+    run="\u8fd9\u4e00\u6b21", ideal="\u5b83\u8981\u627e\u7684\u5f62\u72b6",
+    wide=[("\u524d\u4e8c\u5341\u5206\u949f\u51e0\u4e4e\u6ca1\u6709\u52a8\u9759", 2.6, 2750, -46, "start", "lbl"),
+          ("\u8102\u80aa\u5f00\u59cb\u805a\u96c6", 19.6, 2050, 0, "end", "lbl"),
+          ("\u7834\u4e73", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("\u7834\u4e73", 23.0, 4704, -20, "end", "lbl-s"),
+            ("\u8fd8\u6ca1\u6709\u52a8\u9759", 1.2, 2750, -58, "start", "lbl")],
+)
+
 # Every language the chart is drawn in, in the order the site lists them.
-CHARTS = [EN, NE, FR, RW, LG, DE]
+CHARTS = [EN, NE, FR, RW, LG, DE, ZH]
 
 written = []
 for S in CHARTS:

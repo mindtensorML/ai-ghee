@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>野兽 &middot; AI 做的酥油</title>
+<meta name="description" content="一把充电电钻，一块砧板，一个电热板和一台树莓派。这套酥油装置每个部件各管什么。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="野兽">
+<meta property="og:description" content="一把充电电钻，一块砧板和一台树莓派。这套酥油装置每个部件各管什么。">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/beast.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast-zh.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="rw_RW">
+<meta property="og:locale:alternate" content="lg_UG">
+<meta property="og:locale:alternate" content="de_DE">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/beast-zh.html">
+<link rel="alternate" hreflang="zh" href="https://mindtensorml.github.io/ai-ghee/beast-zh.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/beast-ne.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="rw" href="https://mindtensorml.github.io/ai-ghee/beast-rw.html">
+<link rel="alternate" hreflang="lg" href="https://mindtensorml.github.io/ai-ghee/beast-lg.html">
+<link rel="alternate" hreflang="de" href="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top">
+  <nav class="links"><a href="index-zh.html">&lsaquo; 这个故事</a><a class="lang" href="beast.html" lang="en" hreflang="en">English</a><a class="lang" href="beast-ne.html" lang="ne" hreflang="ne">नेपाली</a><a class="lang" href="beast-fr.html" lang="fr" hreflang="fr">Français</a><a class="lang" href="beast-rw.html" lang="rw" hreflang="rw">Ikinyarwanda</a><a class="lang" href="beast-lg.html" lang="lg" hreflang="lg">Oluganda</a><a class="lang" href="beast-de.html" lang="de" hreflang="de">Deutsch</a></nav>
+  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">这台机器</span>
+</div>
+
+<header class="hero wrap">
+  <p class="kicker">怎么做出来的</p>
+  <h1>野兽</h1>
+  <p class="standfirst">这套装置上的每一样东西，不是从五金店来的，就是从厨房抽屉里来的。下面是每个部件真正在做的事。</p>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>它由什么组成</h2>
+    <p class="lead">转动的活由一把充电电钻来做。它卡在一个夹具里，夹具拧在一块砧板上，而这块板子就是让所有东西在锅上方对齐的东西。搅拌头是装在钢杆上的硬木，用螺丝拧起来而不是粘起来，我自己做而不是买现成的，原因正在这里。</p>
+    <p>电子件住在一个透明的保鲜盒里，主要是为了让我能看见有没有什么东西烧起来。记录由一台树莓派负责。那个大大的黄色按钮切断电机的电源，而且软件里没有任何东西能推翻它。</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="这套装置放在厨房台面上，可以看到夹在夹具里的电钻、木板、装电子件的透明盒子，以及底部的一台树莓派。" loading="lazy" decoding="async">
+      <figcaption>电钻，板子，盒子，按钮</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">电机</span><span class="v">充电电钻，卡在夹具里，转速远低于全速</span></li>
+      <li><span class="k">搅拌头</span><span class="v">硬木和不锈钢，自己做的，不是买的</span></li>
+      <li><span class="k">加热</span><span class="v">电热板，由调功器通断控制</span></li>
+      <li><span class="k">骨架</span><span class="v">一块砧板和一个塑料保鲜盒</span></li>
+      <li><span class="k">供电</span><span class="v">12 V 开关电源，接市电</span></li>
+      <li><span class="k">大脑</span><span class="v">树莓派，写进一个 CSV 文件</span></li>
+      <li><span class="k">感觉</span><span class="v">搅拌时看电流和电压，熬制时看锅里的探头</span></li>
+      <li><span class="k">停止</span><span class="v">一个大按钮，硬接线</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>它怎么接线</h2>
+    <p>四根信号线和一个粗回路。树莓派算出要多大力、往哪个方向转，真正把电流推出去的是 H 桥，而这两者从不相接。树莓派碰到的任何地方，电流都不超过几毫安。</p>
+    <p>那个按钮才是值得看的部件。它根本没有接到树莓派上。它串在电机回路里，断开的就是这个回路，所以没有任何软件故障能劝它不要停。树莓派能做的是察觉。如果它要求三成的输出，而传感器回报的电流不到两百毫安，它就推断出回路断了，于是不再要求。</p>
+    <p>传感器也在同一个回路上，但它的逻辑侧由树莓派供电，所以即使主电源断了它照样回话。整个按钮检测的窍门就在这里。</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-zh-narrow.svg">
+          <img src="images/schematic-zh.svg" width="1120" height="740" alt="酥油机的电路图。树莓派通过四根信号线驱动 BTS7960 H 桥，并通过 I2C 读取 INA260 电流传感器。12 V 电源、15 A 保险丝、急停按钮和传感器串联在电机回路里，而树莓派从不接触这个回路。">
+        </picture>
+      </div>
+      <figcaption>电路图</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>它放在哪里</h2>
+    <p>水槽上方。锅放进槽里，上面盖一块平板，板上开了一个过杆子的洞，跑出来的东西都落在无所谓的地方。</p>
+    <p>这是没人会放进效果图里的那一部分。在厨房里做东西，一半的功夫花在决定脏乱可以去哪里。</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="这套装置夹在厨房水槽上方就位，下面一台笔记本电脑正显示实时曲线。" loading="lazy" decoding="async">
+      <figcaption>就位，制作途中</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>它在盯着什么</h2>
+    <p>搅拌的时候，盯的是电机线上的电流和电压，大约每秒采一次，直接写进文件。熬制的时候换成锅里的一支探头，调功器把电热板不断接上又断开，好把数字守住。</p>
+    <p>没有麦克风，也没有摄像头，这正是我接下来想补上的。到目前为止赌的是，只要负载本身足够找到破乳的那一刻，其余的就可以再等等。</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="一块笔记本电脑屏幕，上面是两条电机读数的实时曲线，下方是滚动的终端日志。" loading="lazy" decoding="async">
+      <figcaption>制作途中的实时曲线</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>它决定什么</h2>
+    <p>两件事。负载是不是升够了又掉够了，可以宣布破乳，以及电热板该开还是该关，才能停在 250 F。</p>
+    <p>它不知道酸奶是什么。它不知道黄油是什么。它只知道有一个数字升了一阵又落了下去，而这个形状意味着活干完了。</p>
+    <figure>
+      <img src="images/batch-big.jpg" width="1400" height="1000" alt="两个高的螺旋盖罐装着凝固的淡色酥油，贴着透明标签，立在露台栏杆上，后面是虚化的小号卡扣盖罐。" loading="lazy" decoding="async">
+      <figcaption>这个形状是干什么用的</figcaption>
+    </figure>
+
+  <div class="next">
+    <a href="index-zh.html">&lsaquo; 回到故事</a>
+    <p>酸奶，搅拌头，破乳，还有看了一个小时的颜色。</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>照片都来自 2026 年 8 月的同一次制作。搅拌头、做好的玻璃罐和第二批是后来补拍的。</p>
+  <p class="contact">有问题，有指正，或者你自己也做了一台。 <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>

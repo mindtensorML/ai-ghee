@@ -28,6 +28,8 @@ FAINT, RED = "#9a836a", "#b0402c"
 SANS = '"Avenir Next","Segoe UI",sans-serif'
 SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
            '"Devanagari Sangam MN","Nirmala UI","Noto Sans Devanagari",sans-serif')
+SANS_ZH = ('"Avenir Next","Segoe UI","PingFang SC","Hiragino Sans GB",'
+           '"Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif')
 
 SIG, PWR = 1.9, 6.2          # the two line weights
 
@@ -133,6 +135,26 @@ WORDS_DE = {
     "POWER AND SENSE": "LEISTUNG UND MESSUNG",
 }
 
+# Chinese is compact enough that nothing here had to be cut. 急停 is what is
+# printed on an emergency stop in a Chinese workshop, it is two characters
+# against fourteen in English, and like the German it is a single word, so the
+# narrow drawing skips its second line.
+#
+# 市电 is the mains, 电钻 the drill, 电机回路 the motor loop. The part numbers,
+# the pin names and the rig's own name stay as they are drawn, which is what a
+# Chinese engineer writes anyway.
+WORDS_ZH = {
+    "12 V SUPPLY": "12 V \u7535\u6e90",
+    "MAINS": "\u5e02\u7535",
+    "DRILL": "\u7535\u94bb",
+    "EMERGENCY STOP": "\u6025\u505c",
+    "EMERGENCY": "\u6025\u505c",
+    "STOP": "",
+    "SIGNAL": "\u4fe1\u53f7",
+    "MOTOR LOOP": "\u7535\u673a\u56de\u8def",
+    "POWER AND SENSE": "\u4f9b\u7535\u4e0e\u68c0\u6d4b",
+}
+
 ARIA = {
     "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
           "H-bridge over four signal wires and reads an INA260 current sensor "
@@ -159,23 +181,31 @@ ARIA = {
           "Stromsensor INA260 über I2C. Ein Netzteil mit 12 Volt, eine "
           "Sicherung mit 15 Ampere, der Not-Aus-Taster und der Sensor liegen in "
           "Reihe im Motorkreis, den der Pi nie berührt.",
+    "zh": "酥油机的电路图。树莓派通过四根信号线驱动 BTS7960 H 桥，"
+          "并通过 I2C 读取 INA260 电流传感器。12 V 电源、15 A 保险丝、"
+          "急停按钮和传感器串联在电机回路里，而树莓派从不接触这个回路。",
     "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
           "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
           "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
           "मोटरकै लुपमा एकपछि अर्को जोडिएका छन्, जुन लुप पाईले कहिल्यै छुँदैन।",
 }
 
-# One entry per language. `dv` marks a script that hangs from a headline bar,
-# where the letter spacing that opens up the Latin labels has to be switched
-# off or it cuts the bar into pieces. Latin script languages reuse the Latin
-# stack and keep the tracking they were drawn with.
+# One entry per language. `span` is the class a translated label is wrapped
+# in, for a script that cannot take the letter spacing the Latin labels are
+# drawn with and does not sit at the same optical size as a Latin capital.
+# Devanagari hangs from a bar along the top of a word, which tracking cuts
+# into pieces, and it fills less of its em, so `dv` turns the tracking off and
+# sets it larger. A Han character fills its whole em, so `han` turns the
+# tracking off and sets it smaller. Latin script languages need neither and
+# reuse the Latin stack and tracking.
 LANGS = {
-    "en": dict(suffix="",    stack=SANS,    dv=False, words={}),
-    "ne": dict(suffix="-ne", stack=SANS_NE, dv=True,  words=WORDS_NE),
-    "fr": dict(suffix="-fr", stack=SANS,    dv=False, words=WORDS_FR),
-    "rw": dict(suffix="-rw", stack=SANS,    dv=False, words=WORDS_RW),
-    "lg": dict(suffix="-lg", stack=SANS,    dv=False, words=WORDS_LG),
-    "de": dict(suffix="-de", stack=SANS,    dv=False, words=WORDS_DE),
+    "en": dict(suffix="",    stack=SANS,    span=None,  words={}),
+    "ne": dict(suffix="-ne", stack=SANS_NE, span="dv",  words=WORDS_NE),
+    "fr": dict(suffix="-fr", stack=SANS,    span=None,  words=WORDS_FR),
+    "rw": dict(suffix="-rw", stack=SANS,    span=None,  words=WORDS_RW),
+    "lg": dict(suffix="-lg", stack=SANS,    span=None,  words=WORDS_LG),
+    "de": dict(suffix="-de", stack=SANS,    span=None,  words=WORDS_DE),
+    "zh": dict(suffix="-zh", stack=SANS_ZH, span="han", words=WORDS_ZH),
 }
 
 LANG = "en"
@@ -202,9 +232,9 @@ def T(word):
     translated = L()["words"].get(word)
     if translated is None:
         return word
-    if not L()["dv"]:
+    if not L()["span"]:
         return translated
-    return f'<tspan class="dv">{translated}</tspan>'
+    return f'<tspan class="{L()["span"]}">{translated}</tspan>'
 
 
 def T_stacked(word, x):
@@ -281,6 +311,7 @@ def css(s=1.0):
  .pin{{font:600 {12*s:.1f}px {stack()};fill:{DEEP};letter-spacing:{0.04*s:.2f}em}}
  .val{{font:700 {12.5*s:.1f}px {stack()};fill:{INK}}}
  .dv{{letter-spacing:0;font-size:1.18em}}
+ .han{{letter-spacing:0;font-size:0.92em}}
  .note{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{FAINT}}}
  .notek{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{DEEP}}}
  .lead{{fill:none;stroke:{FAINT};stroke-width:{0.9*s:.2f};stroke-dasharray:{2.5*s:.1f} {2.5*s:.1f}}}

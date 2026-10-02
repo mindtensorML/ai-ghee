@@ -12,6 +12,25 @@
   --sans: "Avenir Next", "Segoe UI", system-ui, sans-serif;
 }
 
+/* Neither stack above carries a Han character, so on the Chinese pages the
+   browser would fall back to its own default and that is a different typeface
+   on every platform. The Latin faces stay in front, which keeps the digits,
+   the mA and the part numbers in the shapes they have on every other page,
+   and a Han face sits behind them for the characters the Latin faces do not
+   have. This is the same order the Nepali pages use.
+
+   Han sets denser than Latin and wants more room between lines, so the body
+   takes a little more leading here than the 1.62 it has everywhere else. */
+:root:lang(zh) {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
+           "Songti SC", SimSun, "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+          "Noto Sans SC", sans-serif;
+}
+
+body:lang(zh) { line-height: 1.78; }
+
 * { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -84,6 +103,16 @@ a { color: var(--deep); }
   font-size: 0.87rem;
   letter-spacing: 0.02em;
   text-transform: none;
+}
+
+/* 中文 has the opposite problem to नेपाली. A Han character fills its whole em
+   where a Latin capital fills about seven tenths of one, so at the size the
+   rest of the line is set it reads as the loudest thing in the masthead. It
+   comes down rather than up, and keeps a little of the tracking because two
+   characters sitting alone want the air. */
+.top .lang[hreflang="zh"] {
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
 }
 
 .top .mark img {
