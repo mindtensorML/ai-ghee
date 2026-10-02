@@ -17,8 +17,11 @@ nav_side: right
 kicker: जेडीको एआई घ्यू
 headline: मेसिनलाई थाहा थियो, कहिले रोकिने
 standfirst: सानैदेखि यही घ्यू खाएर हुर्केँ, तर एक पटक पनि आफैँ बनाएको थिइनँ। त्यसैले एआईलाई सोधेँ, कसरी बनाउने। अनि पूरै काम उसैलाई गर्न लगाएँ।
-video: UG-S1qJc5ig
+video: p-VeGeoPTww
 video_caption: पूरै कुरा, ६० सेकेन्डमा
+short: ALIlOGPUL2Y
+short_caption: छोटो संस्करण
+short_href: https://youtube.com/shorts/ALIlOGPUL2Y
 next_text: मेसिनलाई नजिकबाट
 next_href: beast-ne.html
 next_blurb: केले बनेको छ, सेन्सिङ कहाँ हुन्छ, र रिगले साँच्चै के हेरिरहेको हुन्छ।

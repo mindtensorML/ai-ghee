@@ -44,7 +44,8 @@ Write `[*]` in a caption to link it to the note at the bottom of the page.
 
 Everything above the first heading is the page settings. Titles, link
 previews, the video at the top, the footer note. Keys are named plainly, so
-`headline` is the headline and `video` is the YouTube id.
+`headline` is the headline, `video` is the YouTube id of the film, and
+`short` is the id of the matching Short.
 
 
 ## The two languages

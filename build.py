@@ -15,7 +15,10 @@ WHAT THE MARKDOWN SUPPORTS
 --------------------------
 
 Front matter at the top, between two lines of three dashes. One key per
-line. See story.md for the full set.
+line. See story.md for the full set. `video` is the YouTube id of the film
+under the standfirst. `short` is the id of the matching Short shown beside
+it, `short_caption` is the label under that Short, and `short_href` is
+where the label links.
 
 In the body:
 
@@ -397,23 +400,59 @@ def render_head_links(meta):
     return "\n".join(out)
 
 
+def _iframe(vid, title):
+    return (
+        f'<iframe src="https://www.youtube.com/embed/{html.escape(vid, quote=True)}" '
+        f'title="{html.escape(title, quote=True)}" '
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; '
+        'gyroscope; picture-in-picture; web-share" '
+        'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+    )
+
+
+def _video_figure(vid, title, caption, *, short=False, href=None, pad="  "):
+    """One player. A Short is the narrow 9:16 figure; its caption can link out."""
+    figure_cls = "video-figure video-figure-short" if short else "video-figure"
+    frame_cls = "video video-short" if short else "video"
+    inner = pad + "  "
+    cap = ""
+    if caption:
+        text = inline(caption)
+        if href:
+            text = f'<a href="{html.escape(href, quote=True)}">{text}</a>'
+        cap = f"\n{inner}<figcaption>{text}</figcaption>"
+    return (
+        f'{pad}<figure class="{figure_cls}">\n'
+        f'{inner}<div class="{frame_cls}">\n'
+        f'{inner}  {_iframe(vid, title)}\n'
+        f"{inner}</div>"
+        f"{cap}\n"
+        f"{pad}</figure>"
+    )
+
+
 def render_video(meta):
     vid = meta.get("video")
     if not vid:
         return ""
-    caption = meta.get("video_caption", "")
-    cap = f"\n    <figcaption>{inline(caption)}</figcaption>" if caption else ""
+    main = _video_figure(vid, meta.get("og_title", "Video"),
+                         meta.get("video_caption", ""))
+    short_id = meta.get("short")
+    if not short_id:
+        return f'\n<div class="wrap">\n{main}\n</div>\n'
+
+    label = meta.get("short_caption", "")
+    href = meta.get("short_href") or f"https://youtube.com/shorts/{short_id}"
+    main = _video_figure(vid, meta.get("og_title", "Video"),
+                         meta.get("video_caption", ""), pad="    ")
+    short = _video_figure(short_id, label or "Short", label,
+                          short=True, href=href, pad="    ")
     return (
         '\n<div class="wrap">\n'
-        '  <figure class="video-figure">\n'
-        '    <div class="video">\n'
-        f'      <iframe src="https://www.youtube.com/embed/{vid}" '
-        f'title="{html.escape(meta.get("og_title", "Video"), quote=True)}" '
-        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; '
-        'gyroscope; picture-in-picture; web-share" '
-        'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n'
-        "    </div>"
-        f"{cap}\n  </figure>\n</div>\n"
+        '  <div class="video-set">\n'
+        f"{main}\n"
+        f"{short}\n"
+        "  </div>\n</div>\n"
     )
 
 

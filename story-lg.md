@@ -18,6 +18,9 @@ headline: Ekyuma ekyamanya akadde k'okuyimirira
 standfirst: Nnakula nga ndya omuzigo buli lunaku, naye saagukola wadde omulundi gumu. Kyenva mbuuza AI engeri y'okugukola. Oluvannyuma nnagigamba gikole omulimu gwonna.
 video: brmi3FwAa9c
 video_caption: Byonna, mu ssekonda 60
+short: -SNnryIbXDo
+short_caption: Vidiyo empi
+short_href: https://youtube.com/shorts/-SNnryIbXDo
 next_text: Okwekebejja ekyuma
 next_href: beast-lg.html
 next_blurb: Kyakolebwa ku ki, okupima kukolebwa wa, era ekyuma ddala kyetegereza ki.

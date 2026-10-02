@@ -18,6 +18,9 @@ headline: La machine qui savait quand s'arrêter
 standfirst: J'ai grandi en mangeant ce ghee tous les jours, sans jamais en faire moi-même. Alors j'ai demandé à une IA comment on s'y prend. Ensuite je lui ai demandé de tout faire à ma place.
 video: cHTi6nzLn_g
 video_caption: Tout ça, en 60 secondes
+short: -eubNAQqi5o
+short_caption: Version courte
+short_href: https://youtube.com/shorts/-eubNAQqi5o
 next_text: La machine de plus près
 next_href: beast-fr.html
 next_blurb: De quoi elle est faite, où se passe la mesure, et ce que l'engin surveille vraiment.
