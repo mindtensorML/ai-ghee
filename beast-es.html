@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Bestia &middot; Ghee hecho por una IA</title>
+<meta name="description" content="Un taladro a batería, una tabla de cortar, una placa y una Raspberry Pi. Qué hace cada pieza del montaje del ghee.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="La Bestia">
+<meta property="og:description" content="Un taladro a batería, una tabla de cortar y una Raspberry Pi. Qué hace cada pieza del montaje del ghee.">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/beast.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast-es.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="rw_RW">
+<meta property="og:locale:alternate" content="lg_UG">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ru_RU">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/beast-es.html">
+<link rel="alternate" hreflang="es" href="https://mindtensorml.github.io/ai-ghee/beast-es.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/beast-ne.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="rw" href="https://mindtensorml.github.io/ai-ghee/beast-rw.html">
+<link rel="alternate" hreflang="lg" href="https://mindtensorml.github.io/ai-ghee/beast-lg.html">
+<link rel="alternate" hreflang="de" href="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<link rel="alternate" hreflang="zh" href="https://mindtensorml.github.io/ai-ghee/beast-zh.html">
+<link rel="alternate" hreflang="ru" href="https://mindtensorml.github.io/ai-ghee/beast-ru.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top">
+  <nav class="links"><a href="index-es.html">&lsaquo; La historia</a><a class="lang" href="beast.html" lang="en" hreflang="en">English</a><a class="lang" href="beast-ne.html" lang="ne" hreflang="ne">नेपाली</a><a class="lang" href="beast-fr.html" lang="fr" hreflang="fr">Français</a><a class="lang" href="beast-rw.html" lang="rw" hreflang="rw">Ikinyarwanda</a><a class="lang" href="beast-lg.html" lang="lg" hreflang="lg">Oluganda</a><a class="lang" href="beast-de.html" lang="de" hreflang="de">Deutsch</a><a class="lang" href="beast-zh.html" lang="zh" hreflang="zh">中文</a><a class="lang" href="beast-ru.html" lang="ru" hreflang="ru">Русский</a></nav>
+  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">La máquina</span>
+</div>
+
+<header class="hero wrap">
+  <p class="kicker">El montaje</p>
+  <h1>La Bestia</h1>
+  <p class="standfirst">Todo lo que hay en este montaje salió de una ferretería o de un cajón de la cocina. Esto es lo que hace de verdad cada pieza.</p>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>De qué está hecha</h2>
+    <p class="lead">Lo que gira es un taladro a batería. Va sujeto con una mordaza atornillada a una tabla de cortar, y es la tabla la que mantiene todo alineado sobre la olla. El cabezal del batidor es madera dura sobre un eje de acero, montado con tornillos en vez de encolado, que es justo la razón por la que lo hice en lugar de comprarlo.</p>
+    <p>La electrónica vive en una fiambrera de plástico transparente, sobre todo para poder ver si se ha prendido fuego algo. Del registro se encarga una Raspberry Pi. El botón amarillo grande corta la corriente del motor y nada del software puede pasar por encima de él.</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="El montaje sobre una encimera de cocina, con el taladro en su mordaza, la tabla de madera, la caja transparente de electrónica y una Raspberry Pi en la base." loading="lazy" decoding="async">
+      <figcaption>Taladro, tabla, caja, botón</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">Motor</span><span class="v">Taladro a batería, sujeto, girando muy por debajo de su velocidad máxima</span></li>
+      <li><span class="k">Batidor</span><span class="v">Madera dura y acero inoxidable, hecho y no comprado</span></li>
+      <li><span class="k">Calor</span><span class="v">Placa, encendida y apagada por un regulador</span></li>
+      <li><span class="k">Estructura</span><span class="v">Una tabla de cortar y una fiambrera de plástico</span></li>
+      <li><span class="k">Alimentación</span><span class="v">Fuente conmutada de 12 V, de la pared</span></li>
+      <li><span class="k">Cerebro</span><span class="v">Raspberry Pi, registrando en un CSV</span></li>
+      <li><span class="k">Sentido</span><span class="v">Corriente y tensión mientras bate, una sonda en la olla mientras cuece</span></li>
+      <li><span class="k">Parada</span><span class="v">Un botón grande, cableado directo</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>Cómo está cableada</h2>
+    <p>Cuatro cables de señal y un bucle gordo. La Pi calcula con cuánta fuerza y en qué sentido, el puente en H es lo que de verdad empuja la corriente, y los dos nunca se tocan. Por nada que toque la Pi pasan más de unos pocos miliamperios.</p>
+    <p>El botón es la pieza que merece la pena mirar. No está cableado a la Pi en absoluto. Está puesto dentro del circuito del motor y lo corta, así que ningún fallo de software puede convencerlo de no parar. Lo que la Pi sí puede hacer es darse cuenta. Si está pidiendo un treinta por ciento y el sensor le devuelve menos de doscientos miliamperios, deduce que el circuito está abierto y deja de pedir.</p>
+    <p>El sensor está en ese mismo circuito, pero su parte lógica se alimenta de la Pi, y por eso sigue contestando cuando la alimentación está cortada. En eso consiste todo el truco de la comprobación del botón.</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-es-narrow.svg">
+          <img src="images/schematic-es.svg" width="1120" height="740" alt="Esquema eléctrico de la máquina de ghee. Una Raspberry Pi controla un puente en H BTS7960 por cuatro cables de señal y lee un sensor de corriente INA260 por I2C. Una fuente de 12 V, un fusible de 15 A, el botón de parada de emergencia y el sensor están en serie en el circuito del motor, que la Pi nunca toca.">
+        </picture>
+      </div>
+      <figcaption>Esquema eléctrico</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>Dónde se pone</h2>
+    <p>Encima del fregadero. La olla va dentro de la cubeta, encima se apoya una tapa plana con un agujero recortado para el eje, y todo lo que se escapa cae en un sitio donde da igual.</p>
+    <p>Esta es la parte que nadie mete en el render. La mitad de construir algo en una cocina consiste en decidir adónde se le permite ir al estropicio.</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="El montaje sujeto en posición por encima del fregadero de la cocina con un portátil debajo mostrando gráficas en directo." loading="lazy" decoding="async">
+      <figcaption>Colocada, en plena tanda</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>Qué vigila</h2>
+    <p>Mientras bate, corriente y tensión en la línea del motor, muestreadas más o menos una vez por segundo y escritas directamente a un fichero. Mientras cuece, en su lugar una sonda dentro de la olla, y el regulador va metiendo y quitando la placa para sostener el número.</p>
+    <p>Ni micrófono ni cámara, que es lo siguiente que quiero arreglar. La apuesta hasta ahora era que si la carga por sí sola basta para encontrar el corte, lo demás puede esperar.</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="La pantalla de un portátil mostrando dos gráficas en directo de las lecturas del motor sobre un registro de terminal que va pasando." loading="lazy" decoding="async">
+      <figcaption>La traza en directo durante una tanda</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>Qué decide</h2>
+    <p>Dos cosas. Si la carga ha subido y después ha bajado lo suficiente como para cantar el corte, y si la placa debe estar encendida o apagada para quedarse en 250 F.</p>
+    <p>No sabe lo que es el yogur. No sabe lo que es la mantequilla. Sabe que un número subió durante un rato y después se fue cayendo, y que esa forma significa que el trabajo está terminado.</p>
+    <figure>
+      <img src="images/batch-big.jpg" width="1400" height="1000" alt="Dos botes altos de ghee cuajado y pálido con tapa de rosca y etiquetas transparentes sobre la barandilla de una terraza, con botes más pequeños de cierre de clip desenfocados por detrás." loading="lazy" decoding="async">
+      <figcaption>Para qué sirve esa forma</figcaption>
+    </figure>
+
+  <div class="next">
+    <a href="index-es.html">&lsaquo; Volver a la historia</a>
+    <p>Yogur, el batidor, el corte, y una hora mirando el color.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Las fotos son todas de una misma tanda, en agosto de 2026. El batidor, los botes terminados y la segunda tanda se fotografiaron más tarde.</p>
+  <p class="contact">Preguntas, correcciones, o has construido uno tú mismo. <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>

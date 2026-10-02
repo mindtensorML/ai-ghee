@@ -155,6 +155,37 @@ WORDS_ZH = {
     "POWER AND SENSE": "\u4f9b\u7535\u4e0e\u68c0\u6d4b",
 }
 
+# Russian takes БП, the abbreviation every Russian schematic uses for a power
+# supply, the way the French drawing takes ALIM. ИСТОЧНИК is the full word and
+# runs 138 px against 108 of box, so it was never going to sit there. The
+# emergency stop splits АВАРИЙНЫЙ over СТОП, which is the order Russian reads
+# it in and matches the two lines the narrow drawing already has.
+WORDS_RU = {
+    "12 V SUPPLY": "БП 12 V",
+    "MAINS": "СЕТЬ",
+    "DRILL": "ДРЕЛЬ",
+    "EMERGENCY STOP": "АВАРИЙНЫЙ|СТОП",
+    "EMERGENCY": "АВАРИЙНЫЙ",
+    "STOP": "СТОП",
+    "SIGNAL": "СИГНАЛ",
+    "MOTOR LOOP": "КОНТУР ДВИГАТЕЛЯ",
+    "POWER AND SENSE": "ПИТАНИЕ И ИЗМЕРЕНИЕ",
+}
+
+# Spanish translates all of these. The stop cannot drop its preposition without
+# breaking the grammar, so it splits after it, PARADA DE above EMERGENCIA.
+WORDS_ES = {
+    "12 V SUPPLY": "FUENTE 12 V",
+    "MAINS": "RED",
+    "DRILL": "TALADRO",
+    "EMERGENCY STOP": "PARADA DE|EMERGENCIA",
+    "EMERGENCY": "PARADA DE",
+    "STOP": "EMERGENCIA",
+    "SIGNAL": "SEÑAL",
+    "MOTOR LOOP": "CIRCUITO DEL MOTOR",
+    "POWER AND SENSE": "ALIMENTACIÓN Y MEDIDA",
+}
+
 ARIA = {
     "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
           "H-bridge over four signal wires and reads an INA260 current sensor "
@@ -184,6 +215,16 @@ ARIA = {
     "zh": "酥油机的电路图。树莓派通过四根信号线驱动 BTS7960 H 桥，"
           "并通过 I2C 读取 INA260 电流传感器。12 V 电源、15 A 保险丝、"
           "急停按钮和传感器串联在电机回路里，而树莓派从不接触这个回路。",
+    "ru": "Схема установки для гхи. Raspberry Pi управляет H-мостом "
+          "BTS7960 по четырём сигнальным линиям и читает датчик тока INA260 "
+          "по I2C. Блок питания 12 V, предохранитель 15 A, кнопка аварийного "
+          "останова и датчик включены последовательно в контур двигателя, "
+          "которого Pi никогда не касается.",
+    "es": "Esquema eléctrico de la máquina de ghee. Una Raspberry Pi controla "
+          "un puente en H BTS7960 por cuatro cables de señal y lee un sensor "
+          "de corriente INA260 por I2C. Una fuente de 12 V, un fusible de "
+          "15 A, el botón de parada de emergencia y el sensor están en serie "
+          "en el circuito del motor, que la Pi nunca toca.",
     "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
           "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
           "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
@@ -206,6 +247,8 @@ LANGS = {
     "lg": dict(suffix="-lg", stack=SANS,    span=None,  words=WORDS_LG),
     "de": dict(suffix="-de", stack=SANS,    span=None,  words=WORDS_DE),
     "zh": dict(suffix="-zh", stack=SANS_ZH, span="han", words=WORDS_ZH),
+    "ru": dict(suffix="-ru", stack=SANS,    span=None,  words=WORDS_RU),
+    "es": dict(suffix="-es", stack=SANS,    span=None,  words=WORDS_ES),
 }
 
 LANG = "en"

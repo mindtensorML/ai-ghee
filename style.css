@@ -31,6 +31,18 @@
 
 body:lang(zh) { line-height: 1.78; }
 
+/* Cyrillic is a harder case than it looks. Both sans faces carry it, but of
+   the four serifs only Palatino Linotype and Times New Roman do, and neither
+   is the one a Mac would reach first. So a Russian page would set its Latin
+   in Iowan Old Style and its Cyrillic in Times, and the pages are full of
+   Latin sitting inside Cyrillic sentences, Raspberry Pi and BTS7960 and
+   2700 mA. Georgia goes in front because it is on both Macs and PCs and has
+   a proper Cyrillic, so the whole page is one face rather than two. */
+:root:lang(ru) {
+  --serif: Georgia, "Palatino Linotype", "Times New Roman", "PT Serif", serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "PT Sans", sans-serif;
+}
+
 * { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -78,10 +90,31 @@ a { color: var(--deep); }
   gap: 0.5rem;
 }
 
+/* The masthead sits in the 940px column, not the window, so the switcher ran
+   out of room at nine languages however wide the screen was, and the labels
+   started breaking inside themselves, LA MÁQUINA across two lines and 中文 one
+   character above the other.
+
+   So the switcher takes a row of its own under the mark. It is forced rather
+   than left to wrap on its own, because whether it fitted depended on how long
+   that page's own two words happened to be, and the masthead changed shape as
+   you moved between languages. A label never breaks, the row does. */
+.top {
+  flex-wrap: wrap;
+}
+
 .top .links {
-  display: inline-flex;
+  display: flex;
+  flex-basis: 100%;
   align-items: center;
-  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem 0.85rem;
+}
+
+.top .mark,
+.top .links a {
+  white-space: nowrap;
 }
 
 /* the rule is what stops the language switch reading as another section */

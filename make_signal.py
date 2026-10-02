@@ -317,8 +317,50 @@ ZH = dict(
             ("\u8fd8\u6ca1\u6709\u52a8\u9759", 1.2, 2750, -58, "start", "lbl")],
 )
 
+
+# Russian is Cyrillic, which sets to the same rhythm as Latin and takes the
+# stack and the tracking the English chart was drawn with. Both named faces in
+# front of the stack carry Cyrillic, so nothing falls through to a different
+# shape mid word. ПЕРЕЛОМ is a break and also a turning point, which is what
+# the curve does, and it is shorter than THE BREAK rather than longer.
+RU = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    out=("signal-ru.svg", "signal-ru-narrow.svg"),
+    aria="График тока двигателя за одно сбивание, по данным датчика. "
+         "Первые двадцать минут нагрузка держится около 2700 миллиампер, "
+         "растёт по мере того как собирается жир, доходит до пика около 4700, "
+         "затем падает.",
+    y="Ток двигателя, mA", x="Минуты сбивания",
+    run="Этот прогон", ideal="Форма, которую оно ищет",
+    wide=[("Двадцать минут почти ничего", 2.6, 2750, -46, "start", "lbl"),
+          ("Жир собирается", 19.6, 2050, 0, "end", "lbl"),
+          ("ПЕРЕЛОМ", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("ПЕРЕЛОМ", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Пока ничего", 1.2, 2750, -58, "start", "lbl")],
+)
+
+
+# Spanish is Latin script and keeps the stack and tracking of the English
+# chart. EL CORTE is what happens to the emulsion, se corta, and it is the
+# phrase a Spanish cook already uses for a sauce that splits.
+ES = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    out=("signal-es.svg", "signal-es-narrow.svg"),
+    aria="Gráfico de la corriente del motor durante un batido, a partir del "
+         "registro del sensor. La carga se mantiene cerca de 2700 "
+         "miliamperios durante los primeros veinte minutos, sube a medida que "
+         "la grasa se junta, llega a su pico cerca de 4700 y después cae.",
+    y="Corriente del motor, mA", x="Minutos de batido",
+    run="Esta tanda", ideal="La forma que busca",
+    wide=[("Veinte minutos sin casi nada", 2.6, 2750, -46, "start", "lbl"),
+          ("La grasa se junta", 19.6, 2050, 0, "end", "lbl"),
+          ("EL CORTE", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("EL CORTE", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Todavía nada", 1.2, 2750, -58, "start", "lbl")],
+)
+
 # Every language the chart is drawn in, in the order the site lists them.
-CHARTS = [EN, NE, FR, RW, LG, DE, ZH]
+CHARTS = [EN, NE, FR, RW, LG, DE, ZH, RU, ES]
 
 written = []
 for S in CHARTS:
