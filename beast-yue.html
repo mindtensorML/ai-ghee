@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="yue" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>野獸 &middot; AI 做嘅印度酥油</title>
+<meta name="description" content="一把充電電鑽，一塊砧板，一個電爐同一部 Raspberry Pi。呢套做酥油嘅嘢，每個部件各自做乜。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="野獸">
+<meta property="og:description" content="一把充電電鑽，一塊砧板同一部 Raspberry Pi。呢套做酥油嘅嘢，每個部件各自做乜。">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/card-yue.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast-yue.html">
+<meta property="og:site_name" content="JD's AI Ghee">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="做酥油嘅機器，上面寫住 AI 做酥油">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4ead7">
+<meta property="og:locale" content="yue_HK">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="rw_RW">
+<meta property="og:locale:alternate" content="lg_UG">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:locale:alternate" content="eu_ES">
+<meta property="og:locale:alternate" content="ka_GE">
+<meta property="og:locale:alternate" content="new_NP">
+<meta property="og:locale:alternate" content="bn_BD">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="fil_PH">
+<meta property="og:locale:alternate" content="ar_AR">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/beast-yue.html">
+<link rel="alternate" hreflang="yue" href="https://mindtensorml.github.io/ai-ghee/beast-yue.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/beast-ne.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="rw" href="https://mindtensorml.github.io/ai-ghee/beast-rw.html">
+<link rel="alternate" hreflang="lg" href="https://mindtensorml.github.io/ai-ghee/beast-lg.html">
+<link rel="alternate" hreflang="de" href="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<link rel="alternate" hreflang="zh" href="https://mindtensorml.github.io/ai-ghee/beast-zh.html">
+<link rel="alternate" hreflang="ru" href="https://mindtensorml.github.io/ai-ghee/beast-ru.html">
+<link rel="alternate" hreflang="es" href="https://mindtensorml.github.io/ai-ghee/beast-es.html">
+<link rel="alternate" hreflang="hi" href="https://mindtensorml.github.io/ai-ghee/beast-hi.html">
+<link rel="alternate" hreflang="tr" href="https://mindtensorml.github.io/ai-ghee/beast-tr.html">
+<link rel="alternate" hreflang="eu" href="https://mindtensorml.github.io/ai-ghee/beast-eu.html">
+<link rel="alternate" hreflang="ka" href="https://mindtensorml.github.io/ai-ghee/beast-ka.html">
+<link rel="alternate" hreflang="new" href="https://mindtensorml.github.io/ai-ghee/beast-new.html">
+<link rel="alternate" hreflang="bn" href="https://mindtensorml.github.io/ai-ghee/beast-bn.html">
+<link rel="alternate" hreflang="ja" href="https://mindtensorml.github.io/ai-ghee/beast-ja.html">
+<link rel="alternate" hreflang="fil" href="https://mindtensorml.github.io/ai-ghee/beast-fil.html">
+<link rel="alternate" hreflang="ar" href="https://mindtensorml.github.io/ai-ghee/beast-ar.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "野獸",
+  "description": "一把充電電鑽，一塊砧板同一部 Raspberry Pi。呢套做酥油嘅嘢，每個部件各自做乜。",
+  "image": "https://mindtensorml.github.io/ai-ghee/images/beast.jpg",
+  "inLanguage": "yue",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mindtensorml.github.io/ai-ghee/beast-yue.html"
+  },
+  "isAccessibleForFree": true,
+  "author": {
+    "@type": "Person",
+    "name": "JD"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JD's AI Ghee",
+    "url": "https://mindtensorml.github.io/ai-ghee/"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#story">跳去正文</a>
+
+<header class="top">
+  <nav class="links"><a class="page" href="index-yue.html">&lsaquo; 個故事</a><details class="langs"><summary aria-label="Language, 廣東話"><span class="here">廣東話</span></summary><ul lang=""><li><a class="lang" href="beast.html" lang="en" hreflang="en" dir="ltr">English</a></li><li><a class="lang" href="beast-ne.html" lang="ne" hreflang="ne" dir="ltr">नेपाली</a></li><li><a class="lang" href="beast-fr.html" lang="fr" hreflang="fr" dir="ltr">Français</a></li><li><a class="lang" href="beast-rw.html" lang="rw" hreflang="rw" dir="ltr">Ikinyarwanda</a></li><li><a class="lang" href="beast-lg.html" lang="lg" hreflang="lg" dir="ltr">Oluganda</a></li><li><a class="lang" href="beast-de.html" lang="de" hreflang="de" dir="ltr">Deutsch</a></li><li><a class="lang" href="beast-zh.html" lang="zh" hreflang="zh" dir="ltr">中文</a></li><li><a class="lang" href="beast-ru.html" lang="ru" hreflang="ru" dir="ltr">Русский</a></li><li><a class="lang" href="beast-es.html" lang="es" hreflang="es" dir="ltr">Español</a></li><li><a class="lang" href="beast-hi.html" lang="hi" hreflang="hi" dir="ltr">हिन्दी</a></li><li><a class="lang" href="beast-tr.html" lang="tr" hreflang="tr" dir="ltr">Türkçe</a></li><li><a class="lang" href="beast-eu.html" lang="eu" hreflang="eu" dir="ltr">Euskara</a></li><li><a class="lang" href="beast-ka.html" lang="ka" hreflang="ka" dir="ltr">ქართული</a></li><li><a class="lang" href="beast-new.html" lang="new" hreflang="new" dir="ltr">नेपाल भाषा</a></li><li><a class="lang" href="beast-bn.html" lang="bn" hreflang="bn" dir="ltr">বাংলা</a></li><li><a class="lang" href="beast-ja.html" lang="ja" hreflang="ja" dir="ltr">日本語</a></li><li><a class="lang" href="beast-fil.html" lang="fil" hreflang="fil" dir="ltr">Filipino</a></li><li><a class="lang" href="beast-ar.html" lang="ar" hreflang="ar" dir="rtl">العربية</a></li></ul></details></nav>
+  <a class="mark" href="index-yue.html"><img src="logo.svg" alt="" width="24" height="24">呢部機</a>
+</header>
+
+<header class="hero wrap">
+  <p class="kicker">點砌出嚟</p>
+  <h1>野獸</h1>
+  <p class="standfirst">呢套嘢上面每一樣，唔係五金舖嚟就係廚房抽屜嚟。下面係每個部件真正做嘅事。</p>
+</header>
+
+<main id="story">
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>佢用乜砌成</h2>
+    <p class="lead">轉嘅工由一把充電電鑽做。佢夾喺一個夾鉗入面，夾鉗用螺絲上喺一塊砧板上，而就係呢塊板令到所有嘢喺鍋上面對得正，唔會喐。攪棒頭係裝喺鋼軸上嘅硬木，用螺絲擰埋而唔係用膠黏，我自己做而唔係買現成，原因就喺呢度。</p>
+    <p>電子嘢住喺一個透明塑膠食物盒入面，主要係為咗畀我睇得到有冇邊樣燒起。記錄由一部 Raspberry Pi 負責。嗰個大大嘅黃掣切斷馬達嘅電，而軟件入面冇任何嘢可以駁佢嘴。</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="呢套嘢放喺廚房枱面上，睇得到夾喺夾鉗入面嘅電鑽、木板、裝電子零件嘅透明盒，以及底部一部 Raspberry Pi。" loading="lazy" decoding="async">
+      <figcaption>電鑽、板、盒、掣</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">馬達</span><span class="v">充電電鑽，夾鉗夾住，轉速遠低過全速</span></li>
+      <li><span class="k">攪棒</span><span class="v">硬木同不鏽鋼，自己做，唔係買</span></li>
+      <li><span class="k">加熱</span><span class="v">電爐，由 AC 調壓器開開關關</span></li>
+      <li><span class="k">骨架</span><span class="v">一塊砧板同一個塑膠食物盒</span></li>
+      <li><span class="k">供電</span><span class="v">12 V 開關電源，插牆</span></li>
+      <li><span class="k">腦</span><span class="v">Raspberry Pi，寫入一個 CSV</span></li>
+      <li><span class="k">感覺</span><span class="v">攪嗰陣睇電流同電壓，煮嗰陣睇鍋入面嘅探針</span></li>
+      <li><span class="k">停</span><span class="v">一個大掣，硬線接死</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>佢點接線</h2>
+    <p>四條訊號線，一個粗迴路。Pi 計出要幾大力、向邊邊轉，真正將電流推出去嘅係 H 橋，而兩邊從來唔會相撞。Pi 掂到嘅任何一處，電流都唔會超過幾毫安。</p>
+    <p>個掣至係值得睇嘅部件。佢根本冇接去 Pi。佢串喺馬達迴路入面，斷開嘅就係呢個迴路，所以冇任何軟件出錯可以勸佢唔好停。Pi 做得到嘅係察覺。如果佢要三成輸出，而感應器回報嘅電流唔夠兩百毫安，佢就推斷迴路斷咗，於是唔再要。</p>
+    <p>感應器都喺同一個迴路上，但佢嘅邏輯側係靠 Pi 供電，所以就算主電源斷咗，佢照樣回話。成個掣檢測嘅竅門就喺呢度。</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-yue-narrow.svg">
+          <img src="images/schematic-yue.svg" width="1120" height="740" alt="做酥油呢套嘢嘅電路圖。一部 Raspberry Pi 經四條訊號線驅動一塊 BTS7960 H 橋，再經 I2C 讀一個 INA260 電流感應器。12 V 電源、15 A 保險絲、急停掣同感應器串聯喺馬達迴路入面，而 Pi 從來唔掂呢個迴路。">
+        </picture>
+      </div>
+      <figcaption>電路圖</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>佢擺喺邊</h2>
+    <p>水槽上面。個鍋放入槽入面，上面蓋一塊平板，板上開咗個窿畀支軸過，走出嚟嘅嘢都跌落一個唔緊要嘅地方。</p>
+    <p>呢部分冇人會放入效果圖。喺廚房砌嘢，一半功夫都係用嚟決定啲污糟嘢可以去邊。</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="呢套嘢夾喺廚房水槽上面就位，下面一部 laptop 正顯示實時曲線。" loading="lazy" decoding="async">
+      <figcaption>就位，做緊嗰陣</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>佢盯住乜</h2>
+    <p>攪嘅時候，盯嘅係馬達線上嘅電流同電壓，大約每秒取樣一次，直接寫入一個檔案。煮嘅時候就換成鍋入面一支探針，調壓器將電爐開開關關，為咗守住個數字。</p>
+    <p>冇咪，又冇鏡頭，而呢樣正係我下一步想補返嘅。到目前為止賭嘅係，只要單靠負載就夠搵到散開嗰一刻，其餘嘅可以再等。</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="一塊 laptop 螢幕，上面係兩條馬達讀數嘅實時曲線，下面係滾動嘅終端機紀錄。" loading="lazy" decoding="async">
+      <figcaption>做緊嗰陣嘅實時曲線</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>佢決定乜</h2>
+    <p>兩樣。負載係唔係升夠咗又跌夠咗，可以判定牛油散開，以及電爐要開定要關，個數字至守得住 250 F。</p>
+    <p>佢唔知乳酪係乜。佢唔知牛油係乜。佢只知有一個數字升咗一陣，然後跌返落去，而呢個形狀代表份工做完。</p>
+    <figure>
+      <img src="images/batch-big.jpg" width="1400" height="1000" alt="兩個高身旋蓋瓶裝住凝固嘅淺色酥油，貼住透明標籤，立喺露台欄杆上，後面係散焦嘅細號扣蓋瓶。" loading="lazy" decoding="async">
+      <figcaption>呢個形狀係做乜用</figcaption>
+    </figure>
+
+  <div class="next">
+    <a href="index-yue.html">&lsaquo; 返去個故事</a>
+    <p>乳酪，攪棒，散開嘅一刻，同埋睇咗一個鐘嘅顏色。</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>相全部嚟自 2026 年 8 月同一次製作。攪棒、做好嘅玻璃瓶同第二批係後來補拍嘅。</p>
+  <p class="contact">有問題，有錯要指正，或者你自己都砌過一部。 <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>

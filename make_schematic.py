@@ -18,6 +18,7 @@ lines.
 
 import base64
 import os
+import re
 import struct
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -31,6 +32,52 @@ SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
 SANS_ZH = ('"Avenir Next","Segoe UI","PingFang SC","Hiragino Sans GB",'
            '"Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif')
 SANS_KA = ('"Avenir Next","Segoe UI","Noto Sans Georgian",Sylfaen,sans-serif')
+SANS_BN = ('"Avenir Next","Segoe UI","Kohinoor Bangla","Bangla Sangam MN",'
+           '"Nirmala UI","Noto Sans Bengali",Vrinda,sans-serif')
+SANS_JA = ('"Avenir Next","Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN",'
+           '"Yu Gothic",Meiryo,"Noto Sans CJK JP","Noto Sans JP",sans-serif')
+SANS_YUE = ('"Avenir Next","Segoe UI","PingFang HK","Hiragino Sans CNS",'
+            '"Microsoft JhengHei","Noto Sans CJK HK","Noto Sans CJK TC",'
+            '"Noto Sans HK",sans-serif')
+SANS_AR = ('"Avenir Next","Segoe UI","Geeza Pro","Segoe UI Arabic",'
+           '"Noto Sans Arabic","Noto Naskh Arabic",Tahoma,sans-serif')
+
+# A language that reads right to left sets `iso`, and every label it supplies
+# is wrapped in a pair of Unicode isolates. This drawing is held together by
+# absolute coordinates and by text-anchor, and direction:rtl in the stylesheet
+# would flip what start and end mean and move every label on it. The isolates
+# set the base direction of the label and nothing else, so a line like the
+# supply block reads as an Arabic reader expects while the box it sits in
+# stays exactly where it is for the other eighteen languages.
+#
+# Part numbers and pin names are untouched, because a label that is not in the
+# table is drawn as the code writes it and those are bare Latin either way.
+RLI, LRI, PDI = "\u2067", "\u2066", "\u2069"
+
+# A Latin technical run inside a right to left label.
+#
+# `12 V SUPPLY` becomes `تغذية 12 V` in Arabic, and written as it stands that
+# draws as `تغذية V 12`. The digits are read as an Arabic number, because the
+# word before them is Arabic, the unit is read as Latin, the space between
+# belongs to the Arabic, and the two end up as separate pieces laid out right
+# to left. The Unicode algorithm is doing the right thing with a string that
+# did not say what it meant. A value and its unit are one object and have to
+# be marked as one, which is what the left to right isolate does.
+#
+# Only a run holding a Latin letter is wrapped. A bare number is already laid
+# out correctly and wrapping one would change nothing.
+TECH_RUN = re.compile(
+    r"[A-Za-z0-9][A-Za-z0-9.+\-/_]*(?:[ \u00a0][A-Za-z0-9][A-Za-z0-9.+\-/_]*)*")
+
+
+def protect(text):
+    """Hold each Latin technical run together inside a right to left label."""
+    return TECH_RUN.sub(
+        lambda m: (LRI + m.group(0) + PDI
+                   if re.search("[A-Za-z]", m.group(0)) else m.group(0)),
+        text)
+
+
 
 SIG, PWR = 1.9, 6.2          # the two line weights
 
@@ -257,6 +304,127 @@ WORDS_KA = {
     "POWER AND SENSE": "კვება და გაზომვა",
 }
 
+# Bangla hangs from a headline bar the way Devanagari does, so it takes the
+# `dv` treatment rather than one of its own. Everything here fits with room.
+# The widest is the supply block at 87 px against 108 of box, so unlike the
+# German and Turkish drawings this one keeps its voltage.
+#
+# ইমার্জেন্সি স্টপ rather than the formal আপৎকালীন বন্ধকরণ, which is the same call
+# the German NOT-AUS entry makes. It is what is moulded into the button in the
+# photographs and what a technician in Dhaka says out loud. A safety marking
+# is the wrong place to make a reader decode a word.
+WORDS_BN = {
+    "12 V SUPPLY": "12 V সাপ্লাই",
+    "MAINS": "মেইন্স",
+    "DRILL": "ড্রিল",
+    "EMERGENCY STOP": "ইমার্জেন্সি স্টপ",
+    "EMERGENCY": "ইমার্জেন্সি",
+    "STOP": "স্টপ",
+    "SIGNAL": "সিগন্যাল",
+    "MOTOR LOOP": "মোটর লুপ",
+    "POWER AND SENSE": "পাওয়ার ও সেন্সিং",
+}
+
+# Filipino keeps four of these in English, which is what a Filipino drawing
+# actually does rather than a failure to translate. Philippine wiring diagrams
+# and parts lists are written in English and SUPPLY and DRILL are the words
+# said out loud. BARENA is a real Tagalog word but it means an auger or a
+# drill bit rather than a power tool, so a reader would picture the wrong
+# object. EMERGENCY STOP is moulded into the button, and the formal
+# PANGHINTONG PANG-EMERHENSIYA is both far over budget and pure officialese.
+#
+# MAINS does translate, and has to. Nobody in the Philippines says mains. Wall
+# power is kuryente. At 58 px it is the widest this label has ever been here,
+# against 49 px for the French SECTEUR, and it is centred just outside the
+# supply box, so it is the one label on this drawing worth looking at.
+WORDS_FIL = {
+    "MAINS": "KURYENTE",
+    "SIGNAL": "SINYAL",
+    "MOTOR LOOP": "LOOP NG MOTOR",
+    "POWER AND SENSE": "POWER AT SENSE",
+}
+
+# Japanese has a settled term for every one of these and nothing is close to
+# its budget. 非常停止 is what is written on an emergency stop in a Japanese
+# workshop and what JIS calls it. It is four characters on one line, so like
+# the German and the Chinese it leaves the narrow drawing's second line empty.
+# 計測 rather than 検出 for the sensing, because the INA260 measures a value
+# rather than detecting an event.
+WORDS_JA = {
+    "12 V SUPPLY": "12 V 電源",
+    "MAINS": "商用電源",
+    "DRILL": "ドリル",
+    "EMERGENCY STOP": "非常停止",
+    "EMERGENCY": "非常停止",
+    "STOP": "",
+    "SIGNAL": "信号",
+    "MOTOR LOOP": "モーター回路",
+    "POWER AND SENSE": "電源と計測",
+}
+
+# Cantonese is not the Chinese table with different characters. Hong Kong says
+# 馬達 where the mainland says 電機, 訊號 where it says 信號, 迴路 where it says
+# 回路, and 急停掣 where it says 急停, the 掣 being the Cantonese word for a
+# switch or button. 急停掣 is three characters on one line, so the narrow
+# drawing's second line is empty here too.
+WORDS_YUE = {
+    "12 V SUPPLY": "12 V 電源",
+    "MAINS": "市電",
+    "DRILL": "電鑽",
+    "EMERGENCY STOP": "急停掣",
+    "EMERGENCY": "急停掣",
+    "STOP": "",
+    "SIGNAL": "訊號",
+    "MOTOR LOOP": "馬達迴路",
+    "POWER AND SENSE": "供電同感應",
+}
+
+# Arabic, the first language on this drawing that reads right to left. The
+# labels are written in plain logical order, the way anyone types Arabic, and
+# the isolates that put them in the right visual order are added by T().
+#
+# The two halves of the emergency stop are swapped against the English. Arabic
+# puts the stopping first and the emergency second, so the top line is إيقاف
+# and the bottom is الطوارئ. Taking the English order would give الطوارئ إيقاف,
+# which is not a phrase. Kinyarwanda needed the same inversion for the same
+# kind of reason.
+#
+# Nothing here is near its budget. مثقاب is six characters where Basque needed
+# ten, and تغذية 12 V keeps the voltage that the German and Turkish drawings
+# both had to give up.
+WORDS_AR = {
+    "12 V SUPPLY": "تغذية 12 V",
+    "MAINS": "الكهرباء",
+    "DRILL": "مثقاب",
+    "EMERGENCY STOP": "إيقاف|الطوارئ",
+    "EMERGENCY": "إيقاف",
+    "STOP": "الطوارئ",
+    "SIGNAL": "إشارة",
+    "MOTOR LOOP": "حلقة المحرك",
+    "POWER AND SENSE": "الطاقة والقياس",
+}
+
+# Newari, that is Nepal Bhasa. The same script as Nepali and a different
+# language. बः is the real Nepal Bhasa word for power and is attested, so the
+# sensing heading does not need a loanword for its first half.
+#
+# आपत्कालीन स्टप is the phrase actually painted on equipment in the Valley and
+# is what the page body says, so the drawing and the prose agree. There is a
+# better native alternative, हथाय् दिकेगु, and it is flagged in the handover
+# for a native speaker to rule on. A safety marking is the one place to choose
+# instant recognition over the finer word.
+WORDS_NEW = {
+    "12 V SUPPLY": "12 V सप्लाई",
+    "MAINS": "मेन्स",
+    "DRILL": "ड्रिल",
+    "EMERGENCY STOP": "आपत्कालीन स्टप",
+    "EMERGENCY": "आपत्कालीन",
+    "STOP": "स्टप",
+    "SIGNAL": "सिग्नल",
+    "MOTOR LOOP": "मोटर लुप",
+    "POWER AND SENSE": "बः व सेन्सिङ",
+}
+
 ARIA = {
     "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
           "H-bridge over four signal wires and reads an INA260 current sensor "
@@ -316,6 +484,32 @@ ARIA = {
           "BTS7960 एच ब्रिज चलाता है और I2C से INA260 करेंट सेंसर पढ़ता है। 12 V की "
           "सप्लाई, 15 एम्पियर का फ़्यूज़, इमरजेंसी स्टॉप बटन और सेंसर मोटर के उसी लूप में "
           "एक के बाद एक जुड़े हैं, जिस लूप को पाई कभी नहीं छूता।",
+    "ar": "مخطط دائرة آلة السمن. راسبيري باي يقود جسر BTS7960 عبر أربعة أسلاك "
+          "إشارة، ويقرأ مستشعر التيار INA260 عبر I2C. مزود طاقة 12 فولت، ومصهر "
+          "15 أمبير، وزر إيقاف الطوارئ، والمستشعر، كلها موصولة على التوالي في "
+          "حلقة المحرك. وهي حلقة لا يلمسها راسبيري باي أبدا.",
+    "new": "घ्यः दय्कीगु रिगया सर्किट डायग्राम। रास्पबेरी पाईं प्यंगू सिग्नल "
+           "तारं BTS7960 एच ब्रिज न्ह्याकी अले I2C पाखें INA260 करेन्ट सेन्सर "
+           "ब्वनी। 12 भोल्टया सप्लाई, 15 एम्पियरया फ्युज, आपत्कालीन स्टप बटन व "
+           "सेन्सर मोटरयागु हे लुपय् छगू लिपा मेगु कसातःगु दु, उगु लुप पाईं "
+           "गुबलें थीइमखु।",
+    "bn": "ঘি বানানোর যন্ত্রের সার্কিট ডায়াগ্রাম। রাস্পবেরি পাই চারটি সিগন্যাল তার "
+          "দিয়ে BTS7960 এইচ ব্রিজ চালায় আর I2C দিয়ে INA260 কারেন্ট সেন্সর পড়ে। "
+          "12 V-র একটা সাপ্লাই, 15 অ্যাম্পিয়ারের একটা ফিউজ, ইমার্জেন্সি স্টপ বোতাম "
+          "আর সেন্সর মোটরের লুপে একের পরে এক লাগানো। ওই লুপ পাই কখনও ছোঁয় না।",
+    "fil": "Diagram ng sirkito ng makina ng ghee. Isang Raspberry Pi ang "
+           "nagpapaandar sa BTS7960 H bridge sa apat na signal wire at "
+           "nagbabasa ng INA260 current sensor sa pamamagitan ng I2C. Ang "
+           "12 V na supply, ang 15 A na fuse, ang emergency stop button at "
+           "ang sensor ay nakasunod-sunod sa loop ng motor. Hindi hinihipo ng "
+           "Pi ang loop na iyon kahit kailan.",
+    "ja": "ギーを作る装置の回路図。Raspberry Pi が四本の信号線で BTS7960 の H "
+          "ブリッジを駆動し、I2C で INA260 の電流センサーを読む。12 V の電源、"
+          "15 A のヒューズ、非常停止ボタン、電流センサーがモーターのループに"
+          "直列に入っていて、そのループに Pi は一度も触れない。",
+    "yue": "整酥油嘅機嘅電路圖。Raspberry Pi 用四條訊號線推 BTS7960 H 橋，"
+           "再用 I2C 讀 INA260 電流感應器。12 V 電源、15 A 保險絲、急停掣同"
+           "感應器係串喺馬達迴路入面，呢個迴路 Pi 完全冇掂過。",
     "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
           "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
           "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
@@ -325,6 +519,11 @@ ARIA = {
 # One entry per language. `span` is the class a translated label is wrapped
 # in, for a script that cannot take the letter spacing the Latin labels are
 # drawn with and does not sit at the same optical size as a Latin capital.
+# The class names the treatment rather than the script. Bengali is not
+# Devanagari, but it is built the same way, it objects to tracking for the
+# same reason, and measured at a matched size the body of a letter in each is
+# 7.0px against a Latin capital's 8.25px. So Bangla takes `dv` as it stands
+# rather than a second class holding the same two numbers.
 # Devanagari hangs from a bar along the top of a word, which tracking cuts
 # into pieces, and it fills less of its em, so `dv` turns the tracking off and
 # sets it larger. A Han character fills its whole em, so `han` turns the
@@ -348,6 +547,12 @@ LANGS = {
     "tr": dict(suffix="-tr", stack=SANS,    span=None,  words=WORDS_TR),
     "eu": dict(suffix="-eu", stack=SANS,    span=None,  words=WORDS_EU),
     "ka": dict(suffix="-ka", stack=SANS_KA, span="ka",   words=WORDS_KA),
+    "bn": dict(suffix="-bn", stack=SANS_BN, span="dv",  words=WORDS_BN),
+    "fil": dict(suffix="-fil", stack=SANS,  span=None,  words=WORDS_FIL),
+    "ja": dict(suffix="-ja", stack=SANS_JA, span="han", words=WORDS_JA),
+    "yue": dict(suffix="-yue", stack=SANS_YUE, span="han", words=WORDS_YUE),
+    "ar": dict(suffix="-ar", stack=SANS_AR, span="ar", words=WORDS_AR, iso=True),
+    "new": dict(suffix="-new", stack=SANS_NE, span="dv", words=WORDS_NEW),
 }
 
 LANG = "en"
@@ -374,6 +579,8 @@ def T(word):
     translated = L()["words"].get(word)
     if translated is None:
         return word
+    if L().get("iso"):
+        translated = f"{RLI}{protect(translated)}{PDI}"
     if not L()["span"]:
         return translated
     return f'<tspan class="{L()["span"]}">{translated}</tspan>'
@@ -393,6 +600,9 @@ def T_stacked(word, x):
     if translated is None or "|" not in translated:
         return T(word)
     first, second = translated.split("|", 1)
+    if L().get("iso"):
+        first = f"{RLI}{protect(first)}{PDI}"
+        second = f"{RLI}{protect(second)}{PDI}"
     return (f'<tspan x="{x}" dy="-1.5em">{first}</tspan>'
             f'<tspan x="{x}" dy="1.5em">{second}</tspan>')
 
@@ -455,6 +665,7 @@ def css(s=1.0):
  .dv{{letter-spacing:0;font-size:1.18em}}
  .han{{letter-spacing:0;font-size:0.92em}}
  .ka{{letter-spacing:0.02em;font-size:0.97em}}
+ .ar{{letter-spacing:0;font-size:1.08em}}
  .note{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{FAINT}}}
  .notek{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{DEEP}}}
  .lead{{fill:none;stroke:{FAINT};stroke-width:{0.9*s:.2f};stroke-dasharray:{2.5*s:.1f} {2.5*s:.1f}}}
@@ -552,7 +763,14 @@ def supply(x, y, w, h, s=1.0, mains_left=True):
                  f'stroke-width="{1.4*s:.2f}"/>')
     if mains_left:
         o.append(f'<line class="sig" x1="{x-54*s}" y1="{y+h/2}" x2="{x}" y2="{y+h/2}"/>')
-        o.append(f'<text class="sub" x="{x-27*s}" y="{y+h/2-9}" text-anchor="middle">{T("MAINS")}</text>')
+        # Anchored to the box rather than centred on the lead. Centred, how
+        # close this label comes to the supply box depends on how long the
+        # word is, and the Filipino KURYENTE is 58 px against the English
+        # MAINS at 37, so its last letter was drawn through the border. The
+        # offset is chosen so the English label does not move, and a longer
+        # word now grows away from the box instead of into it.
+        o.append(f'<text class="sub" x="{x-8.75*s}" y="{y+h/2-9}" '
+                 f'text-anchor="end">{T("MAINS")}</text>')
     return "".join(o)
 
 

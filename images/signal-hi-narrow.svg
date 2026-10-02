@@ -17,6 +17,6 @@
 <line x1="100" y1="66" x2="134" y2="66" class="trace"/><text x="144" y="71" class="key">यह रन</text><line x1="100" y1="94" x2="134" y2="94" class="ideal"/><text x="144" y="99" class="key">जो आकार यह ढूँढता है</text>
 <circle cx="359.0" cy="176.8" r="5.5" fill="#a8681a"/>
 <text x="336.2" y="156.7" class="lbl-s" text-anchor="end">मक्खन छूटा</text><text x="87.7" y="261.0" class="lbl" text-anchor="start">अभी कुछ नहीं</text>
-<text x="7" y="228.0" class="unit" text-anchor="middle" transform="rotate(-90 7 228.0)">मोटर करेंट, mA</text>
+<text x="16" y="228.0" class="unit" text-anchor="middle" transform="rotate(-90 16 228.0)">मोटर करेंट, mA</text>
 <text x="245.0" y="451" class="unit" text-anchor="middle">मथने के मिनट</text>
 </svg>

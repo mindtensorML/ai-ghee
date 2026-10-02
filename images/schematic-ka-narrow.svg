@@ -13,6 +13,7 @@
  .dv{letter-spacing:0;font-size:1.18em}
  .han{letter-spacing:0;font-size:0.92em}
  .ka{letter-spacing:0.02em;font-size:0.97em}
+ .ar{letter-spacing:0;font-size:1.08em}
  .note{font:italic 400 13.0px Georgia,serif;fill:#9a836a}
  .notek{font:italic 400 13.0px Georgia,serif;fill:#a8681a}
  .lead{fill:none;stroke:#9a836a;stroke-width:1.06;stroke-dasharray:2.9 2.9}

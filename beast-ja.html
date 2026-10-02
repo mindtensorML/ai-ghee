@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ザ・ビースト &middot; AIが作るギー</title>
+<meta name="description" content="コードレスドリル、まな板、電熱プレート、Raspberry Pi。ギーを作る装置のどの部分が何をしているか。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ザ・ビースト">
+<meta property="og:description" content="コードレスドリル、まな板、Raspberry Pi。ギーを作る装置のどの部分が何をしているか。">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/card-ja.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast-ja.html">
+<meta property="og:site_name" content="JD's AI Ghee">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ギーを作る機械、AIがギーを作ると書かれている">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4ead7">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="rw_RW">
+<meta property="og:locale:alternate" content="lg_UG">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:locale:alternate" content="eu_ES">
+<meta property="og:locale:alternate" content="ka_GE">
+<meta property="og:locale:alternate" content="new_NP">
+<meta property="og:locale:alternate" content="bn_BD">
+<meta property="og:locale:alternate" content="fil_PH">
+<meta property="og:locale:alternate" content="yue_HK">
+<meta property="og:locale:alternate" content="ar_AR">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/beast-ja.html">
+<link rel="alternate" hreflang="ja" href="https://mindtensorml.github.io/ai-ghee/beast-ja.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/beast-ne.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="rw" href="https://mindtensorml.github.io/ai-ghee/beast-rw.html">
+<link rel="alternate" hreflang="lg" href="https://mindtensorml.github.io/ai-ghee/beast-lg.html">
+<link rel="alternate" hreflang="de" href="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<link rel="alternate" hreflang="zh" href="https://mindtensorml.github.io/ai-ghee/beast-zh.html">
+<link rel="alternate" hreflang="ru" href="https://mindtensorml.github.io/ai-ghee/beast-ru.html">
+<link rel="alternate" hreflang="es" href="https://mindtensorml.github.io/ai-ghee/beast-es.html">
+<link rel="alternate" hreflang="hi" href="https://mindtensorml.github.io/ai-ghee/beast-hi.html">
+<link rel="alternate" hreflang="tr" href="https://mindtensorml.github.io/ai-ghee/beast-tr.html">
+<link rel="alternate" hreflang="eu" href="https://mindtensorml.github.io/ai-ghee/beast-eu.html">
+<link rel="alternate" hreflang="ka" href="https://mindtensorml.github.io/ai-ghee/beast-ka.html">
+<link rel="alternate" hreflang="new" href="https://mindtensorml.github.io/ai-ghee/beast-new.html">
+<link rel="alternate" hreflang="bn" href="https://mindtensorml.github.io/ai-ghee/beast-bn.html">
+<link rel="alternate" hreflang="fil" href="https://mindtensorml.github.io/ai-ghee/beast-fil.html">
+<link rel="alternate" hreflang="yue" href="https://mindtensorml.github.io/ai-ghee/beast-yue.html">
+<link rel="alternate" hreflang="ar" href="https://mindtensorml.github.io/ai-ghee/beast-ar.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ザ・ビースト",
+  "description": "コードレスドリル、まな板、Raspberry Pi。ギーを作る装置のどの部分が何をしているか。",
+  "image": "https://mindtensorml.github.io/ai-ghee/images/beast.jpg",
+  "inLanguage": "ja",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mindtensorml.github.io/ai-ghee/beast-ja.html"
+  },
+  "isAccessibleForFree": true,
+  "author": {
+    "@type": "Person",
+    "name": "JD"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JD's AI Ghee",
+    "url": "https://mindtensorml.github.io/ai-ghee/"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#story">本文へ飛ぶ</a>
+
+<header class="top">
+  <nav class="links"><a class="page" href="index-ja.html">&lsaquo; この話</a><details class="langs"><summary aria-label="Language, 日本語"><span class="here">日本語</span></summary><ul lang=""><li><a class="lang" href="beast.html" lang="en" hreflang="en" dir="ltr">English</a></li><li><a class="lang" href="beast-ne.html" lang="ne" hreflang="ne" dir="ltr">नेपाली</a></li><li><a class="lang" href="beast-fr.html" lang="fr" hreflang="fr" dir="ltr">Français</a></li><li><a class="lang" href="beast-rw.html" lang="rw" hreflang="rw" dir="ltr">Ikinyarwanda</a></li><li><a class="lang" href="beast-lg.html" lang="lg" hreflang="lg" dir="ltr">Oluganda</a></li><li><a class="lang" href="beast-de.html" lang="de" hreflang="de" dir="ltr">Deutsch</a></li><li><a class="lang" href="beast-zh.html" lang="zh" hreflang="zh" dir="ltr">中文</a></li><li><a class="lang" href="beast-ru.html" lang="ru" hreflang="ru" dir="ltr">Русский</a></li><li><a class="lang" href="beast-es.html" lang="es" hreflang="es" dir="ltr">Español</a></li><li><a class="lang" href="beast-hi.html" lang="hi" hreflang="hi" dir="ltr">हिन्दी</a></li><li><a class="lang" href="beast-tr.html" lang="tr" hreflang="tr" dir="ltr">Türkçe</a></li><li><a class="lang" href="beast-eu.html" lang="eu" hreflang="eu" dir="ltr">Euskara</a></li><li><a class="lang" href="beast-ka.html" lang="ka" hreflang="ka" dir="ltr">ქართული</a></li><li><a class="lang" href="beast-new.html" lang="new" hreflang="new" dir="ltr">नेपाल भाषा</a></li><li><a class="lang" href="beast-bn.html" lang="bn" hreflang="bn" dir="ltr">বাংলা</a></li><li><a class="lang" href="beast-fil.html" lang="fil" hreflang="fil" dir="ltr">Filipino</a></li><li><a class="lang" href="beast-yue.html" lang="yue" hreflang="yue" dir="ltr">廣東話</a></li><li><a class="lang" href="beast-ar.html" lang="ar" hreflang="ar" dir="rtl">العربية</a></li></ul></details></nav>
+  <a class="mark" href="index-ja.html"><img src="logo.svg" alt="" width="24" height="24">この機械</a>
+</header>
+
+<header class="hero wrap">
+  <p class="kicker">組み立て</p>
+  <h1>ザ・ビースト</h1>
+  <p class="standfirst">この装置に乗っているものは全部、ホームセンターか台所の引き出しから来ている。どの部分が実際に何をしているかを書いた。</p>
+</header>
+
+<main id="story">
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>何でできているか</h2>
+    <p class="lead">回す仕事はコードレスドリルがやっている。まな板にボルトで留めたクランプに収まっていて、鍋の上で全部の位置を揃えているのはその板だ。撹拌ヘッドはスチールシャフトに硬い木がついたもので、接着ではなくねじ留め。買わずに自分で作った理由はそこにある。</p>
+    <p>電子部品は透明なプラスチックの保存容器に住んでいる。だいたいは、何か燃えていないかを見られるようにするためだ。記録は Raspberry Pi がやっている。大きな黄色いボタンはモーターの電源を切り、ソフトウェアのどこからもそれを上書きできない。</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="台所の調理台の上の装置。クランプに収まったドリル、木の板、電子部品の入った透明な箱、そして下のほうに Raspberry Pi が見えている。" loading="lazy" decoding="async">
+      <figcaption>ドリル、板、箱、ボタン</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">モーター</span><span class="v">コードレスドリル、クランプ固定、全速よりかなり低い回転</span></li>
+      <li><span class="k">撹拌ヘッド</span><span class="v">硬い木とステンレス、買わずに作った</span></li>
+      <li><span class="k">加熱</span><span class="v">電熱プレート、交流の電力調整器で入り切り</span></li>
+      <li><span class="k">骨組み</span><span class="v">まな板一枚とプラスチックの保存容器</span></li>
+      <li><span class="k">電源</span><span class="v">12 V のスイッチング電源、壁から</span></li>
+      <li><span class="k">頭脳</span><span class="v">Raspberry Pi、CSV に記録</span></li>
+      <li><span class="k">感覚</span><span class="v">撹拌中は電流と電圧、加熱中は鍋に入れたプローブ</span></li>
+      <li><span class="k">停止</span><span class="v">大きなボタン一つ、直接配線</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>どう配線してあるか</h2>
+    <p>細い信号線が四本と、太いループが一つ。どれくらいの力でどちら向きかを決めるのは Pi で、実際に電流を押しているのは H ブリッジ。この二つは決して出会わない。Pi が触るところには、数ミリアンペアより大きい電流は流れていない。</p>
+    <p>見ておく価値があるのはボタンだ。Pi にはまったく繋がっていない。モーターのループの中に入っていて、それを切る。だからソフトウェアのどんな不具合も、止まるなと説き伏せることができない。Pi にできるのは気づくことだ。三十パーセント出せと言っているのにセンサーが二百ミリアンペア未満を返してきたら、ループが開いていると判断して、言うのをやめる。</p>
+    <p>センサーも同じループに乗っているけれど、ロジック側の電源は Pi から取っている。だから本体の電源が落ちていても返事をする。ボタンの確認の仕掛けは、全部これでできている。</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-ja-narrow.svg">
+          <img src="images/schematic-ja.svg" width="1120" height="740" alt="ギーを作る装置の回路図。Raspberry Pi が四本の信号線で BTS7960 の H ブリッジを駆動し、I2C で INA260 の電流センサーを読む。12 V の電源、15 A のヒューズ、非常停止ボタン、電流センサーがモーターのループに直列に入っていて、そのループに Pi は一度も触れない。">
+        </picture>
+      </div>
+      <figcaption>回路図</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>どこに置くか</h2>
+    <p>シンクの上。鍋は水槽に入れて、上に平らな蓋をかぶせ、シャフトを通す穴を開けてある。飛び出したものは、どうでもいい場所に落ちる。</p>
+    <p>これは誰もレンダリングには入れない部分だ。台所で何かを作ることの半分は、汚れていい場所を決めることでできている。</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="台所のシンクの上に固定された装置。その下でノートパソコンがリアルタイムのグラフを表示している。" loading="lazy" decoding="async">
+      <figcaption>所定の位置、作業の途中</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>何を見ているか</h2>
+    <p>撹拌しているあいだは、モーター線の電流と電圧を一秒に一回くらい拾って、そのままファイルに書いている。加熱しているあいだは代わりに鍋に入れたプローブを見て、調整器が電熱プレートを入り切りして数字を保つ。</p>
+    <p>マイクもカメラもない。次に直したいのはそこだ。これまでの賭けは、負荷だけでバターが離れる瞬間を見つけられるなら残りは後回しでいい、というものだった。</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="ノートパソコンの画面。モーターの読み取り値のリアルタイムのグラフが二つあり、その下でターミナルのログが流れている。" loading="lazy" decoding="async">
+      <figcaption>作業中のリアルタイムの記録</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>何を決めているか</h2>
+    <p>二つ。負荷が上がってから十分に落ちて分離と呼べるかどうか、それと 250 F にとどまるためにプレートを入れるか切るか。</p>
+    <p>ヨーグルトが何かは知らない。バターが何かも知らない。数字がしばらく上がってそれから落ちていったこと、そしてこの形が仕事が終わったという意味だということを知っている。</p>
+    <figure>
+      <img src="images/batch-big.jpg" width="1400" height="1000" alt="デッキの手すりに立つ、薄く固まったギーの入った背の高い瓶が二つ。ねじ蓋と透明なラベルがついていて、後ろに小さいクリップ蓋の瓶がぼけて写っている。" loading="lazy" decoding="async">
+      <figcaption>この形が何のためにあるのか</figcaption>
+    </figure>
+
+  <div class="next">
+    <a href="index-ja.html">&lsaquo; 話に戻る</a>
+    <p>ヨーグルト、撹拌ヘッド、バターが離れる瞬間、そして一時間色を見ていた話。</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>写真は2026年8月の一回の作業から。撹拌ヘッド、できあがった瓶、二回目の分は後から撮った。</p>
+  <p class="contact">質問、間違いの指摘、あるいは自分でも作ってみたという話。 <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>

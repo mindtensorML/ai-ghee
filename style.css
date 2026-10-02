@@ -31,6 +31,34 @@
 
 body:lang(zh) { line-height: 1.78; }
 
+/* Japanese is not Chinese with different words. The two share most of their
+   characters and draw a good many of them differently, and the ones where it
+   shows are already on these pages, 直 and 骨 and 角 and 温 among them. A
+   Japanese reader spots a Simplified face immediately, so none of the faces
+   above is reused here and the stack asks for Japanese ones by name. */
+:root:lang(ja) {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
+           "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP",
+           "Noto Serif JP", serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "Hiragino Sans",
+          "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo,
+          "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+}
+
+/* Written Cantonese is Traditional, and Hong Kong draws a number of
+   characters differently from Taiwan, so the HK faces go in front of the TC
+   ones rather than the other way round. */
+:root:lang(yue) {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
+           "Noto Serif CJK HK", "Noto Serif CJK TC", "Noto Serif TC",
+           PMingLiU, serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "PingFang HK",
+          "Hiragino Sans CNS", "Microsoft JhengHei", "Noto Sans CJK HK",
+          "Noto Sans CJK TC", "Noto Sans HK", sans-serif;
+}
+
+body:is(:lang(ja), :lang(yue)) { line-height: 1.78; }
+
 /* Cyrillic is a harder case than it looks. Both sans faces carry it, but of
    the four serifs only Palatino Linotype and Times New Roman do, and neither
    is the one a Mac would reach first. So a Russian page would set its Latin
@@ -187,11 +215,25 @@ a { color: var(--deep); }
 .langs summary:hover,
 .top .links a.page:hover { color: var(--deep); }
 
-/* the script corrections the masthead needed now ride on the button, because
-   that is where a reader's own language name is shown back to them */
-.langs summary:lang(ne) { font-size: 0.87rem; letter-spacing: 0.02em;
-                          text-transform: none; }
-.langs summary:lang(zh) { font-size: 0.64rem; letter-spacing: 0.1em; }
+/* The script corrections the masthead needs ride on the button, because that
+   is where a reader's own language name is shown back to them.
+
+   Every one of these is prefixed with `.top`, and that is not decoration. The
+   masthead sets its own type further down this file, in a rule that lands on
+   exactly the same specificity as a bare `.langs summary:lang()`, and being
+   later it was winning every tie. So none of these corrections had ever
+   applied. The Nepali and the Chinese buttons were being tracked and
+   uppercased as though they were Latin, which is the thing the rule exists to
+   stop. The prefix puts them one class ahead and they now hold. */
+.top .langs summary:is(:lang(ne), :lang(new), :lang(bn)) {
+  font-size: 0.87rem; letter-spacing: 0.02em; text-transform: none; }
+.top .langs summary:is(:lang(zh), :lang(ja), :lang(yue)) {
+  font-size: 0.64rem; letter-spacing: 0.1em; text-transform: none; }
+/* Arabic joins along the baseline, so tracking pulls the letters of a word
+   apart from each other. It has no capitals either, so the uppercasing has
+   nothing to do except reach the Latin that might sit inside the label. */
+.top .langs summary:lang(ar) {
+  font-size: 0.82rem; letter-spacing: 0; text-transform: none; }
 
 .langs ul {
   position: absolute;
@@ -234,9 +276,20 @@ a { color: var(--deep); }
 
 /* Devanagari fills less of its em than a Latin letter and Han fills all of
    it, so in a list of names set at one size they read as different weights.
-   These two are the same corrections the masthead carried before the panel. */
-.top .langs ul a[hreflang="ne"] { font-size: 0.95rem; }
-.top .langs ul a[hreflang="zh"] { font-size: 0.8rem; }
+   These are the same corrections the masthead carried before the panel.
+
+   Hindi was missing from the first of these and should not have been. नेपाली
+   got the lift and हिन्दी sat in the same list without it, which is visible
+   once the two are side by side. */
+.top .langs ul a:is([hreflang="ne"], [hreflang="hi"],
+                    [hreflang="new"]) { font-size: 0.95rem; }
+/* Bangla needs more than the Devanagari three, not the same. Measured in the
+   panel, বাংলা drew 10px of ink where every other name in the list drew 13 or
+   14, so it sat there looking like a different size, which it was. */
+.top .langs ul a[hreflang="bn"] { font-size: 1.2rem; }
+.top .langs ul a:is([hreflang="zh"], [hreflang="ja"],
+                    [hreflang="yue"]) { font-size: 0.8rem; }
+.top .langs ul a[hreflang="ar"] { font-size: 0.88rem; }
 
 .top .mark img {
   display: block;
@@ -596,10 +649,14 @@ footer .legal {
 .legal a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
 .legal a:hover { color: var(--deep); border-bottom-color: var(--deep); }
 
-/* ---------- the Nepali pages ---------- */
+/* ---------- the pages that hang from a headline bar ---------- */
 
-/* Hindi and Nepali are the same script and take the same block. Everything
-   below is written for both.
+/* Nepali, Hindi, Newari and Bangla all take this block. The first three
+   are Devanagari and share a font stack. Bangla is a different script with
+   its own faces, but it is built the same way and measures the same, so it
+   shares everything below the stacks. Measured at a matched size the body
+   of a Bengali letter is 7.0px and of a Devanagari letter 7.0px, against a
+   Latin capital's 8.25px, which is why both are set larger.
 
    Devanagari letters hang from one continuous bar along the top of the word,
    so the loose tracking that makes the Latin micro-type work snaps that bar
@@ -611,7 +668,7 @@ footer .legal {
    not carry. Between them the four cover macOS, iOS, Windows, Android and
    the desktop Linux distributions. */
 
-html:is([lang="ne"],[lang="hi"]) {
+html:is([lang="ne"],[lang="hi"],[lang="new"]) {
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
            "Kohinoor Devanagari", "Devanagari Sangam MN", "Nirmala UI",
            "Noto Serif Devanagari", "Noto Sans Devanagari", Mangal, serif;
@@ -620,57 +677,68 @@ html:is([lang="ne"],[lang="hi"]) {
           Mangal, sans-serif;
 }
 
-/* matras sit above and below the line, so the leading has to open up */
-html:is([lang="ne"],[lang="hi"]) body { line-height: 1.8; }
+/* Bangla, same idea and a different set of faces. Kohinoor and Sangam cover
+   Apple, Nirmala and Vrinda cover Windows, Noto covers the rest. */
+html[lang="bn"] {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
+           "Kohinoor Bangla", "Bangla Sangam MN", "Nirmala UI",
+           "Noto Serif Bengali", "Noto Sans Bengali", Vrinda, serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "Kohinoor Bangla",
+          "Bangla Sangam MN", "Nirmala UI", "Noto Sans Bengali",
+          Vrinda, sans-serif;
+}
 
-html:is([lang="ne"],[lang="hi"]) h1 {
+/* matras sit above and below the line, so the leading has to open up */
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) body { line-height: 1.8; }
+
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) h1 {
   letter-spacing: 0;
   line-height: 1.28;
   font-weight: 600;
 }
 
-html:is([lang="ne"],[lang="hi"]) h2 {
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) h2 {
   letter-spacing: 0;
   line-height: 1.38;
   font-weight: 600;
 }
 
-html:is([lang="ne"],[lang="hi"]) h3 { letter-spacing: 0; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) h3 { letter-spacing: 0; }
 
-html:is([lang="ne"],[lang="hi"]) .standfirst { line-height: 1.62; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .standfirst { line-height: 1.62; }
 
-html:is([lang="ne"],[lang="hi"]) .pull {
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .pull {
   letter-spacing: 0;
   line-height: 1.5;
 }
 
-html:is([lang="ne"],[lang="hi"]) .kicker,
-html:is([lang="ne"],[lang="hi"]) figcaption,
-html:is([lang="ne"],[lang="hi"]) .spec .k,
-html:is([lang="ne"],[lang="hi"]) .top .mark,
-html:is([lang="ne"],[lang="hi"]) .top .links a { letter-spacing: 0.02em; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .kicker,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) figcaption,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .spec .k,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .top .mark,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .top .links a { letter-spacing: 0.02em; }
 
 /* the same lift, applied to every line of micro-type on the page */
-html:is([lang="ne"],[lang="hi"]) .kicker,
-html:is([lang="ne"],[lang="hi"]) figcaption,
-html:is([lang="ne"],[lang="hi"]) .spec .k,
-html:is([lang="ne"],[lang="hi"]) .top .mark,
-html:is([lang="ne"],[lang="hi"]) .top .links summary { font-size: 0.84rem; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .kicker,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) figcaption,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .spec .k,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .top .mark,
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .top .links summary { font-size: 0.84rem; }
 
-html:is([lang="ne"],[lang="hi"]) .ladder figcaption { font-size: 0.72rem; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .ladder figcaption { font-size: 0.72rem; }
 
-html:is([lang="ne"],[lang="hi"]) footer p { font-size: 0.86rem; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) footer p { font-size: 0.86rem; }
 
 
 
 /* the section numbers stay tracked, because Devanagari digits stand apart
    from each other the way the Latin ones do */
-html:is([lang="ne"],[lang="hi"]) .num { letter-spacing: 0.2em; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .num { letter-spacing: 0.2em; }
 
 /* a key like मोटर is a word, not a line of small caps, so it needs the room */
-html:is([lang="ne"],[lang="hi"]) .spec .k { flex-basis: 7rem; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .spec .k { flex-basis: 7rem; }
 
-html:is([lang="ne"],[lang="hi"]) .ladder figcaption { letter-spacing: 0.02em; }
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .ladder figcaption { letter-spacing: 0.02em; }
 
 
 /* ---------- print ---------- */
@@ -744,3 +812,64 @@ html[lang="ka"] .top .links summary {
 }
 
 html[lang="ka"] .spec .k { flex-basis: 8rem; }
+
+
+/* ---------- Arabic ---------- */
+
+/* The first language here that reads right to left. The direction itself is
+   handled by the dir on the html element and by the logical properties the
+   rest of this file is written in, so nothing below is about layout. All of
+   it is about the letters.
+
+   Arabic joins. A word is one connected stroke, and the tracking that opens
+   up a line of Latin capitals pulls that stroke apart at every joint. It is
+   the same objection Devanagari has to tracking and it is a shade worse,
+   because a broken join reads as a different letter rather than as loose
+   spacing. So every tracked rule comes to zero here.
+
+   It has no capitals either, so every uppercasing on the page has nothing to
+   do except reach any Latin sitting inside the label, which is how mA once
+   became MA on the charts. They all come off.
+
+   No font is loaded. The Latin faces stay in front so the part numbers and
+   the readings keep the shapes they have on every other page, and the Arabic
+   faces sit behind them. Geeza Pro covers macOS and iOS, Segoe UI Arabic
+   covers Windows, Noto covers Linux and Android. */
+html[lang="ar"] {
+  --serif: "Iowan Old Style", "Palatino Linotype", "Times New Roman",
+           "Noto Naskh Arabic", "Geeza Pro", "Traditional Arabic", serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "Geeza Pro",
+          "Segoe UI Arabic", "Noto Sans Arabic", Tahoma, sans-serif;
+}
+
+/* Arabic carries marks above and below the line and its words are denser than
+   Latin ones, so it wants noticeably more room between lines than the 1.62
+   the page has everywhere else. */
+html[lang="ar"] body { line-height: 1.9; }
+
+html[lang="ar"] h1 { letter-spacing: 0; line-height: 1.35; }
+html[lang="ar"] h2 { letter-spacing: 0; line-height: 1.45; }
+html[lang="ar"] h3 { letter-spacing: 0; }
+html[lang="ar"] .standfirst { line-height: 1.7; }
+html[lang="ar"] .pull { letter-spacing: 0; line-height: 1.6; }
+
+html[lang="ar"] .kicker,
+html[lang="ar"] figcaption,
+html[lang="ar"] .spec .k,
+html[lang="ar"] .top .mark,
+html[lang="ar"] .top .links a,
+html[lang="ar"] .top .links summary {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.84rem;
+}
+
+html[lang="ar"] .ladder figcaption { font-size: 0.74rem; }
+html[lang="ar"] footer p { font-size: 0.88rem; }
+
+/* The section numbers stay tracked and stay as they are. They are Latin
+   digits, set the way they are set on every other page. */
+
+/* A key here is a word rather than a line of small capitals, so it needs the
+   room, the same allowance Devanagari and Georgian already take. */
+html[lang="ar"] .spec .k { flex-basis: 8rem; }

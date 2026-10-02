@@ -63,6 +63,44 @@ TEMPLATE = os.path.join(HERE, "template.html")
 # both languages.
 DEVANAGARI = str.maketrans("0123456789", "०१२३४५६७८९")
 
+# A run of Latin technical text sitting inside a right to left sentence.
+#
+# This needs saying because it is not obvious and it is wrong by default. In
+# an Arabic sentence, `2700 mA` comes out as `mA 2700`. The digits are read as
+# an Arabic number because the words before them are Arabic, the unit is read
+# as Latin, the space between them belongs to the Arabic, and the two end up
+# as separate pieces which the line then lays out right to left. That is the
+# Unicode algorithm working correctly on a string that did not say what it
+# meant. The value and its unit are one thing and have to be marked as one.
+#
+# `bdi` is the element for exactly this. Only runs holding a Latin letter are
+# wrapped. A bare number needs no help, and wrapping one would be noise.
+#
+# Set per page, because on a left to right page this must do nothing at all.
+LTR_RUNS = False
+
+TECH_RUN = re.compile(
+    r"[A-Za-z0-9][A-Za-z0-9.+\-/_]*(?:[ \u00a0][A-Za-z0-9][A-Za-z0-9.+\-/_]*)*")
+
+# A tag and a character entity are both atomic. Splitting on them keeps the
+# substitution out of href values, out of aria-label text and out of the
+# middle of something like &middot;, all of which it would otherwise mangle.
+ATOMIC = re.compile(r"(<[^>]*>|&[a-zA-Z]+;|&#\d+;)")
+
+
+def protect_runs(text):
+    """Wrap each Latin technical run, on a right to left page only."""
+    if not LTR_RUNS:
+        return text
+    parts = ATOMIC.split(text)
+    for i in range(0, len(parts), 2):          # the odd ones are the atoms
+        parts[i] = TECH_RUN.sub(
+            lambda m: (f'<bdi dir="ltr">{m.group(0)}</bdi>'
+                       if re.search("[A-Za-z]", m.group(0)) else m.group(0)),
+            parts[i])
+    return "".join(parts)
+
+
 # What a screen reader says for the [*] that points at the footnote. It is set
 # per page from the front matter, because it was English on the Nepali page.
 NOTE_LABEL = "See note about this chart"
@@ -123,7 +161,7 @@ def inline(text):
     out = out.replace(
         "[*]",
         f'<a href="#note" aria-label="{html.escape(NOTE_LABEL, quote=True)}">*</a>')
-    return out
+    return protect_runs(out)
 
 
 IMAGE_RE = re.compile(r'^!\[(?P<caption>.*?)\]\((?P<src>\S+?)(?:\s+"(?P<alt>[^"]*)")?\)\s*$')
@@ -583,6 +621,7 @@ def build(md_path, template, site=None):
     meta.setdefault("lang", "en")
     meta.setdefault("dir", direction(meta["lang"]))
     globals()["NOTE_LABEL"] = meta.get("note_label", "See note about this chart")
+    globals()["LTR_RUNS"] = meta["dir"] == "rtl"
 
     sections = render_sections(body, meta.get("numerals", "latin"))
     # The onward link belongs inside the final section, not adrift after it.
