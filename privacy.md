@@ -6,6 +6,7 @@ og_title: Privacy
 og_description: What this site and the program that publishes its videos do with data.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/privacy.html
+skip_text: Skip to the content
 lang: en
 locale: en_GB
 mark: AI Ghee Making

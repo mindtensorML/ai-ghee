@@ -6,6 +6,7 @@ og_title: Imashini yamenye igihe cyo guhagarara
 og_description: Iyi ghee nayiriye buri munsi nkiri muto, ariko nta na rimwe nayikoze. Nuko nubaka imashini ishobora kumva akanya amavuta acikamo.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-rw.html
+skip_text: Simbukira ku bikubiyemo
 lang: rw
 stem: index
 locale: rw_RW
@@ -17,7 +18,7 @@ kicker: AI GHEE YA JD
 headline: Imashini yamenye igihe cyo guhagarara
 standfirst: Iyi ghee nayiriye buri munsi nkiri muto, ariko nta na rimwe nayikoze. Nuko mbaza AI uko bikorwa. Hanyuma ndayisaba ko ikora byose ku bwanjye.
 video: TG5p3M-Eg6Q
-video_caption: Byose, mu masegonda 60
+video_caption: Byose, mu masegonda 30
 next_text: Reba imashini hafi
 next_href: beast-rw.html
 next_blurb: Icyo igizwemo, aho kumva gukorerwa, n'icyo rig ireba koko.

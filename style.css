@@ -45,6 +45,44 @@ body:lang(zh) { line-height: 1.78; }
 
 * { box-sizing: border-box; }
 
+/* The page is paper. Saying so stops a browser force darkening the form
+   controls and the scrollbar against a background that stays cream. */
+:root { color-scheme: light; }
+
+/* There were no focus styles at all, so a keyboard reader got whatever the
+   browser draws, which on this background is close to invisible. This is the
+   same gold the links use, offset far enough to clear the type. */
+:focus-visible {
+  outline: 2px solid var(--deep);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Out of the way until a keyboard reaches it, then a real control. */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 50;
+  padding: 0.7rem 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 0 0 10px 0;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+}
+
+.skip:focus { left: 0; }
+
+::selection {
+  background: #e7cf9a;
+  color: var(--ink);
+}
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -67,15 +105,14 @@ a { color: var(--deep); }
   margin: 0 auto;
 }
 
-.wide {
-  width: min(940px, calc(100% - 2.2rem));
-  margin: 0 auto;
-}
-
 /* ---------- masthead ---------- */
 
+/* The same column as the prose. It used to be 940px against the 680px the
+   rest of the page sits in, which hung the mark 130px out to the left of
+   everything under it and ran the switcher 128px past the right edge. The
+   940px class it shared was used by nothing on any page, so it is gone. */
 .top {
-  width: min(940px, calc(100% - 2.2rem));
+  width: min(680px, calc(100% - 2.2rem));
   margin: 0 auto;
   padding: 1.6rem 0 0;
   display: flex;
@@ -90,63 +127,107 @@ a { color: var(--deep); }
   gap: 0.5rem;
 }
 
-/* The masthead sits in the 940px column, not the window, so the switcher ran
-   out of room at nine languages however wide the screen was, and the labels
-   started breaking inside themselves, LA MÁQUINA across two lines and 中文 one
-   character above the other.
-
-   So the switcher takes a row of its own under the mark. It is forced rather
-   than left to wrap on its own, because whether it fitted depended on how long
-   that page's own two words happened to be, and the masthead changed shape as
-   you moved between languages. A label never breaks, the row does. */
-.top {
-  flex-wrap: wrap;
-}
-
+/* The switcher is a disclosure rather than a row of links. Nine languages
+   already wrapped to a second line inside the text column and the plan runs
+   further, so a line of them was never going to hold. `details` does this
+   with no JavaScript, which keeps the site at none, and it arrives keyboard
+   operable. The panel is taken out of flow so opening it does not shove the
+   page down, and it columns itself once the list gets long. */
 .top .links {
-  display: flex;
-  flex-basis: 100%;
+  display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.4rem 0.85rem;
+  gap: 1rem;
 }
 
 .top .mark,
-.top .links a {
+.top .links a.page,
+.top .links summary {
   white-space: nowrap;
 }
 
-/* the rule is what stops the language switch reading as another section */
-.top .lang {
-  padding-left: 0.85rem;
+.langs {
+  position: relative;
+}
+
+.langs summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.15rem 0.5rem 0.15rem 0.85rem;
   border-left: 1px solid var(--line);
+  color: var(--faint);
 }
 
-.top .links a:first-child.lang {
-  padding-left: 0;
-  border-left: 0;
+.langs summary::-webkit-details-marker { display: none; }
+
+/* the chevron, drawn rather than fetched, and it turns when the panel opens */
+.langs summary::after {
+  content: "";
+  display: inline-block;
+  width: 0.34em;
+  height: 0.34em;
+  margin-left: 0.5em;
+  vertical-align: 0.15em;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
 }
 
-/* नेपाली sits in the English masthead, and it is one word joined along the
-   top, so it cannot take the tracking the rest of the line does. It is set
-   larger as well, because Devanagari fills less of its em than a Latin
-   capital and at a matched size it reads as an afterthought. */
-.top .lang[hreflang="ne"] {
-  font-size: 0.87rem;
-  letter-spacing: 0.02em;
+.langs[open] summary::after { transform: rotate(-135deg); }
+
+.langs summary:hover,
+.top .links a.page:hover { color: var(--deep); }
+
+/* the script corrections the masthead needed now ride on the button, because
+   that is where a reader's own language name is shown back to them */
+.langs summary:lang(ne) { font-size: 0.87rem; letter-spacing: 0.02em;
+                          text-transform: none; }
+.langs summary:lang(zh) { font-size: 0.64rem; letter-spacing: 0.1em; }
+
+.langs ul {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+  min-width: max-content;
+  columns: 1;
+  column-gap: 0.4rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+/* past a dozen it goes to two columns rather than down past the fold */
+@supports (columns: 2) {
+  .langs ul:has(li:nth-child(12)) { columns: 2; }
+}
+
+.langs li { break-inside: avoid; }
+
+.top .langs ul a {
+  display: block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
   text-transform: none;
+  letter-spacing: 0.01em;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
-/* 中文 has the opposite problem to नेपाली. A Han character fills its whole em
-   where a Latin capital fills about seven tenths of one, so at the size the
-   rest of the line is set it reads as the loudest thing in the masthead. It
-   comes down rather than up, and keeps a little of the tracking because two
-   characters sitting alone want the air. */
-.top .lang[hreflang="zh"] {
-  font-size: 0.64rem;
-  letter-spacing: 0.1em;
+.top .langs ul a:hover {
+  background: var(--bg);
+  color: var(--deep);
 }
+
+/* Devanagari fills less of its em than a Latin letter and Han fills all of
+   it, so in a list of names set at one size they read as different weights.
+   These two are the same corrections the masthead carried before the panel. */
+.top .langs ul a[hreflang="ne"] { font-size: 0.95rem; }
+.top .langs ul a[hreflang="zh"] { font-size: 0.8rem; }
 
 .top .mark img {
   display: block;
@@ -154,8 +235,11 @@ a { color: var(--deep); }
   height: 24px;
 }
 
+.top .mark { text-decoration: none; }
+
 .top .mark,
-.top .links a {
+.top .links a,
+.top .links summary {
   font-family: var(--sans);
   font-size: 0.72rem;
   letter-spacing: 0.17em;
@@ -373,6 +457,28 @@ footer p {
 
 footer a { color: var(--faint); }
 
+/* The four blocks here were one undifferentiated grey. The chart note is an
+   aside and steps back, the legal line is housekeeping and steps back
+   further and takes a rule, so the eye can tell the page has ended rather
+   than merely stopped. */
+footer #note {
+  font-size: 0.73rem;
+  color: #a8957f;
+  margin-bottom: 1.1rem;
+}
+
+footer .contact { margin-bottom: 1.4rem; }
+
+footer .legal {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+
 /* ---------- mobile ---------- */
 
 /* ---------- the masthead once there are several languages ---------- */
@@ -391,28 +497,20 @@ footer a { color: var(--faint); }
   }
 
   .top .links {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0.42rem 0.95rem;
+    gap: 0.75rem;
   }
 
-  .top .links a {
+  .top .links a,
+  .top .links summary {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
   }
 
-  /* `.top .links a` further down sets the uppercase and the tracking, and it
-     outweighs a plain `.top .lang`, so the switch has to be named with the
-     anchor to win. Nepali already beats it with its attribute selector. */
-  /* The dividing rules go. They are drawn per label, so once the row wraps
-     one of them hangs at the start of the next line with nothing to its
-     left. The gap does the separating instead. */
-  .top .links a.lang {
-    padding-left: 0;
-    border-left: 0;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    font-size: 0.79rem;
+  /* the panel is anchored to the right edge of a narrow screen, and it is
+     allowed to run the width of the column rather than sit under the button */
+  .langs ul {
+    right: -0.4rem;
+    max-width: calc(100vw - 2.2rem);
   }
 }
 
@@ -545,14 +643,13 @@ html[lang="ne"] .kicker,
 html[lang="ne"] figcaption,
 html[lang="ne"] .spec .k,
 html[lang="ne"] .top .mark,
-html[lang="ne"] .top .links a { font-size: 0.84rem; }
+html[lang="ne"] .top .links summary { font-size: 0.84rem; }
 
 html[lang="ne"] .ladder figcaption { font-size: 0.72rem; }
 
 html[lang="ne"] footer p { font-size: 0.86rem; }
 
-/* English is the one Latin word on the page, and it does not need the lift */
-html[lang="ne"] .top .lang[hreflang="en"] { font-size: 0.72rem; }
+
 
 /* the section numbers stay tracked, because Devanagari digits stand apart
    from each other the way the Latin ones do */
@@ -562,3 +659,38 @@ html[lang="ne"] .num { letter-spacing: 0.2em; }
 html[lang="ne"] .spec .k { flex-basis: 7rem; }
 
 html[lang="ne"] .ladder figcaption { letter-spacing: 0.02em; }
+
+
+/* ---------- print ---------- */
+
+/* People do print recipes. The switcher, the embed and the onward card are
+   all screen furniture and go, the type comes back to black on white, and
+   links print their address so a sheet of paper still reaches the site. */
+@media print {
+  :root { --bg: #fff; --paper: #fff; --ink: #000; --muted: #333; --faint: #555; }
+
+  body { font-size: 11pt; }
+
+  .top .links,
+  .skip,
+  .video,
+  .next { display: none; }
+
+  .wrap, .top { width: 100%; }
+
+  figure img,
+  figure .chart {
+    box-shadow: none;
+    border-color: #ccc;
+  }
+
+  figure, .pair, .ladder { break-inside: avoid; }
+
+  h1, h2 { break-after: avoid; }
+
+  a[href^="http"]::after {
+    content: " " attr(href);
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+}

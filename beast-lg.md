@@ -1,5 +1,6 @@
 ---
 output: beast-lg.html
+skip_text: Genda ku bikwatibwako
 lang: lg
 stem: beast
 locale: lg_UG

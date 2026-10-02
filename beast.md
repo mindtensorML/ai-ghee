@@ -6,6 +6,7 @@ og_title: The Beast
 og_description: A cordless drill, a chopping board and a Raspberry Pi. What each part of the ghee rig does.
 og_image: images/beast.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast.html
+skip_text: Skip to the content
 lang: en
 stem: beast
 locale: en_GB

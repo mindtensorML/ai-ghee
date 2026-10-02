@@ -6,6 +6,7 @@ og_title: La Bête
 og_description: Une perceuse sans fil, une planche à découper et un Raspberry Pi. Ce que fait chaque pièce de la machine à ghee.
 og_image: images/beast.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-fr.html
+skip_text: Aller au contenu
 lang: fr
 stem: beast
 locale: fr_FR

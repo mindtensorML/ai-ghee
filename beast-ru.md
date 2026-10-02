@@ -6,6 +6,7 @@ og_title: Зверь
 og_description: Аккумуляторная дрель, разделочная доска и Raspberry Pi. Что делает каждая часть установки для гхи.
 og_image: images/beast.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-ru.html
+skip_text: Перейти к содержанию
 lang: ru
 stem: beast
 locale: ru_RU

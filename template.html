@@ -10,17 +10,23 @@
 <meta property="og:description" content="{{og_description}}">
 <meta property="og:image" content="{{og_image_absolute}}">
 <meta property="og:url" content="{{og_url}}">
+<meta property="og:site_name" content="{{og_site_name}}">
+<meta property="og:image:alt" content="{{og_image_alt}}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4ead7">
 {{head_links}}
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+{{schema}}
 </head>
 <body>
 
-<div class="top">
+<a class="skip" href="#story">{{skip_text}}</a>
+
+<header class="top">
 {{nav}}
-</div>
+</header>
 
 <header class="hero wrap">
   <p class="kicker">{{kicker}}</p>
@@ -28,7 +34,7 @@
   <p class="standfirst">{{standfirst}}</p>
 </header>
 {{video}}
-<main>
+<main id="story">
 
 {{sections}}
 

@@ -41,6 +41,7 @@ Inline you can use **bold**, *italic*, [links](https://example.com) and
 """
 
 import html
+import json
 import os
 import re
 import struct
@@ -345,22 +346,63 @@ def alternates(meta):
             for lang in languages(meta) if lang["code"] != here]
 
 
+def home_href(meta):
+    """The story page in the language being read, or nothing from the story.
+
+    The mark is what a reader clicks to get back, and it has to land them in
+    the language they were already in rather than dropping them into English.
+    On the story page itself it is a link to nowhere, so it is not made one.
+    """
+    here = meta.get("lang", "en")
+    suffix = "" if here == "en" else "-" + here
+    target = page_file("index", suffix)
+    if meta.get("output") == target:
+        return None
+    return "./" if target == "index.html" else target
+
+
+def here_label(meta):
+    """What this page's own language calls itself, for the switcher button."""
+    here = meta.get("lang", "en")
+    for lang in languages(meta):
+        if lang["code"] == here:
+            return lang["label"]
+    return here.upper()
+
+
 def render_nav(meta):
     # the mark is decorative here, the name is right beside it, so alt is empty
-    mark = (f'  <span class="mark"><img src="logo.svg" alt="" width="24" height="24">'
-            f'{meta.get("mark", "")}</span>')
+    glyph = (f'<img src="logo.svg" alt="" width="24" height="24">'
+             f'{meta.get("mark", "")}')
+    home = home_href(meta)
+    mark = (f'  <a class="mark" href="{home}">{glyph}</a>' if home
+            else f'  <span class="mark">{glyph}</span>')
 
     links = []
     if meta.get("nav_text"):
         arrow = "&lsaquo; " if meta.get("nav_side") == "left" else ""
         tail = "" if arrow else " &rsaquo;"
-        links.append(f'<a href="{meta["nav_href"]}">'
+        links.append(f'<a class="page" href="{meta["nav_href"]}">'
                      f'{arrow}{meta["nav_text"]}{tail}</a>')
-    # one switcher link per other language, labelled in the language it leads
-    # to and carrying that language so a screen reader says the word properly
-    for alt in alternates(meta):
-        links.append(f'<a class="lang" href="{alt["href"]}" lang="{alt["code"]}" '
-                     f'hreflang="{alt["code"]}">{alt["label"]}</a>')
+
+    # The languages go behind a disclosure rather than sitting in the line.
+    # Nine of them already wrapped to a second row inside the text column, and
+    # the plan is more. `details` does this with no JavaScript at all, which
+    # keeps the site at zero, and it is keyboard operable as it comes.
+    #
+    # One switcher link per other language, labelled in the language it leads
+    # to and carrying that language so a screen reader says the word properly.
+    others = alternates(meta)
+    if others:
+        items = "".join(
+            f'<li><a class="lang" href="{a["href"]}" lang="{a["code"]}" '
+            f'hreflang="{a["code"]}">{a["label"]}</a></li>' for a in others)
+        label = here_label(meta)
+        links.append(
+            f'<details class="langs"><summary aria-label="Language, '
+            f'{label}"><span class="here">{label}</span></summary>'
+            f'<ul lang="">{items}</ul></details>')
+
     if not links:
         return mark
 
@@ -407,7 +449,8 @@ def render_video(meta):
         '\n<div class="wrap">\n'
         '  <figure class="video-figure">\n'
         '    <div class="video">\n'
-        f'      <iframe src="https://www.youtube.com/embed/{vid}" '
+        f'      <iframe src="https://www.youtube-nocookie.com/embed/{vid}" '
+        f'loading="lazy" '
         f'title="{html.escape(meta.get("og_title", "Video"), quote=True)}" '
         'allow="accelerometer; autoplay; clipboard-write; encrypted-media; '
         'gyroscope; picture-in-picture; web-share" '
@@ -477,6 +520,37 @@ def load_site():
     return meta
 
 
+def render_schema(meta):
+    """One block of JSON-LD per page, describing it as an article.
+
+    Only what is already on the page goes in. There is no publication date in
+    the front matter and one is not invented here, because a wrong date is
+    worse to a search engine than no date. `inLanguage` plus the alternates
+    already in the head are what tell it these are one article in nine
+    languages rather than nine articles.
+    """
+    base = meta.get("site_url", "")
+    if not base or not meta.get("headline"):
+        return ""
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": meta.get("og_title") or meta.get("headline", ""),
+        "description": meta.get("og_description") or meta.get("description", ""),
+        "image": absolute(meta),
+        "inLanguage": meta.get("lang", "en"),
+        "mainEntityOfPage": {"@type": "WebPage", "@id": meta.get("og_url", base)},
+        "isAccessibleForFree": True,
+    }
+    if meta.get("author"):
+        data["author"] = {"@type": "Person", "name": meta["author"]}
+    if meta.get("og_site_name"):
+        data["isPartOf"] = {"@type": "WebSite", "name": meta["og_site_name"],
+                            "url": base}
+    body = json.dumps(data, ensure_ascii=False, indent=2)
+    return f'<script type="application/ld+json">\n{body}\n</script>'
+
+
 def build(md_path, template, site=None):
     meta, body = split_front_matter(open(md_path, encoding="utf-8").read())
     if meta is None or "output" not in meta:
@@ -494,8 +568,10 @@ def build(md_path, template, site=None):
 
     page = template
     for key in ("title", "description", "og_title", "og_description",
-                "og_url", "kicker", "headline", "standfirst", "lang"):
+                "og_url", "kicker", "headline", "standfirst", "lang",
+                "skip_text", "og_site_name", "og_image_alt"):
         page = page.replace("{{" + key + "}}", meta.get(key, ""))
+    page = page.replace("{{schema}}", render_schema(meta))
     page = page.replace("{{og_image_absolute}}", absolute(meta))
     page = page.replace("{{head_links}}", render_head_links(meta))
     page = page.replace("{{nav}}", render_nav(meta))
@@ -508,19 +584,46 @@ def build(md_path, template, site=None):
     return meta["output"]
 
 
+def write_sitemap(site, pages):
+    """One sitemap for every page the build just wrote.
+
+    Written here rather than kept by hand because the page count is the
+    language count times two plus the legal pages, and a list maintained by
+    hand is a list that goes stale the first time a language is added.
+    """
+    base = site.get("site_url", "")
+    if not base:
+        return None
+    urls = []
+    for name in sorted(set(pages)):
+        loc = base if name == "index.html" else base + name
+        urls.append(f"  <url><loc>{loc}</loc></url>")
+    doc = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           + "\n".join(urls) + "\n</urlset>\n")
+    open(os.path.join(HERE, "sitemap.xml"), "w", encoding="utf-8").write(doc)
+    open(os.path.join(HERE, "robots.txt"), "w", encoding="utf-8").write(
+        f"User-agent: *\nAllow: /\n\nSitemap: {base}sitemap.xml\n")
+    return len(urls)
+
+
 def main():
     template = open(TEMPLATE, encoding="utf-8").read()
     site = load_site()
-    written = []
+    written, pages = [], []
     for name in sorted(os.listdir(HERE)):
         if name.endswith(".md"):
             result = build(os.path.join(HERE, name), template, site)
             if result:
                 written.append(f"  {name} -> {result}")
+                pages.append(result)
     if not written:
         print("no markdown pages found", file=sys.stderr)
         return 1
     print("\n".join(written))
+    n = write_sitemap(site, pages)
+    if n:
+        print(f"  sitemap.xml -> {n} urls, robots.txt")
     return 0
 
 

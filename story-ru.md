@@ -6,6 +6,7 @@ og_title: Машина, которая знала, когда остановит
 og_description: Это гхи я ел каждый день, пока рос, и ни разу его не сделал. Поэтому я собрал машину, которая чувствует момент, когда масло отпускает жидкость.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-ru.html
+skip_text: Перейти к содержанию
 lang: ru
 stem: index
 locale: ru_RU

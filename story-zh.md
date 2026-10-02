@@ -6,6 +6,7 @@ og_title: 知道什么时候该停的机器
 og_description: 这种酥油我从小吃到大，却一次也没做过。于是我做了一台机器，它能感觉到黄油破乳的那一刻。
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-zh.html
+skip_text: 跳到正文
 lang: zh
 stem: index
 locale: zh_CN

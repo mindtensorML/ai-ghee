@@ -6,6 +6,7 @@ og_title: The Beast
 og_description: Perceuse ya batiri, urubaho rw'igikoni na Raspberry Pi. Icyo igice cyose cya rig ya ghee gikora.
 og_image: images/beast.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-rw.html
+skip_text: Simbukira ku bikubiyemo
 lang: rw
 stem: beast
 locale: rw_RW

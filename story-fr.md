@@ -6,6 +6,7 @@ og_title: La machine qui savait quand s'arrêter
 og_description: J'ai grandi en mangeant ce ghee tous les jours, sans jamais en faire moi-même. Alors j'ai construit une machine capable de sentir le moment où le beurre lâche.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-fr.html
+skip_text: Aller au contenu
 lang: fr
 stem: index
 locale: fr_FR
@@ -17,7 +18,7 @@ kicker: LE GHEE IA DE JD
 headline: La machine qui savait quand s'arrêter
 standfirst: J'ai grandi en mangeant ce ghee tous les jours, sans jamais en faire moi-même. Alors j'ai demandé à une IA comment on s'y prend. Ensuite je lui ai demandé de tout faire à ma place.
 video: cHTi6nzLn_g
-video_caption: Tout ça, en 60 secondes
+video_caption: Tout ça, en 30 secondes
 next_text: La machine de plus près
 next_href: beast-fr.html
 next_blurb: De quoi elle est faite, où se passe la mesure, et ce que l'engin surveille vraiment.

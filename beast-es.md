@@ -6,6 +6,7 @@ og_title: La Bestia
 og_description: Un taladro a batería, una tabla de cortar y una Raspberry Pi. Qué hace cada pieza del montaje del ghee.
 og_image: images/beast.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-es.html
+skip_text: Ir al contenido
 lang: es
 stem: beast
 locale: es_ES

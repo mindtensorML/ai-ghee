@@ -1,5 +1,6 @@
 ---
 output: beast-ne.html
+skip_text: सामग्रीमा जानुहोस्
 lang: ne
 stem: beast
 locale: ne_NP

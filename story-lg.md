@@ -1,5 +1,6 @@
 ---
 output: index-lg.html
+skip_text: Genda ku bikwatibwako
 lang: lg
 stem: index
 locale: lg_UG
@@ -17,7 +18,7 @@ kicker: OMUZIGO GWA JD OGWA AI
 headline: Ekyuma ekyamanya akadde k'okuyimirira
 standfirst: Nnakula nga ndya omuzigo buli lunaku, naye saagukola wadde omulundi gumu. Kyenva mbuuza AI engeri y'okugukola. Oluvannyuma nnagigamba gikole omulimu gwonna.
 video: brmi3FwAa9c
-video_caption: Byonna, mu ssekonda 60
+video_caption: Byonna, mu ssekonda 30
 next_text: Okwekebejja ekyuma
 next_href: beast-lg.html
 next_blurb: Kyakolebwa ku ki, okupima kukolebwa wa, era ekyuma ddala kyetegereza ki.

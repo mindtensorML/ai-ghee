@@ -1,5 +1,6 @@
 ---
 output: index-ne.html
+skip_text: सामग्रीमा जानुहोस्
 lang: ne
 stem: index
 locale: ne_NP
@@ -18,7 +19,7 @@ kicker: जेडीको एआई घ्यू
 headline: मेसिनलाई थाहा थियो, कहिले रोकिने
 standfirst: सानैदेखि यही घ्यू खाएर हुर्केँ, तर एक पटक पनि आफैँ बनाएको थिइनँ। त्यसैले एआईलाई सोधेँ, कसरी बनाउने। अनि पूरै काम उसैलाई गर्न लगाएँ।
 video: UG-S1qJc5ig
-video_caption: पूरै कुरा, ६० सेकेन्डमा
+video_caption: पूरै कुरा, ३० सेकेन्डमा
 next_text: मेसिनलाई नजिकबाट
 next_href: beast-ne.html
 next_blurb: केले बनेको छ, सेन्सिङ कहाँ हुन्छ, र रिगले साँच्चै के हेरिरहेको हुन्छ।

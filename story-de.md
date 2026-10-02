@@ -6,6 +6,7 @@ og_title: Die Maschine, die wusste, wann Schluss ist
 og_description: Dieses Ghee habe ich als Kind jeden Tag gegessen und nie selbst gemacht. Also habe ich eine Maschine gebaut, die den Moment spürt, in dem die Butter bricht.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-de.html
+skip_text: Zum Inhalt springen
 lang: de
 stem: index
 locale: de_DE

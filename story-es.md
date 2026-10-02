@@ -6,6 +6,7 @@ og_title: La máquina que sabía cuándo parar
 og_description: Comí este ghee todos los días de mi infancia y nunca hice un solo bote. Así que construí una máquina capaz de notar el momento en que la mantequilla se corta.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/index-es.html
+skip_text: Ir al contenido
 lang: es
 stem: index
 locale: es_ES

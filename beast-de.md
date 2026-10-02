@@ -6,6 +6,7 @@ og_title: Das Biest
 og_description: Ein Akkuschrauber, ein Schneidebrett und ein Raspberry Pi. Was jedes Teil des Ghee-Aufbaus tut.
 og_image: images/beast.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/beast-de.html
+skip_text: Zum Inhalt springen
 lang: de
 stem: beast
 locale: de_DE

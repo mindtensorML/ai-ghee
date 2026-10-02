@@ -6,6 +6,7 @@ og_title: Terms of service
 og_description: The conditions for using this site and the small program that publishes its videos to YouTube.
 og_image: images/ghee.jpg
 og_url: https://mindtensorml.github.io/ai-ghee/terms.html
+skip_text: Skip to the content
 lang: en
 locale: en_GB
 mark: AI Ghee Making
