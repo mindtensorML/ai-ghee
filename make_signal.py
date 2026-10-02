@@ -38,14 +38,19 @@ SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
            '"Devanagari Sangam MN","Nirmala UI","Noto Sans Devanagari",sans-serif')
 SANS_ZH = ('"Avenir Next","Segoe UI","PingFang SC","Hiragino Sans GB",'
            '"Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif')
+SANS_KA = ('"Avenir Next","Segoe UI","Noto Sans Georgian",Sylfaen,sans-serif')
 
+# `caps` is left at none on every chart now and the axis titles are written in
+# the case they are meant to print in. CSS uppercasing cannot tell a word from
+# a unit, and it was turning the milliamps on the current axis into MA, which
+# is megaamps. The field stays because a script may still want the transform.
 EN = dict(
-    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
     out=("signal.svg", "signal-narrow.svg"),
     aria="Motor current across one churn, from the sensor log. The load sits "
          "near 2700 milliamps for the first twenty minutes, climbs as the fat "
          "gathers, peaks near 4700, then falls away.",
-    y="Motor current, mA", x="Minutes into the churn",
+    y="MOTOR CURRENT, mA", x="MINUTES INTO THE CHURN",
     run="This run", ideal="The shape it looks for",
     wide=[("Nothing much for twenty minutes", 2.6, 2750, -46, "start", "lbl"),
           ("Fat gathering", 19.6, 2050, 0, "end", "lbl"),
@@ -57,6 +62,7 @@ EN = dict(
 NE = dict(
     stack=SANS_NE, track=("0", "0", ".02em"), caps="none", lift=1.16,
     out=("signal-ne.svg", "signal-ne-narrow.svg"),
+    lean=9,
     aria="एउटै मोही पार्दाको मोटर करेन्टको चार्ट, सेन्सर लगबाट। लोड सुरुको बीस "
          "मिनेट करिब 2700 मिलिएम्पियरमा बस्छ, बोसो जम्मा हुँदै जाँदा चढ्छ, करिब "
          "4700 मा पुग्छ, अनि झर्छ।",
@@ -214,13 +220,13 @@ def build(w, h, pad, ysteps, xsteps, fonts, labels, path, yoff=42, key=None,
 # chart was drawn with. Both wide annotations run longer than their English
 # originals, which is why they were checked at render rather than assumed.
 FR = dict(
-    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
     out=("signal-fr.svg", "signal-fr-narrow.svg"),
     aria="Graphique du courant du moteur sur un barattage, d'apr\u00e8s le log du "
          "capteur. La charge reste pr\u00e8s de 2700 milliamp\u00e8res pendant les vingt "
          "premi\u00e8res minutes, monte \u00e0 mesure que la mati\u00e8re grasse se rassemble, "
          "culmine pr\u00e8s de 4700, puis retombe.",
-    y="Courant moteur, mA", x="Minutes de barattage",
+    y="COURANT MOTEUR, mA", x="MINUTES DE BARATTAGE",
     run="Cette fourn\u00e9e", ideal="La forme recherch\u00e9e",
     wide=[("Presque rien pendant vingt minutes", 2.6, 2750, -46, "start", "lbl"),
           ("Le gras se rassemble", 19.6, 2050, 0, "end", "lbl"),
@@ -232,13 +238,13 @@ FR = dict(
 
 # Kinyarwanda is Latin script, so it takes the English stack and tracking.
 RW = dict(
-    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
     out=("signal-rw.svg", "signal-rw-narrow.svg"),
     aria="Igishushanyo cya courant ya moteur mu gucunda rimwe, kivuye mu log ya "
          "capteur. Charge iguma hafi ya 2700 milliamp\u00e8res mu minota "
          "makumyabiri ya mbere, izamuka uko ibinure biteranira, igera ku ntera "
          "ya hejuru hafi ya 4700, hanyuma iragwa.",
-    y="Courant ya moteur, mA", x="Iminota mu gucunda",
+    y="COURANT YA MOTEUR, mA", x="IMINOTA MU GUCUNDA",
     run="Iki gikorwa", ideal="Ishusho ishakwa",
     wide=[("Nta kintu mu minota makumyabiri", 2.6, 2750, -46, "start", "lbl"),
           ("Ibinure biteranira", 19.6, 2050, 0, "end", "lbl"),
@@ -252,13 +258,13 @@ RW = dict(
 # U+014B, appears in gakuŋŋaana and is carried by the faces already in front
 # of the stack, which was checked in the rendered drawing rather than assumed.
 LG = dict(
-    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
     out=("signal-lg.svg", "signal-lg-narrow.svg"),
     aria="Chart ya current ya motor mu kusunda omulundi gumu, nga eva mu log ya "
          "sensor. Omugugu gubeera okumpi ne 2700 mA mu ddakiika 20 ezisooka, "
          "gulinnya ng'amasavu gaku\u014b\u014baana, gutuuka okumpi ne 4700, "
          "oluvannyuma gugwa.",
-    y="Current ya motor, mA", x="Eddakiika z'okusunda",
+    y="CURRENT YA MOTOR, mA", x="EDDAKIIKA Z'OKUSUNDA",
     run="Okusunda kuno", ideal="Enkula gye kinoonya",
     wide=[("Eddakiika 20 tewali kibaawo", 2.6, 2750, -46, "start", "lbl"),
           ("Amasavu gaku\u014b\u014baana", 19.6, 2050, 0, "end", "lbl"),
@@ -274,13 +280,13 @@ LG = dict(
 # mark sits where it was drawn. NOCH NICHTS matches NOTHING YET to the
 # character as well, which is luck rather than design.
 DE = dict(
-    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
     out=("signal-de.svg", "signal-de-narrow.svg"),
     aria="Diagramm des Motorstroms \u00fcber eine Butterung, aus dem Sensorlog. "
          "Die Last liegt in den ersten zwanzig Minuten nahe 2700 Milliampere, "
          "steigt, w\u00e4hrend sich das Fett sammelt, erreicht ihren H\u00f6chstwert "
          "nahe 4700 und f\u00e4llt dann ab.",
-    y="Motorstrom, mA", x="Minuten der Butterung",
+    y="MOTORSTROM, mA", x="MINUTEN DER BUTTERUNG",
     run="Dieser Durchlauf", ideal="Die gesuchte Form",
     wide=[("Zwanzig Minuten lang fast nichts", 2.6, 2750, -46, "start", "lbl"),
           ("Das Fett sammelt sich", 19.6, 2050, 0, "end", "lbl"),
@@ -324,13 +330,13 @@ ZH = dict(
 # shape mid word. ПЕРЕЛОМ is a break and also a turning point, which is what
 # the curve does, and it is shorter than THE BREAK rather than longer.
 RU = dict(
-    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
     out=("signal-ru.svg", "signal-ru-narrow.svg"),
     aria="График тока двигателя за одно сбивание, по данным датчика. "
          "Первые двадцать минут нагрузка держится около 2700 миллиампер, "
          "растёт по мере того как собирается жир, доходит до пика около 4700, "
          "затем падает.",
-    y="Ток двигателя, mA", x="Минуты сбивания",
+    y="ТОК ДВИГАТЕЛЯ, mA", x="МИНУТЫ СБИВАНИЯ",
     run="Этот прогон", ideal="Форма, которую оно ищет",
     wide=[("Двадцать минут почти ничего", 2.6, 2750, -46, "start", "lbl"),
           ("Жир собирается", 19.6, 2050, 0, "end", "lbl"),
@@ -344,13 +350,13 @@ RU = dict(
 # chart. EL CORTE is what happens to the emulsion, se corta, and it is the
 # phrase a Spanish cook already uses for a sauce that splits.
 ES = dict(
-    stack=SANS, track=(".04em", ".09em", ".16em"), caps="uppercase", lift=1.0,
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
     out=("signal-es.svg", "signal-es-narrow.svg"),
     aria="Gráfico de la corriente del motor durante un batido, a partir del "
          "registro del sensor. La carga se mantiene cerca de 2700 "
          "miliamperios durante los primeros veinte minutos, sube a medida que "
          "la grasa se junta, llega a su pico cerca de 4700 y después cae.",
-    y="Corriente del motor, mA", x="Minutos de batido",
+    y="CORRIENTE DEL MOTOR, mA", x="MINUTOS DE BATIDO",
     run="Esta tanda", ideal="La forma que busca",
     wide=[("Veinte minutos sin casi nada", 2.6, 2750, -46, "start", "lbl"),
           ("La grasa se junta", 19.6, 2050, 0, "end", "lbl"),
@@ -359,23 +365,116 @@ ES = dict(
             ("Todavía nada", 1.2, 2750, -58, "start", "lbl")],
 )
 
+
+# Hindi is the same script as Nepali and takes the same settings. The tracking
+# that opens up Latin capitals cuts the headline bar that Devanagari hangs
+# from, and the script fills less of its em than a Latin capital, so it is set
+# larger. मक्खन छूटा, the butter let go, is shorter on the page than THE BREAK
+# was, because the matras ride above and below rather than taking width.
+HI = dict(
+    stack=SANS_NE, track=("0", "0", ".02em"), caps="none", lift=1.16,
+    out=("signal-hi.svg", "signal-hi-narrow.svg"),
+    lean=9,
+    aria="एक मथने भर मोटर करेंट का चार्ट, सेंसर लॉग से। शुरू के बीस मिनट लोड "
+         "करीब 2700 मिलीएम्पियर पर रहता है, चिकनाई जमा होते जाने पर चढ़ता है, "
+         "करीब 4700 पर चोटी पर पहुँचता है, और फिर गिर जाता है।",
+    y="मोटर करेंट, mA", x="मथने के मिनट",
+    run="यह रन", ideal="जो आकार यह ढूँढता है",
+    wide=[("बीस मिनट तक कुछ खास नहीं", 2.6, 2750, -46, "start", "lbl"),
+          ("चिकनाई जमा हो रही है", 19.6, 2050, 0, "end", "lbl"),
+          ("मक्खन छूटा", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("मक्खन छूटा", 23.0, 4704, -20, "end", "lbl-s"),
+            ("अभी कुछ नहीं", 1.2, 2750, -58, "start", "lbl")],
+)
+
+
+# Turkish is Latin script and keeps the stack and tracking the English chart
+# was drawn with, but it cannot let CSS do the uppercasing. Turkish has a
+# dotless i whose capital is I and a dotted i whose capital is İ, and a
+# renderer that does not know the text is Turkish gets the second one wrong.
+# DAKİKALARI would come out DAKIKALARI. So the axis titles are written in the
+# case they are meant to print in, which the whole file now does anyway.
+TR = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
+    out=("signal-tr.svg", "signal-tr-narrow.svg"),
+    aria="Bir yayıklama boyunca motor akımının grafiği, sensör kaydından. "
+         "Yük ilk yirmi dakika boyunca 2700 miliamper civarında duruyor, "
+         "yağ toplandıkça yükseliyor, 4700 yakınında zirve yapıyor, sonra "
+         "düşüyor.",
+    y="MOTOR AKIMI, mA", x="YAYIKLAMA DAKİKALARI",
+    run="Bu çalışma", ideal="Aradığı biçim",
+    wide=[("Yirmi dakika pek bir şey yok", 2.6, 2750, -46, "start", "lbl"),
+          ("Yağ toplanıyor", 19.6, 2050, 0, "end", "lbl"),
+          ("KOPMA", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("KOPMA", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Henüz yok", 1.2, 2750, -58, "start", "lbl")],
+)
+
+
+# Basque is Latin script and keeps the stack and tracking of the English
+# chart. HAUSTURA is the noun from hautsi, the verb Basque already uses for an
+# emulsion breaking, so the chart and the prose name the same thing.
+EU = dict(
+    stack=SANS, track=(".04em", ".09em", ".16em"), caps="none", lift=1.0,
+    out=("signal-eu.svg", "signal-eu-narrow.svg"),
+    aria="Motorraren korrontearen grafikoa irabiatze batean, sentsorearen "
+         "erregistrotik. Karga 2700 miliampere inguruan egoten da lehen hogei "
+         "minutuetan, gantza biltzen den heinean igotzen da, 4700 inguruan "
+         "jotzen du gailurra, eta gero behera egiten du.",
+    y="MOTORRAREN KORRONTEA, mA", x="IRABIATZE-MINUTUAK",
+    run="Saio hau", ideal="Bilatzen duen forma",
+    wide=[("Hogei minutuz ezer gutxi", 2.6, 2750, -46, "start", "lbl"),
+          ("Gantza biltzen", 19.6, 2050, 0, "end", "lbl"),
+          ("HAUSTURA", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("HAUSTURA", 23.0, 4704, -20, "end", "lbl-s"),
+            ("Oraindik ez", 1.2, 2750, -58, "start", "lbl")],
+)
+
+
+# Georgian is the first script here with no capital letters at all, so there
+# is nothing for the tracking that opens up Latin capitals to open and it
+# comes almost off. It needs no size lift either. Measured at a matched size
+# its body is 8.8px against a Latin capital's 8.5px, and its ascenders and
+# descenders carry it to 11.2px, so it already reads as the larger of the two.
+KA = dict(
+    stack=SANS_KA, track=(".04em", ".04em", ".06em"), caps="none", lift=1.0,
+    out=("signal-ka.svg", "signal-ka-narrow.svg"),
+    aria="მოტორის დენის გრაფიკი ერთი დღვების განმავლობაში, სენსორის "
+         "ჩანაწერიდან. დატვირთვა პირველი ოცი წუთი 2700 მილიამპერის "
+         "მახლობლად რჩება, ცხიმის შეგროვებასთან ერთად ადის, პიკს 4700-თან "
+         "აღწევს და მერე ეცემა.",
+    y="მოტორის დენი, mA", x="დღვების წუთები",
+    run="ეს დღვება", ideal="ფორმა, რომელსაც ეძებს",
+    wide=[("ოცი წუთი თითქმის არაფერი", 2.6, 2750, -46, "start", "lbl"),
+          ("ცხიმი გროვდება", 19.6, 2050, 0, "end", "lbl"),
+          ("გარდატეხა", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("გარდატეხა", 23.0, 4704, -20, "end", "lbl-s"),
+            ("ჯერ არაფერი", 1.2, 2750, -58, "start", "lbl")],
+)
+
 # Every language the chart is drawn in, in the order the site lists them.
-CHARTS = [EN, NE, FR, RW, LG, DE, ZH, RU, ES]
+CHARTS = [EN, NE, FR, RW, LG, DE, ZH, RU, ES, HI, TR, EU, KA]
 
 written = []
 for S in CHARTS:
     wide, narrow = (os.path.join(HERE, "images", n) for n in S["out"])
 
+    # The current axis title is set on its side, so a script with parts above
+    # and below the line is wider there than Latin is, and Devanagari at its
+    # lift was touching the 4000 tick. `lean` is how far that title sits from
+    # the plot, and a script that needs more simply asks for more.
+    lean = S.get("lean", 0)
     peak = build(
         900, 470, (74, 26, 44, 62),
         range(2000, 6001, 1000), range(0, 31, 5),
-        (13, 14, 13, 11, 13), S["wide"], wide, key=(102, 66, 26), S=S)
+        (13, 14, 13, 11, 13), S["wide"], wide, yoff=42 + lean,
+        key=(102, 66, 26), S=S)
 
     build(
         430, 460, (74, 14, 46, 50),
         range(2000, 6001, 2000), range(0, 31, 10),
-        (14, 15, 14, 11, 14), S["narrow"], narrow, yoff=58, key=(100, 66, 28),
-        S=S)
+        (14, 15, 14, 11, 14), S["narrow"], narrow, yoff=58 + lean,
+        key=(100, 66, 28), S=S)
 
     written += [os.path.relpath(wide, HERE), os.path.relpath(narrow, HERE)]
 

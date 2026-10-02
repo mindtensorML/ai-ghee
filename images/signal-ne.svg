@@ -17,6 +17,6 @@
 <line x1="102" y1="66" x2="136" y2="66" class="trace"/><text x="146" y="71" class="key">यो रन</text><line x1="102" y1="92" x2="136" y2="92" class="ideal"/><text x="146" y="97" class="key">खोजिएको आकार</text>
 <circle cx="740.7" cy="174.8" r="5.5" fill="#a8681a"/>
 <text x="143.3" y="271.0" class="lbl" text-anchor="start">बीस मिनेट केही हुँदैन</text><text x="596.7" y="368.0" class="lbl" text-anchor="end">बोसो जम्मा हुँदै</text><text x="730.0" y="150.7" class="lbl-s" text-anchor="end">नौनी छुट्टियो</text>
-<text x="32" y="226.0" class="unit" text-anchor="middle" transform="rotate(-90 32 226.0)">मोटर करेन्ट, mA</text>
+<text x="23" y="226.0" class="unit" text-anchor="middle" transform="rotate(-90 23 226.0)">मोटर करेन्ट, mA</text>
 <text x="474.0" y="461" class="unit" text-anchor="middle">मोही पार्न थालेको, मिनेट</text>
 </svg>

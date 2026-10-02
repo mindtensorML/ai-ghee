@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>მხეცი &middot; ხელოვნური ინტელექტის ერბო</title>
+<meta name="description" content="უსადენო ბურღი, საჭრელი დაფა, ელექტროქურა და Raspberry Pi. რას აკეთებს ერბოს დანადგარის თითოეული ნაწილი.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="მხეცი">
+<meta property="og:description" content="უსადენო ბურღი, საჭრელი დაფა და Raspberry Pi. რას აკეთებს ერბოს დანადგარის თითოეული ნაწილი.">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/card-ka.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/beast-ka.html">
+<meta property="og:site_name" content="JD's AI Ghee">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ერბოს მანქანა, წარწერით AI აკეთებს ერბოს">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4ead7">
+<meta property="og:locale" content="ka_GE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="rw_RW">
+<meta property="og:locale:alternate" content="lg_UG">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:locale:alternate" content="eu_ES">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/beast-ka.html">
+<link rel="alternate" hreflang="ka" href="https://mindtensorml.github.io/ai-ghee/beast-ka.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/beast-ne.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/beast-fr.html">
+<link rel="alternate" hreflang="rw" href="https://mindtensorml.github.io/ai-ghee/beast-rw.html">
+<link rel="alternate" hreflang="lg" href="https://mindtensorml.github.io/ai-ghee/beast-lg.html">
+<link rel="alternate" hreflang="de" href="https://mindtensorml.github.io/ai-ghee/beast-de.html">
+<link rel="alternate" hreflang="zh" href="https://mindtensorml.github.io/ai-ghee/beast-zh.html">
+<link rel="alternate" hreflang="ru" href="https://mindtensorml.github.io/ai-ghee/beast-ru.html">
+<link rel="alternate" hreflang="es" href="https://mindtensorml.github.io/ai-ghee/beast-es.html">
+<link rel="alternate" hreflang="hi" href="https://mindtensorml.github.io/ai-ghee/beast-hi.html">
+<link rel="alternate" hreflang="tr" href="https://mindtensorml.github.io/ai-ghee/beast-tr.html">
+<link rel="alternate" hreflang="eu" href="https://mindtensorml.github.io/ai-ghee/beast-eu.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/beast.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "მხეცი",
+  "description": "უსადენო ბურღი, საჭრელი დაფა და Raspberry Pi. რას აკეთებს ერბოს დანადგარის თითოეული ნაწილი.",
+  "image": "https://mindtensorml.github.io/ai-ghee/images/beast.jpg",
+  "inLanguage": "ka",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mindtensorml.github.io/ai-ghee/beast-ka.html"
+  },
+  "isAccessibleForFree": true,
+  "author": {
+    "@type": "Person",
+    "name": "JD"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JD's AI Ghee",
+    "url": "https://mindtensorml.github.io/ai-ghee/"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#story">ტექსტზე გადასვლა</a>
+
+<header class="top">
+  <nav class="links"><a class="page" href="index-ka.html">&lsaquo; ამბავი</a><details class="langs"><summary aria-label="Language, ქართული"><span class="here">ქართული</span></summary><ul lang=""><li><a class="lang" href="beast.html" lang="en" hreflang="en">English</a></li><li><a class="lang" href="beast-ne.html" lang="ne" hreflang="ne">नेपाली</a></li><li><a class="lang" href="beast-fr.html" lang="fr" hreflang="fr">Français</a></li><li><a class="lang" href="beast-rw.html" lang="rw" hreflang="rw">Ikinyarwanda</a></li><li><a class="lang" href="beast-lg.html" lang="lg" hreflang="lg">Oluganda</a></li><li><a class="lang" href="beast-de.html" lang="de" hreflang="de">Deutsch</a></li><li><a class="lang" href="beast-zh.html" lang="zh" hreflang="zh">中文</a></li><li><a class="lang" href="beast-ru.html" lang="ru" hreflang="ru">Русский</a></li><li><a class="lang" href="beast-es.html" lang="es" hreflang="es">Español</a></li><li><a class="lang" href="beast-hi.html" lang="hi" hreflang="hi">हिन्दी</a></li><li><a class="lang" href="beast-tr.html" lang="tr" hreflang="tr">Türkçe</a></li><li><a class="lang" href="beast-eu.html" lang="eu" hreflang="eu">Euskara</a></li></ul></details></nav>
+  <a class="mark" href="index-ka.html"><img src="logo.svg" alt="" width="24" height="24">მანქანა</a>
+</header>
+
+<header class="hero wrap">
+  <p class="kicker">აწყობა</p>
+  <h1>მხეცი</h1>
+  <p class="standfirst">ამ დანადგარზე ყველაფერი ან სამშენებლო მაღაზიიდან მოვიდა, ან სამზარეულოს უჯრიდან. აი, რას აკეთებს სინამდვილეში თითოეული ნაწილი.</p>
+</header>
+
+<main id="story">
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>რისგან არის აწყობილი</h2>
+    <p class="lead">ტრიალს უსადენო ბურღი აკეთებს. ის სამაგრშია ჩასმული, სამაგრი კი საჭრელ დაფაზეა მიხრახნილი, და სწორედ დაფა იჭერს ყველაფერს ქვაბის თავზე გასწორებულად. სადღვებლის თავი მაგარი ხეა ფოლადის ღერძზე, ხრახნებით შეკრული და არა წებოთი, და სწორედ ამიტომ გავაკეთე და არ ვიყიდე.</p>
+    <p>ელექტრონიკა გამჭვირვალე პლასტმასის კონტეინერში ცხოვრობს, ძირითადად იმისთვის, რომ დავინახო, ხანძარი თუ არ ატყდა. ჩაწერას Raspberry Pi აკეთებს. დიდი ყვითელი ღილაკი მოტორის კვებას წყვეტს და პროგრამაში ვერაფერი შეედავება.</p>
+    <figure>
+      <img src="images/beast-wide.jpg" width="1200" height="1600" alt="დანადგარი სამზარეულოს ზედაპირზე, ჩანს ბურღი სამაგრში, ხის დაფა, გამჭვირვალე კონტეინერი ელექტრონიკით და ქვემოთ Raspberry Pi." loading="lazy" decoding="async">
+      <figcaption>ბურღი, დაფა, კონტეინერი, ღილაკი</figcaption>
+    </figure>
+    <ul class="spec">
+      <li><span class="k">მოტორი</span><span class="v">უსადენო ბურღი სამაგრში, ბრუნები სრულზე ბევრად დაბალი</span></li>
+      <li><span class="k">სადღვებელი</span><span class="v">მაგარი ხე და უჟანგავი ფოლადი, გაკეთებული და არა ნაყიდი</span></li>
+      <li><span class="k">გათბობა</span><span class="v">ელექტროქურა, რომელსაც სიმძლავრის რეგულატორი რთავს და თიშავს</span></li>
+      <li><span class="k">კარკასი</span><span class="v">საჭრელი დაფა და პლასტმასის კონტეინერი</span></li>
+      <li><span class="k">კვება</span><span class="v">იმპულსური ბლოკი 12 V, კედლის ბუდიდან</span></li>
+      <li><span class="k">ტვინი</span><span class="v">Raspberry Pi, წერს CSV ფაილში</span></li>
+      <li><span class="k">გრძნობა</span><span class="v">დენი და ძაბვა დღვებისას, სენსორი ქვაბში ხარშვისას</span></li>
+      <li><span class="k">სტოპი</span><span class="v">ერთი დიდი ღილაკი, მყარად გაყვანილი</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>როგორ არის გაყვანილი</h2>
+    <p>ოთხი სიგნალის სადენი და ერთი სქელი კონტური. Pi ითვლის, რამდენად ძლიერად და რომელ მხარეს, დენს კი სინამდვილეში H-ხიდი ამოძრავებს, და ეს ორი ერთმანეთს არასდროს ხვდება. იმაში, რასაც Pi ეხება, რამდენიმე მილიამპერზე მეტი არ გადის.</p>
+    <p>ღილაკი ის ნაწილია, რომელსაც ნამდვილად ღირს დახედვა. Pi-სთან საერთოდ არ არის შეერთებული. ის მოტორის კონტურში ზის და წყვეტს მას, ასე რომ პროგრამის ვერანაირი შეცდომა ვერ გადააფიქრებს გაჩერებას. რისი გაკეთებაც Pi-ს შეუძლია, ის არის, რომ შეამჩნიოს. თუ ის ოცდაათ პროცენტს ითხოვს, სენსორი კი ორას მილიამპერზე ნაკლებს აბრუნებს, დაასკვნის, რომ კონტური გახსნილია, და თხოვნას წყვეტს.</p>
+    <p>სენსორი იმავე კონტურზეა, მაგრამ მისი ლოგიკური ნაწილი Pi-დან იკვებება, და სწორედ ამიტომ პასუხობს მაშინაც, როცა კვება გამორთულია. ღილაკის შემოწმების მთელი ხრიკი ეს არის.</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/schematic-ka-narrow.svg">
+          <img src="images/schematic-ka.svg" width="1120" height="740" alt="ერბოს დანადგარის სქემა. Raspberry Pi ოთხი სიგნალის ხაზით მართავს BTS7960 H-ხიდს და I2C-ით კითხულობს INA260 დენის სენსორს. 12 V კვების ბლოკი, 15 A დამცველი, ავარიული გაჩერების ღილაკი და სენსორი მიმდევრობით არის ჩართული მოტორის კონტურში, რომელსაც Pi არასდროს ეხება.">
+        </picture>
+      </div>
+      <figcaption>სქემა</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>სად დგას</h2>
+    <p>ნიჟარის თავზე. ქვაბი ჩადის თასში, ზემოდან ბრტყელი საფარი ლაგდება ღერძისთვის გამოჭრილი ხვრელით, და რაც გაიჭრება, ისეთ ადგილას ვარდება, სადაც მნიშვნელობა არ აქვს.</p>
+    <p>ეს ის ნაწილია, რომელსაც რენდერში არავინ დებს. სამზარეულოში რამის აწყობის ნახევარი ის არის, რომ გადაწყვიტო, სად მისცემ ჭუჭყს უფლებას.</p>
+    <figure>
+      <img src="images/rig-sink.jpg" width="1300" height="1733" alt="დანადგარი სამზარეულოს ნიჟარის თავზე არის დამაგრებული, ქვემოთ ლაპტოპი რეალურ დროში გრაფიკებს აჩვენებს." loading="lazy" decoding="async">
+      <figcaption>ადგილზე, პროცესის შუაგულში</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>რას უყურებს</h2>
+    <p>დღვების დროს მოტორის ხაზზე დენსა და ძაბვას, დაახლოებით წამში ერთხელ, და პირდაპირ ფაილში. ხარშვის დროს ამის ნაცვლად ქვაბში ჩაშვებულ სენსორს, რეგულატორი კი ელექტროქურას ხან რთავს და ხან თიშავს, რომ რიცხვი შეინარჩუნოს.</p>
+    <p>მიკროფონი არა და კამერაც არა, და სწორედ ეს არის შემდეგი, რისი გასწორებაც მინდა. აქამდე ფსონი იმაზე იყო, რომ თუ მხოლოდ დატვირთვა კმარა გარდატეხის დასაჭერად, დანარჩენს ლოდინი შეუძლია.</p>
+    <figure>
+      <img src="images/laptop.jpg" width="1400" height="980" alt="ლაპტოპის ეკრანი მოტორის ჩვენებების ორი ცოცხალი გრაფიკით, ქვემოთ მორბენალი ტერმინალის ჩანაწერი." loading="lazy" decoding="async">
+      <figcaption>ცოცხალი გრაფიკი პროცესის დროს</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>რას წყვეტს</h2>
+    <p>ორ რამეს. აიწია თუ არა დატვირთვა და მერე ჩამოვარდა თუ არა იმდენად, რომ გარდატეხა გამოაცხადოს, და უნდა იყოს თუ არა ქურა ჩართული, რომ 250 F-ზე იდგეს.</p>
+    <p>არ იცის, რა არის მაწონი. არ იცის, რა არის კარაქი. იცის, რომ რიცხვი ცოტა ხანს ადიოდა და მერე ჩამოვარდა, და რომ ეს ფორმა იმას ნიშნავს, რომ საქმე დამთავრდა.</p>
+    <figure>
+      <img src="images/batch-big.jpg" width="1400" height="1000" alt="ორი მაღალი ქილა მკრთალი შედედებული ერბოთი, ხრახნიანი თავსახურებითა და გამჭვირვალე ეტიკეტებით, მოაჯირზე დგას, უკან პატარა სამაგრიანი ქილები დაბინდულია." loading="lazy" decoding="async">
+      <figcaption>რისთვის არის ეს ფორმა</figcaption>
+    </figure>
+
+  <div class="next">
+    <a href="index-ka.html">&lsaquo; უკან ამბავთან</a>
+    <p>მაწონი, სადღვებელი, გარდატეხა და ერთი საათი ფერის ყურება.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>ყველა ფოტო ერთი და იმავე პროცესისაა, 2026 წლის აგვისტოდან. სადღვებელი, მზა ქილები და მეორე პარტია მოგვიანებით გადავიღე.</p>
+  <p class="contact">კითხვები, შესწორებები, ან თუ თქვენც ასეთი რამ ააწყვეთ. <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
  .ax{font:13px "Avenir Next","Segoe UI",sans-serif;fill:#9a836a;letter-spacing:.04em}
  .lbl{font:600 14px "Avenir Next","Segoe UI",sans-serif;fill:#6b5846}
  .lbl-s{font:600 13px "Avenir Next","Segoe UI",sans-serif;fill:#a8681a;letter-spacing:.09em}
- .unit{font:600 11px "Avenir Next","Segoe UI",sans-serif;fill:#9a836a;letter-spacing:.16em;text-transform:uppercase}
+ .unit{font:600 11px "Avenir Next","Segoe UI",sans-serif;fill:#9a836a;letter-spacing:.16em;text-transform:none}
  .band{fill:#c08a2e;opacity:.17}
  .trace{fill:none;stroke:#c08a2e;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
  .ideal{fill:none;stroke:#9a836a;stroke-width:2;stroke-dasharray:7 6;opacity:.85}
@@ -17,6 +17,6 @@
 <line x1="102" y1="66" x2="136" y2="66" class="trace"/><text x="146" y="71" class="key">Этот прогон</text><line x1="102" y1="92" x2="136" y2="92" class="ideal"/><text x="146" y="97" class="key">Форма, которую оно ищет</text>
 <circle cx="740.7" cy="174.8" r="5.5" fill="#a8681a"/>
 <text x="143.3" y="271.0" class="lbl" text-anchor="start">Двадцать минут почти ничего</text><text x="596.7" y="368.0" class="lbl" text-anchor="end">Жир собирается</text><text x="730.0" y="150.7" class="lbl-s" text-anchor="end">ПЕРЕЛОМ</text>
-<text x="32" y="226.0" class="unit" text-anchor="middle" transform="rotate(-90 32 226.0)">Ток двигателя, mA</text>
-<text x="474.0" y="461" class="unit" text-anchor="middle">Минуты сбивания</text>
+<text x="32" y="226.0" class="unit" text-anchor="middle" transform="rotate(-90 32 226.0)">ТОК ДВИГАТЕЛЯ, mA</text>
+<text x="474.0" y="461" class="unit" text-anchor="middle">МИНУТЫ СБИВАНИЯ</text>
 </svg>

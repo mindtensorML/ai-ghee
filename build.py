@@ -347,17 +347,17 @@ def alternates(meta):
 
 
 def home_href(meta):
-    """The story page in the language being read, or nothing from the story.
+    """The story page in the language being read.
 
     The mark is what a reader clicks to get back, and it has to land them in
     the language they were already in rather than dropping them into English.
-    On the story page itself it is a link to nowhere, so it is not made one.
+    It is a link on the story page too. A self link does nothing, but people
+    click a wordmark without thinking and one that quietly ignores them reads
+    as broken, which is exactly what happened the first time this shipped.
     """
     here = meta.get("lang", "en")
     suffix = "" if here == "en" else "-" + here
     target = page_file("index", suffix)
-    if meta.get("output") == target:
-        return None
     return "./" if target == "index.html" else target
 
 
@@ -374,9 +374,7 @@ def render_nav(meta):
     # the mark is decorative here, the name is right beside it, so alt is empty
     glyph = (f'<img src="logo.svg" alt="" width="24" height="24">'
              f'{meta.get("mark", "")}')
-    home = home_href(meta)
-    mark = (f'  <a class="mark" href="{home}">{glyph}</a>' if home
-            else f'  <span class="mark">{glyph}</span>')
+    mark = f'  <a class="mark" href="{home_href(meta)}">{glyph}</a>'
 
     links = []
     if meta.get("nav_text"):

@@ -589,7 +589,10 @@ footer .legal {
 
 /* ---------- the Nepali pages ---------- */
 
-/* Devanagari letters hang from one continuous bar along the top of the word,
+/* Hindi and Nepali are the same script and take the same block. Everything
+   below is written for both.
+
+   Devanagari letters hang from one continuous bar along the top of the word,
    so the loose tracking that makes the Latin micro-type work snaps that bar
    into pieces. Every tracked rule is reset below, and the negative tracking
    on the headings with it.
@@ -599,7 +602,7 @@ footer .legal {
    not carry. Between them the four cover macOS, iOS, Windows, Android and
    the desktop Linux distributions. */
 
-html[lang="ne"] {
+html:is([lang="ne"],[lang="hi"]) {
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
            "Kohinoor Devanagari", "Devanagari Sangam MN", "Nirmala UI",
            "Noto Serif Devanagari", "Noto Sans Devanagari", Mangal, serif;
@@ -609,56 +612,56 @@ html[lang="ne"] {
 }
 
 /* matras sit above and below the line, so the leading has to open up */
-html[lang="ne"] body { line-height: 1.8; }
+html:is([lang="ne"],[lang="hi"]) body { line-height: 1.8; }
 
-html[lang="ne"] h1 {
+html:is([lang="ne"],[lang="hi"]) h1 {
   letter-spacing: 0;
   line-height: 1.28;
   font-weight: 600;
 }
 
-html[lang="ne"] h2 {
+html:is([lang="ne"],[lang="hi"]) h2 {
   letter-spacing: 0;
   line-height: 1.38;
   font-weight: 600;
 }
 
-html[lang="ne"] h3 { letter-spacing: 0; }
+html:is([lang="ne"],[lang="hi"]) h3 { letter-spacing: 0; }
 
-html[lang="ne"] .standfirst { line-height: 1.62; }
+html:is([lang="ne"],[lang="hi"]) .standfirst { line-height: 1.62; }
 
-html[lang="ne"] .pull {
+html:is([lang="ne"],[lang="hi"]) .pull {
   letter-spacing: 0;
   line-height: 1.5;
 }
 
-html[lang="ne"] .kicker,
-html[lang="ne"] figcaption,
-html[lang="ne"] .spec .k,
-html[lang="ne"] .top .mark,
-html[lang="ne"] .top .links a { letter-spacing: 0.02em; }
+html:is([lang="ne"],[lang="hi"]) .kicker,
+html:is([lang="ne"],[lang="hi"]) figcaption,
+html:is([lang="ne"],[lang="hi"]) .spec .k,
+html:is([lang="ne"],[lang="hi"]) .top .mark,
+html:is([lang="ne"],[lang="hi"]) .top .links a { letter-spacing: 0.02em; }
 
 /* the same lift, applied to every line of micro-type on the page */
-html[lang="ne"] .kicker,
-html[lang="ne"] figcaption,
-html[lang="ne"] .spec .k,
-html[lang="ne"] .top .mark,
-html[lang="ne"] .top .links summary { font-size: 0.84rem; }
+html:is([lang="ne"],[lang="hi"]) .kicker,
+html:is([lang="ne"],[lang="hi"]) figcaption,
+html:is([lang="ne"],[lang="hi"]) .spec .k,
+html:is([lang="ne"],[lang="hi"]) .top .mark,
+html:is([lang="ne"],[lang="hi"]) .top .links summary { font-size: 0.84rem; }
 
-html[lang="ne"] .ladder figcaption { font-size: 0.72rem; }
+html:is([lang="ne"],[lang="hi"]) .ladder figcaption { font-size: 0.72rem; }
 
-html[lang="ne"] footer p { font-size: 0.86rem; }
+html:is([lang="ne"],[lang="hi"]) footer p { font-size: 0.86rem; }
 
 
 
 /* the section numbers stay tracked, because Devanagari digits stand apart
    from each other the way the Latin ones do */
-html[lang="ne"] .num { letter-spacing: 0.2em; }
+html:is([lang="ne"],[lang="hi"]) .num { letter-spacing: 0.2em; }
 
 /* a key like मोटर is a word, not a line of small caps, so it needs the room */
-html[lang="ne"] .spec .k { flex-basis: 7rem; }
+html:is([lang="ne"],[lang="hi"]) .spec .k { flex-basis: 7rem; }
 
-html[lang="ne"] .ladder figcaption { letter-spacing: 0.02em; }
+html:is([lang="ne"],[lang="hi"]) .ladder figcaption { letter-spacing: 0.02em; }
 
 
 /* ---------- print ---------- */
@@ -694,3 +697,41 @@ html[lang="ne"] .ladder figcaption { letter-spacing: 0.02em; }
     word-break: break-all;
   }
 }
+
+
+/* ---------- Georgian ---------- */
+
+/* Mkhedruli has no capital letters. Not rarely used, none exist. So every
+   place this design sets Latin micro-type as spaced capitals, the Georgian is
+   simply text, and the tracking that opens up a capital has nothing to open.
+   It comes down rather than off, because a little air still helps a label.
+
+   No font is loaded. The Latin faces stay in front so the part numbers and
+   the readings keep the shapes they have everywhere else, and a Georgian face
+   sits behind them. Sylfaen covers Windows, Noto covers Linux and Android,
+   and macOS resolves Georgian through its own fallback. */
+html[lang="ka"] {
+  --serif: "Iowan Old Style", "Palatino Linotype", "Times New Roman",
+           "Noto Serif Georgian", Sylfaen, serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui,
+          "Noto Sans Georgian", Sylfaen, sans-serif;
+}
+
+html[lang="ka"] body { line-height: 1.74; }
+
+html[lang="ka"] h1 { letter-spacing: 0; line-height: 1.22; }
+html[lang="ka"] h2 { letter-spacing: 0; line-height: 1.32; }
+html[lang="ka"] h3 { letter-spacing: 0; }
+html[lang="ka"] .pull { letter-spacing: 0; line-height: 1.5; }
+
+html[lang="ka"] .kicker,
+html[lang="ka"] figcaption,
+html[lang="ka"] .spec .k,
+html[lang="ka"] .top .mark,
+html[lang="ka"] .top .links a,
+html[lang="ka"] .top .links summary {
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+}
+
+html[lang="ka"] .spec .k { flex-basis: 8rem; }

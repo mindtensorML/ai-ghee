@@ -1,6 +1,6 @@
 ---
 site_url: https://mindtensorml.github.io/ai-ghee/
-languages: en|English|en_GB ; ne|नेपाली|ne_NP ; fr|Français|fr_FR ; rw|Ikinyarwanda|rw_RW ; lg|Oluganda|lg_UG ; de|Deutsch|de_DE ; zh|中文|zh_CN ; ru|Русский|ru_RU ; es|Español|es_ES
+languages: en|English|en_GB ; ne|नेपाली|ne_NP ; fr|Français|fr_FR ; rw|Ikinyarwanda|rw_RW ; lg|Oluganda|lg_UG ; de|Deutsch|de_DE ; zh|中文|zh_CN ; ru|Русский|ru_RU ; es|Español|es_ES ; hi|हिन्दी|hi_IN ; tr|Türkçe|tr_TR ; eu|Euskara|eu_ES ; ka|ქართული|ka_GE
 og_site_name: JD's AI Ghee
 og_image_alt: A pot of finished ghee, deep clear amber with a little foam at one edge
 author: JD

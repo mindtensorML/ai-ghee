@@ -30,6 +30,7 @@ SANS_NE = ('"Avenir Next","Segoe UI","Kohinoor Devanagari",'
            '"Devanagari Sangam MN","Nirmala UI","Noto Sans Devanagari",sans-serif')
 SANS_ZH = ('"Avenir Next","Segoe UI","PingFang SC","Hiragino Sans GB",'
            '"Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif')
+SANS_KA = ('"Avenir Next","Segoe UI","Noto Sans Georgian",Sylfaen,sans-serif')
 
 SIG, PWR = 1.9, 6.2          # the two line weights
 
@@ -186,6 +187,76 @@ WORDS_ES = {
     "POWER AND SENSE": "ALIMENTACIÓN Y MEDIDA",
 }
 
+# Hindi takes the Nepali treatment, same script and same span class. इमरजेंसी
+# स्टॉप rather than the formal आपातकालीन, for the reason the German entry gives
+# for NOT-AUS. It is what is moulded into the button, what a technician says
+# out loud, and the formal word is government register that reads as heritage.
+WORDS_HI = {
+    "12 V SUPPLY": "12 V सप्लाई",
+    "MAINS": "मेन्स",
+    "DRILL": "ड्रिल",
+    "EMERGENCY STOP": "इमरजेंसी स्टॉप",
+    "EMERGENCY": "इमरजेंसी",
+    "STOP": "स्टॉप",
+    "SIGNAL": "सिग्नल",
+    "MOTOR LOOP": "मोटर लूप",
+    "POWER AND SENSE": "पावर और सेंसिंग",
+}
+
+# Turkish writes every label here itself. The dotted İ in SİNYAL and MOTOR
+# DEVRESİ is the reason none of this can be left to a text-transform.
+#
+# BESLEME drops the voltage, the way the German NETZTEIL does. 12 V BESLEME
+# measures 116 px against 108 of box and would run into the terminal, and
+# Turkish has no settled short form the way French has ALIM or Russian БП.
+# The rail voltage is on the build page in the table of parts, in the label
+# text a screen reader reads, and in the prose.
+WORDS_TR = {
+    "12 V SUPPLY": "BESLEME",
+    "MAINS": "ŞEBEKE",
+    "DRILL": "MATKAP",
+    "EMERGENCY STOP": "ACİL|STOP",
+    "EMERGENCY": "ACİL",
+    "STOP": "STOP",
+    "SIGNAL": "SİNYAL",
+    "MOTOR LOOP": "MOTOR DEVRESİ",
+    "POWER AND SENSE": "GÜÇ VE ÖLÇÜM",
+}
+
+# Basque has a real word for every label here and only one had to be weighed.
+# ZULAGAILUA is the modern word for the machine and measures 86 px against the
+# 96 the centred position allows, so it goes in rather than the older BARAUTSA
+# that a tighter estimate had argued for. The stop splits after its first word,
+# which is where Basque reads the break.
+WORDS_EU = {
+    "12 V SUPPLY": "12 V ITURRIA",
+    "MAINS": "SAREA",
+    "DRILL": "ZULAGAILUA",
+    "EMERGENCY STOP": "LARRIALDIKO|GELDIALDIA",
+    "EMERGENCY": "LARRIALDIKO",
+    "STOP": "GELDIALDIA",
+    "SIGNAL": "SEINALEA",
+    "MOTOR LOOP": "MOTOR-BEGIZTA",
+    "POWER AND SENSE": "POTENTZIA ETA NEURKETA",
+}
+
+# Georgian fits everywhere with room to spare, and only the supply block had
+# to be shortened. კვების ბლოკი 12 V measures 150 px against 108 of box, so it
+# drops to კვება 12 V, which is the same word the build page's table of parts
+# uses for that row and keeps the voltage the German and Turkish drawings both
+# had to give up.
+WORDS_KA = {
+    "12 V SUPPLY": "კვება 12 V",
+    "MAINS": "ქსელი",
+    "DRILL": "ბურღი",
+    "EMERGENCY STOP": "ავარიული|გაჩერება",
+    "EMERGENCY": "ავარიული",
+    "STOP": "გაჩერება",
+    "SIGNAL": "სიგნალი",
+    "MOTOR LOOP": "მოტორის კონტური",
+    "POWER AND SENSE": "კვება და გაზომვა",
+}
+
 ARIA = {
     "en": "Circuit diagram of the ghee rig. A Raspberry Pi drives a BTS7960 "
           "H-bridge over four signal wires and reads an INA260 current sensor "
@@ -225,6 +296,26 @@ ARIA = {
           "de corriente INA260 por I2C. Una fuente de 12 V, un fusible de "
           "15 A, el botón de parada de emergencia y el sensor están en serie "
           "en el circuito del motor, que la Pi nunca toca.",
+    "tr": "Ghee düzeneğinin devre şeması. Bir Raspberry Pi, dört sinyal "
+          "kablosu üzerinden BTS7960 H köprüsünü sürüyor ve INA260 akım "
+          "sensörünü I2C üzerinden okuyor. 12 V güç kaynağı, 15 A sigorta, "
+          "acil durdurma düğmesi ve sensör, Pi'nin hiç dokunmadığı motor "
+          "devresinde seri olarak duruyor.",
+    "ka": "ერბოს დანადგარის სქემა. Raspberry Pi ოთხი სიგნალის ხაზით მართავს "
+          "BTS7960 H-ხიდს და I2C-ით კითხულობს INA260 დენის სენსორს. 12 V "
+          "კვების ბლოკი, 15 A დამცველი, ავარიული გაჩერების ღილაკი და სენსორი "
+          "მიმდევრობით არის ჩართული მოტორის კონტურში, რომელსაც Pi არასდროს "
+          "ეხება.",
+    "eu": "Ghee egiteko makinaren zirkuitu-eskema. Raspberry Pi batek BTS7960 "
+          "H zubi bat gidatzen du lau seinale-kableren bitartez eta INA260 "
+          "korronte-sentsore bat irakurtzen du I2C bidez. 12 V-ko iturri bat, "
+          "15 A-ko fusible bat, larrialdiko geldialdiaren botoia eta "
+          "sentsorea seriean daude motorraren begiztan, eta Pi-ak ez du "
+          "inoiz ukitzen.",
+    "hi": "घी बनाने वाले रिग का सर्किट डायग्राम। रास्पबेरी पाई चार सिग्नल तारों से "
+          "BTS7960 एच ब्रिज चलाता है और I2C से INA260 करेंट सेंसर पढ़ता है। 12 V की "
+          "सप्लाई, 15 एम्पियर का फ़्यूज़, इमरजेंसी स्टॉप बटन और सेंसर मोटर के उसी लूप में "
+          "एक के बाद एक जुड़े हैं, जिस लूप को पाई कभी नहीं छूता।",
     "ne": "घ्यू बनाउने रिगको सर्किट डायग्राम। रास्पबेरी पाईले चार वटा सिग्नल "
           "तारबाट BTS7960 एच ब्रिज चलाउँछ र I2C बाट INA260 करेन्ट सेन्सर पढ्छ। "
           "12 भोल्टको सप्लाई, 15 एम्पियरको फ्युज, आपत्कालीन स्टप बटन र सेन्सर "
@@ -237,8 +328,12 @@ ARIA = {
 # Devanagari hangs from a bar along the top of a word, which tracking cuts
 # into pieces, and it fills less of its em, so `dv` turns the tracking off and
 # sets it larger. A Han character fills its whole em, so `han` turns the
-# tracking off and sets it smaller. Latin script languages need neither and
-# reuse the Latin stack and tracking.
+# tracking off and sets it smaller. Mkhedruli has no capitals at all, and it
+# turns out not to need a lift either. Measured at a matched size its body is
+# 8.8px against a Latin capital's 8.5px, and its ascenders and descenders then
+# carry it to 11.2px, so it reads as the larger of the two and `ka` takes it
+# down slightly and keeps only a trace of the tracking. Latin script languages
+# need none of this and reuse the Latin stack and tracking.
 LANGS = {
     "en": dict(suffix="",    stack=SANS,    span=None,  words={}),
     "ne": dict(suffix="-ne", stack=SANS_NE, span="dv",  words=WORDS_NE),
@@ -249,6 +344,10 @@ LANGS = {
     "zh": dict(suffix="-zh", stack=SANS_ZH, span="han", words=WORDS_ZH),
     "ru": dict(suffix="-ru", stack=SANS,    span=None,  words=WORDS_RU),
     "es": dict(suffix="-es", stack=SANS,    span=None,  words=WORDS_ES),
+    "hi": dict(suffix="-hi", stack=SANS_NE, span="dv",  words=WORDS_HI),
+    "tr": dict(suffix="-tr", stack=SANS,    span=None,  words=WORDS_TR),
+    "eu": dict(suffix="-eu", stack=SANS,    span=None,  words=WORDS_EU),
+    "ka": dict(suffix="-ka", stack=SANS_KA, span="ka",   words=WORDS_KA),
 }
 
 LANG = "en"
@@ -355,6 +454,7 @@ def css(s=1.0):
  .val{{font:700 {12.5*s:.1f}px {stack()};fill:{INK}}}
  .dv{{letter-spacing:0;font-size:1.18em}}
  .han{{letter-spacing:0;font-size:0.92em}}
+ .ka{{letter-spacing:0.02em;font-size:0.97em}}
  .note{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{FAINT}}}
  .notek{{font:italic 400 {11*s:.1f}px Georgia,serif;fill:{DEEP}}}
  .lead{{fill:none;stroke:{FAINT};stroke-width:{0.9*s:.2f};stroke-dasharray:{2.5*s:.1f} {2.5*s:.1f}}}
