@@ -2,14 +2,15 @@
 
 A photo story about making traditional bilona ghee with a homemade rig that
 senses the moment cream breaks into butter and stops itself. It is published
-in English and in Nepali.
+in twenty languages.
 
 Live at https://mindtensorml.github.io/ai-ghee/
 
 ## To change the words
 
-Edit `story.md` for the main page or `beast.md` for the machine page. The
-Nepali versions of the same two pages are `story-ne.md` and `beast-ne.md`.
+Edit `story.md` for the main page or `beast.md` for the machine page. Every
+other language is the same two files with its code on the end, so the French
+pair is `story-fr.md` and `beast-fr.md`.
 Commit. That is the whole job. A GitHub Action rebuilds the HTML about forty
 seconds later and pushes it back, and the site updates itself.
 
@@ -47,27 +48,34 @@ previews, the video at the top, the footer note. Keys are named plainly, so
 `headline` is the headline and `video` is the YouTube id.
 
 
-## The two languages
+## The languages
 
-Each page exists twice, and the two halves are joined by six keys in the
-front matter.
+A language is declared once, on the `languages:` line in `site.md`, as a code,
+the name written in that language, and a locale.
 
-    lang            goes on the html element, en unless you say otherwise
+    fr|Français|fr_FR
+
+Everything else follows from the code. Filenames, the switcher, the hreflang
+tags, the og:locale alternates and whether the page reads right to left are all
+worked out in `build.py`. Each page carries only `lang`, `stem` and `locale`,
+plus the words of its own chrome.
+
+    lang            goes on the html element
+    stem            index or beast, which is how a page finds its siblings
     locale          og:locale, so a shared link says which language it is
-    alt_locale      the same for the other version
-    alt_href        the link the switcher in the masthead follows
-    alt_lang        the other version's language code
-    alt_label       the word on the switcher, written in the language it
-                    leads to, so the English page says नेपाली
-    alt_url         the other version's full address, for the hreflang tags
+    skip_text       the skip link
+    lang_label      the word for Language, on the switcher button, read aloud
+                    by a screen reader and never seen
+    note_label      what a screen reader says for the chart's footnote mark
 
-`alt_url` is spelled out rather than worked out from `alt_href`, because the
-English story lives at the bare directory address and the Nepali one at a
-file name, and guessing between the two would be a trap waiting to spring.
+Two further keys are optional. `numerals: devanagari` sets the section numbers
+in Devanagari and changes nothing else, because a milliamp reading is written
+the same way in every language. `schema_type` overrides the structured data
+type, which the privacy and terms pages use to say they are a WebPage rather
+than an article.
 
-One more key, `numerals: devanagari`, sets the section numbers in Devanagari.
-It changes nothing else, because a milliamp reading is written the same way
-in both languages.
+The full recipe for adding a language, which touches seven places, is in
+`Assets WIP/AI-GHEE-SITE-HANDOVER.md`.
 
 No font is loaded for the Nepali pages. `style.css` keeps the Latin faces at
 the front of the stack and puts the Devanagari ones behind them, so a
@@ -98,11 +106,14 @@ attracting rubbish, delete the alias and put a new one on that line.
 
     story.md            the main page, edit this
     beast.md            the machine page, edit this
-    story-ne.md         the main page in Nepali, edit this
-    beast-ne.md         the machine page in Nepali, edit this
+    story-XX.md         the main page in language XX, edit this
+    beast-XX.md         the machine page in language XX, edit this
     site.md             settings shared by every page, including the address
     build.py            markdown to html, no dependencies
-    template.html       the page shell
+    template.tpl        the page shell. Not .html, because anything ending in
+                        .html in this folder is served as a page
+    .nojekyll           keeps GitHub Pages from publishing the markdown a
+                        second time as pages of its own. It must stay
     style.css           the design, every page shares it
     images/             photographs, the charts and the schematics
     make_signal.py      redraws the charts from the sensor log
@@ -111,8 +122,8 @@ attracting rubbish, delete the alias and put a new one on that line.
     logo/               the mark as square files, for a channel avatar
     index.html          generated, do not edit by hand
     beast.html          generated, do not edit by hand
-    index-ne.html       generated, do not edit by hand
-    beast-ne.html       generated, do not edit by hand
+    index-XX.html       generated, do not edit by hand
+    beast-XX.html       generated, do not edit by hand
 
 Every path is relative, so the folder works at the repo root or in a
 subdirectory.

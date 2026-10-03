@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}}</title>
 <meta name="description" content="{{description}}">
-<meta property="og:type" content="article">
+<meta property="og:type" content="{{og_type}}">
 <meta property="og:title" content="{{og_title}}">
 <meta property="og:description" content="{{og_description}}">
 <meta property="og:image" content="{{og_image_absolute}}">
 <meta property="og:url" content="{{og_url}}">
 <meta property="og:site_name" content="{{og_site_name}}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="{{og_image_width}}">
+<meta property="og:image:height" content="{{og_image_height}}">
 <meta property="og:image:alt" content="{{og_image_alt}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f4ead7">
@@ -30,11 +30,11 @@
 {{nav}}
 </header>
 
-<header class="hero wrap">
+<div class="hero wrap">
   <p class="kicker">{{kicker}}</p>
   <h1>{{headline}}</h1>
   <p class="standfirst">{{standfirst}}</p>
-</header>
+</div>
 {{video}}
 <main id="story">
 

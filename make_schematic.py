@@ -626,6 +626,15 @@ def T_stacked(word, x):
     if L().get("iso"):
         first = f"{RLI}{protect(first)}{PDI}"
         second = f"{RLI}{protect(second)}{PDI}"
+    # The script class as well. T() puts it on and this did not, so a stacked
+    # label was drawn at the Latin size with the Latin tracking. Live on the
+    # Arabic sheet, where that tracking pulls the joins apart, and it would be
+    # plainly wrong the first time a headline bar script takes a stacked label,
+    # because the bar is what tracking breaks.
+    span = L().get("span")
+    if span:
+        first = f'<tspan class="{span}">{first}</tspan>'
+        second = f'<tspan class="{span}">{second}</tspan>'
     return (f'<tspan x="{x}" dy="-1.5em">{first}</tspan>'
             f'<tspan x="{x}" dy="1.5em">{second}</tspan>')
 

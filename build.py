@@ -203,11 +203,18 @@ def figure(src, caption, alt, in_group):
         # already returned, and the wiring diagram is a 101 kB drawing sitting
         # well below the fold on the machine page.
         img = (f'<img src="{src}"{dims} alt="{alt_attr}"{lazy}>')
+        # The source needs its own dimensions. Without them the browser
+        # reserves the box from the img attributes, which describe the wide
+        # drawing, so on a phone the wiring diagram is reserved at 1120 by 740
+        # and arrives at 460 by 900. Now that both drawings are lazy, that jump
+        # happens under the reader's thumb rather than before they get there.
+        nsize = image_size(narrow)
+        ndims = f' width="{nsize[0]}" height="{nsize[1]}"' if nsize else ""
         return (
             "    <figure>\n"
             '      <div class="chart">\n'
             "        <picture>\n"
-            f'          <source media="(max-width: 620px)" srcset="{narrow}">\n'
+            f'          <source media="(max-width: 620px)" srcset="{narrow}"{ndims}>\n'
             f"          {img}\n"
             "        </picture>\n"
             "      </div>"
@@ -238,7 +245,7 @@ def spec_table(rows):
         f'<span class="v">{inline(v)}</span></li>'
         for k, v in rows
     )
-    return f'    <ul class="spec">\n{items}\n    </ul>'
+    return f'    <ul class="spec" role="list">\n{items}\n    </ul>'
 
 
 # -------------------------------------------------------------------- parsing
@@ -403,8 +410,15 @@ def alternates(meta):
     if not stem:
         return []
     here = meta.get("lang", "en")
-    return [{**lang,
-             "href": page_file(stem, lang["suffix"]),
+    # The href has to be the same address the canonical names, or the
+    # switcher hands every reader of the other nineteen languages the second
+    # URL for the English home page, which is the thing page_url() exists to
+    # avoid.
+    def href(lang):
+        url = page_url(base, stem, lang["suffix"])
+        return "./" if url.rstrip("/") == base.rstrip("/") else page_file(stem, lang["suffix"])
+
+    return [{**lang, "href": href(lang),
              "url": page_url(base, stem, lang["suffix"])}
             for lang in languages(meta) if lang["code"] != here]
 
@@ -460,10 +474,16 @@ def render_nav(meta):
         # a right to left name sitting in a left to right list is exactly the
         # case the bidi algorithm needs telling about, and the panel is the one
         # place on the site where all of the languages are on screen at once.
+        # The direction belongs on an inline, not on the block. On the
+        # block it also resolves `text-align: start` to the other side, so the
+        # Arabic name sat flush right while the eighteen around it sat flush
+        # left. `bdi` isolates the name exactly as before and leaves the row
+        # alone.
         items = "".join(
             f'<li><a class="lang" href="{a["href"]}" lang="{a["code"]}" '
-            f'hreflang="{a["code"]}" dir="{direction(a["code"])}">'
-            f'{a["label"]}</a></li>' for a in others)
+            f'hreflang="{a["code"]}">'
+            f'<bdi dir="{direction(a["code"])}">{a["label"]}</bdi>'
+            f'</a></li>' for a in others)
         label = here_label(meta)
         # The word in front of the language name was hard coded English on
         # every page, so a screen reader on the Arabic or the Japanese page
@@ -474,7 +494,7 @@ def render_nav(meta):
         links.append(
             f'<details class="langs"><summary aria-label="{word}, '
             f'{label}"><span class="here">{label}</span></summary>'
-            f'<ul lang="">{items}</ul></details>')
+            f'<ul lang="" role="list">{items}</ul></details>')
 
     if not links:
         return mark
@@ -549,7 +569,12 @@ def render_footer(meta):
     if meta.get("footer_links"):
         # the privacy and terms links, set once in site.md so every page carries
         # them. Google's OAuth review wants both reachable from the home page.
-        lines.append(f'  <p class="legal">{inline(meta["footer_links"])}</p>')
+        # These two labels stay English on every page, because the pages
+        # they lead to are English only. Saying so is what stops a Japanese or
+        # an Arabic screen reader pronouncing them in its own voice.
+        legal = inline(meta["footer_links"]).replace(
+            "<a href=", '<a lang="en" hreflang="en" href=')
+        lines.append(f'  <p class="legal">{legal}</p>')
     return "\n".join(lines)
 
 
@@ -613,7 +638,7 @@ def render_schema(meta):
         return ""
     data = {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": meta.get("schema_type", "Article"),
         "headline": meta.get("og_title") or meta.get("headline", ""),
         "description": meta.get("og_description") or meta.get("description", ""),
         "image": absolute(meta, meta.get("schema_image")),
@@ -648,10 +673,21 @@ def build(md_path, template, site=None):
         sections = sections[0] + tail + "\n</section>" + sections[1]
 
     page = template
+    # Escaped. Most of these land inside a content="" attribute, where one
+    # quotation mark in a description would end the attribute early. Nothing in
+    # the forty two pages carries one today, which is luck rather than design.
     for key in ("title", "description", "og_title", "og_description",
                 "og_url", "kicker", "headline", "standfirst", "lang", "dir",
                 "skip_text", "og_site_name", "og_image_alt"):
-        page = page.replace("{{" + key + "}}", meta.get(key, ""))
+        page = page.replace("{{" + key + "}}",
+                            html.escape(meta.get(key, ""), quote=True))
+    page = page.replace("{{og_type}}", meta.get("og_type", "article"))
+    # The declared size has to belong to the image the page actually points at.
+    # It was hard coded at the card's 1200 by 630, and the two legal pages
+    # point at a photograph that is 1500 by 1240.
+    osize = image_size(meta.get("og_image", "")) or (1200, 630)
+    page = page.replace("{{og_image_width}}", str(osize[0]))
+    page = page.replace("{{og_image_height}}", str(osize[1]))
     page = page.replace("{{schema}}", render_schema(meta))
     page = page.replace("{{og_image_absolute}}", absolute(meta))
     page = page.replace("{{head_links}}", render_head_links(meta))
@@ -702,6 +738,21 @@ def main():
         print("no markdown pages found", file=sys.stderr)
         return 1
     print("\n".join(written))
+
+    # Every declared language must have produced both of its pages. Without
+    # this a markdown file that fails to parse, because of a BOM or a leading
+    # blank line or a misspelt `output:`, is skipped in silence. The stale HTML
+    # keeps being served, the sitemap shrinks to match, and the build still
+    # exits 0 with nothing to say.
+    expected = []
+    for lang in languages(site):
+        for stem in ("index", "beast"):
+            expected.append(page_file(stem, lang["suffix"]))
+    missing = [p for p in expected if p not in pages]
+    if missing:
+        print(f"  {len(missing)} declared page(s) were not built: "
+              f"{', '.join(missing)}", file=sys.stderr)
+        return 1
     n = write_sitemap(site, pages)
     if n:
         print(f"  sitemap.xml -> {n} urls, robots.txt")

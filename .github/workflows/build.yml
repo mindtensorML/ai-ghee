@@ -39,7 +39,11 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- '*.html'
+          # build.py rewrites these two on every run, so they have to be
+          # staged with the pages. Staging only the HTML meant a language
+          # added through github.com would publish its pages and leave the
+          # sitemap behind, with nothing to say so.
+          git add -- '*.html' sitemap.xml robots.txt
           if git diff --staged --quiet; then
             echo "Pages already match the markdown, nothing to commit."
           else

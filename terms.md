@@ -4,7 +4,9 @@ title: Terms of service &middot; AI Ghee Making
 description: The conditions for using this site and the small program that publishes its videos to YouTube.
 og_title: Terms of service
 og_description: The conditions for using this site and the small program that publishes its videos to YouTube.
-og_image: images/ghee.jpg
+og_image: images/card-en.jpg
+og_type: website
+schema_type: WebPage
 og_url: https://mindtensorml.github.io/ai-ghee/terms.html
 skip_text: Skip to the content
 lang: en

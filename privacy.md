@@ -4,7 +4,9 @@ title: Privacy &middot; AI Ghee Making
 description: What this site and the program that publishes its videos do with data. Almost nothing, and here is exactly what.
 og_title: Privacy
 og_description: What this site and the program that publishes its videos do with data.
-og_image: images/ghee.jpg
+og_image: images/card-en.jpg
+og_type: website
+schema_type: WebPage
 og_url: https://mindtensorml.github.io/ai-ghee/privacy.html
 skip_text: Skip to the content
 lang: en

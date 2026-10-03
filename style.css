@@ -3,9 +3,15 @@
   --paper: #fff8ec;
   --ink: #2a2118;
   --muted: #6b5846;
-  --faint: #9a836a;
-  --gold: #c08a2e;
-  --deep: #a8681a;
+  /* The three below were 3.02, 2.54 and 3.78 against the page, where WCAG
+     AA wants 4.5 for type this small. Hue and saturation are untouched and
+     only lightness moved, as far as the threshold and no further, so the
+     palette is the same family a step down. They measure 4.59, 4.59 and
+     4.56 on the page and 5.19, 5.19 and 5.16 on a card.
+     Was #9a836a, #c08a2e, #a8681a. */
+  --faint: #796652;
+  --gold: #896221;
+  --deep: #955d17;
   --line: #e3d2b4;
   --shadow: 0 14px 34px rgba(42, 33, 24, 0.13);
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
@@ -93,6 +99,16 @@ body:is(:lang(ja), :lang(yue)) { line-height: 1.78; }
   border-radius: 3px;
 }
 
+/* The embed is a tab stop, and an outline drawn 3px outside it falls
+   outside the .video box, which hides its overflow to keep the rounded
+   corners. So the ring is drawn on the wrapper instead and the keyboard step
+   onto the video is visible. */
+.video:focus-within {
+  outline: 2px solid var(--deep);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
 /* Out of the way until a keyboard reaches it, then a real control.
 
    Everything about where this sits is written as a logical property rather
@@ -156,9 +172,16 @@ a { color: var(--deep); }
   margin: 0 auto;
   padding: 1.6rem 0 0;
   display: flex;
+  /* Wrapping at every width, not only on a phone. The wordmark and the two nav
+     labels are all `nowrap`, so without this the masthead has no way to give,
+     and at 200% text the German and Kinyarwanda ones pushed the whole page
+     sideways from 621px up to 800. At ordinary text size there is room on one
+     line and nothing wraps, so this changes nothing anybody sees today. */
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  row-gap: 0.7rem;
 }
 
 .top .mark {
@@ -185,8 +208,22 @@ a { color: var(--deep); }
   white-space: nowrap;
 }
 
+/* The panel hangs off the masthead, not off the button.
+
+   Pinned to the button it is only ever as safe as wherever the button happens
+   to sit, and that is a different place on the two page types, moves again
+   when the reader enlarges the type, and cannot be clamped usefully because a
+   viewport width measured from an element 300px in is not a viewport width.
+   Pinned to the masthead it lines up with the column the page is set in, it
+   cannot leave that column, and `max-width: 100%` then means something.
+
+   This was found twice. First as the panel being sliced down its first column
+   on all twenty machine pages, because that masthead is reversed. Then again
+   at 200% text between 621 and 750px, which the phone query did not cover. */
+.top { position: relative; }
+
 .langs {
-  position: relative;
+  position: static;
 }
 
 .langs summary {
@@ -219,7 +256,15 @@ a { color: var(--deep); }
 
 .langs[open] summary::after { transform: rotate(-135deg); }
 
-.langs summary:hover,
+/* The one transition on the site. Honouring the setting costs a line. */
+@media (prefers-reduced-motion: reduce) {
+  .langs summary::after { transition: none; }
+}
+
+/* `.top` on both. Without it the first is (0,2,1), which ties with the
+   masthead's own colour rule further down the file and loses to it, so the
+   one control on the page that is not a link had no hover at all. */
+.top .langs summary:hover,
 .top .links a.page:hover { color: var(--deep); }
 
 /* The script corrections the masthead needs ride on the button, because that
@@ -232,14 +277,14 @@ a { color: var(--deep); }
    applied. The Nepali and the Chinese buttons were being tracked and
    uppercased as though they were Latin, which is the thing the rule exists to
    stop. The prefix puts them one class ahead and they now hold. */
-.top .langs summary:is(:lang(ne), :lang(new), :lang(bn)) {
+.top .links .langs summary:is(:lang(ne), :lang(new), :lang(bn)) {
   font-size: 0.87rem; letter-spacing: 0.02em; text-transform: none; }
-.top .langs summary:is(:lang(zh), :lang(ja), :lang(yue)) {
+.top .links .langs summary:is(:lang(zh), :lang(ja), :lang(yue)) {
   font-size: 0.64rem; letter-spacing: 0.1em; text-transform: none; }
 /* Arabic joins along the baseline, so tracking pulls the letters of a word
    apart from each other. It has no capitals either, so the uppercasing has
    nothing to do except reach the Latin that might sit inside the label. */
-.top .langs summary:lang(ar) {
+.top .links .langs summary:lang(ar) {
   font-size: 0.82rem; letter-spacing: 0; text-transform: none; }
 
 .langs ul {
@@ -256,7 +301,7 @@ a { color: var(--deep); }
      width it still takes exactly the room the names want and now gives way
      when there is not that much. */
   width: max-content;
-  max-width: calc(100vw - 2.2rem);
+  max-width: 100%;
   columns: 1;
   column-gap: 0.4rem;
   background: var(--paper);
@@ -283,6 +328,15 @@ a { color: var(--deep); }
 }
 
 .langs li { break-inside: avoid; }
+
+/* A grid or flex child will not shrink below its content unless it is told it
+   may, and a caption is one long word in plenty of languages. At 200% text in
+   a five across strip the Georgian and Kinyarwanda captions pushed their
+   figures past the edge of the page. */
+.pair figure,
+.ladder figure { min-width: 0; }
+
+figcaption { overflow-wrap: anywhere; }
 
 .top .langs ul a {
   display: block;
@@ -556,7 +610,7 @@ footer a { color: var(--faint); }
    than merely stopped. */
 footer #note {
   font-size: 0.73rem;
-  color: #a8957f;
+  color: #786752;   /* was #a8957f, which measured 2.42 */
   margin-bottom: 1.1rem;
 }
 
@@ -599,23 +653,6 @@ footer .legal {
     letter-spacing: 0.1em;
   }
 
-  /* On a phone the panel hangs off the masthead rather than off the button.
-     Pinned to the button it is only ever as safe as wherever the button
-     happens to sit, which is a different place on the two page types and
-     moves again when the type is enlarged. Pinned to the masthead it lines up
-     with the column the page is set in and cannot leave it. */
-  .top { position: relative; }
-  .langs { position: static; }
-
-  .langs ul {
-    inset-inline-end: 0;
-    max-width: 100%;
-  }
-
-  .top > .links:first-child .langs ul {
-    inset-inline-start: 0;
-    inset-inline-end: auto;
-  }
 }
 
 @media (max-width: 620px) {
@@ -770,6 +807,10 @@ html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .top .links summary { 
 html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) .ladder figcaption { font-size: 0.72rem; }
 
 html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) footer p { font-size: 0.86rem; }
+/* The note needs the lift too. `footer #note` carries an id, so it beats every
+   attribute selector here and was the only footer paragraph left at the Latin
+   size, in the script that needed the room most and at five lines long. */
+html:is([lang="ne"],[lang="hi"],[lang="new"],[lang="bn"]) footer #note { font-size: 0.81rem; }
 
 
 
@@ -847,7 +888,7 @@ html[lang="ka"] .kicker,
 html[lang="ka"] figcaption,
 html[lang="ka"] .spec .k,
 html[lang="ka"] .top .mark,
-html[lang="ka"] .top .links a,
+html[lang="ka"] .top .links a.page,
 html[lang="ka"] .top .links summary {
   letter-spacing: 0.05em;
   font-size: 0.8rem;
@@ -899,7 +940,7 @@ html[lang="ar"] .kicker,
 html[lang="ar"] figcaption,
 html[lang="ar"] .spec .k,
 html[lang="ar"] .top .mark,
-html[lang="ar"] .top .links a,
+html[lang="ar"] .top .links a.page,
 html[lang="ar"] .top .links summary {
   letter-spacing: 0;
   text-transform: none;
@@ -908,6 +949,7 @@ html[lang="ar"] .top .links summary {
 
 html[lang="ar"] .ladder figcaption { font-size: 0.74rem; }
 html[lang="ar"] footer p { font-size: 0.88rem; }
+html[lang="ar"] footer #note { font-size: 0.83rem; }
 
 /* The section numbers stay tracked and stay as they are. They are Latin
    digits, set the way they are set on every other page. */
