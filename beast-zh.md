@@ -1,6 +1,6 @@
 ---
 output: beast-zh.html
-title: 野兽 &middot; AI 做的酥油
+title: 野兽 · AI 做的酥油
 description: 一把充电电钻，一块砧板，一个电热板和一台树莓派。这套酥油装置每个部件各管什么。
 og_title: 野兽
 og_description: 一把充电电钻，一块砧板和一台树莓派。这套酥油装置每个部件各管什么。

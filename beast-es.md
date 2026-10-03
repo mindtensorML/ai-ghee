@@ -1,6 +1,6 @@
 ---
 output: beast-es.html
-title: La Bestia &middot; Ghee hecho por una IA
+title: La Bestia · Ghee hecho por una IA
 description: Un taladro a batería, una tabla de cortar, una placa y una Raspberry Pi. Qué hace cada pieza del montaje del ghee.
 og_title: La Bestia
 og_description: Un taladro a batería, una tabla de cortar y una Raspberry Pi. Qué hace cada pieza del montaje del ghee.

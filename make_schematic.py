@@ -39,6 +39,9 @@ SANS_JA = ('"Avenir Next","Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN"
 SANS_YUE = ('"Avenir Next","Segoe UI","PingFang HK","Hiragino Sans CNS",'
             '"Microsoft JhengHei","Noto Sans CJK HK","Noto Sans CJK TC",'
             '"Noto Sans HK",sans-serif')
+SANS_KO = ('"Avenir Next","Segoe UI","Apple SD Gothic Neo",'
+           '"Malgun Gothic","Nanum Gothic","Noto Sans CJK KR",'
+           '"Noto Sans KR",sans-serif')
 SANS_AR = ('"Avenir Next","Segoe UI","Geeza Pro","Segoe UI Arabic",'
            '"Noto Sans Arabic","Noto Naskh Arabic",Tahoma,sans-serif')
 
@@ -235,6 +238,27 @@ WORDS_UK = {
     "SIGNAL": "СИГНАЛ",
     "MOTOR LOOP": "КОНТУР ДВИГУНА",
     "POWER AND SENSE": "ЖИВЛЕННЯ І ДАТЧИК",
+}
+
+# Korean has room everywhere, which no other script on these drawings has had.
+# Every one of these measures under half its budget. 비상 정지 is 41 px against
+# 150 of room where the English EMERGENCY STOP is 110, so the narrow drawing
+# needs no stack and the second line stays empty the way the Japanese one does.
+#
+# 상용 전원 for the wall supply rather than 가정용 전원, which is what a house
+# is fed and not what a drawing calls the incoming side. 계측 for the sensing
+# rather than 감지, because the INA260 measures a value rather than detecting
+# an event, which is the same call the Japanese entry made.
+WORDS_KO = {
+    "12 V SUPPLY": "12 V 전원",
+    "MAINS": "상용 전원",
+    "DRILL": "드릴",
+    "EMERGENCY STOP": "비상 정지",
+    "EMERGENCY": "비상 정지",
+    "STOP": "",
+    "SIGNAL": "신호",
+    "MOTOR LOOP": "모터 회로",
+    "POWER AND SENSE": "전원과 계측",
 }
 
 # Spanish translates all of these. The stop cannot drop its preposition without
@@ -529,6 +553,10 @@ ARIA = {
           "ブリッジを駆動し、I2C で INA260 の電流センサーを読む。12 V の電源、"
           "15 A のヒューズ、非常停止ボタン、電流センサーがモーターのループに"
           "直列に入っていて、そのループに Pi は一度も触れない。",
+    "ko": "기를 만드는 장치의 회로도. Raspberry Pi가 신호선 네 개로 "
+          "BTS7960 H 브리지를 구동하고 I2C로 INA260 전류 센서를 읽는다. "
+          "12 V 전원, 15 A 퓨즈, 비상 정지 버튼, 전류 센서가 모터 회로에 "
+          "하나씩 이어 붙어 있고, Pi는 그 회로에 전혀 닿지 않는다.",
     "yue": "整酥油嘅機嘅電路圖。Raspberry Pi 用四條訊號線推 BTS7960 H 橋，"
            "再用 I2C 讀 INA260 電流感應器。12 V 電源、15 A 保險絲、急停掣同"
            "感應器係串喺馬達迴路入面，呢個迴路 Pi 完全冇掂過。",
@@ -553,8 +581,12 @@ ARIA = {
 # turns out not to need a lift either. Measured at a matched size its body is
 # 8.8px against a Latin capital's 8.5px, and its ascenders and descenders then
 # carry it to 11.2px, so it reads as the larger of the two and `ka` takes it
-# down slightly and keeps only a trace of the tracking. Latin script languages
-# need none of this and reuse the Latin stack and tracking.
+# down slightly and keeps only a trace of the tracking. Hangul reuses `han`
+# for the same reason Bangla reuses `dv`. A syllable block is a square and
+# fills its em, and measured at a matched size 모터 회로 is 10.2px against
+# 电机回路 at 10.5px, so the two numbers `han` already holds are the right
+# two. Latin script languages need none of this and reuse the Latin stack
+# and tracking.
 LANGS = {
     "en": dict(suffix="",    stack=SANS,    span=None,  words={}),
     "ne": dict(suffix="-ne", stack=SANS_NE, span="dv",  words=WORDS_NE),
@@ -576,6 +608,7 @@ LANGS = {
     "ar": dict(suffix="-ar", stack=SANS_AR, span="ar", words=WORDS_AR, iso=True),
     "new": dict(suffix="-new", stack=SANS_NE, span="dv", words=WORDS_NEW),
     "uk": dict(suffix="-uk", stack=SANS,    span=None,  words=WORDS_UK),
+    "ko": dict(suffix="-ko", stack=SANS_KO, span="han", words=WORDS_KO),
 }
 
 LANG = "en"

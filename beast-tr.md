@@ -1,6 +1,6 @@
 ---
 output: beast-tr.html
-title: Canavar &middot; Yapay zekânın yaptığı ghee
+title: Canavar · Yapay zekânın yaptığı ghee
 description: Akülü bir matkap, bir kesme tahtası, elektrikli bir ocak ve bir Raspberry Pi. Ghee düzeneğinin her parçası ne yapıyor.
 og_title: Canavar
 og_description: Akülü bir matkap, bir kesme tahtası ve bir Raspberry Pi. Ghee düzeneğinin her parçası ne yapıyor.

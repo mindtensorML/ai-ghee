@@ -1,6 +1,6 @@
 ---
 output: beast-rw.html
-title: The Beast &middot; AI Ghee
+title: The Beast · AI Ghee
 description: Perceuse ya batiri, urubaho rw'igikoni, réchaud na Raspberry Pi. Icyo igice cyose cya rig ya ghee gikora.
 og_title: The Beast
 og_description: Perceuse ya batiri, urubaho rw'igikoni na Raspberry Pi. Icyo igice cyose cya rig ya ghee gikora.

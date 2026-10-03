@@ -2,7 +2,7 @@
 
 A photo story about making traditional bilona ghee with a homemade rig that
 senses the moment cream breaks into butter and stops itself. It is published
-in twenty languages.
+in twenty one languages.
 
 Live at https://mindtensorml.github.io/ai-ghee/
 

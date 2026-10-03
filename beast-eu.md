@@ -1,6 +1,6 @@
 ---
 output: beast-eu.html
-title: Piztia &middot; Adimen artifizialak egindako ghee
+title: Piztia · Adimen artifizialak egindako ghee
 description: Bateriazko zulagailu bat, ebakitzeko ohol bat, plaka elektriko bat eta Raspberry Pi bat. Ghee egiteko makinaren zati bakoitzak zer egiten duen.
 og_title: Piztia
 og_description: Bateriazko zulagailu bat, ebakitzeko ohol bat eta Raspberry Pi bat. Ghee egiteko makinaren zati bakoitzak zer egiten duen.

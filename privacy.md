@@ -1,6 +1,6 @@
 ---
 output: privacy.html
-title: Privacy &middot; AI Ghee Making
+title: Privacy · AI Ghee Making
 description: What this site and the program that publishes its videos do with data. Almost nothing, and here is exactly what.
 og_title: Privacy
 og_description: What this site and the program that publishes its videos do with data.

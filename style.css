@@ -63,7 +63,52 @@ body:lang(zh) { line-height: 1.78; }
           "Noto Sans CJK TC", "Noto Sans HK", sans-serif;
 }
 
-body:is(:lang(ja), :lang(yue)) { line-height: 1.78; }
+/* Korean is not a Han language with its own characters, whatever the three
+   blocks above might suggest. A page of Korean is Hangul, which is an
+   alphabet, and the faces that draw it well are not the faces that draw
+   Chinese or Japanese well. Apple SD Gothic Neo and Malgun Gothic are what a
+   Korean reader sees everywhere else on their own machine, so those go first
+   and the Noto CJK KR face catches Linux.
+
+   The serif side is the thinner shelf. A Korean myeongjo is not on every
+   machine the way a gothic is, so the Latin serifs stay in front for the
+   digits and the part numbers and four myeongjo faces sit behind them in the
+   order a platform is likely to have one. */
+:root:lang(ko) {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
+           AppleMyungjo, "Nanum Myeongjo", Batang, "Noto Serif CJK KR",
+           "Noto Serif KR", serif;
+  --sans: "Avenir Next", "Segoe UI", system-ui, "Apple SD Gothic Neo",
+          "Malgun Gothic", "Nanum Gothic", "Noto Sans CJK KR",
+          "Noto Sans KR", sans-serif;
+}
+
+/* A Hangul syllable is a square that fills its em, the way a Han character
+   does, so a page of it sets as densely and wants the same extra leading. */
+body:is(:lang(ja), :lang(yue), :lang(ko)) { line-height: 1.78; }
+
+/* Korean breaks at the space between words and nowhere else. The default is
+   the Han rule, break anywhere, because a browser treats every CJK script the
+   same way unless told otherwise, and Korean is the one of them that writes
+   spaces. Without this the standfirst broke 없었다 across two lines as 없었 and
+   다, and a paragraph below it broke 요구르트를 as 요구르트 and 를, which is a
+   word and the particle hanging off it. Both were live on the first build of
+   this language and both read to a Korean eye the way `nothin` and `g` read to
+   an English one.
+
+   `break-word` behind it is the escape hatch. `keep-all` on its own means a
+   run with no space in it can push a column wider than the screen, and the
+   phone widths are where that would land. A Korean word is short enough that
+   this should never fire, and it costs one line to be sure. */
+body:lang(ko) { word-break: keep-all; overflow-wrap: break-word; }
+
+/* Japanese forbids a line starting with a small kana, っ ゃ ゅ ょ and the rest,
+   or with the long vowel mark ー. That rule is kinsoku shori and it is not
+   decoration, a Japanese reader sees a line opening on っ as a typesetting
+   fault. A browser left to itself does not apply it. The live Japanese
+   headline broke 止まるときを知っていた機械 after 知, which opened the second
+   line on っ. `strict` is the value that prohibits it. */
+body:lang(ja) { line-break: strict; }
 
 /* Cyrillic is a harder case than it looks. Both sans faces carry it, but of
    the four serifs only Palatino Linotype and Times New Roman do, and neither
@@ -279,7 +324,11 @@ a { color: var(--deep); }
    stop. The prefix puts them one class ahead and they now hold. */
 .top .links .langs summary:is(:lang(ne), :lang(new), :lang(bn)) {
   font-size: 0.87rem; letter-spacing: 0.02em; text-transform: none; }
-.top .links .langs summary:is(:lang(zh), :lang(ja), :lang(yue)) {
+/* Korean joins these three rather than taking a fourth rule, and that is
+   measured rather than assumed. At 0.64rem with this tracking 한국어 draws
+   9.3px of ink where 日本語 draws 9.5px, against a Latin capital's 8.3px at
+   the masthead's own 0.72rem. Two tenths of a pixel is not worth a rule. */
+.top .links .langs summary:is(:lang(zh), :lang(ja), :lang(yue), :lang(ko)) {
   font-size: 0.64rem; letter-spacing: 0.1em; text-transform: none; }
 /* Arabic joins along the baseline, so tracking pulls the letters of a word
    apart from each other. It has no capitals either, so the uppercasing has
@@ -374,6 +423,13 @@ figcaption { overflow-wrap: anywhere; }
 .top .langs ul a[hreflang="bn"] { font-size: 1.2rem; }
 .top .langs ul a:is([hreflang="zh"], [hreflang="ja"],
                     [hreflang="yue"]) { font-size: 0.8rem; }
+/* Korean is not on that line and should not be added to it. The panel sets
+   its names at 0.82rem, where 한국어 draws 12.2px of ink against the 12.0px
+   the corrected 日本語 draws and the 10.0 to 12.8 the Latin names draw
+   depending on whether they have a descender. It already sits in the middle
+   of the list, so shrinking it the way the Han names are shrunk would be the
+   one thing that pushed it out. */
+
 .top .langs ul a[hreflang="ar"] { font-size: 0.88rem; }
 
 .top .mark img {

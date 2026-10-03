@@ -1,6 +1,6 @@
 ---
 output: beast.html
-title: The Beast &middot; AI Ghee Making
+title: The Beast · AI Ghee Making
 description: A cordless drill, a chopping board, a hotplate and a Raspberry Pi. What each part of the ghee rig does.
 og_title: The Beast
 og_description: A cordless drill, a chopping board and a Raspberry Pi. What each part of the ghee rig does.

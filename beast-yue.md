@@ -5,7 +5,7 @@ lang_label: 語言
 lang: yue
 stem: beast
 locale: yue_HK
-title: 野獸 &middot; AI 做嘅印度酥油
+title: 野獸 · AI 做嘅印度酥油
 description: 一把充電電鑽，一塊砧板，一個電爐同一部 Raspberry Pi。呢套做酥油嘅嘢，每個部件各自做乜。
 og_title: 野獸
 og_description: 一把充電電鑽，一塊砧板同一部 Raspberry Pi。呢套做酥油嘅嘢，每個部件各自做乜。

@@ -5,7 +5,7 @@ lang_label: 言語
 lang: ja
 stem: beast
 locale: ja_JP
-title: ザ・ビースト &middot; AIが作るギー
+title: ザ・ビースト · AIが作るギー
 description: コードレスドリル、まな板、電熱プレート、Raspberry Pi。ギーを作る装置のどの部分が何をしているか。
 og_title: ザ・ビースト
 og_description: コードレスドリル、まな板、Raspberry Pi。ギーを作る装置のどの部分が何をしているか。

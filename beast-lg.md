@@ -5,7 +5,7 @@ lang_label: Olulimi
 lang: lg
 stem: beast
 locale: lg_UG
-title: Ensolo &middot; Omuzigo gwa AI
+title: Ensolo · Omuzigo gwa AI
 description: Cordless drill, olubaawo olusalirako, hotplate ne Raspberry Pi. Buli kitundu ky'ekyuma ky'omuzigo kikola ki.
 og_title: Ensolo
 og_description: Cordless drill, olubaawo olusalirako ne Raspberry Pi. Buli kitundu ky'ekyuma ky'omuzigo kikola ki.

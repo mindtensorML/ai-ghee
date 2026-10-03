@@ -1,6 +1,6 @@
 ---
 output: beast-de.html
-title: Das Biest &middot; Ghee, von einer KI gemacht
+title: Das Biest · Ghee, von einer KI gemacht
 description: Ein Akkuschrauber, ein Schneidebrett, eine Kochplatte und ein Raspberry Pi. Was jedes Teil des Ghee-Aufbaus tut.
 og_title: Das Biest
 og_description: Ein Akkuschrauber, ein Schneidebrett und ein Raspberry Pi. Was jedes Teil des Ghee-Aufbaus tut.

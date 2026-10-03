@@ -1,6 +1,6 @@
 ---
 output: terms.html
-title: Terms of service &middot; AI Ghee Making
+title: Terms of service · AI Ghee Making
 description: The conditions for using this site and the small program that publishes its videos to YouTube.
 og_title: Terms of service
 og_description: The conditions for using this site and the small program that publishes its videos to YouTube.

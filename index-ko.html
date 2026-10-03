@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 기 만들기</title>
+<meta name="description" content="어릴 때부터 이 기를 매일 먹고 자랐는데 한 번도 직접 만들어 본 적이 없었다. 그래서 만드는 법을 AI에게 물었고, 그다음에는 전부 다 해달라고 부탁했다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="멈출 때를 알고 있던 기계">
+<meta property="og:description" content="어릴 때부터 이 기를 매일 먹고 자랐는데 한 번도 직접 만들어 본 적이 없었다. 그래서 버터가 분리되는 순간을 스스로 느끼는 기계를 만들었다.">
+<meta property="og:image" content="https://mindtensorml.github.io/ai-ghee/images/card-ko.jpg">
+<meta property="og:url" content="https://mindtensorml.github.io/ai-ghee/index-ko.html">
+<meta property="og:site_name" content="JD&#x27;s AI Ghee">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="기를 만드는 기계, AI가 기를 만든다는 문구와 함께">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4ead7">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="rw_RW">
+<meta property="og:locale:alternate" content="lg_UG">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:locale:alternate" content="eu_ES">
+<meta property="og:locale:alternate" content="ka_GE">
+<meta property="og:locale:alternate" content="new_NP">
+<meta property="og:locale:alternate" content="bn_BD">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="fil_PH">
+<meta property="og:locale:alternate" content="yue_HK">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="uk_UA">
+<link rel="canonical" href="https://mindtensorml.github.io/ai-ghee/index-ko.html">
+<link rel="alternate" hreflang="ko" href="https://mindtensorml.github.io/ai-ghee/index-ko.html">
+<link rel="alternate" hreflang="en" href="https://mindtensorml.github.io/ai-ghee/">
+<link rel="alternate" hreflang="ne" href="https://mindtensorml.github.io/ai-ghee/index-ne.html">
+<link rel="alternate" hreflang="fr" href="https://mindtensorml.github.io/ai-ghee/index-fr.html">
+<link rel="alternate" hreflang="rw" href="https://mindtensorml.github.io/ai-ghee/index-rw.html">
+<link rel="alternate" hreflang="lg" href="https://mindtensorml.github.io/ai-ghee/index-lg.html">
+<link rel="alternate" hreflang="de" href="https://mindtensorml.github.io/ai-ghee/index-de.html">
+<link rel="alternate" hreflang="zh" href="https://mindtensorml.github.io/ai-ghee/index-zh.html">
+<link rel="alternate" hreflang="ru" href="https://mindtensorml.github.io/ai-ghee/index-ru.html">
+<link rel="alternate" hreflang="es" href="https://mindtensorml.github.io/ai-ghee/index-es.html">
+<link rel="alternate" hreflang="hi" href="https://mindtensorml.github.io/ai-ghee/index-hi.html">
+<link rel="alternate" hreflang="tr" href="https://mindtensorml.github.io/ai-ghee/index-tr.html">
+<link rel="alternate" hreflang="eu" href="https://mindtensorml.github.io/ai-ghee/index-eu.html">
+<link rel="alternate" hreflang="ka" href="https://mindtensorml.github.io/ai-ghee/index-ka.html">
+<link rel="alternate" hreflang="new" href="https://mindtensorml.github.io/ai-ghee/index-new.html">
+<link rel="alternate" hreflang="bn" href="https://mindtensorml.github.io/ai-ghee/index-bn.html">
+<link rel="alternate" hreflang="ja" href="https://mindtensorml.github.io/ai-ghee/index-ja.html">
+<link rel="alternate" hreflang="fil" href="https://mindtensorml.github.io/ai-ghee/index-fil.html">
+<link rel="alternate" hreflang="yue" href="https://mindtensorml.github.io/ai-ghee/index-yue.html">
+<link rel="alternate" hreflang="ar" href="https://mindtensorml.github.io/ai-ghee/index-ar.html">
+<link rel="alternate" hreflang="uk" href="https://mindtensorml.github.io/ai-ghee/index-uk.html">
+<link rel="alternate" hreflang="x-default" href="https://mindtensorml.github.io/ai-ghee/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "멈출 때를 알고 있던 기계",
+  "description": "어릴 때부터 이 기를 매일 먹고 자랐는데 한 번도 직접 만들어 본 적이 없었다. 그래서 버터가 분리되는 순간을 스스로 느끼는 기계를 만들었다.",
+  "image": "https://mindtensorml.github.io/ai-ghee/images/ghee.jpg",
+  "inLanguage": "ko",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mindtensorml.github.io/ai-ghee/index-ko.html"
+  },
+  "isAccessibleForFree": true,
+  "author": {
+    "@type": "Person",
+    "name": "JD"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JD's AI Ghee",
+    "url": "https://mindtensorml.github.io/ai-ghee/"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#story">본문으로 건너뛰기</a>
+
+<header class="top">
+  <a class="mark" href="index-ko.html"><img src="logo.svg" alt="" width="24" height="24">AI 기 만들기</a>
+  <nav class="links"><a class="page" href="beast-ko.html">이 기계 &rsaquo;</a><details class="langs"><summary aria-label="언어, 한국어"><span class="here">한국어</span></summary><ul lang="" role="list"><li><a class="lang" href="./" lang="en" hreflang="en"><bdi dir="ltr">English</bdi></a></li><li><a class="lang" href="index-ne.html" lang="ne" hreflang="ne"><bdi dir="ltr">नेपाली</bdi></a></li><li><a class="lang" href="index-fr.html" lang="fr" hreflang="fr"><bdi dir="ltr">Français</bdi></a></li><li><a class="lang" href="index-rw.html" lang="rw" hreflang="rw"><bdi dir="ltr">Ikinyarwanda</bdi></a></li><li><a class="lang" href="index-lg.html" lang="lg" hreflang="lg"><bdi dir="ltr">Oluganda</bdi></a></li><li><a class="lang" href="index-de.html" lang="de" hreflang="de"><bdi dir="ltr">Deutsch</bdi></a></li><li><a class="lang" href="index-zh.html" lang="zh" hreflang="zh"><bdi dir="ltr">中文</bdi></a></li><li><a class="lang" href="index-ru.html" lang="ru" hreflang="ru"><bdi dir="ltr">Русский</bdi></a></li><li><a class="lang" href="index-es.html" lang="es" hreflang="es"><bdi dir="ltr">Español</bdi></a></li><li><a class="lang" href="index-hi.html" lang="hi" hreflang="hi"><bdi dir="ltr">हिन्दी</bdi></a></li><li><a class="lang" href="index-tr.html" lang="tr" hreflang="tr"><bdi dir="ltr">Türkçe</bdi></a></li><li><a class="lang" href="index-eu.html" lang="eu" hreflang="eu"><bdi dir="ltr">Euskara</bdi></a></li><li><a class="lang" href="index-ka.html" lang="ka" hreflang="ka"><bdi dir="ltr">ქართული</bdi></a></li><li><a class="lang" href="index-new.html" lang="new" hreflang="new"><bdi dir="ltr">नेपाल भाषा</bdi></a></li><li><a class="lang" href="index-bn.html" lang="bn" hreflang="bn"><bdi dir="ltr">বাংলা</bdi></a></li><li><a class="lang" href="index-ja.html" lang="ja" hreflang="ja"><bdi dir="ltr">日本語</bdi></a></li><li><a class="lang" href="index-fil.html" lang="fil" hreflang="fil"><bdi dir="ltr">Filipino</bdi></a></li><li><a class="lang" href="index-yue.html" lang="yue" hreflang="yue"><bdi dir="ltr">廣東話</bdi></a></li><li><a class="lang" href="index-ar.html" lang="ar" hreflang="ar"><bdi dir="rtl">العربية</bdi></a></li><li><a class="lang" href="index-uk.html" lang="uk" hreflang="uk"><bdi dir="ltr">Українська</bdi></a></li></ul></details></nav>
+</header>
+
+<div class="hero wrap">
+  <p class="kicker">JD의 AI 기</p>
+  <h1>멈출 때를 알고 있던 기계</h1>
+  <p class="standfirst">어릴 때부터 이 기를 매일 먹고 자랐는데 한 번도 직접 만들어 본 적이 없었다. 그래서 만드는 법을 AI에게 물었다. 그다음에는 전부 다 해달라고 부탁했다.</p>
+</div>
+
+<div class="wrap">
+  <figure class="video-figure">
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/UG-S1qJc5ig" loading="lazy" title="멈출 때를 알고 있던 기계" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <figcaption>전 과정, 30초</figcaption>
+  </figure>
+</div>
+
+<main id="story">
+
+<section class="wrap">
+  <p class="num">01</p>
+  <h2>먹어 본 적만 있었다</h2>
+    <p class="lead">내가 아는 기(ghee)는 시골에서 왔다. 다 쓴 유리병에 담겨서, 아주 오래 같은 방식으로 만들어 온 사람들의 손에서 왔다. 너무 오래 같은 방식이어서 그곳에서는 아무도 그걸 기술이라고 생각하지 않는다.</p>
+    <p>가게에서 파는 깡통에 든 것과는 맛이 다르다.</p>
+    <p>그리고 나는 한 번도 직접 만들어 본 적이 없었다. 우유를 얼마나 두어야 하는지, 요구르트를 어디까지 차게 해야 하는지, 다 된 냄비가 어떤 소리를 내야 하는지 아무것도 몰랐다.</p>
+</section>
+
+<section class="wrap">
+  <p class="num">02</p>
+  <h2>생크림이 아니라 요구르트에서 시작한다</h2>
+    <p>공장에서 나오는 기는 대부분 크림에서 시작한다. 전통적인 방법은 하루나 이틀 먼저 시작한다. 크림, 실은 끓여서 졸인 전유를 발효시켜 요구르트로 만들고 하룻밤 그대로 두어 시어지게 하는 것부터다.</p>
+    <p>그 시어지는 단계가 결정적이다. 건너뛰면 나오는 것은 정제 버터다. 그것도 훌륭하지만 기는 아니다.</p>
+    <figure>
+      <img src="images/yogurt.jpg" width="1500" height="1125" alt="주방 싱크대 안의 냄비 위로 들어 올린, 되게 굳은 요구르트가 담긴 넓은 스테인리스 볼." loading="lazy" decoding="async">
+      <figcaption>어제의 우유와 크림, 하룻밤 동안 굳었다</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">03</p>
+  <h2>이틀을 밖에 둔다</h2>
+    <p>따뜻한 우유에 어제 만든 요구르트를 한 숟가락 저어 넣고, 그다음에는 밤새 그냥 둔다. 박테리아가 알아서 한다. 나는 이틀을 그대로 밖에 두었다.</p>
+    <p>그게 발효이고, 공장에서 나오는 쪽이 건너뛰는 단계다. 살아 있는 균, 대부분 락토바실루스가 유당을 분해해서 젖산으로 바꾼다. 우유는 되직해진다. 시어진다. 아침이 되면 다른 것이 되어 있다.</p>
+    <p>좋은 건 전부 여기서 나온다. 유당이 쪼개져서 속이 편해진다. 지방과 단백질이 더 잘 흡수된다. 그리고 부티르산, 장 점막이 실제로 연료로 쓰는 짧은 사슬 지방산이 생긴다. 단 크림으로 바로 만든 기보다 이렇게 만든 기에 더 많이 들어 있다.</p>
+    <p>아유르베다는 아주 오래전부터 바로 이 방식을 처방해 왔다.</p>
+    <p>내가 말할 수 있는 건 그 냄새를 만드는 게 발효라는 것이다. 이걸 다 할 이유의 대부분이 그 냄새다.</p>
+    <figure>
+      <img src="images/set-yogurt.jpg" width="1100" height="1100" alt="주방 싱크대에 놓인, 되게 굳은 요구르트가 담긴 냄비. 교반할 준비가 되어 있다." loading="lazy" decoding="async">
+      <figcaption>하룻밤 굳어서 교반할 준비가 됐다</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">04</p>
+  <h2>이 방법에는 이름이 있다</h2>
+    <p>빌로나. 요구르트를 냄비에 담고 나무 교반기를 넣은 다음, 버터가 포기하고 떠오를 때까지 앞뒤로 돌린다.</p>
+    <p>교반기는 직접 만들었다. 인터넷에서 찾을 수 있는 것은 다 접착제로 붙인 것이었고, 어떤 접착제인지 알려주는 곳은 하나도 없었다. 그게 삼십 분 동안 음식 안에 들어가 있다. 그러니 추측으로 넘길 일이 아니었다. 단단한 나무, 스테인리스 나사, 그리고 서랍에 이미 있던 교반 샤프트에 볼트로 고정했다.</p>
+    <p>날개 네 개와 그 날개를 직각으로 잡아주는 스틸 밴드. 전부 나사라서 다시 분해된다.</p>
+    <div class="pair">
+      <figure>
+        <img src="images/churn-front.jpg" width="1100" height="1100" alt="야외 난간에 세워 둔 나무 교반기 머리. 단단한 나무 날개 네 개가 스틸 샤프트에 나사로 고정되어 금속 밴드로 잡혀 있다." loading="lazy" decoding="async">
+        <figcaption>붙인 게 아니라 나사로 조였다</figcaption>
+      </figure>
+      <figure>
+        <img src="images/churn-top.jpg" width="1100" height="1100" alt="샤프트 방향에서 바로 내려다본 교반기 머리. 날개 네 개가 십자를 이루고 가운데를 스테인리스 밴드가 조이고 있다." loading="lazy" decoding="async">
+        <figcaption>날개 네 개, 직각으로</figcaption>
+      </figure>
+    </div>
+    <p>삼십 분쯤 걸리고 그 대부분은 아무 일도 일어나지 않는다. 그래서 다른 무언가에게 넘기는 상상을 하게 되는 딱 그런 일이다.</p>
+    <figure>
+      <img src="images/bilona.jpg" width="1100" height="1100" alt="흰 요구르트가 담긴 냄비에 들어가 있는 날개 네 개짜리 나무 교반기 머리." loading="lazy" decoding="async">
+      <figcaption>교반기가 들어간다. 아직 아무 일도 없다.</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">05</p>
+  <h2>그래서 물어봤다</h2>
+    <p>이걸 실제로 아는 사람들은 레시피를 보고 하지 않고, 그중 누구도 우리 집 주방에 없었다. 그래서 질문은 대신 채팅창으로 들어갔다.</p>
+    <p>얼마나 발효시킬지. 요구르트를 얼마나 차게 둘지. 마찰로 냄비가 데워져서 버터를 망치기 전까지 얼마나 빨리 돌릴 수 있는지. 답이 하나 나올 때마다 질문이 세 개 더 생겼다.</p>
+    <p>그러다 내가 정말 하고 싶었던 질문을 했다. 그냥 네가 해줄 수 있어?</p>
+    <p class="pull">질문은 더 이상 기를 어떻게 만드느냐가 아니었다. 네가 나를 위해 만들어 줄 수 있느냐가 되었다.</p>
+</section>
+
+<section class="wrap">
+  <p class="num">06</p>
+  <h2>야수</h2>
+    <p>코드리스 드릴 하나. 서랍과 철물점에서 온 교반기. 전자부품을 담을 플라스틱 반찬통, 척추 역할을 할 도마, 그리고 커다란 노란색 정지 버튼. 모터가 달린 것에는 그게 있어야 하니까.</p>
+    <p>거의 돈이 들지 않았고, 보기에도 그렇다. 그리고 그게 어느 정도는 핵심이다.</p>
+    <figure>
+      <img src="images/beast.jpg" width="1200" height="1600" alt="주방 조리대 위에 서 있는 장치. 나무 도마에 고정된 드릴, 투명한 플라스틱 전자부품 상자, 그리고 노란색 비상 정지 버튼." loading="lazy" decoding="async">
+      <figcaption>야수</figcaption>
+    </figure>
+    <ul class="spec" role="list">
+      <li><span class="k">모터</span><span class="v">코드리스 드릴, 클램프에 물려서</span></li>
+      <li><span class="k">교반기</span><span class="v">단단한 나무와 스테인리스, 사지 않고 만든 것</span></li>
+      <li><span class="k">두뇌</span><span class="v">Raspberry Pi, 1초에 한 번 기록</span></li>
+      <li><span class="k">감각</span><span class="v">교반에는 모터 전류, 가열에는 온도 프로브</span></li>
+      <li><span class="k">정지</span><span class="v">큰 버튼 하나, 전원을 끊도록 배선</span></li>
+    </ul>
+</section>
+
+<section class="wrap">
+  <p class="num">07</p>
+  <h2>돌리는 건 쉬운 쪽이다</h2>
+    <p>요구르트는 누구나 돌릴 수 있다. 어려운 건 언제 멈출지 아는 것이다.</p>
+    <p>일찍 멈추면 되직한 거품만 남는다. 너무 오래 돌리면 버터를 다시 버터밀크 속으로 때려 넣어서 잃어버린다. 그 구간은 지방에 따라, 온도에 따라, 그날이 어떻게 흘러가느냐에 따라 움직인다.</p>
+    <p>이걸 시간으로 재는 사람은 없다. 소리로 듣는다. 출렁이는 소리가 매끄러운 회전에서 불규칙하게 때리는 소리로 바뀌는데, 그때 손을 넣는다.</p>
+    <figure>
+      <img src="images/churning.jpg" width="1500" height="1124" alt="스테인리스 주방 싱크대 안, 덮인 냄비 위에서 돌아가는 드릴. 옆에 전자부품 상자가 있다." loading="lazy" decoding="async">
+      <figcaption>주방 싱크대 위에서 이십오 분</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">08</p>
+  <h2>감각 하나, 그것뿐</h2>
+    <p>그래서 감각을 하나만 줬다. 모터가 얼마나 세게 끌고 있는지를 본다.</p>
+    <p>이십 분 동안은 아무 일도 없다. 부하는 2700 mA 근처에서 이리저리 움직인다. 그러다 지방이 모이기 시작하면 드릴은 더 되직한 것을 밀어야 한다. 4700까지 올라가서 잠깐 그대로 있고, 그다음에 버터가 액체를 놓으면서 부하가 떨어진다.</p>
+    <p>카메라도 없고, 모델도 없고, 영리한 것은 아무것도 없다. 올라갔다가 떨어지는 숫자 하나.</p>
+    <figure>
+      <div class="chart">
+        <picture>
+          <source media="(max-width: 620px)" srcset="images/signal-ko-narrow.svg" width="430" height="460">
+          <img src="images/signal-ko.svg" width="900" height="470" alt="한 번의 교반에 걸친 모터 전류 그래프. 부하는 이십 분 동안 2700 밀리암페어 근처에 머물다가 지방이 모이면서 올라가고, 4700 근처에서 정점을 찍은 뒤 떨어진다." loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <figcaption>로그에서 그린 교반 구간의 모터 전류 <a href="#note" aria-label="이 그래프에 대한 설명 보기">*</a></figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">09</p>
+  <h2>혼자서 멈췄다</h2>
+    <p>돌아갔다. 나는 가서 다른 일을 했고, 돌아왔을 때 장치는 스스로 꺼져 있었다.</p>
+    <p>연노란 버터 알갱이가 뿌연 버터밀크 속에 떠 있었다. 시간을 알려준 사람은 없었다. 느낄 수 있는 유일한 것에서 그걸 알아냈다.</p>
+    <figure>
+      <img src="images/break.jpg" width="1100" height="1100" alt="분리된 버터가 담긴 냄비. 연노란 알갱이가 뿌연 버터밀크 속에 떠 있다." loading="lazy" decoding="async">
+      <figcaption>분리되는 순간</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">10</p>
+  <h2>다시 손으로 돌아간다</h2>
+    <p>알갱이를 모아서 한 덩어리로 뭉친다. 찬물에 헹구고 또 헹군다. 물이 더 이상 뿌옇지 않을 때까지.</p>
+    <p>남겨 둔 버터밀크는 한 방울까지 다음 단계에서 전부 탄다. 이 부분은 자동화하지 않았고, 하고 싶지도 않았다.</p>
+    <div class="pair">
+      <figure>
+        <img src="images/press.jpg" width="1400" height="1049" alt="채반 위에서 흩어진 버터 알갱이를 두 손으로 눌러 한 덩어리로 뭉치는 모습." loading="lazy" decoding="async">
+        <figcaption>하나로 뭉친다</figcaption>
+      </figure>
+      <figure>
+        <img src="images/buttermilk.jpg" width="1100" height="1100" alt="버터를 건져낸 뒤 싱크대에 남은, 묽고 흰 버터밀크가 담긴 냄비." loading="lazy" decoding="async">
+        <figcaption>남겨진 것</figcaption>
+      </figure>
+    </div>
+</section>
+
+<section class="wrap">
+  <p class="num">11</p>
+  <h2>두 번째 감각</h2>
+    <p>모터 부하는 장치에게 언제 멈출지 알려줬다. 가열은 다른 문제다. 이제는 한 순간을 찾는 게 아니라 한 상태를 붙잡아 두려는 것이기 때문이다.</p>
+    <p>그래서 냄비는 온도 프로브를 꽂은 핫플레이트에 올라가고, 교류 전력 조절기가 판을 켜고 끄면서 숫자를 정해 둔 자리에 붙여 둔다. 250 F, 그러니까 섭씨 121도로 맞춰 두었더니 한 시간쯤 그대로 있었다.</p>
+    <p>한 시간 동안 냄비를 지켜보는 사람은 어느 순간 집중이 흐트러진다. 조절기는 지루해하지 않는다.</p>
+    <figure>
+      <img src="images/hotplate.jpg" width="1100" height="825" alt="250이라고 빨간 숫자로 표시된 핫플레이트 조작판과 그 위로 보이는 기 냄비의 테두리." loading="lazy" decoding="async">
+      <figcaption>가열하는 동안 250에 붙여 두었다</figcaption>
+    </figure>
+</section>
+
+<section class="wrap">
+  <p class="num">12</p>
+  <h2>한 시간 동안 색만 본다</h2>
+    <p>버터를 냄비에 넣으면 그다음은 대체로 알아서 간다.</p>
+    <p>녹는다. 하얗고 요란하게 거품이 인다. 물이 날아가면서 소리가 잦아든다. 유고형분이 가라앉아 갈색이 되고, 냄새가 버터에서 뭔가 구운 것으로 옮겨 간다. 냄비가 조용해지고 액체가 맑아지면 끝이다.</p>
+    <p>그래도 대부분 지켜봤다. 보기 좋은 것이기 때문이다. 하지만 내가 한 어떤 것도 결과를 바꾸지는 않았다.</p>
+    <div class="ladder">
+      <figure>
+        <img src="images/clar-1.jpg" width="900" height="900" alt="불을 올리기 전, 스테인리스 냄비에 담긴 뽀얗게 씻긴 버터 덩어리." loading="lazy" decoding="async">
+        <figcaption>버터를 넣는다</figcaption>
+      </figure>
+      <figure>
+        <img src="images/clar-2.jpg" width="900" height="900" alt="버터에서 물이 끓어 나오면서 냄비를 가득 채운 요란한 흰 거품." loading="lazy" decoding="async">
+        <figcaption>거품이 인다</figcaption>
+      </figure>
+      <figure>
+        <img src="images/clar-3.jpg" width="900" height="900" alt="작은 고형분이 떠 있는 채로 황금빛으로 투명해지는 액체." loading="lazy" decoding="async">
+        <figcaption>맑아진다</figcaption>
+      </figure>
+      <figure>
+        <img src="images/clar-4.jpg" width="900" height="900" alt="표면 전체에 짙어지는 유고형분과 함께 끓고 있는 진한 황금빛 지방." loading="lazy" decoding="async">
+        <figcaption>황금빛</figcaption>
+      </figure>
+      <figure>
+        <img src="images/clar-5.jpg" width="900" height="900" alt="얇은 거품 아래, 냄비 바닥에 모인 갈색이 된 유고형분." loading="lazy" decoding="async">
+        <figcaption>고형분이 내려갔다</figcaption>
+      </figure>
+    </div>
+</section>
+
+<section class="wrap">
+  <p class="num">13</p>
+  <h2>기</h2>
+    <p>맑고, 호박색이고, 내가 어릴 때 꺼내 먹던 병의 냄새가 난다. 내가 가진 시험은 그것뿐이었고, 통과했다.</p>
+    <figure>
+      <img src="images/ghee.jpg" width="1500" height="1240" alt="완성된 기가 담긴 냄비. 깊고 맑은 호박색이고 한쪽 끝에 거품이 조금 있다." loading="lazy" decoding="async">
+      <figcaption>걸러서 아직 따뜻하다</figcaption>
+    </figure>
+    <p>따뜻하고 맑은 채로 병에 들어갔다. 다음 날이 되자 연노랗게 알알이 굳어 있었다.</p>
+    <p>병에 라벨을 붙였다. 거기 적힌 단어는 네팔어로 기를 뜻하고, 옆에 있는 코드는 이 페이지로 돌아오게 한다.</p>
+    <figure>
+      <img src="images/jars.jpg" width="1500" height="1125" alt="야외 나무 난간에 놓인, 연노랗게 굳은 기가 담긴 병 두 개. 각각 네팔어로 기를 뜻하는 단어와 JD&#x27;s AI Ghee라는 이름, QR 코드가 있는 종이 라벨을 달고 있다." loading="lazy" decoding="async">
+      <figcaption>병 두 개, 굳어서 라벨까지 붙었다</figcaption>
+    </figure>
+    <p>내가 만든 첫 배치다. 사실 내가 만든 건 아니다.</p>
+</section>
+
+<section class="wrap">
+  <p class="num">14</p>
+  <h2>두 번째에는 아홉 병</h2>
+    <p>첫 번째는 두 병이 나왔고 그게 전부였다. 이번에는 난간이 찼다.</p>
+    <p>아홉 병. 카메라에 가장 가까운 쪽에 키 큰 스크류 뚜껑 두 개, 가운데를 지나는 클립 뚜껑 여섯 개, 그리고 저 끝 기둥 아래에 작은 것 하나.</p>
+    <figure>
+      <img src="images/batch.jpg" width="1500" height="947" alt="야외 나무 데크 난간을 따라 놓인, 연노랗게 굳은 기가 담긴 병 아홉 개. 카메라에 가장 가까운 쪽에 키 큰 스크류 뚜껑 병 두 개가 있고 그 뒤로 클립 뚜껑 병들이 이어진다." loading="lazy" decoding="async">
+      <figcaption>두 번째 배치, 같은 난간</figcaption>
+    </figure>
+    <p>라벨이 달라졌다. 첫 두 병은 위에 OUR STORY가 찍힌 분홍 종이 라벨을 달고 있었다. 이번 것은 투명 필름이라 글자 뒤로 기가 비쳐 보이고, 옆에 있는 코드는 여전히 이 페이지로 데려온다.</p>
+    <div class="pair">
+      <figure>
+        <img src="images/batch-jar.jpg" width="1100" height="1100" alt="데크 난간에 서 있는 클립 뚜껑 병 하나. QR 코드와 네팔어로 기를 뜻하는 단어, JD&#x27;s AI Ghee라는 이름이 있는 투명 라벨이 붙어 있다." loading="lazy" decoding="async">
+        <figcaption>라벨, 두 번째 버전</figcaption>
+      </figure>
+      <figure>
+        <img src="images/batch-set.jpg" width="1100" height="1100" alt="나란히 놓인 클립 뚜껑 병 두 개를 가까이서 본 모습. 유리 너머로 굳은 기가 연한 노란색으로 곱게 알알이 보인다." loading="lazy" decoding="async">
+        <figcaption>굳었고, 살짝 알알이</figcaption>
+      </figure>
+    </div>
+    <p>첫 번째와 같은 연한 노란색으로 굳었는데, 그럴지는 확신하지 못했다.</p>
+</section>
+
+<section class="wrap">
+  <p class="num">15</p>
+  <h2>다음에 하고 싶은 것</h2>
+    <p>지금 이 기계가 아는 건 두 가지다. 언제 교반을 멈출지, 그리고 어떤 온도를 유지할지.</p>
+    <p>다음에는 눈과 귀를 주고 싶다. 카메라를 달아서 거품이 꺼지고 고형분이 갈색으로 변하는 걸 보게 하고, 내가 건네준 숫자를 지키는 대신 열을 스스로 고르게 하고 싶다. 그리고 마이크. 기가 다 됐다는 걸 알려주는 것 중 많은 부분이 냄비가 조용해지는 것이기 때문이다.</p>
+    <p>드릴도 아마 두 번째 일을 할 수 있다. 버터가 냄비에 들어가면 저어 줘야 하고, 바로 그 자리에 아무것도 안 하고 있는 모터가 이미 있다.</p>
+    <p>그다음은 루프다. 발효 시간을 바꾸고, 속도를 바꾸고, 나온 것을 맛보고, 잘된 것을 남기고, 다시 한다. 서른 번 돌리면 내가 찾아볼 생각조차 못 했을 어딘가에 도착할 것이다.</p>
+    <p>애초에 어디를 봐야 하는지도 제대로 몰랐으니까.</p>
+
+  <div class="next">
+    <a href="beast-ko.html">기계를 더 자세히 &rsaquo;</a>
+    <p>무엇으로 만들었는지, 어디서 재는지, 이 장치가 실제로 무엇을 보는지.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p id="note">* 실선은 이 사진들에 나오는 그 회차의 센서 로그에서 그렸다. 이동 중앙값이고, 뒤에 깔린 음영은 같은 구간 읽기값의 가운데 절반이다. 생데이터를 전부 한꺼번에 그리면 먹 덩어리가 되어 버리기 때문에 이렇게 했다. 점선은 교반의 이상적인 형태이고, 신호가 무엇을 찾고 있는지 보여주기 위해 손으로 그렸다. 로그와 스크립트는 리포지터리에 들어 있다.</p>
+  <p>사진은 2026년 8월의 한 회차에서 찍은 것이다. 교반기, 완성된 병, 두 번째 배치는 나중에 찍었다.</p>
+  <p class="contact">질문, 정정, 또는 직접 이런 걸 만들어 봤다는 이야기. <a href="mailto:aighee@proton.me">aighee@proton.me</a></p>
+  <p class="legal"><a lang="en" hreflang="en" href="privacy.html">Privacy</a> · <a lang="en" hreflang="en" href="terms.html">Terms</a></p>
+</footer>
+
+</body>
+</html>

@@ -46,6 +46,9 @@ SANS_JA = ('"Avenir Next","Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN"
 SANS_YUE = ('"Avenir Next","Segoe UI","PingFang HK","Hiragino Sans CNS",'
             '"Microsoft JhengHei","Noto Sans CJK HK","Noto Sans CJK TC",'
             '"Noto Sans HK",sans-serif')
+SANS_KO = ('"Avenir Next","Segoe UI","Apple SD Gothic Neo",'
+           '"Malgun Gothic","Nanum Gothic","Noto Sans CJK KR",'
+           '"Noto Sans KR",sans-serif')
 SANS_AR = ('"Avenir Next","Segoe UI","Geeza Pro","Segoe UI Arabic",'
            '"Noto Sans Arabic","Noto Naskh Arabic",Tahoma,sans-serif')
 
@@ -669,8 +672,38 @@ NEW = dict(
             ("छुं मजूनि", 1.2, 2750, -58, "start", "lbl")],
 )
 
+# Hangul is not Han and does not want the Han numbers unexamined. It turns
+# out to want them almost exactly. Measured at a matched size through
+# language-reports/height.py, the ink of 모터 회로 is 10.2 px against 电机回路
+# at 10.5 and a Latin capital at 8.2, so a Hangul syllable fills its em the
+# way a Han character does and reads as the larger of the two beside Latin.
+# The lift comes down rather than up, and 0.96 rather than the 0.94 the Han
+# charts take, because Hangul starts 3 per cent smaller and 0.96 lands it
+# where 0.94 lands them.
+#
+# Korean writes with spaces between words, which Chinese and Japanese do not,
+# so tracking does less damage here than it does on those two. It still gets
+# the Han triple. A syllable block is a square and opening the squares apart
+# is the thing the smaller numbers exist to stop, and a label that reads the
+# same as the Chinese and Japanese ones is worth more than two points of
+# tracking.
+KO = dict(
+    stack=SANS_KO, track=(".04em", ".06em", ".08em"), caps="none", lift=0.96,
+    out=("signal-ko.svg", "signal-ko-narrow.svg"),
+    aria="한 번의 교반에 걸친 모터 전류 그래프. 센서 로그에서 그렸다. "
+         "부하는 처음 이십 분 동안 2700 밀리암페어 근처에 머물다가 지방이 "
+         "모이면서 올라가고, 4700 근처에서 정점을 찍은 뒤 떨어진다.",
+    y="모터 전류, mA", x="교반 경과 시간, 분",
+    run="이번 교반", ideal="찾고 있는 형태",
+    wide=[("이십 분은 거의 그대로", 2.6, 2750, -46, "start", "lbl"),
+          ("지방이 모인다", 19.6, 2050, 0, "end", "lbl"),
+          ("버터 분리", 24.6, 4704, -24, "end", "lbl-s")],
+    narrow=[("버터 분리", 23.0, 4704, -20, "end", "lbl-s"),
+            ("아직 그대로", 1.2, 2750, -58, "start", "lbl")],
+)
+
 CHARTS = [EN, NE, FR, RW, LG, DE, ZH, RU, ES, HI, TR, EU, KA,
-          BN, FIL, JA, YUE, AR, NEW, UK]
+          BN, FIL, JA, YUE, AR, NEW, UK, KO]
 
 written = []
 for S in CHARTS:

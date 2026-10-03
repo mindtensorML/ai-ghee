@@ -5,7 +5,7 @@ lang_label: Wika
 lang: fil
 stem: beast
 locale: fil_PH
-title: Ang Halimaw &middot; Ghee na Gawa ng AI
+title: Ang Halimaw · Ghee na Gawa ng AI
 description: Isang cordless drill, isang sangkalan, isang hotplate at isang Raspberry Pi. Kung ano ang ginagawa ng bawat parte ng makina ng ghee.
 og_title: Ang Halimaw
 og_description: Isang cordless drill, isang sangkalan at isang Raspberry Pi. Kung ano ang ginagawa ng bawat parte ng makina ng ghee.
