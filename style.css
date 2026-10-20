@@ -587,6 +587,16 @@ figcaption {
   text-wrap: balance;
 }
 
+/* A pull quote holding nothing but a link is a call to action rather than a
+   quotation, and it needs room under it. The quote style leaves 0.2rem, which
+   is right when the next thing is a section end or a figure and wrong when it
+   is a paragraph, because the link then reads as that paragraph's heading
+   rather than as something to tap. Only the review page has one today. */
+.pull:has(> a:only-child) {
+  padding-bottom: 0.1rem;
+  margin-bottom: 2.2rem;
+}
+
 /* ---------- spec list ---------- */
 
 .spec {

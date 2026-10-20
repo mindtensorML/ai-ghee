@@ -29,6 +29,8 @@ next_blurb: Nothing to type. The code goes in for you.
 
 A jar of this came off a machine standing over a kitchen sink. A drill in a clamp, a chopping board, a hotplate, and a Raspberry Pi reading the current in the motor so it knows the moment the butter breaks. That part it measures about once a second and it gets it right.
 
+> [Tell me how your jar was](https://docs.google.com/forms/d/e/1FAIpQLSdcgkIxBf4SphYhROrMSaR606ep_5Ee2nLSgbfvpMmV0YLC-Q/viewform?usp=pp_url&entry.1407966721=B1)
+
 The hour of cooking afterwards is the part it cannot see. It holds the pot at a number I handed it and it has no idea whether that number was the right one. Which is where your jar either worked or did not.
 
 So what is worth telling me is what it was like to open. The colour, the smell, how it felt once it had set. Three taps for those and one for how it was overall. The box for typing is there if you want it and most people will skip it, which is fine.

@@ -30,6 +30,8 @@ A cordless drill does the turning. It sits in a clamp bolted to a chopping board
 
 The electronics live in a clear plastic food box, mostly so I can see whether anything has caught fire. A Raspberry Pi runs the logging. The large yellow button cuts power to the motor and nothing in software gets to override it.
 
+If you are holding a jar this thing made, [tell me how it came out](review.html). It measures the churn and nothing at all about the taste, so that half of it only gets better if somebody says.
+
 ![Drill, board, box, button](images/beast-wide.jpg "The rig on a kitchen counter, showing the drill in its clamp, the wooden board, the clear box of electronics and a Raspberry Pi at the base.")
 
 | Motor | Cordless drill, clamped, running well below full speed |
