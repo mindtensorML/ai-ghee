@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{head_extra}}
 <title>{{title}}</title>
 <meta name="description" content="{{description}}">
 <meta property="og:type" content="{{og_type}}">

@@ -7,7 +7,7 @@ author: JD
 credit: Photographs are from a single run in August 2026. The churn, the finished jars and the second batch were photographed later.
 contact_text: Questions, corrections, or you have built one of these yourself.
 contact_email: aighee@proton.me
-footer_links: [Privacy](privacy.html) · [Terms](terms.html)
+footer_links: [Review a jar](review.html) · [Privacy](privacy.html) · [Terms](terms.html)
 ---
 
 # Shared settings
@@ -21,12 +21,20 @@ published, so treat it as disposable. Use a forwarding alias, and if it ever
 starts attracting rubbish, delete the alias, put a new one on this line and
 commit. Nothing else needs touching.
 
-The privacy and terms links in `footer_links` are set here for the same
-reason, so every page carries them. Google's OAuth review checks that both
-are reachable from the home page. The labels stay in English on every
-translated page, because the two pages they lead to are English only.
-Overriding `footer_links` in a language's own two markdown files is all it
-would take to change that for that language.
+The links in `footer_links` are set here for the same reason, so every page
+carries them. Google's OAuth review checks that privacy and terms are both
+reachable from the home page. The review link is there because the QR code
+printed on the jars cannot be changed, it is a TinyURL that was made without
+an account and it points at the English home page for good. So the only way a
+person holding a jar reaches the review page is from a link on a page they are
+already on, and the footer is the one place that reaches all of them in a
+single edit.
+
+All three labels stay in English on every translated page, because all three
+pages they lead to are English only. `build.py` stamps `lang="en"` on them so a
+screen reader does not read them in the wrong voice. Overriding `footer_links`
+in a language's own two markdown files is all it would take to change that for
+that language.
 
 The `languages:` line above is the only place a language is declared. A code,
 the name written in the language itself, and a locale. Filenames and sibling

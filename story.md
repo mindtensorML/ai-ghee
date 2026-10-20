@@ -35,6 +35,8 @@ It does not taste like the tin from the shop.
 
 And I had never made a single batch. I did not know how long to leave the milk, or how cold the yogurt should be, or what the pot is supposed to sound like when it is ready.
 
+If you got here by scanning a jar, there is a page for telling me how it turned out. [It takes four taps](review.html). Nothing on the rig can taste anything, so that is the only way I find out whether the cook was right.
+
 ## It starts with yogurt, not straight cream
 
 Most industrial ghee begins with cream. The traditional way begins a day (or two) earlier, with cream (really boiled down whole milk) cultured into yogurt and left to sour overnight.

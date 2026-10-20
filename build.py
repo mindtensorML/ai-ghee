@@ -582,12 +582,21 @@ def render_next(meta):
     if not meta.get("next_text"):
         return ""
     arrow = "&lsaquo; " if meta.get("nav_side") == "left" else " &rsaquo;"
-    label = (f'{arrow}{meta["next_text"]}' if meta.get("nav_side") == "left"
-             else f'{meta["next_text"]}{arrow}')
+    # Escaped, because this block can now point off the site at a URL with a
+    # query string in it, and a bare & in an attribute is a parse error under
+    # the strict HTML5 reading that integrity.py does. Every value these two
+    # keys held before was a plain word and a bare filename, so the pages that
+    # already existed come out byte identical. The arrow is added after the
+    # escaping, since it is an entity written here rather than typed into the
+    # markdown, which is the distinction the title separator got wrong.
+    text = html.escape(meta["next_text"], quote=False)
+    label = (f"{arrow}{text}" if meta.get("nav_side") == "left"
+             else f"{text}{arrow}")
+    href = html.escape(meta.get("next_href", ""), quote=True)
     blurb = meta.get("next_blurb", "")
     return (
         '\n  <div class="next">\n'
-        f'    <a href="{meta["next_href"]}">{label}</a>\n'
+        f'    <a href="{href}">{label}</a>\n'
         + (f"    <p>{inline(blurb)}</p>\n" if blurb else "")
         + "  </div>"
     )
@@ -682,6 +691,21 @@ def build(md_path, template, site=None):
         page = page.replace("{{" + key + "}}",
                             html.escape(meta.get(key, ""), quote=True))
     page = page.replace("{{og_type}}", meta.get("og_type", "article"))
+    # An optional head directive, used by one page. 404.html sets `refresh` so
+    # that a reader who scanned a code we have no page for gets carried back to
+    # the story rather than left on a dead end. It is a front matter key rather
+    # than a hand written 404 page because template.tpl is the only place the
+    # head gets assembled, and a second copy of that head would drift away from
+    # this one the first time the stylesheet or the icons moved.
+    refresh = meta.get("refresh", "")
+    # The placeholder takes its own newline with it when there is nothing to
+    # put there, so the forty five pages that do not use it come out exactly as
+    # they did before this slot existed. That was the proof it was safe, since
+    # git status showed no page changed at all when the slot went in.
+    page = page.replace(
+        "{{head_extra}}\n",
+        f'<meta http-equiv="refresh" content="{html.escape(refresh, quote=True)}">\n'
+        if refresh else "")
     # The declared size has to belong to the image the page actually points at.
     # It was hard coded at the card's 1200 by 630, and the two legal pages
     # point at a photograph that is 1500 by 1240.
@@ -713,6 +737,13 @@ def write_sitemap(site, pages):
         return None
     urls = []
     for name in sorted(set(pages)):
+        # The error page is built like any other so that it inherits the same
+        # head, the same masthead and the same stylesheet, but it is not a
+        # destination and a sitemap is a list of destinations. GitHub Pages
+        # serves it with a real 404 status, so no crawler would keep it
+        # anyway, and listing it only invites the question.
+        if name == "404.html":
+            continue
         loc = base if name == "index.html" else base + name
         urls.append(f"  <url><loc>{loc}</loc></url>")
     doc = ('<?xml version="1.0" encoding="UTF-8"?>\n'

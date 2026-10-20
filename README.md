@@ -11,6 +11,11 @@ Live at https://mindtensorml.github.io/ai-ghee/
 Edit `story.md` for the main page or `beast.md` for the machine page. Every
 other language is the same two files with its code on the end, so the French
 pair is `story-fr.md` and `beast-fr.md`.
+
+Four more pages are built the same way and are English only. `review.md` is
+how somebody holding a jar tells us how it turned out, `notfound.md` becomes
+the `404.html` that GitHub Pages serves for any address that is not here, and
+`privacy.md` and `terms.md` are the legal pair.
 Commit. That is the whole job. A GitHub Action rebuilds the HTML about forty
 seconds later and pushes it back, and the site updates itself.
 
