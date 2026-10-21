@@ -271,6 +271,20 @@ a { color: var(--deep); }
   white-space: nowrap;
 }
 
+/* The masthead links are tap targets before they are anything else, and at
+   0.72rem the text box came out 18px tall against the 24px WCAG 2.2 asks for
+   under 2.5.8. The type does not change, only the box around it. They are
+   flex items, so the padding genuinely grows them rather than spilling the way
+   padding on an inline box does, and 24px is exactly the height of the logo
+   beside them, so no masthead on the site gets any taller.
+
+   This had never been reported, because the check that would have caught it
+   only runs at 480px and under and the old harness could not render narrower
+   than 500. The whole branch was dead for as long as it has existed. */
+.top .links a.page {
+  padding-block: 0.19rem;
+}
+
 /* The panel hangs off the masthead, not off the button.
 
    Pinned to the button it is only ever as safe as wherever the button happens
@@ -301,7 +315,12 @@ a { color: var(--deep); }
 .langs summary {
   list-style: none;
   cursor: pointer;
-  padding-block: 0.15rem;
+  /* 0.21rem rather than 0.15rem, for the 24px tap target explained above. The
+     chevron is an `::after` using `vertical-align`, so this rule stays a block
+     and takes its height from padding. Turning it into a flex box to centre
+     the text would make the chevron a flex item and `vertical-align` would
+     stop meaning anything. */
+  padding-block: 0.21rem;
   padding-inline: 0.2rem 0.5rem;
   margin-inline-start: 0.5rem;
   color: var(--faint);
