@@ -77,3 +77,18 @@ Dos cosas. Si la carga ha subido y después ha bajado lo suficiente como para ca
 No sabe lo que es el yogur. No sabe lo que es la mantequilla. Sabe que un número subió durante un rato y después se fue cayendo, y que esa forma significa que el trabajo está terminado.
 
 ![Para qué sirve esa forma](images/batch-big.jpg "Dos botes altos de ghee cuajado y pálido con tapa de rosca y etiquetas transparentes sobre la barandilla de una terraza, con botes más pequeños de cierre de clip desenfocados por detrás.")
+
+
+## Qué viene después
+
+Cuatro sentidos en vez de uno.
+
+El taladro se va y su sitio lo ocupa una KitchenAid, enchufada a la red a través de un relé que la Pi puede conmutar con dos cables finos. La sonda de temperatura pasa de la placa a la Pi, que es lo que de verdad importa, porque una sonda que registra es una sonda que puedes poner en una gráfica. Una cámara para ver romperse la espuma. Un micrófono, porque una olla que ha dejado de chisporrotear suena distinto.
+
+El medidor de potencia es el que mantiene viva la historia de antes. La corriente en un circuito de doce voltios es lo único que esta máquina ha medido en su vida. Pasa el motor a la red y a ese sensor no le queda nada que leer, así que su sitio lo ocupa un medidor en la red y vuelve la misma curva, con la tensión y el factor de potencia al lado.
+
+En el dibujo no hay ningún botón rojo. Los enchufes del relé siguen muertos hasta que la Pi los pide, y lo que corta la corriente será la palanca de la propia batidora, donde ningún software llega.
+
+Nada de esto está construido. Las piezas se pidieron en octubre.
+
+![Qué aspecto tiene la siguiente](images/beast2-es.svg "Esquema eléctrico preliminar de la segunda máquina de ghee, que está planeada pero no construida. Una Raspberry Pi lee una cámara OV5647, un micrófono USB y una sonda de temperatura DS18B20. Dos cables finos de la Pi conmutan un relé IoT en la línea de la red, y un medidor de potencia PZEM-004T devuelve las lecturas por USB. El relé alimenta al medidor y el medidor alimenta una batidora KitchenAid de 690 W.")

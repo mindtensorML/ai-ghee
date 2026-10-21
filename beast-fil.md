@@ -77,3 +77,18 @@ Dalawang bagay. Kung umakyat na ba at pagkatapos ay bumagsak nang sapat ang load
 Hindi nito alam kung ano ang yogurt. Hindi nito alam kung ano ang mantekilya. Alam nito na may numerong umakyat nang ilang sandali at pagkatapos ay bumagsak, at ang hugis na iyon ay nangangahulugang tapos na ang trabaho.
 
 ![Para saan ang hugis](images/batch-big.jpg "Dalawang matatangkad na garapon ng maputla at namuong ghee na may pinipihit na takip at malinaw na etiketa, nakatayo sa barandilya, at may mas maliliit na de-klip na garapong malabo sa likod nila.")
+
+
+## Ang susunod
+
+Apat na pandama sa halip na isa.
+
+Aalis ang drill at isang KitchenAid ang papalit. Umaandar ito sa kuryente mula sa saksakan at dumadaan sa isang relay na kayang sindihan ng Pi sa dalawang manipis na kable. Lilipat ang probe ng temperatura mula sa hotplate papunta sa Pi, at iyon ang parteng mahalaga, dahil ang probe na nagtatala ay probe na kayang i-plot. Isang kamera para bantayan ang paghupa ng bula. Isang mikropono, dahil kakaiba ang tunog ng kalderong tumigil na sa pagsalpok.
+
+Ang power meter ang nagpapanatiling buhay sa dating kuwento. Ang kuryente sa labindalawang bolt na loop ang tanging nadama ng makinang ito kahit kailan. Ilipat ang motor sa kuryente mula sa saksakan at wala nang mababasa ang sensor na iyon, kaya isang metro sa linya ng kuryente ang papalit at bumabalik ang parehong kurba, kasama ang boltahe at power factor sa tabi nito.
+
+Walang pulang pindutan sa diagram. Nananatiling patay ang mga saksakan ng relay hanggang hindi hinihingi ng Pi, at ang sariling lever ng mixer ang magiging hintong hindi maaabot ng kahit anong software.
+
+Wala pa ritong naitayo. Na-order ang mga parte noong Oktubre.
+
+![Ang hitsura ng susunod](images/beast2-fil.svg "Isang paunang diagram ng sirkito ng balak na ikalawang makina ng ghee, na hindi pa naitayo. Isang Raspberry Pi ang nagbabasa ng OV5647 camera, ng USB microphone at ng DS18B20 temperature probe. Dalawang manipis na kable mula sa Pi ang nagsisindi sa IoT relay sa linya ng kuryente, at ang PZEM-004T power meter ay nag-uulat pabalik sa pamamagitan ng USB. Ang relay ang nagbibigay ng kuryente sa metro at ang metro naman sa 690 watt na KitchenAid mixer.")

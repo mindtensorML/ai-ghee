@@ -77,3 +77,18 @@ Bi gauza. Karga nahikoa igo eta gero nahikoa jaitsi den, haustura dela esateko, 
 Ez daki zer den jogurta. Ez daki zer den gurina. Badaki zenbaki bat igo zela tarte batez eta gero behera joan zela, eta forma horrek lana eginda dagoela esan nahi duela.
 
 ![Zertarako da forma hori](images/batch-big.jpg "Ghee zurbil eta gatzatuz beteta bi poto altu, torloju-tapekin eta etiketa gardenekin, terrazako eskudel baten gainean, atzean klip-itxieradun poto txikiagoak lauso.")
+
+
+## Zer dator hurrena
+
+Zentzumen bakar baten ordez lau.
+
+Zulagailuak alde egiten du eta KitchenAid batek hartzen du bere lekua. Sareko korrontearekin ibiliko da, Pi-ak bi kable finekin komuta dezakeen errele baten bidez. Tenperatura-zunda plaka elektrikotik Pi-ra pasatzen da, eta hori da inporta duen zatia, erregistratzen duen zunda bat grafikoan marraztu ahal den zunda bat delako. Kamera bat aparraren haustura ikusteko. Mikrofono bat, zipriztintzeari utzi dion lapikoak beste soinu bat egiten duelako.
+
+Potentzia-neurgailua da istorio zaharrari bizirik eusten diona. Hamabi volteko begizta bateko korrontea izan da makina honek inoiz neurtu duen gauza bakarra. Eraman motorra sarera eta sentsore horrek ez du jada zer irakurri, beraz sareko neurgailu batek hartzen du bere lekua eta kurba bera itzultzen da, tentsioa eta potentzia-faktorea ondoan dituela.
+
+Ez dago botoi gorririk eskeman. Errelearen hartuneek ez dute korronterik Pi-ak eskatzen duen arte, eta irabiagailuaren palanka bera izango da softwareak ukitu ezin duen etena.
+
+Ez dago ezer eraikita. Piezak urrian eskatu ziren.
+
+![Nolakoa izango da hurrengoa](images/beast2-eu.svg "Ghee egiteko bigarren makinaren zirkuitu-eskemaren aurrebista. Makina hori ez dago eraikita. Raspberry Pi batek OV5647 kamera bat, USB mikrofono bat eta DS18B20 tenperatura-zunda bat irakurtzen ditu. Pi-tik ateratzen diren bi kable finek sareko IoT errele bat komutatzen dute, eta PZEM-004T potentzia-neurgailu batek USB bidez bidaltzen ditu datuak. Erreleak neurgailua elikatzen du eta neurgailuak 690 W-ko KitchenAid irabiagailu bat elikatzen du.")

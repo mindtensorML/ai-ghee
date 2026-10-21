@@ -99,6 +99,13 @@ WORDS_NE = {
     "SIGNAL": "सिग्नल",
     "MOTOR LOOP": "मोटर लुप",
     "POWER AND SENSE": "पावर र सेन्सिङ",
+    "CAMERA": "क्यामेरा",
+    "MICROPHONE": "माइक्रोफोन",
+    "TEMPERATURE": "तापक्रम",
+    "POWER METER": "पावर मिटर",
+    "MIXER": "स्ट्यान्ड मिक्सर",
+    "NORMALLY OFF": "सामान्यतः अफ",
+    "NOT BUILT YET": "अझै बनेको छैन",
 }
 
 # French translates all of these except SIGNAL, which is the same word. ALIM is
@@ -116,6 +123,12 @@ WORDS_FR = {
     "STOP": "D'URGENCE",
     "MOTOR LOOP": "BOUCLE MOTEUR",
     "POWER AND SENSE": "PUISSANCE ET MESURE",
+    "CAMERA": "CAMÉRA",
+    "TEMPERATURE": "TEMPÉRATURE",
+    "POWER METER": "WATTMÈTRE",
+    "MIXER": "ROBOT PÂTISSIER",
+    "NORMALLY OFF": "NORMALEMENT OUVERT",
+    "NOT BUILT YET": "PAS ENCORE CONSTRUITE",
 }
 
 # Kinyarwanda keeps the part numbers, the supply and the mains in English the
@@ -131,6 +144,12 @@ WORDS_RW = {
     "STOP": "BYIHUTIRWA",
     "MOTOR LOOP": "URUZIGA RWA MOTEUR",
     "POWER AND SENSE": "INGUFU NO KUMVA",
+    "CAMERA": "CAMÉRA",
+    "MICROPHONE": "MICRO",
+    "TEMPERATURE": "UBUSHYUHE",
+    "POWER METER": "COMPTEUR Y'INGUFU",
+    "NORMALLY OFF": "IHORA IZIMYE",
+    "NOT BUILT YET": "NTIYUBATSWE",
 }
 
 # Luganda keeps most of this drawing in English, which is what an educated
@@ -147,6 +166,11 @@ WORDS_RW = {
 WORDS_LG = {
     "MOTOR LOOP": "LOOP YA MOTOR",
     "POWER AND SENSE": "POWER NE SENSE",
+    "CAMERA": "KAMERA",
+    "MICROPHONE": "MAAYIKOLOFOONI",
+    "TEMPERATURE": "EBBUGUMU",
+    "NORMALLY OFF": "EZIKIDDE BULIJJO",
+    "NOT BUILT YET": "TEKINNAKOLEBWA",
 }
 
 # German has a real word for every label here, and the standards body has
@@ -184,6 +208,13 @@ WORDS_DE = {
     "STOP": "",
     "MOTOR LOOP": "MOTORKREIS",
     "POWER AND SENSE": "LEISTUNG UND MESSUNG",
+    "CAMERA": "KAMERA",
+    "MICROPHONE": "MIKROFON",
+    "TEMPERATURE": "TEMPERATUR",
+    "POWER METER": "LEISTUNGSMESSER",
+    "MIXER": "KÜCHENMASCHINE",
+    "NORMALLY OFF": "IM RUHEZUSTAND AUS",
+    "NOT BUILT YET": "NOCH NICHT GEBAUT",
 }
 
 # Chinese is compact enough that nothing here had to be cut. 急停 is what is
@@ -204,6 +235,13 @@ WORDS_ZH = {
     "SIGNAL": "\u4fe1\u53f7",
     "MOTOR LOOP": "\u7535\u673a\u56de\u8def",
     "POWER AND SENSE": "\u4f9b\u7535\u4e0e\u68c0\u6d4b",
+    "CAMERA": "摄像头",
+    "MICROPHONE": "麦克风",
+    "TEMPERATURE": "温度",
+    "POWER METER": "功率计",
+    "MIXER": "厨师机",
+    "NORMALLY OFF": "默认断电",
+    "NOT BUILT YET": "尚未制作",
 }
 
 # Russian takes БП, the abbreviation every Russian schematic uses for a power
@@ -221,6 +259,13 @@ WORDS_RU = {
     "SIGNAL": "СИГНАЛ",
     "MOTOR LOOP": "КОНТУР ДВИГАТЕЛЯ",
     "POWER AND SENSE": "ПИТАНИЕ И ИЗМЕРЕНИЕ",
+    "CAMERA": "КАМЕРА",
+    "MICROPHONE": "МИКРОФОН",
+    "TEMPERATURE": "ТЕМПЕРАТУРА",
+    "POWER METER": "ИЗМЕРИТЕЛЬ МОЩНОСТИ",
+    "MIXER": "МИКСЕР",
+    "NORMALLY OFF": "НОРМАЛЬНО РАЗОМКНУТО",
+    "NOT BUILT YET": "ПОКА НЕ СОБРАНО",
 }
 
 # Ukrainian abbreviates the supply the way Russian does. ЖИВЛЕННЯ 12 V measures
@@ -238,6 +283,13 @@ WORDS_UK = {
     "SIGNAL": "СИГНАЛ",
     "MOTOR LOOP": "КОНТУР ДВИГУНА",
     "POWER AND SENSE": "ЖИВЛЕННЯ І ДАТЧИК",
+    "CAMERA": "КАМЕРА",
+    "MICROPHONE": "МІКРОФОН",
+    "TEMPERATURE": "ТЕМПЕРАТУРА",
+    "POWER METER": "ЛІЧИЛЬНИК ПОТУЖНОСТІ",
+    "MIXER": "МІКСЕР",
+    "NORMALLY OFF": "НОРМАЛЬНО РОЗІМКНЕНО",
+    "NOT BUILT YET": "ЩЕ НЕ ЗІБРАНО",
 }
 
 # Korean has room everywhere, which no other script on these drawings has had.
@@ -259,6 +311,13 @@ WORDS_KO = {
     "SIGNAL": "신호",
     "MOTOR LOOP": "모터 회로",
     "POWER AND SENSE": "전원과 계측",
+    "CAMERA": "카메라",
+    "MICROPHONE": "마이크",
+    "TEMPERATURE": "온도",
+    "POWER METER": "전력 계측기",
+    "MIXER": "믹서",
+    "NORMALLY OFF": "평상시 꺼짐",
+    "NOT BUILT YET": "아직 만들지 않음",
 }
 
 # Spanish translates all of these. The stop cannot drop its preposition without
@@ -273,6 +332,13 @@ WORDS_ES = {
     "SIGNAL": "SEÑAL",
     "MOTOR LOOP": "CIRCUITO DEL MOTOR",
     "POWER AND SENSE": "ALIMENTACIÓN Y MEDIDA",
+    "CAMERA": "CÁMARA",
+    "MICROPHONE": "MICRÓFONO",
+    "TEMPERATURE": "TEMPERATURA",
+    "POWER METER": "MEDIDOR DE POTENCIA",
+    "MIXER": "BATIDORA",
+    "NORMALLY OFF": "NORMALMENTE ABIERTO",
+    "NOT BUILT YET": "AÚN SIN CONSTRUIR",
 }
 
 # Hindi takes the Nepali treatment, same script and same span class. इमरजेंसी
@@ -289,6 +355,13 @@ WORDS_HI = {
     "SIGNAL": "सिग्नल",
     "MOTOR LOOP": "मोटर लूप",
     "POWER AND SENSE": "पावर और सेंसिंग",
+    "CAMERA": "कैमरा",
+    "MICROPHONE": "माइक्रोफ़ोन",
+    "TEMPERATURE": "तापमान",
+    "POWER METER": "पावर मीटर",
+    "MIXER": "मिक्सर",
+    "NORMALLY OFF": "नॉर्मली ऑफ़",
+    "NOT BUILT YET": "अभी बनना बाकी है",
 }
 
 # Turkish writes every label here itself. The dotted İ in SİNYAL and MOTOR
@@ -309,6 +382,13 @@ WORDS_TR = {
     "SIGNAL": "SİNYAL",
     "MOTOR LOOP": "MOTOR DEVRESİ",
     "POWER AND SENSE": "GÜÇ VE ÖLÇÜM",
+    "CAMERA": "KAMERA",
+    "MICROPHONE": "MİKROFON",
+    "TEMPERATURE": "SICAKLIK",
+    "POWER METER": "GÜÇ ÖLÇER",
+    "MIXER": "MİKSER",
+    "NORMALLY OFF": "NORMALDE ENERJİSİZ",
+    "NOT BUILT YET": "HENÜZ YAPILMADI",
 }
 
 # Basque has a real word for every label here and only one had to be weighed.
@@ -326,6 +406,13 @@ WORDS_EU = {
     "SIGNAL": "SEINALEA",
     "MOTOR LOOP": "MOTOR-BEGIZTA",
     "POWER AND SENSE": "POTENTZIA ETA NEURKETA",
+    "CAMERA": "KAMERA",
+    "MICROPHONE": "MIKROFONOA",
+    "TEMPERATURE": "TENPERATURA",
+    "POWER METER": "POTENTZIA-NEURGAILUA",
+    "MIXER": "IRABIAGAILUA",
+    "NORMALLY OFF": "NORMALEAN ITZALITA",
+    "NOT BUILT YET": "ORAINDIK ERAIKI GABE",
 }
 
 # Georgian fits everywhere with room to spare, and only the supply block had
@@ -343,6 +430,13 @@ WORDS_KA = {
     "SIGNAL": "სიგნალი",
     "MOTOR LOOP": "მოტორის კონტური",
     "POWER AND SENSE": "კვება და გაზომვა",
+    "CAMERA": "კამერა",
+    "MICROPHONE": "მიკროფონი",
+    "TEMPERATURE": "ტემპერატურა",
+    "POWER METER": "სიმძლავრის მრიცხველი",
+    "MIXER": "მიქსერი",
+    "NORMALLY OFF": "ნორმალურად გამორთული",
+    "NOT BUILT YET": "ჯერ არ აწყობილია",
 }
 
 # Bangla hangs from a headline bar the way Devanagari does, so it takes the
@@ -364,6 +458,13 @@ WORDS_BN = {
     "SIGNAL": "সিগন্যাল",
     "MOTOR LOOP": "মোটর লুপ",
     "POWER AND SENSE": "পাওয়ার ও সেন্সিং",
+    "CAMERA": "ক্যামেরা",
+    "MICROPHONE": "মাইক্রোফোন",
+    "TEMPERATURE": "তাপমাত্রা",
+    "POWER METER": "পাওয়ার মিটার",
+    "MIXER": "মিক্সার",
+    "NORMALLY OFF": "স্বাভাবিকভাবে বন্ধ",
+    "NOT BUILT YET": "এখনও বানানো হয়নি",
 }
 
 # Filipino keeps four of these in English, which is what a Filipino drawing
@@ -383,6 +484,10 @@ WORDS_FIL = {
     "SIGNAL": "SINYAL",
     "MOTOR LOOP": "LOOP NG MOTOR",
     "POWER AND SENSE": "POWER AT SENSE",
+    "CAMERA": "KAMERA",
+    "MICROPHONE": "MIKROPONO",
+    "TEMPERATURE": "TEMPERATURA",
+    "NOT BUILT YET": "HINDI PA NAITAYO",
 }
 
 # Japanese has a settled term for every one of these and nothing is close to
@@ -401,6 +506,13 @@ WORDS_JA = {
     "SIGNAL": "信号",
     "MOTOR LOOP": "モーター回路",
     "POWER AND SENSE": "電源と計測",
+    "CAMERA": "カメラ",
+    "MICROPHONE": "マイク",
+    "TEMPERATURE": "温度プローブ",
+    "POWER METER": "電力計",
+    "MIXER": "スタンドミキサー",
+    "NORMALLY OFF": "通常オフ",
+    "NOT BUILT YET": "まだ作っていない",
 }
 
 # Cantonese is not the Chinese table with different characters. Hong Kong says
@@ -418,6 +530,13 @@ WORDS_YUE = {
     "SIGNAL": "訊號",
     "MOTOR LOOP": "馬達迴路",
     "POWER AND SENSE": "供電同感應",
+    "CAMERA": "鏡頭",
+    "MICROPHONE": "咪高峰",
+    "TEMPERATURE": "溫度",
+    "POWER METER": "電錶",
+    "MIXER": "攪拌機",
+    "NORMALLY OFF": "平時冇電",
+    "NOT BUILT YET": "仲未砌好",
 }
 
 # Arabic, the first language on this drawing that reads right to left. The
@@ -443,6 +562,13 @@ WORDS_AR = {
     "SIGNAL": "إشارة",
     "MOTOR LOOP": "حلقة المحرك",
     "POWER AND SENSE": "الطاقة والقياس",
+    "CAMERA": "كاميرا",
+    "MICROPHONE": "ميكروفون",
+    "TEMPERATURE": "درجة الحرارة",
+    "POWER METER": "عداد الطاقة",
+    "MIXER": "خلاط",
+    "NORMALLY OFF": "مطفأ عادة",
+    "NOT BUILT YET": "لم يُبنَ بعد",
 }
 
 # Newari, that is Nepal Bhasa. The same script as Nepali and a different
@@ -464,6 +590,46 @@ WORDS_NEW = {
     "SIGNAL": "सिग्नल",
     "MOTOR LOOP": "मोटर लुप",
     "POWER AND SENSE": "बः व सेन्सिङ",
+    "CAMERA": "किपासा",
+    "MICROPHONE": "माइक्रोफोन",
+    "TEMPERATURE": "तापक्रम",
+    "POWER METER": "बः मिटर",
+    "MIXER": "मिक्सर",
+    "NORMALLY OFF": "सामान्यतः अफ",
+    "NOT BUILT YET": "दय्कातःगु मदुनि",
+}
+
+# The spoken description of the preview drawing. Separate from ARIA because it
+# describes a different machine, and because a reader on a screen reader is the
+# one reader who cannot see the title block, so this string has to carry the
+# fact that none of it exists.
+ARIA2 = {
+    "en": "Preview circuit diagram of the planned second ghee machine, which "
+          "has not been built. A Raspberry Pi reads an OV5647 camera over CSI, "
+          "a USB microphone, and a DS18B20 temperature probe on GPIO 4. Two "
+          "thin wires from the Pi switch an IoT relay on the mains run, and a "
+          "PZEM-004T power meter reports back to the Pi over USB. The relay "
+          "feeds the meter and the meter feeds a 690 watt KitchenAid mixer.",
+    "ne": "बनाउने योजनामा रहेको दोस्रो घ्यू मेसिनको प्रिभ्यू सर्किट डायग्राम, जुन अझै बनेको छैन। रास्पबेरी पाईले CSI बाट OV5647 क्यामेरा, एउटा USB माइक्रोफोन, र GPIO 4 मा जोडिएको DS18B20 तापक्रम प्रोब पढ्छ। पाईबाट निस्केका दुई वटा पातला तारले मेन्सको लाइनमा रहेको IoT रिले अन अफ गर्छन्, र PZEM-004T पावर मिटरले USB बाट पाईलाई नै रिपोर्ट गर्छ। रिलेले मिटरलाई बिजुली दिन्छ र मिटरले 690 वाटको किचनएड मिक्सरलाई।",
+    "fr": "Aperçu du schéma électrique de la deuxième machine à ghee prévue, qui n'a pas été construite. Un Raspberry Pi lit une caméra OV5647 en CSI, un microphone USB et une sonde de température DS18B20 sur le GPIO 4. Deux fils fins venant du Pi commandent un relais IoT sur la ligne du secteur, et un wattmètre PZEM-004T renvoie ses mesures au Pi par USB. Le relais alimente le wattmètre et le wattmètre alimente un robot pâtissier KitchenAid de 690 watts.",
+    "rw": "Igishushanyo cy'umuyoboro w'imashini ya kabiri ya ghee iteganyijwe, kandi iyo mashini ntiyubatswe. Raspberry Pi isoma caméra OV5647 inyuze kuri CSI, micro ya USB, na sonde y'ubushyuhe DS18B20 iri kuri GPIO 4. Insinga ebyiri nto zivuye kuri Pi zigenga relais ya IoT iri ku murongo w'amashanyarazi, naho compteur y'ingufu PZEM-004T yohereza ibipimo kuri Pi inyuze kuri USB. Amashanyarazi ava kuri relais ajya kuri compteur, hanyuma ku mixer ya KitchenAid ya 690 W.",
+    "de": "Vorschau-Schaltplan der geplanten zweiten Ghee-Maschine, die noch nicht gebaut ist. Ein Raspberry Pi liest eine Kamera OV5647 über CSI, ein USB-Mikrofon und einen Temperaturfühler DS18B20 an GPIO 4. Zwei dünne Leitungen vom Pi schalten ein IoT-Relais in der Netzleitung, und ein Leistungsmesser PZEM-004T meldet über USB an den Pi zurück. Das Relais speist den Leistungsmesser und der Leistungsmesser speist eine KitchenAid-Küchenmaschine mit 690 Watt.",
+    "zh": "计划中的第二台酥油机的预览电路图，这台机器还没有做出来。树莓派通过 CSI 读取 OV5647 摄像头，读取 USB 麦克风，并通过 GPIO 4 读取 DS18B20 温度探头。树莓派用两根细线开关市电回路上的 IoT 继电器，PZEM-004T 功率计通过 USB 把读数回报给树莓派。继电器给功率计供电，功率计再给一台 690 W 的 KitchenAid 厨师机供电。",
+    "ru": "Предварительная схема планируемой второй машины для гхи, которая ещё не собрана. Raspberry Pi читает камеру OV5647 по CSI, USB-микрофон и датчик температуры DS18B20 на GPIO 4. Два тонких провода от Pi переключают IoT-реле на сетевой линии, а измеритель мощности PZEM-004T отчитывается обратно на Pi по USB. Реле питает измеритель, а измеритель питает миксер KitchenAid мощностью 690 W.",
+    "es": "Esquema eléctrico preliminar de la segunda máquina de ghee, que está planeada pero no construida. Una Raspberry Pi lee una cámara OV5647 por CSI, un micrófono USB y una sonda de temperatura DS18B20 en GPIO 4. Dos cables finos de la Pi conmutan un relé IoT en la línea de la red, y un medidor de potencia PZEM-004T le devuelve las lecturas a la Pi por USB. El relé alimenta al medidor y el medidor alimenta una batidora KitchenAid de 690 W.",
+    "hi": "घी बनाने वाली दूसरी मशीन के सर्किट डायग्राम की झलक। यह मशीन अभी बनी नहीं है। रास्पबेरी पाई CSI से OV5647 कैमरा, एक USB माइक्रोफ़ोन और GPIO 4 पर लगी DS18B20 तापमान प्रोब पढ़ता है। पाई से निकले दो पतले तार मेन्स की लाइन पर लगे IoT रिले को चालू बंद करते हैं, और PZEM-004T पावर मीटर USB से पाई को रीडिंग लौटाता है। रिले मीटर को बिजली देता है और मीटर 690 वाट के किचनएड मिक्सर को।",
+    "tr": "Planlanan ikinci ghee makinesinin ön devre şeması, bu makine henüz yapılmadı. Bir Raspberry Pi, CSI üzerinden OV5647 kamerayı, bir USB mikrofonu ve GPIO 4'teki DS18B20 sıcaklık sondasını okuyor. Pi'den çıkan iki ince kablo şebeke hattındaki bir IoT röleyi anahtarlıyor, bir PZEM-004T güç ölçer de USB üzerinden Pi'ye geri bildirim veriyor. Röle ölçeri besliyor, ölçer de 690 W'lık bir KitchenAid mikseri besliyor.",
+    "eu": "Ghee egiteko bigarren makinaren zirkuitu-eskemaren aurrebista. Makina hori oraindik ez dago eraikita. Raspberry Pi batek OV5647 kamera bat irakurtzen du CSI bidez, USB mikrofono bat, eta DS18B20 tenperatura-zunda bat GPIO 4 pinean. Pi-tik ateratzen diren bi kable finek sareko IoT errele bat komutatzen dute, eta PZEM-004T potentzia-neurgailu batek irakurketak Pi-ari bidaltzen dizkio USB bidez. Erreleak neurgailua elikatzen du, eta neurgailuak 690 W-ko KitchenAid irabiagailu bat elikatzen du.",
+    "ka": "ერბოს დაგეგმილი მეორე მანქანის წინასწარი სქემა, რომელიც ჯერ არ არის აწყობილი. Raspberry Pi CSI-ით კითხულობს OV5647 კამერას, USB მიკროფონს და GPIO 4-ზე მიერთებულ DS18B20 ტემპერატურის სენსორს. Pi-დან ორი თხელი სადენი ქსელის ხაზზე IoT რელეს რთავს, PZEM-004T სიმძლავრის მრიცხველი კი USB-ით პასუხს Pi-ს უბრუნებს. რელე მრიცხველს კვებავს, მრიცხველი კი 690 ვატიან KitchenAid მიქსერს.",
+    "bn": "পরিকল্পনায় থাকা দ্বিতীয় ঘি বানানোর যন্ত্রের আগাম সার্কিট ডায়াগ্রাম, যন্ত্রটা এখনও বানানো হয়নি। রাস্পবেরি পাই CSI দিয়ে একটা OV5647 ক্যামেরা, একটা USB মাইক্রোফোন আর GPIO 4-এ লাগানো একটা DS18B20 তাপমাত্রার প্রোব পড়ে। পাই থেকে দুটি সরু তার মেইন্সের লাইনে বসানো একটা IoT রিলে চালু আর বন্ধ করে, আর একটা PZEM-004T পাওয়ার মিটার USB দিয়ে পাইকে রিডিং ফেরত পাঠায়। রিলে থেকে বিদ্যুৎ যায় মিটারে, আর মিটার থেকে যায় 690 ওয়াটের একটা কিচেনএইড মিক্সারে।",
+    "fil": "Paunang diagram ng sirkito ng balak na ikalawang makina ng ghee, na hindi pa naitayo. Isang Raspberry Pi ang nagbabasa ng OV5647 camera sa pamamagitan ng CSI, ng USB microphone, at ng DS18B20 temperature probe sa GPIO 4. Dalawang manipis na kable mula sa Pi ang nagsisindi sa IoT relay sa linya ng kuryente, at ang PZEM-004T power meter ay nag-uulat pabalik sa Pi sa pamamagitan ng USB. Ang relay ang nagbibigay ng kuryente sa metro at ang metro naman sa 690 watt na KitchenAid mixer.",
+    "ja": "計画中の二台目のギーを作る装置の回路図のプレビュー。この装置はまだ作っていない。Raspberry Pi が CSI で OV5647 のカメラ、USB のマイク、GPIO 4 につないだ DS18B20 の温度プローブを読む。Pi から出た二本の細い線が商用電源のループに入った IoT リレーを入り切りし、PZEM-004T の電力計が USB で Pi に値を返す。リレーが電力計に電気を送り、電力計が 690 W の KitchenAid のスタンドミキサーに送る。",
+    "yue": "計劃中第二部整酥油嘅機嘅電路圖預覽，呢部機仲未砌出嚟。Raspberry Pi 用 CSI 讀 OV5647 鏡頭，再讀一支 USB 咪同 GPIO 4 上面嘅 DS18B20 溫度探針。Pi 用兩條細線開關市電線路上面嘅 IoT 繼電器，而 PZEM-004T 電錶經 USB 回報畀 Pi。繼電器供電畀電錶，電錶再供電畀一部 690 W 嘅 KitchenAid 攪拌機。",
+    "ar": "مخطط مبدئي لدائرة آلة السمن الثانية المزمع بناؤها، وهي آلة لم تُبنَ بعد. راسبيري باي يقرأ كاميرا OV5647 عبر CSI، وميكروفون USB، ومجس حرارة DS18B20 على GPIO 4. وسلكان رفيعان من راسبيري باي يشغلان مرحّل IoT على خط الكهرباء، وعداد الطاقة PZEM-004T يرد بقراءاته إلى راسبيري باي عبر USB. والمرحّل يغذي العداد، والعداد يغذي خلاط كيتشن إيد بقدرة 690 واط.",
+    "new": "योजना यानातःगु निगूगु घ्यः मेसिनया प्रिभ्यू सर्किट डायग्राम, थ्व दय्कातःगु मदुनि। रास्पबेरी पाईं CSI पाखें छगू OV5647 किपासा, छगू USB माइक्रोफोन अले GPIO 4 य् दुगु छगू DS18B20 तापक्रम प्रोब ब्वनी। पाईपाखें वइगु निगू चिचिधंगु तारं मेन्स लाइनय् दुगु छगू IoT रिले अन अफ याइ, अले छगू PZEM-004T बः मिटरं USB पाखें पाईयात लिसः बिइ। रिलें मिटरयात बः बिइ अले मिटरं 690 वाटया छगू किचनएड मिक्सरयात बः बिइ।",
+    "uk": "Попередня схема запланованої другої машини для гхі, яка ще не зібрана. Raspberry Pi читає камеру OV5647 по CSI, USB-мікрофон і датчик температури DS18B20 на GPIO 4. Два тонкі проводи від Pi вмикають реле IoT на мережевій лінії, а лічильник потужності PZEM-004T передає дані назад у Pi по USB. Реле живить лічильник, а лічильник живить міксер KitchenAid на 690 W.",
+    "ko": "기를 만드는 두 번째 장치의 미리보기 회로도. 계획만 있고 아직 만들지 않았다. Raspberry Pi가 CSI로 OV5647 카메라를 읽고, USB 마이크와 GPIO 4에 붙은 DS18B20 온도 프로브를 읽는다. Pi에서 나온 가는 선 두 개가 상용 전원 쪽의 IoT 릴레이를 켜고 끄며, PZEM-004T 전력 계측기가 USB로 Pi에 값을 보고한다. 릴레이가 계측기에 전원을 보내고, 계측기가 690 W KitchenAid 믹서에 전원을 보낸다.",
+    "lg": "Diagram y'ekyuma ky'omuzigo eky'okubiri, nga bwe kiteekateekeddwa naye nga tekinnakolebwa. Raspberry Pi asoma kamera ya OV5647 ng'ayita mu CSI, maayikolofooni ya USB, ne probe ya DS18B20 epima ebbugumu ku GPIO 4. Waya bbiri entonotono okuva ku Pi zikoleeza relay ya IoT eri ku layini y'amasannyalaze ag'ekisenge, era power meter ya PZEM-004T eddiza Pi ebipimo ng'eyita mu USB. Relay ewa meter amasannyalaze, ate meter n'egawa mixer ya KitchenAid ya 690 W.",
 }
 
 ARIA = {
@@ -673,8 +839,21 @@ def T_stacked(word, x):
 
 
 def out_path(name):
-    stem = name.replace("schematic", "schematic" + L()["suffix"])
-    return os.path.join(HERE, "images", stem)
+    """Where a drawing lands, with the language suffix in the middle.
+
+    The suffix goes after the drawing's own name and before `-narrow`, so the
+    phone twin of the Nepali wiring diagram is `schematic-ne-narrow.svg`. That
+    is not cosmetic. build.py finds the narrow twin by appending `-narrow` to
+    whatever path the markdown gave it, and the markdown gives it
+    `schematic-ne.svg`, so any other order and the phone drawing is simply
+    never served. This used to be a string replace on the word `schematic`,
+    which meant a second drawing with a different name was written to the same
+    file twenty one times.
+    """
+    stem, _, ext = name.rpartition(".")
+    tail = "-narrow" if stem.endswith("-narrow") else ""
+    base = stem[:len(stem) - len(tail)] if tail else stem
+    return os.path.join(HERE, "images", f"{base}{L()['suffix']}{tail}.{ext}")
 
 
 
@@ -1025,12 +1204,259 @@ def narrow():
     return "".join(o)
 
 
+
+# ---------------------------------------------------------------- the next one
+#
+# Everything above was read off a rig that exists. Nothing below has been
+# built. These are the parts ordered on 20 October 2026 and an intended
+# arrangement of them, which is why the title block says so in every language
+# and why no pin number appears that is not already fixed by something else.
+# GPIO 4 is on the drawing because the kernel's one wire overlay defaults to
+# it. The relay's control pin is drawn as a bare GPIO because choosing it is
+# still a free choice, and a number here would read as a measurement.
+#
+# No part photographs either. The boards are not in the room yet, and a
+# preview that borrowed a seller's picture would be the only image on this
+# site nobody here has taken.
+
+
+def ac_source(cx, cy, s=1.0):
+    """The wall. A ring with a sine in it, which is the symbol for mains.
+
+    Drawn first as a socket face seen from the front, two prongs and all,
+    because that is how the sketch this came from drew it. At the size it
+    actually appears it read as a smiley, and on the phone drawing it landed
+    on a pin label. The sine is the one everybody already knows.
+    """
+    r, a = 21 * s, 8.5 * s
+    return (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{PAPER}" stroke="{GOLD}" '
+            f'stroke-width="{PWR*0.62*s:.2f}"/>'
+            f'<path d="M{cx-a*1.3:.1f},{cy} Q{cx-a*0.65:.1f},{cy-a:.1f} {cx},{cy} '
+            f'T{cx+a*1.3:.1f},{cy}" fill="none" stroke="{GOLD}" '
+            f'stroke-width="{2.8*s:.2f}" stroke-linecap="round"/>')
+
+
+def camera_sym(cx, cy, s=1.0):
+    k = f'fill="{PAPER}" stroke="{DEEP}" stroke-width="{1.7*s:.2f}"'
+    return (f'<rect x="{cx-7*s}" y="{cy-15*s}" width="{14*s}" height="{6*s}" '
+            f'rx="{2*s}" {k}/>'
+            f'<rect x="{cx-18*s}" y="{cy-10*s}" width="{36*s}" height="{23*s}" '
+            f'rx="{4*s}" {k}/>'
+            f'<circle cx="{cx}" cy="{cy+1.5*s}" r="{7.5*s}" {k}/>')
+
+
+def mic_sym(cx, cy, s=1.0):
+    k = f'fill="{PAPER}" stroke="{DEEP}" stroke-width="{1.7*s:.2f}"'
+    j = (f'fill="none" stroke="{DEEP}" stroke-width="{1.7*s:.2f}" '
+         f'stroke-linecap="round"')
+    return (f'<rect x="{cx-6.5*s}" y="{cy-16*s}" width="{13*s}" height="{21*s}" '
+            f'rx="{6.5*s}" {k}/>'
+            f'<path d="M{cx-12*s},{cy-2*s} A {12*s},{12*s} 0 0 0 {cx+12*s},{cy-2*s}" {j}/>'
+            f'<path d="M{cx},{cy+10*s} L{cx},{cy+16*s}" {j}/>'
+            f'<path d="M{cx-7*s},{cy+16*s} L{cx+7*s},{cy+16*s}" {j}/>')
+
+
+def probe_sym(cx, cy, s=1.0):
+    """A thermometer, because a bare stainless stick reads as a wire."""
+    k = f'fill="{PAPER}" stroke="{DEEP}" stroke-width="{1.7*s:.2f}"'
+    return (f'<rect x="{cx-4.5*s}" y="{cy-17*s}" width="{9*s}" height="{20*s}" '
+            f'rx="{4.5*s}" {k}/>'
+            f'<circle cx="{cx}" cy="{cy+9*s}" r="{7.5*s}" {k}/>'
+            f'<line x1="{cx}" y1="{cy-12*s}" x2="{cx}" y2="{cy+6*s}" '
+            f'stroke="{DEEP}" stroke-width="{2.6*s:.2f}" stroke-linecap="round"/>')
+
+
+def sense(x, y, w, h, icon, name, sub, s=1.0):
+    """A sensing part. Its picture on the left, its two lines to the right.
+
+    The icon sits outside the text rather than beside it on the right, which
+    is where it went first. On the right it had to share the box with a word
+    whose length is decided twenty times over, and the German and the Georgian
+    both reached it.
+    """
+    cy = y + h / 2
+    return (f'<rect class="chip" x="{x}" y="{y}" width="{w}" height="{h}" rx="6"/>'
+            + icon(x + 34 * s, cy, s)
+            + f'<text class="nm" x="{x+64*s}" y="{cy-4*s}">{name}</text>'
+            + f'<text class="sub" x="{x+64*s}" y="{cy+15*s}">{sub}</text>')
+
+
+def part(x, y, w, h, name, sub, cls="box", s=1.0):
+    """A box with its two lines centred, for a box with nothing else in it.
+
+    block() hangs its text off the top, which is right when a photograph of
+    the board fills the rest. Nothing on this drawing has been photographed,
+    so the same box drawn that way is a name in a corner of an empty field.
+    """
+    return (f'<rect class="{cls}" x="{x}" y="{y}" width="{w}" height="{h}" rx="6"/>'
+            f'<text class="nm" x="{x+15*s}" y="{y+h/2-5*s:.1f}">{name}</text>'
+            f'<text class="sub" x="{x+15*s}" y="{y+h/2+15*s:.1f}">{sub}</text>')
+
+
+def titleblock(x, y, w, h, sub, s=1.0):
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="4" fill="none" '
+            f'stroke="{FAINT}" stroke-width="1"/>'
+            f'<line x1="{x}" y1="{y+26*s}" x2="{x+w}" y2="{y+26*s}" '
+            f'stroke="{FAINT}" stroke-width="1"/>'
+            f'<text class="ttl" x="{x+11*s}" y="{y+18*s}">THE BEAST II</text>'
+            f'<text class="sub" x="{x+11*s}" y="{y+44*s}">{sub}</text>')
+
+
+def beast2_wide():
+    """The intended second machine, read left to right and top to bottom.
+
+    The two halves are the whole point of the arrangement. Sensing is above,
+    mains is below, and the only things crossing between them are three thin
+    wires. That is the same claim the first drawing makes and it survives the
+    move from twelve volts to a hundred and twenty.
+    """
+    W, H = 1120, 740
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" '
+         f'aria-label="{ARIA2.get(LANG, ARIA2["en"])}">',
+         f'<rect width="{W}" height="{H}" fill="{CREAM}"/>',
+         f'<style>{css()}</style>', f'<g>{grid(W, H, 24)}</g>']
+
+    o.append('<line class="sig" x1="62" y1="48" x2="98" y2="48"/>')
+    o.append(f'<text class="sub" x="106" y="52">{T("SIGNAL")}</text>')
+    o.append('<line class="pwr" x1="236" y1="48" x2="272" y2="48"/>')
+    o.append('<text class="sub" x="280" y="52">120 V AC</text>')
+
+    PI = (420, 108, 260, 176)
+    CAM = (62, 100, 250, 86)
+    MIC = (62, 206, 250, 86)
+    PRB = (810, 100, 250, 86)
+    o.append(f'<rect class="box" x="{PI[0]}" y="{PI[1]}" width="{PI[2]}" '
+             f'height="{PI[3]}" rx="6"/>')
+    o.append(f'<text class="nm" x="{PI[0]+PI[2]/2}" y="{PI[1]+PI[3]/2+6}" '
+             f'text-anchor="middle">RASPBERRY PI</text>')
+    o.append(sense(*CAM, camera_sym, "OV5647", T("CAMERA")))
+    o.append(sense(*MIC, mic_sym, T("MICROPHONE"), "USB"))
+    o.append(sense(*PRB, probe_sym, "DS18B20", T("TEMPERATURE")))
+
+    for x1, x2, y, lbl in ((CAM[0] + CAM[2], PI[0], 143, "CSI"),
+                           (MIC[0] + MIC[2], PI[0], 249, "USB"),
+                           (PI[0] + PI[2], PRB[0], 143, "GPIO 4")):
+        o.append(f'<line class="sig" x1="{x1}" y1="{y}" x2="{x2}" y2="{y}"/>')
+        o.append(dot(x1, y) + dot(x2, y))
+        o.append(f'<text class="pin" x="{(x1+x2)/2}" y="{y-10}" '
+                 f'text-anchor="middle">{lbl}</text>')
+
+    RAIL = 500
+    RLY = (150, 444, 240, 112)
+    MTR = (600, 444, 250, 112)
+    MOT, MOTR = 992, 54
+
+    o.append(ac_source(80, RAIL))
+    o.append(f'<text class="sub" x="62" y="458">{T("MAINS")}</text>')
+    o.append(f'<line class="pwr" x1="101" y1="{RAIL}" x2="{RLY[0]}" y2="{RAIL}"/>')
+    o.append(part(*RLY, "IoT RELAY", "3-48 V IN &#183; 12 A"))
+    o.append(f'<line class="pwr" x1="{RLY[0]+RLY[2]}" y1="{RAIL}" x2="{MTR[0]}" y2="{RAIL}"/>')
+    o.append(f'<text class="sub" x="{(RLY[0]+RLY[2]+MTR[0])/2}" y="{RAIL-13}" '
+             f'text-anchor="middle">{T("NORMALLY OFF")}</text>')
+    o.append(part(*MTR, "PZEM-004T", T("POWER METER"), cls="chip"))
+    o.append(f'<line class="pwr" x1="{MTR[0]+MTR[2]}" y1="{RAIL}" x2="{MOT-MOTR}" y2="{RAIL}"/>')
+    o.append(motor(MOT, RAIL, MOTR))
+    o.append(f'<text class="sub" x="{MOT}" y="{RAIL+82}" text-anchor="middle">{T("MIXER")}</text>')
+    o.append(f'<text class="val" x="{MOT}" y="{RAIL+102}" text-anchor="middle">690 W</text>')
+
+    PB = PI[1] + PI[3]
+    o.append(f'<path class="sig" d="M446,{PB} L446,372 L246,372 L246,{RLY[1]}"/>')
+    o.append(f'<path class="sig" d="M474,{PB} L474,396 L286,396 L286,{RLY[1]}"/>')
+    o.append(dot(446, PB) + dot(474, PB) + dot(246, RLY[1]) + dot(286, RLY[1]))
+    o.append('<text class="pin" x="438" y="310" text-anchor="end">GPIO</text>')
+    o.append('<text class="pin" x="482" y="310">GND</text>')
+
+    o.append(f'<path class="sig" d="M726,{MTR[1]} L726,340 L626,340 L626,{PB}"/>')
+    o.append(dot(726, MTR[1]) + dot(626, PB))
+    o.append('<text class="pin" x="736" y="404">USB &#183; MODBUS</text>')
+
+    o.append(titleblock(62, 628, 240, 60, T("NOT BUILT YET")))
+    o.append("</svg>")
+    return "".join(o)
+
+
+def beast2_narrow():
+    """The same machine as one column, senses first, mains under them."""
+    W, H = 460, 1020
+    s = 1.18
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" '
+         f'aria-label="{ARIA2.get(LANG, ARIA2["en"])}">',
+         f'<rect width="{W}" height="{H}" fill="{CREAM}"/>',
+         f'<style>{css(s)}</style>', f'<g>{grid(W, H, 22)}</g>']
+
+    o.append('<line class="sig" x1="26" y1="28" x2="58" y2="28"/>')
+    o.append(f'<text class="sub" x="66" y="32">{T("SIGNAL")}</text>')
+    o.append('<line class="pwr" x1="206" y1="28" x2="238" y2="28"/>')
+    o.append('<text class="sub" x="246" y="32">120 V AC</text>')
+
+    BUS = 46
+    CAM = (86, 56, 348, 80)
+    MIC = (86, 150, 348, 80)
+    PRB = (86, 244, 348, 80)
+    o.append(sense(*CAM, camera_sym, "OV5647", T("CAMERA"), s))
+    o.append(sense(*MIC, mic_sym, T("MICROPHONE"), "USB", s))
+    o.append(sense(*PRB, probe_sym, "DS18B20", T("TEMPERATURE"), s))
+
+    PI = (26, 400, 408, 116)
+    o.append(f'<path class="sig" d="M{BUS},96 L{BUS},{PI[1]}"/>')
+    for y in (96, 190, 284):
+        o.append(f'<line class="sig" x1="{BUS}" y1="{y}" x2="{CAM[0]}" y2="{y}"/>')
+        o.append(dot(CAM[0], y, 4))
+    o.append(dot(BUS, PI[1], 4))
+    o.append('<text class="pin" x="30" y="240" text-anchor="middle" '
+             'transform="rotate(-90 30 240)">CSI &#183; USB &#183; GPIO 4</text>')
+
+    o.append(f'<rect class="box" x="{PI[0]}" y="{PI[1]}" width="{PI[2]}" '
+             f'height="{PI[3]}" rx="6"/>')
+    o.append(f'<text class="nm" x="{PI[0]+PI[2]/2}" y="{PI[1]+PI[3]/2+7}" '
+             f'text-anchor="middle">RASPBERRY PI</text>')
+
+    PB = PI[1] + PI[3]
+    RLY = (26, 584, 250, 104)
+    MTR = (26, 744, 250, 104)
+    for x in (96, 130):
+        o.append(f'<line class="sig" x1="{x}" y1="{PB}" x2="{x}" y2="{RLY[1]}"/>')
+        o.append(dot(x, PB, 4) + dot(x, RLY[1], 4))
+    o.append('<text class="pin" x="88" y="554" text-anchor="end">GPIO</text>')
+    o.append('<text class="pin" x="140" y="554">GND</text>')
+
+    # Mains comes in the side here rather than the top, which is where it went
+    # on the first pass. The gap between the Pi and the relay is 68 px and the
+    # source symbol is 50 across, so it had nowhere to sit that was not already
+    # a pin label.
+    o.append(part(*RLY, "IoT RELAY", "3-48 V IN &#183; 12 A", s=s))
+    o.append(ac_source(340, 636, s))
+    o.append(f'<line class="pwr" x1="315" y1="636" x2="{RLY[0]+RLY[2]}" y2="636"/>')
+    o.append(f'<text class="sub" x="340" y="690" text-anchor="middle">{T("MAINS")}</text>')
+
+    o.append(f'<line class="pwr" x1="96" y1="{RLY[1]+RLY[3]}" x2="96" y2="{MTR[1]}"/>')
+    o.append(f'<text class="sub" x="112" y="722">{T("NORMALLY OFF")}</text>')
+    o.append(part(*MTR, "PZEM-004T", T("POWER METER"), cls="chip", s=s))
+
+    o.append(f'<path class="sig" d="M{MTR[0]+MTR[2]},796 L412,796 L412,{PB}"/>')
+    o.append(dot(MTR[0] + MTR[2], 796, 4) + dot(412, PB, 4))
+    o.append('<text class="pin" x="430" y="660" text-anchor="middle" '
+             'transform="rotate(-90 430 660)">USB &#183; MODBUS</text>')
+
+    MOT, MOTY, MOTR = 370, 898, 38
+    o.append(f'<path class="pwr" d="M96,{MTR[1]+MTR[3]} L96,{MOTY} L{MOT-MOTR},{MOTY}"/>')
+    o.append(motor(MOT, MOTY, MOTR, s))
+    o.append(f'<text class="sub" x="{MOT}" y="{MOTY+64}" text-anchor="middle">{T("MIXER")}</text>')
+    o.append(f'<text class="val" x="{MOT}" y="{MOTY+86}" text-anchor="middle">690 W</text>')
+
+    o.append(titleblock(26, 940, 250, 62, T("NOT BUILT YET"), s))
+    o.append("</svg>")
+    return "".join(o)
+
+
 if __name__ == "__main__":
     os.makedirs(os.path.join(HERE, "images"), exist_ok=True)
     for LANG in LANGS:
         globals()["LANG"] = LANG
         for name, draw in (("schematic.svg", wide),
-                           ("schematic-narrow.svg", narrow)):
+                           ("schematic-narrow.svg", narrow),
+                           ("beast2.svg", beast2_wide),
+                           ("beast2-narrow.svg", beast2_narrow)):
             path = out_path(name)
             with open(path, "w") as fh:
                 fh.write(draw())

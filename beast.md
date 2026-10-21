@@ -76,3 +76,17 @@ Two things. Whether the load has climbed and then fallen far enough to call the 
 It does not know what yogurt is. It does not know what butter is. It knows that a number went up for a while and then dropped away, and that this shape means the job is finished.
 
 ![What the shape is for](images/batch-big.jpg "Two tall jars of pale set ghee with screw lids and clear labels standing on a deck rail, smaller clip top jars blurred behind them.")
+
+## What comes next
+
+Four senses instead of one.
+
+The drill goes and a KitchenAid takes its place, running on mains through a relay the Pi can switch with two thin wires. The temperature probe moves off the hotplate and onto the Pi, which is the part that matters, because a probe that logs is a probe you can plot. A camera to watch the foam break. A microphone, because a pot that has stopped spitting sounds different.
+
+The power meter is the one that keeps the old story alive. Current on a twelve volt loop was the only thing this machine ever sensed. Move the motor to mains and that sensor has nothing left to read, so a meter on the mains takes its place and the same curve comes back, with voltage and power factor beside it.
+
+There is no red button on the drawing. The relay's outlets stay dead until the Pi asks for them, and the mixer's own lever will be the break no software can reach.
+
+None of it is built. The parts were ordered in October.
+
+![What the next one looks like](images/beast2.svg "A preview circuit diagram of the planned second ghee machine, which has not been built. A Raspberry Pi reads an OV5647 camera, a USB microphone and a DS18B20 temperature probe. Two thin wires from the Pi switch an IoT relay on the mains run, and a PZEM-004T power meter reports back over USB. The relay feeds the meter and the meter feeds a 690 watt KitchenAid mixer.")

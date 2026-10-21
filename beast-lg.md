@@ -77,3 +77,18 @@ Bintu bibiri. Oba omugugu gulinnye n'oluvannyuma gugudde okumala okukakasa nti o
 Tekimanyi amata agakutte. Tekimanyi n'omuzigo. Ekimanyi kiri nti namba yalinnya okumala akadde, oluvannyuma n'egwa, era nti enkula eyo etegeeza nti omulimu guweze.
 
 ![Enkula eyo kye kikola](images/batch-big.jpg "Eccupa bbiri empanvu z'omuzigo ogukutte ogwa kyenvu okumpi n'omweru, nga zirina ebisaanikira ebizingibwa n'ebipande ebitangaavu, nga ziyimiridde ku lubaawo lw'olubalaza, n'eccupa entono ez'ebisaanikira ebikwata nga zitalabika bulungi emabega.")
+
+
+## Ki kye kiddako
+
+Engeri nnya z'okuwulira mu kifo ky'emu.
+
+Drill egenda, KitchenAid n'etwala ekifo kyayo. Ekola ku masannyalaze ag'ekisenge ng'eyita mu relay gye Pi asobola okukoleeza ng'akozesa waya bbiri entonotono. Probe y'ebbugumu eva ku hotplate n'egenda ku Pi. Ekyo kye kitundu ekikulu, kubanga probe ewandiika log ye probe gy'osobola okuteeka mu plot. Kamera ey'okulaba ejjovu nga ligwa. Maayikolofooni, kubanga entamu etakyabwatuka evuga mu ngeri endala.
+
+Power meter ye ekuuma olugero olw'edda nga lukyaliwo. Ekyuma kino kyawuliranga kimu kyokka, current ku loop ya 12 V. Motor bw'eteekebwa ku masannyalaze ag'ekisenge, sensor eyo tesigala na kintu kyonna ky'esoma. Kale mita eri ku masannyalaze etwala ekifo kyayo, era enkula y'emu n'ekomawo, nga voltage ne power factor bigattiddwako.
+
+Ku diagram tewali bbatani erya myufu. Outlets za relay zisigala nga zizikidde okutuusa Pi lw'azisaba. Ate lever ya mixer yennyini enaayimiriza ekyuma, era tewali software esobola okugituukako.
+
+Tewali kimu ku bino ekikoleddwa. Ebitundu byalagizibwa mu October.
+
+![Ekiddako bwe kifaanana](images/beast2-lg.svg "Diagram y'ekyuma ky'omuzigo eky'okubiri, nga bwe kiteekateekeddwa naye nga tekinnakolebwa. Raspberry Pi asoma kamera ya OV5647, maayikolofooni ya USB ne probe ya DS18B20 epima ebbugumu. Waya bbiri entonotono okuva ku Pi zikoleeza relay ya IoT eri ku layini y'amasannyalaze ag'ekisenge, era power meter ya PZEM-004T eddiza ebipimo ng'eyita mu USB. Relay ewa meter amasannyalaze, ate meter n'egawa mixer ya KitchenAid ya 690 W.")

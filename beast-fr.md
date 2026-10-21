@@ -77,3 +77,18 @@ Deux choses. Si la charge est montée puis redescendue assez pour annoncer la ca
 Elle ne sait pas ce qu'est le yaourt. Elle ne sait pas ce qu'est le beurre. Elle sait qu'un nombre est monté un moment puis est retombé, et que cette forme veut dire que le travail est fini.
 
 ![À quoi sert cette forme](images/batch-big.jpg "Deux grands bocaux de ghee figé et pâle, couvercles vissés et étiquettes transparentes, posés sur une rambarde, avec des bocaux à clip plus petits et flous derrière.")
+
+
+## Ce qui vient ensuite
+
+Quatre sens au lieu d'un.
+
+La perceuse s'en va et un robot pâtissier KitchenAid prend sa place, branché sur le secteur derrière un relais que le Pi peut commander avec deux fils fins. La sonde de température quitte la plaque chauffante et passe sur le Pi, et c'est ça qui compte, parce qu'une sonde qui enregistre est une sonde qu'on peut tracer. Une caméra pour regarder la mousse retomber. Un micro, parce qu'une casserole qui a arrêté de crépiter ne sonne pas pareil.
+
+C'est le wattmètre qui garde la vieille histoire en vie. Le courant dans une boucle de douze volts, c'est la seule chose que cette machine ait jamais mesurée. On passe le moteur sur le secteur et ce capteur n'a plus rien à lire. Alors c'est un wattmètre sur la ligne du secteur qui prend sa place, et la même courbe revient, avec la tension et le facteur de puissance à côté.
+
+Il n'y a pas de bouton rouge sur le schéma. Les prises du relais restent sans courant jusqu'à ce que le Pi les demande, et le levier du robot lui-même sera la coupure qu'aucun logiciel ne peut atteindre.
+
+Rien de tout ça n'est construit. Les pièces ont été commandées en octobre.
+
+![À quoi ressemble la prochaine](images/beast2-fr.svg "Un aperçu du schéma électrique de la deuxième machine à ghee prévue, qui n'a pas été construite. Un Raspberry Pi lit une caméra OV5647, un microphone USB et une sonde de température DS18B20. Deux fils fins venant du Pi commandent un relais IoT sur la ligne du secteur, et un wattmètre PZEM-004T renvoie ses mesures par USB. Le relais alimente le wattmètre et le wattmètre alimente un robot pâtissier KitchenAid de 690 watts.")

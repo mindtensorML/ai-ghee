@@ -77,3 +77,18 @@ Zwei Dinge. Ob die Last weit genug gestiegen und dann gefallen ist, um den Bruch
 Sie weiß nicht, was Joghurt ist. Sie weiß nicht, was Butter ist. Sie weiß, dass eine Zahl eine Weile lang stieg und dann abfiel, und dass diese Form bedeutet, dass die Arbeit erledigt ist.
 
 ![Wofür die Form gut ist](images/batch-big.jpg "Zwei hohe Gläser mit blassem festem Ghee, mit Schraubdeckeln und klaren Etiketten, stehen auf einem Terrassengeländer, dahinter unscharf kleinere Bügelgläser.")
+
+
+## Was als Nächstes kommt
+
+Vier Sinne statt einem.
+
+Der Akkuschrauber kommt weg, und eine KitchenAid nimmt seinen Platz ein. Sie läuft am Netz, über ein Relais, das der Pi mit zwei dünnen Leitungen schalten kann. Der Temperaturfühler wandert von der Kochplatte weg an den Pi, und das ist der Teil, auf den es ankommt, denn ein Fühler, der aufzeichnet, ist ein Fühler, aus dem ein Diagramm wird. Eine Kamera, die zusieht, wie der Schaum zusammenfällt. Ein Mikrofon, weil ein Topf, der aufgehört hat zu spritzen, anders klingt.
+
+Der Leistungsmesser ist das Teil, das die alte Geschichte am Leben hält. Strom in einem Kreis mit zwölf Volt war das Einzige, was diese Maschine je gemessen hat. Geht der Motor ans Netz, hat dieser Sensor nichts mehr zu lesen. Also tritt ein Messgerät in der Netzleitung an seine Stelle, und dieselbe Kurve kommt zurück, mit Spannung und Leistungsfaktor daneben.
+
+Auf der Zeichnung ist kein roter Knopf. Die Steckdosen des Relais bleiben tot, bis der Pi sie anfordert, und der Hebel der Küchenmaschine selbst wird die Trennstelle sein, an die keine Software herankommt.
+
+Nichts davon ist gebaut. Die Teile wurden im Oktober bestellt.
+
+![Wie die nächste aussieht](images/beast2-de.svg "Vorschau-Schaltplan der geplanten zweiten Ghee-Maschine, die noch nicht gebaut ist. Ein Raspberry Pi liest eine Kamera OV5647, ein USB-Mikrofon und einen Temperaturfühler DS18B20. Zwei dünne Leitungen vom Pi schalten ein IoT-Relais in der Netzleitung, und ein Leistungsmesser PZEM-004T meldet über USB zurück. Das Relais speist den Leistungsmesser und der Leistungsmesser speist eine KitchenAid-Küchenmaschine mit 690 Watt.")

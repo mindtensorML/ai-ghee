@@ -77,3 +77,18 @@ Mikrofon yok, kamera yok. Düzeltmek istediğim ilk şey de bu. Şimdiye kadarki
 Yoğurdun ne olduğunu bilmiyor. Tereyağının ne olduğunu bilmiyor. Bir sayının bir süre yükseldiğini sonra geri düştüğünü biliyor. Bu biçimin işin bittiği anlamına geldiğini de biliyor.
 
 ![Biçim ne işe yarıyor](images/batch-big.jpg "Vida kapaklı ve şeffaf etiketli, soluk donmuş ghee dolu iki uzun kavanoz bir teras korkuluğunda duruyor, arkalarında bulanık küçük mandal kapaklı kavanozlar var.")
+
+
+## Sırada ne geldiği
+
+Tek duyu yerine dört duyu.
+
+Matkap gidiyor, yerini bir KitchenAid alıyor. Şebeke elektriğiyle çalışıyor, arada da Pi'nin iki ince kabloyla açıp kapatabildiği bir röle var. Sıcaklık sondası ocaktan ayrılıp Pi'ye bağlanıyor. Önemli olan kısım da bu, çünkü kayıt tutan bir sonda grafiğe dökebileceğiniz bir sonda demek. Köpüğün çökmesini görmesi için bir kamera. Bir de mikrofon, çünkü cızırdamayı bırakmış bir tencerenin sesi farklı.
+
+Eski hikâyeyi ayakta tutan parça güç ölçer. Bu makinenin bugüne kadar algıladığı tek şey on iki voltluk bir devredeki akımdı. Motoru şebekeye taşıyınca o sensörün okuyacak bir şeyi kalmıyor. Yerini şebeke hattındaki bir ölçer alıyor, aynı eğri de geri geliyor, yanında gerilim ve güç katsayısı var.
+
+Çizimde kırmızı bir düğme yok. Rölenin prizleri Pi isteyene kadar ölü kalıyor, akımı kesecek şey de mikserin kendi kolu olacak ve hiçbir yazılım o kola ulaşamıyor.
+
+Bunların hiçbiri yapılmadı. Parçalar Ekim'de sipariş edildi.
+
+![Sıradaki neye benziyor](images/beast2-tr.svg "Planlanan ikinci ghee makinesinin ön devre şeması, bu makine henüz yapılmadı. Bir Raspberry Pi, OV5647 kamerayı, bir USB mikrofonu ve DS18B20 sıcaklık sondasını okuyor. Pi'den çıkan iki ince kablo şebeke hattındaki bir IoT röleyi anahtarlıyor, bir PZEM-004T güç ölçer de USB üzerinden geri bildirim veriyor. Röle ölçeri besliyor, ölçer de 690 W'lık bir KitchenAid mikseri besliyor.")

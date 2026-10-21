@@ -77,3 +77,18 @@ Ibintu bibiri. Niba charge yazamutse hanyuma yagwa bihagije ngo ivuge ko amavuta
 Ntizi icyo ikivuguto ari cyo. Ntizi icyo amavuta ari yo. Icyo izi ni iki. Umubare wazamutse akanya hanyuma uragwa, kandi iyo shusho isobanura ko akazi karangiye.
 
 ![Icyo iyo shusho ikorerwa](images/batch-big.jpg "Amacupa abiri maremare ya ghee yafashe y'umuhondo woroheje afite impfundikizo zizingwa na étiquette zibonerana, ahagaze ku rubaho, inyuma hari amacupa mato afunga clip atabonerana neza.")
+
+
+## Ibikurikira
+
+Uburyo bune bwo kumva aho kuba bumwe.
+
+Perceuse ivaho, KitchenAid ifata umwanya wayo. Ikora ku mashanyarazi yo ku rukuta inyuze mu relais Pi ishobora kucana ikoresheje insinga ebyiri nto. Sonde y'ubushyuhe iva kuri réchaud ijya kuri Pi. Ni iyo mpinduka ifite akamaro, kuko sonde yandika log ni sonde ushobora gushushanya ibipimo byayo. Caméra yo kureba igihe ifuro ricika. Micro, kuko inkono yaretse guturika yumvikana ukundi.
+
+Compteur y'ingufu ni yo ikomeza inkuru ya mbere. Courant mu ruziga rwa 12 V ni cyo kintu cyonyine iyi mashini yumvaga. Ushyize moteur ku mashanyarazi yo ku rukuta, capteur ntacyo isigaye isoma. Ni yo mpamvu compteur iri ku murongo w'amashanyarazi ifata umwanya wayo, naho umurongo nk'uwa mbere ugaruka, hamwe na voltage na facteur de puissance iruhande rwawo.
+
+Nta buto y'umutuku iri ku gishushanyo. Prises za relais zihora zizimye kugeza igihe Pi izisabye. Levier ya mixer ubwayo ni yo izaba ihagarika, kandi nta kintu cyo mu logiciel gishobora kuyigeraho.
+
+Nta kimwe cyubatswe. Ibikoresho byatumijwe mu Kwakira.
+
+![Uko imashini ikurikira isa](images/beast2-rw.svg "Igishushanyo cy'umuyoboro w'imashini ya kabiri ya ghee iteganyijwe, kandi iyo mashini ntiyubatswe. Raspberry Pi isoma caméra OV5647, micro ya USB na sonde y'ubushyuhe DS18B20. Insinga ebyiri nto zivuye kuri Pi zigenga relais ya IoT iri ku murongo w'amashanyarazi, naho compteur y'ingufu PZEM-004T yohereza ibipimo kuri Pi inyuze kuri USB. Amashanyarazi ava kuri relais ajya kuri compteur, hanyuma ku mixer ya KitchenAid ya 690 W.")
