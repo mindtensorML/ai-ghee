@@ -16,6 +16,14 @@ Four more pages are built the same way and are English only. `review.md` is
 how somebody holding a jar tells us how it turned out, `notfound.md` becomes
 the `404.html` that GitHub Pages serves for any address that is not here, and
 `privacy.md` and `terms.md` are the legal pair.
+
+Every page carries a `REVIEW A JAR` link in the masthead, set once in
+`site.md` and reaching all forty four pages that should have one. It is there
+because of where readers actually arrive. The QR code on the jars is a TinyURL
+made without an account, so it can never be repointed, and it drops every jar
+holder on the English home page. The label stays English everywhere, because
+the form behind it is English only. Blanking `review_text` for a page turns it
+off, which `review.md` and `notfound.md` both do.
 Commit. That is the whole job. A GitHub Action rebuilds the HTML about forty
 seconds later and pushes it back, and the site updates itself.
 

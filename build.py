@@ -460,6 +460,24 @@ def render_nav(meta):
         links.append(f'<a class="page" href="{meta["nav_href"]}">'
                      f'{arrow}{meta["nav_text"]}{tail}</a>')
 
+    # The review link, and it sits in the masthead rather than only in the
+    # footer because of where people actually arrive. The QR code on the jars
+    # is a TinyURL made without an account, so it cannot be repointed, and it
+    # lands every single jar holder on the English home page. From there the
+    # only mention of reviewing was a sentence of body prose below a video
+    # embed, 1.4 screens down, which nobody holding a jar was ever going to
+    # find. Measured: the footer alone put it 18.8 screens down.
+    #
+    # The label stays English on all twenty one languages, exactly as the
+    # footer links do, because the form behind it is English only. Translating
+    # the label would promise a form in the reader's language that they are
+    # not going to get, which is worse than an honest English word. `lang`
+    # says so out loud so a screen reader does not read it in the wrong voice.
+    if meta.get("review_text"):
+        links.append(
+            f'<a class="page want" href="{html.escape(meta.get("review_href", ""), quote=True)}"'
+            f' lang="en">{html.escape(meta["review_text"])}</a>')
+
     # The languages go behind a disclosure rather than sitting in the line.
     # Nine of them already wrapped to a second row inside the text column, and
     # the plan is more. `details` does this with no JavaScript at all, which

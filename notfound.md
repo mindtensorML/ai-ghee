@@ -16,6 +16,8 @@ mark: AI Ghee Making
 nav_text: The story
 nav_href: index.html
 nav_side: right
+review_text:
+review_href:
 kicker: Not found
 headline: That address does not exist
 standfirst: You should be moving to the story already. If nothing happens, the links below will get you there.

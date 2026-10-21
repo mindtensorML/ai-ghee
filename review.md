@@ -15,6 +15,8 @@ mark: AI Ghee Making
 nav_text: The story
 nav_href: index.html
 nav_side: right
+review_text:
+review_href:
 kicker: Feedback
 headline: Tell me about your jar
 standfirst: Four taps and you are done. There is a box to type in as well, and leaving it empty is fine.

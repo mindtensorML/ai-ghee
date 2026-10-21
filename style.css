@@ -245,6 +245,24 @@ a { color: var(--deep); }
   display: inline-flex;
   align-items: center;
   gap: 1rem;
+  /* The nav labels wrap among themselves, not just away from the wordmark.
+     `.top` has wrapped for a while, which lets the wordmark and this group
+     part company, but this group was `inline-flex` with no wrap of its own, so
+     whatever sat inside it was welded to one line. Every label in here is
+     `nowrap` by the rule just below, which is right for a label and wrong for
+     the row holding them.
+
+     Measured at a root font size of 200 per cent, which is the WCAG 1.4.4
+     resize case. On a 320px phone the English home page pushed 104px off the
+     side, Kinyarwanda 66px and German 75px, and the language panel went with
+     it because the panel is pinned to a masthead that was itself off screen.
+     That was there before the review link was, and the review link would have
+     taken it to 296px. With this line all of them come back to zero.
+
+     row-gap, because two rows of tracked uppercase sitting on each other reads
+     as one smudge. It only ever applies when the row has already wrapped. */
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 }
 
 .top .mark,
@@ -271,12 +289,21 @@ a { color: var(--deep); }
   position: static;
 }
 
+/* The switcher is set apart from the nav links by space rather than by a rule.
+
+   It was a `border-inline-start`, which works only while the masthead is one
+   line. Once the row holds three labels it wraps on a narrow phone, the
+   switcher drops to a line of its own, and a separator with nothing on its
+   left is just a mark floating in front of the word. It did the same at 200
+   per cent text on a wide phone, where no width media query would have caught
+   it. Space says the same thing and cannot be left stranded. The chevron
+   already tells a reader this one is a control rather than a link. */
 .langs summary {
   list-style: none;
   cursor: pointer;
   padding-block: 0.15rem;
-  padding-inline: 0.85rem 0.5rem;
-  border-inline-start: 1px solid var(--line);
+  padding-inline: 0.2rem 0.5rem;
+  margin-inline-start: 0.5rem;
   color: var(--faint);
 }
 
@@ -452,6 +479,45 @@ figcaption { overflow-wrap: anywhere; }
 }
 
 .top .links a:hover { color: var(--deep); }
+
+/* Two pages set their own masthead type, Georgian and Arabic, and both do it
+   by naming `.top .links a.page`. Both now say `:not(.want)`, because the
+   review link is the one label up there that is English on all forty six
+   pages. The Arabic rule drops the uppercasing and the tracking, which is
+   right for a word with no capitals and wrong for `Review a jar`, and it was
+   rendering in sentence case on Arabic alone. The Georgian rule resizes for a
+   taller script and was doing the same to Latin that does not need it. The
+   English label now looks the same everywhere, which is the point of its
+   being English.
+
+   The review link is the one thing in the masthead that is being asked for, so
+   it is the one thing in there that is not grey. Everything else up there is
+   `--faint` and reads as furniture, which is right for a wordmark and for the
+   other half of a two page pair, and wrong for the link a person holding a jar
+   came to find.
+
+   It is still type rather than a filled button. A button in the masthead would
+   sit beside the wordmark competing for the same corner, and on the twenty
+   machine pages the masthead is reversed, so it would land next to the
+   language switcher instead and read as part of it. The rule underneath does
+   the work a button would do, which is to say that this one is live.
+
+   An underline with an offset rather than a bottom border, so it sits on the
+   text rather than on the box and clears the descender in `jar`. It is drawn
+   in the gold the kicker uses, which keeps the masthead to the two colours it
+   already had. The word itself is `--deep`, so the link does not depend on the
+   gold to be read, and the contrast check passes on the text. */
+.top .links a.want {
+  color: var(--deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.32em;
+  text-decoration-color: var(--gold);
+}
+
+.top .links a.want:hover {
+  text-decoration-color: var(--deep);
+}
 
 /* ---------- hero ---------- */
 
@@ -954,7 +1020,7 @@ html[lang="ka"] .kicker,
 html[lang="ka"] figcaption,
 html[lang="ka"] .spec .k,
 html[lang="ka"] .top .mark,
-html[lang="ka"] .top .links a.page,
+html[lang="ka"] .top .links a.page:not(.want),
 html[lang="ka"] .top .links summary {
   letter-spacing: 0.05em;
   font-size: 0.8rem;
@@ -1006,7 +1072,7 @@ html[lang="ar"] .kicker,
 html[lang="ar"] figcaption,
 html[lang="ar"] .spec .k,
 html[lang="ar"] .top .mark,
-html[lang="ar"] .top .links a.page,
+html[lang="ar"] .top .links a.page:not(.want),
 html[lang="ar"] .top .links summary {
   letter-spacing: 0;
   text-transform: none;

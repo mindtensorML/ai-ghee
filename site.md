@@ -8,6 +8,8 @@ credit: Photographs are from a single run in August 2026. The churn, the finishe
 contact_text: Questions, corrections, or you have built one of these yourself.
 contact_email: aighee@proton.me
 footer_links: [Review a jar](review.html) · [Privacy](privacy.html) · [Terms](terms.html)
+review_text: Review a jar
+review_href: review.html
 ---
 
 # Shared settings
@@ -30,7 +32,18 @@ person holding a jar reaches the review page is from a link on a page they are
 already on, and the footer is the one place that reaches all of them in a
 single edit.
 
-All three labels stay in English on every translated page, because all three
+`review_text` and `review_href` put the same link in the masthead, on every
+page, which is the one place a reader sees without scrolling. The footer was
+not enough on its own. Measured on a phone, the footer link sat 18.8 screens
+down a story page, and the only other mention was a sentence of body prose
+below the video embed at 1.4 screens. Somebody holding a jar does not read a
+story looking for a link. They look at the top of the page.
+
+Setting either key to nothing turns the masthead link off for that page.
+`review.md` does that, because a page does not link to itself, and
+`notfound.md` does it too, since that page is already moving somewhere else.
+
+All four labels stay in English on every translated page, because all of the
 pages they lead to are English only. `build.py` stamps `lang="en"` on them so a
 screen reader does not read them in the wrong voice. Overriding `footer_links`
 in a language's own two markdown files is all it would take to change that for
